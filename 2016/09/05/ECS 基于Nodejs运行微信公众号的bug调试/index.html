@@ -84,22 +84,31 @@
 
 
 
-<meta name="description" content="##This is the first post of my blog here, and will show how to build it.
-##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js
-##Note : change username into real one, supposed your Github id is xxx, repla">
+<meta name="description" content="1、因此方法基于Nodejs，但之前安装了Nginx，占用了80端口，而微信公众号必须80端口，因此要把Nginx停用。
+2、此文是确定80端口被Nginx占用，如不确定，应该用netstat命令查询谁占用了80端口，而查询nginx进程
+ps -ef | grep nginx
+3、停止nginx
+kill -QUIT 主进程号
+`">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to build a Blog with Hexo on Github">
-<meta property="og:url" content="http://yoursite.com/2016/08/23/How to build a Blog with Hexo on Github/index.html">
+<meta property="og:title" content="ECS 基于Nodejs运行微信公众号的bug调试">
+<meta property="og:url" content="http://yoursite.com/2016/09/05/ECS 基于Nodejs运行微信公众号的bug调试/index.html">
 <meta property="og:site_name" content="天青色等烟雨">
-<meta property="og:description" content="##This is the first post of my blog here, and will show how to build it.
-##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js
-##Note : change username into real one, supposed your Github id is xxx, repla">
-<meta property="og:updated_time" content="2016-08-28T02:34:36.000Z">
+<meta property="og:description" content="1、因此方法基于Nodejs，但之前安装了Nginx，占用了80端口，而微信公众号必须80端口，因此要把Nginx停用。
+2、此文是确定80端口被Nginx占用，如不确定，应该用netstat命令查询谁占用了80端口，而查询nginx进程
+ps -ef | grep nginx
+3、停止nginx
+kill -QUIT 主进程号
+`">
+<meta property="og:updated_time" content="2016-09-01T18:03:51.719Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to build a Blog with Hexo on Github">
-<meta name="twitter:description" content="##This is the first post of my blog here, and will show how to build it.
-##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js
-##Note : change username into real one, supposed your Github id is xxx, repla">
+<meta name="twitter:title" content="ECS 基于Nodejs运行微信公众号的bug调试">
+<meta name="twitter:description" content="1、因此方法基于Nodejs，但之前安装了Nginx，占用了80端口，而微信公众号必须80端口，因此要把Nginx停用。
+2、此文是确定80端口被Nginx占用，如不确定，应该用netstat命令查询谁占用了80端口，而查询nginx进程
+ps -ef | grep nginx
+3、停止nginx
+kill -QUIT 主进程号
+`">
 
 
 
@@ -120,9 +129,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/08/23/How to build a Blog with Hexo on Github/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/05/ECS 基于Nodejs运行微信公众号的bug调试/"/>
 
-  <title> How to build a Blog with Hexo on Github | 天青色等烟雨 </title>
+  <title> ECS 基于Nodejs运行微信公众号的bug调试 | 天青色等烟雨 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -242,7 +251,7 @@
             
             
               
-                How to build a Blog with Hexo on Github
+                ECS 基于Nodejs运行微信公众号的bug调试
               
             
           </h1>
@@ -254,8 +263,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-08-23T21:16:05+08:00" content="2016-08-23">
-              2016-08-23
+            <time itemprop="dateCreated" datetime="2016-09-05T00:03:39+08:00" content="2016-09-05">
+              2016-09-05
             </time>
           </span>
 
@@ -282,43 +291,13 @@
       
 
       
-        <p>##This is the first post of my blog here, and will show how to build it.</p>
-<p>##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js</p>
-<p>##Note : change username into real one, supposed your Github id is xxx, replace username with xxx.</p>
-<p>1/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install node.js</div></pre></td></tr></table></figure>
-<p>2/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt install git-core</div></pre></td></tr></table></figure>
-<p>3/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt install npm</div></pre></td></tr></table></figure>
-<p>4/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo npm install -g hexo-cli</div></pre></td></tr></table></figure>
-<p>5/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> /home/van/downloads/</div></pre></td></tr></table></figure>
-<p>you choose a path.</p>
-<p>6/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mkdir TestB<span class="built_in">log</span></div></pre></td></tr></table></figure>
-<p>7/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> TestB<span class="built_in">log</span></div></pre></td></tr></table></figure>
-<p>8/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/username/username.github.io.git</div></pre></td></tr></table></figure>
-<p>9/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init username.github.io</div></pre></td></tr></table></figure>
-<p>10/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> username.github.io</div><div class="line">$ npm install</div></pre></td></tr></table></figure>
-<p>11/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo s</div></pre></td></tr></table></figure>
-<p>type:<strong>localhost:4000</strong> in brower,<br>it should work now, but the <a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> is still 404 error.</p>
-<p>12/ open _config.yml and modify as follows:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line"><span class="built_in">type</span>: git</div><div class="line">repo: https://github.com/username/username .github.io.git</div><div class="line">branch: master</div></pre></td></tr></table></figure>
-<p>13/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo d</div><div class="line">$ hexo s</div></pre></td></tr></table></figure>
-<p>now the <a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> should work,<br>and plz note:in less case , if the port 4000 is occupied,<br>set <strong>$ hexo server -p 5000</strong> or some big number.</p>
-<p>14/ change a Theme</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> your-hexo-site </div><div class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
-<p>modify in _config.yaml:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Theme: next</div></pre></td></tr></table></figure>
-<p>15/ and now you got it. ^^)</p>
+        <hr>
+<p>1、因此方法基于Nodejs，但之前安装了Nginx，占用了80端口，而微信公众号必须80端口，因此要把Nginx停用。</p>
+<p>2、此文是确定80端口被Nginx占用，如不确定，应该用netstat命令查询谁占用了80端口，而查询nginx进程</p>
+<pre><code>ps -ef | grep nginx
+</code></pre><p>3、停止nginx</p>
+<pre><code>kill -QUIT 主进程号
+</code></pre><p>`</p>
 
       
     </div>
@@ -344,12 +323,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/09/05/基于神箭手的简易爬虫示范--切糕王子--/" rel="next" title="基于神箭手的简易爬虫示范--切糕王子--">
+                <i class="fa fa-chevron-left"></i> 基于神箭手的简易爬虫示范--切糕王子--
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/08/27/推荐MarkdownPad 作为Win系统本机端的MarkDwon编辑器/" rel="prev" title="推荐MarkdownPad 作为Win系统本机端的MarkDwon编辑器">
-                推荐MarkdownPad 作为Win系统本机端的MarkDwon编辑器 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/05/用Python和SAE开发微信公众号的过程2/" rel="prev" title="用Python和SAE开发微信公众号的方法">
+                用Python和SAE开发微信公众号的方法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

@@ -84,22 +84,25 @@
 
 
 
-<meta name="description" content="##This is the first post of my blog here, and will show how to build it.
-##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js
-##Note : change username into real one, supposed your Github id is xxx, repla">
+<meta name="description" content="说明：原文【点我】的第一课。
+
+1、如果是第一次接触爬虫，搜索一些范例，比如相对最流行的scrapy（Python）的来说，你看到完整的但是感觉很长的代码，就头大了。 网页上的示范代码，还有一个可能的也是很大的问题是因为不同网站的对代码的支持方式，导致的缩进问题，而刚好Python对缩进的报错，在较多的代码的时候，是很让人抓狂的。
+2、好在现在已经有很多第三方平台，可以大大简化一些基础代码的编写">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to build a Blog with Hexo on Github">
-<meta property="og:url" content="http://yoursite.com/2016/08/23/How to build a Blog with Hexo on Github/index.html">
+<meta property="og:title" content="基于神箭手的简易爬虫示范--切糕王子--">
+<meta property="og:url" content="http://yoursite.com/2016/09/05/基于神箭手的简易爬虫示范--切糕王子--/index.html">
 <meta property="og:site_name" content="天青色等烟雨">
-<meta property="og:description" content="##This is the first post of my blog here, and will show how to build it.
-##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js
-##Note : change username into real one, supposed your Github id is xxx, repla">
-<meta property="og:updated_time" content="2016-08-28T02:34:36.000Z">
+<meta property="og:description" content="说明：原文【点我】的第一课。
+
+1、如果是第一次接触爬虫，搜索一些范例，比如相对最流行的scrapy（Python）的来说，你看到完整的但是感觉很长的代码，就头大了。 网页上的示范代码，还有一个可能的也是很大的问题是因为不同网站的对代码的支持方式，导致的缩进问题，而刚好Python对缩进的报错，在较多的代码的时候，是很让人抓狂的。
+2、好在现在已经有很多第三方平台，可以大大简化一些基础代码的编写">
+<meta property="og:updated_time" content="2016-09-03T06:53:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to build a Blog with Hexo on Github">
-<meta name="twitter:description" content="##This is the first post of my blog here, and will show how to build it.
-##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js
-##Note : change username into real one, supposed your Github id is xxx, repla">
+<meta name="twitter:title" content="基于神箭手的简易爬虫示范--切糕王子--">
+<meta name="twitter:description" content="说明：原文【点我】的第一课。
+
+1、如果是第一次接触爬虫，搜索一些范例，比如相对最流行的scrapy（Python）的来说，你看到完整的但是感觉很长的代码，就头大了。 网页上的示范代码，还有一个可能的也是很大的问题是因为不同网站的对代码的支持方式，导致的缩进问题，而刚好Python对缩进的报错，在较多的代码的时候，是很让人抓狂的。
+2、好在现在已经有很多第三方平台，可以大大简化一些基础代码的编写">
 
 
 
@@ -120,9 +123,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/08/23/How to build a Blog with Hexo on Github/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/05/基于神箭手的简易爬虫示范--切糕王子--/"/>
 
-  <title> How to build a Blog with Hexo on Github | 天青色等烟雨 </title>
+  <title> 基于神箭手的简易爬虫示范--切糕王子-- | 天青色等烟雨 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -242,7 +245,7 @@
             
             
               
-                How to build a Blog with Hexo on Github
+                基于神箭手的简易爬虫示范--切糕王子--
               
             
           </h1>
@@ -254,8 +257,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-08-23T21:16:05+08:00" content="2016-08-23">
-              2016-08-23
+            <time itemprop="dateCreated" datetime="2016-09-05T00:03:39+08:00" content="2016-09-05">
+              2016-09-05
             </time>
           </span>
 
@@ -282,44 +285,45 @@
       
 
       
-        <p>##This is the first post of my blog here, and will show how to build it.</p>
-<p>##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js</p>
-<p>##Note : change username into real one, supposed your Github id is xxx, replace username with xxx.</p>
-<p>1/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install node.js</div></pre></td></tr></table></figure>
-<p>2/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt install git-core</div></pre></td></tr></table></figure>
-<p>3/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt install npm</div></pre></td></tr></table></figure>
-<p>4/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo npm install -g hexo-cli</div></pre></td></tr></table></figure>
-<p>5/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> /home/van/downloads/</div></pre></td></tr></table></figure>
-<p>you choose a path.</p>
-<p>6/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mkdir TestB<span class="built_in">log</span></div></pre></td></tr></table></figure>
-<p>7/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> TestB<span class="built_in">log</span></div></pre></td></tr></table></figure>
-<p>8/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/username/username.github.io.git</div></pre></td></tr></table></figure>
-<p>9/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init username.github.io</div></pre></td></tr></table></figure>
-<p>10/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> username.github.io</div><div class="line">$ npm install</div></pre></td></tr></table></figure>
-<p>11/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo s</div></pre></td></tr></table></figure>
-<p>type:<strong>localhost:4000</strong> in brower,<br>it should work now, but the <a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> is still 404 error.</p>
-<p>12/ open _config.yml and modify as follows:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line"><span class="built_in">type</span>: git</div><div class="line">repo: https://github.com/username/username .github.io.git</div><div class="line">branch: master</div></pre></td></tr></table></figure>
-<p>13/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo d</div><div class="line">$ hexo s</div></pre></td></tr></table></figure>
-<p>now the <a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> should work,<br>and plz note:in less case , if the port 4000 is occupied,<br>set <strong>$ hexo server -p 5000</strong> or some big number.</p>
-<p>14/ change a Theme</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> your-hexo-site </div><div class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
-<p>modify in _config.yaml:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Theme: next</div></pre></td></tr></table></figure>
-<p>15/ and now you got it. ^^)</p>
+        <hr>
+<p>说明：<a href="http://www.jianshu.com/p/fdbf41090a36" target="_blank" rel="external">原文【点我】</a>的第一课。</p>
+<hr>
+<p>1、如果是第一次接触爬虫，搜索一些范例，比如相对最流行的scrapy（Python）的来说，你看到完整的但是感觉很长的代码，就头大了。 网页上的示范代码，还有一个可能的也是很大的问题是因为不同网站的对代码的支持方式，导致的缩进问题，而刚好Python对缩进的报错，在较多的代码的时候，是很让人抓狂的。</p>
+<p>2、好在现在已经有很多第三方平台，可以大大简化一些基础代码的编写，所以以神箭手 <a href="http://www.shenjianshou.cn" target="_blank" rel="external">官网【点我】 </a>为基础，一个简单的范例。</p>
+<p>3、代码分析：</p>
+<pre><code>var configs = {
+    domains: [&quot;www.qiegaowz.com&quot;],
+    scanUrls: [&quot;http://www.qiegaowz.com/product/Default.html&quot;],
+    contentUrlRegexes: [&quot;http://www\\.qiegaowz\\.com/product/.{36}\\.html&quot;],
+    helperUrlRegexes: [&quot;http://www\\.qiegaowz\\.com/product/Default\\.html&quot;], //可留空
+    fields: [
+            {
+                // 第一个抽取项
+                name: &quot;thumbnail&quot;,
+                selector: &quot;//div[contains(@class,&apos;showpic&apos;)]/img/@src&quot;, //默认使用XPath
+                required: true //是否不能为空
+            },
+            {  
+                // 商品标题  
+                name: &quot;title&quot;,  
+                selector: &quot;//div[contains(@class,&apos;showproduct&apos;)]/h1&quot; 
+            }, 
+            {
+                // 其他抽取项
+                name: &quot;content&quot;,
+                selector: &quot;//div[contains(@class,&apos;shownewdes&apos;)]&quot; 
+            }
+    ]
+};
 
+var crawler = new Crawler(configs);
+crawler.start();
+</code></pre><p>4、从代码长度来看相对简单，而且只需要根据domains，scanUrls,fields内容等对应修改。原文已经对需要修改的地方，做了较详细的解释，同时，也需要对正则表达式，xpath有基础了解。必须了解：正则的点和问号都是要转义的，并且转义需要两个\，另外关于正则表达式，可参考<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143193331387014ccd1040c814dee8b2164bb4f064cff000" target="_blank" rel="external">廖雪峰的网站内容 【点我】</a>。</p>
+<p>5、最后总结下：依托神箭手，写爬虫的主要核心步骤就是3步：</p>
+<pre><code>1. 选入口Url 
+2. 限定内容页和中间页
+3. 写内容页抽取规则
+</code></pre>
       
     </div>
 
@@ -344,12 +348,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/09/05/编程初学者如何使用搜索引擎/" rel="next" title="编程初学者如何使用搜索引擎">
+                <i class="fa fa-chevron-left"></i> 编程初学者如何使用搜索引擎
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/08/27/推荐MarkdownPad 作为Win系统本机端的MarkDwon编辑器/" rel="prev" title="推荐MarkdownPad 作为Win系统本机端的MarkDwon编辑器">
-                推荐MarkdownPad 作为Win系统本机端的MarkDwon编辑器 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/05/ECS 基于Nodejs运行微信公众号的bug调试/" rel="prev" title="ECS 基于Nodejs运行微信公众号的bug调试">
+                ECS 基于Nodejs运行微信公众号的bug调试 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
