@@ -92,7 +92,7 @@ Django应用是如何工作的？用户在浏览器中输入URL后回车, 浏览
 <meta property="og:site_name" content="天青色等烟雨">
 <meta property="og:description" content="简介：Python是很不错的编程语言，Django是基于Python的web框架，Postgresql是数据库, Psycopg用来给Python和Postgresql的一个桥接的工具，Bootstrap是模版工具。全文需要英语基础。
 Django应用是如何工作的？用户在浏览器中输入URL后回车, 浏览器会对URL进行检查, 首先判断协议,如果是http就按照 Web 来处理, 然互调用DNS查询">
-<meta property="og:updated_time" content="2016-09-04T16:24:20.000Z">
+<meta property="og:updated_time" content="2016-09-04T16:28:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows下Python+Django制作网站的方法">
 <meta name="twitter:description" content="简介：Python是很不错的编程语言，Django是基于Python的web框架，Postgresql是数据库, Psycopg用来给Python和Postgresql的一个桥接的工具，Bootstrap是模版工具。全文需要英语基础。
@@ -177,7 +177,7 @@ Django应用是如何工作的？用户在浏览器中输入URL后回车, 浏览
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -187,7 +187,7 @@ Django应用是如何工作的？用户在浏览器中输入URL后回车, 浏览
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -250,7 +250,7 @@ Django应用是如何工作的？用户在浏览器中输入URL后回车, 浏览
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:20:28+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -301,6 +301,7 @@ Django应用是如何工作的？用户在浏览器中输入URL后回车, 浏览
 <h1 id="4、运行网站"><a href="#4、运行网站" class="headerlink" title="4、运行网站"></a>4、运行网站</h1><p>$ cd django1<br>$ python manage.py runserver<br>到浏览器中输入 ： localhost：8000  或者127.0.0.1：8000,当出现It worked!字样，则成功。从输入网址，到出现界面的这个角度，你已经有一个网站了，虽然里面没什么内容，也许你会说，这也叫网站？别着急，内容会在后续慢慢添加。</p>
 <p>Tips：<br>Django官网的文档给出了详细的说明，英文，网址：<a href="https://docs.djangoproject.com/en/1.10/intro/tutorial01/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.10/intro/tutorial01/</a></p>
 <h1 id="5、创建app"><a href="#5、创建app" class="headerlink" title="5、创建app"></a>5、创建app</h1><p>这里命名为blog，可自定义。<br>  $ python manage.py startapp blog<br>可以看到会多了一个blog的文件夹，里面有一个migrations文件夹和一些py文件。<br>同时，我们应该修改setting.py文件的app部分的代码，放在第6部分讲解。</p>
+<p><strong># 请继续看下一篇[点我] #</strong></p>
 
       
     </div>
@@ -381,10 +382,10 @@ Django应用是如何工作的？用户在浏览器中输入URL后回车, 浏览
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -401,7 +402,7 @@ Django应用是如何工作的？用户在浏览器中输入URL后回车, 浏览
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">13</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -459,7 +460,7 @@ Django应用是如何工作的？用户在浏览器中输入URL后回车, 浏览
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
