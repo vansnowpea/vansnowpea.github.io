@@ -84,22 +84,28 @@
 
 
 
-<meta name="description" content="##This is the first post of my blog here, and will show how to build it.
-##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js
-##Note : change username into real one, supposed your Github id is xxx, repla">
+<meta name="description" content="在上一个帖子里，已经实现了本地文件同步更新到站点。是通过Python运行了一个.py文件的形式，本来丢在VPS也不用管，但因本身VPS也运行我其他程序，导致手机远程登录的时候，查看那个py程序不方便（屏幕小）
+于是，在Python文件格式的基础上，混编成了批处理文件，这样，各司其职，更好些。 可以把这个bat文件放在任意文件夹了。
+代码：
+&amp;quot;&amp;quot;&amp;quot;
+::========">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to build a Blog with Hexo on Github">
-<meta property="og:url" content="http://yoursite.com/2016/08/23/How to build a Blog with Hexo on Github/index.html">
+<meta property="og:title" content="把基于Python自动脚本转成了批处理">
+<meta property="og:url" content="http://yoursite.com/2016/09/05/把基于Python自动脚本转成了批处理/index.html">
 <meta property="og:site_name" content="天青色等烟雨">
-<meta property="og:description" content="##This is the first post of my blog here, and will show how to build it.
-##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js
-##Note : change username into real one, supposed your Github id is xxx, repla">
-<meta property="og:updated_time" content="2016-08-28T02:34:36.000Z">
+<meta property="og:description" content="在上一个帖子里，已经实现了本地文件同步更新到站点。是通过Python运行了一个.py文件的形式，本来丢在VPS也不用管，但因本身VPS也运行我其他程序，导致手机远程登录的时候，查看那个py程序不方便（屏幕小）
+于是，在Python文件格式的基础上，混编成了批处理文件，这样，各司其职，更好些。 可以把这个bat文件放在任意文件夹了。
+代码：
+&amp;quot;&amp;quot;&amp;quot;
+::========">
+<meta property="og:updated_time" content="2016-08-29T14:49:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to build a Blog with Hexo on Github">
-<meta name="twitter:description" content="##This is the first post of my blog here, and will show how to build it.
-##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js
-##Note : change username into real one, supposed your Github id is xxx, repla">
+<meta name="twitter:title" content="把基于Python自动脚本转成了批处理">
+<meta name="twitter:description" content="在上一个帖子里，已经实现了本地文件同步更新到站点。是通过Python运行了一个.py文件的形式，本来丢在VPS也不用管，但因本身VPS也运行我其他程序，导致手机远程登录的时候，查看那个py程序不方便（屏幕小）
+于是，在Python文件格式的基础上，混编成了批处理文件，这样，各司其职，更好些。 可以把这个bat文件放在任意文件夹了。
+代码：
+&amp;quot;&amp;quot;&amp;quot;
+::========">
 
 
 
@@ -120,9 +126,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/08/23/How to build a Blog with Hexo on Github/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/05/把基于Python自动脚本转成了批处理/"/>
 
-  <title> How to build a Blog with Hexo on Github | 天青色等烟雨 </title>
+  <title> 把基于Python自动脚本转成了批处理 | 天青色等烟雨 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -242,7 +248,7 @@
             
             
               
-                How to build a Blog with Hexo on Github
+                把基于Python自动脚本转成了批处理
               
             
           </h1>
@@ -254,8 +260,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-08-23T21:16:05+08:00" content="2016-08-23">
-              2016-08-23
+            <time itemprop="dateCreated" datetime="2016-09-05T00:02:28+08:00" content="2016-09-05">
+              2016-09-05
             </time>
           </span>
 
@@ -282,44 +288,62 @@
       
 
       
-        <p>##This is the first post of my blog here, and will show how to build it.</p>
-<p>##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js</p>
-<p>##Note : change username into real one, supposed your Github id is xxx, replace username with xxx.</p>
-<p>1/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install node.js</div></pre></td></tr></table></figure>
-<p>2/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt install git-core</div></pre></td></tr></table></figure>
-<p>3/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt install npm</div></pre></td></tr></table></figure>
-<p>4/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo npm install -g hexo-cli</div></pre></td></tr></table></figure>
-<p>5/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> /home/van/downloads/</div></pre></td></tr></table></figure>
-<p>you choose a path.</p>
-<p>6/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mkdir TestB<span class="built_in">log</span></div></pre></td></tr></table></figure>
-<p>7/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> TestB<span class="built_in">log</span></div></pre></td></tr></table></figure>
-<p>8/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/username/username.github.io.git</div></pre></td></tr></table></figure>
-<p>9/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init username.github.io</div></pre></td></tr></table></figure>
-<p>10/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> username.github.io</div><div class="line">$ npm install</div></pre></td></tr></table></figure>
-<p>11/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo s</div></pre></td></tr></table></figure>
-<p>type:<strong>localhost:4000</strong> in brower,<br>it should work now, but the <a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> is still 404 error.</p>
-<p>12/ open _config.yml and modify as follows:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line"><span class="built_in">type</span>: git</div><div class="line">repo: https://github.com/username/username .github.io.git</div><div class="line">branch: master</div></pre></td></tr></table></figure>
-<p>13/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo d</div><div class="line">$ hexo s</div></pre></td></tr></table></figure>
-<p>now the <a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> should work,<br>and plz note:in less case , if the port 4000 is occupied,<br>set <strong>$ hexo server -p 5000</strong> or some big number.</p>
-<p>14/ change a Theme</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> your-hexo-site </div><div class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
-<p>modify in _config.yaml:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Theme: next</div></pre></td></tr></table></figure>
-<p>15/ and now you got it. ^^)</p>
+        <p>在上一个帖子里，已经实现了本地文件同步更新到站点。是通过Python运行了一个.py文件的形式，本来丢在VPS也不用管，但因本身VPS也运行我其他程序，导致手机远程登录的时候，查看那个py程序不方便（屏幕小）</p>
+<p>于是，在Python文件格式的基础上，混编成了批处理文件，这样，各司其职，更好些。 可以把这个bat文件放在任意文件夹了。</p>
+<p>代码：</p>
+<pre><code>&quot;&quot;&quot;
+::==============this is the note
+::batch and Python hybrid coding
+::Van
 
+::Below is code
+@echo off&amp;cls
+echo batch echo
+python.exe %0&amp;pause
+::=====================comments
+&quot;&quot;&quot;
+#below is your Python code
+
+__author__ = &apos;Van&apos;
+
+
+import os
+import time
+import subprocess
+
+file = &apos;C:\\Users\\Administrator\\TestBlog\\vansnowpea.github.io\\source\\_posts\\&apos;
+
+path = &quot;C:\\Users\\Administrator\\TestBlog\\vansnowpea.github.io&quot;
+
+t1 = os.path.getmtime(file)
+
+print (t1)
+
+def update_Hexo():
+    print (&apos;hi&apos;)
+    p = subprocess.Popen(&apos;cmd.exe&apos;, shell=True, stdin=subprocess.PIPE)
+    p.stdin.write(&apos;cd &apos;+ path + &apos;\n&apos;)
+    p.stdin.write(&apos;hexo generate --deploy&apos; + &apos;\n&apos;)
+    p.stdin.close()
+
+
+while 1:
+    time.sleep(1)
+    t2 = os.path.getmtime(file)
+    if t2 == t1:
+        pass
+
+    else:
+        print(&apos;file was modified, will update Hexo!&apos;)
+        update_Hexo()
+        print(&apos; update Hexo done!&apos;)
+    t1 = t2
+
+
+
+if __name__ == &quot;__main__&quot;:
+pass
+</code></pre>
       
     </div>
 
@@ -344,12 +368,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/09/05/Ubuntu中Nginx安装遇到的错误/" rel="next" title="Ubuntu中Nginx安装遇到的错误">
+                <i class="fa fa-chevron-left"></i> Ubuntu中Nginx安装遇到的错误
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/08/27/推荐MarkdownPad 作为Win系统本机端的MarkDwon编辑器/" rel="prev" title="推荐MarkdownPad 作为Win系统本机端的MarkDwon编辑器">
-                推荐MarkdownPad 作为Win系统本机端的MarkDwon编辑器 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/05/编程初学者如何使用搜索引擎/" rel="prev" title="编程初学者如何使用搜索引擎">
+                编程初学者如何使用搜索引擎 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

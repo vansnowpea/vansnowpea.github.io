@@ -84,22 +84,19 @@
 
 
 
-<meta name="description" content="##This is the first post of my blog here, and will show how to build it.
-##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js
-##Note : change username into real one, supposed your Github id is xxx, repla">
+<meta name="description" content="本文参考了其他作者的文章【点我】里面有比较详细的说明，但是有一个地方是深坑，这可能是因为原作写的时候较早，那时候的命令有的细节不符合当前的Github设置，后面会详细说到，在此之前，请先参考我的第一篇博客【点我】了解如何在Ubuntu下搭建Github博客的，实际上，在Win系统的操作大同小异，无非是如何实现Win到Linux系统的过渡。
+深坑在哪里？开头说到的深坑，是其他作者在修改_confi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to build a Blog with Hexo on Github">
-<meta property="og:url" content="http://yoursite.com/2016/08/23/How to build a Blog with Hexo on Github/index.html">
+<meta property="og:title" content="如何在Win系统实现Github博客的管理">
+<meta property="og:url" content="http://yoursite.com/2016/08/27/如何在Win系统实现Github博客的管理/index.html">
 <meta property="og:site_name" content="天青色等烟雨">
-<meta property="og:description" content="##This is the first post of my blog here, and will show how to build it.
-##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js
-##Note : change username into real one, supposed your Github id is xxx, repla">
-<meta property="og:updated_time" content="2016-08-28T02:34:36.000Z">
+<meta property="og:description" content="本文参考了其他作者的文章【点我】里面有比较详细的说明，但是有一个地方是深坑，这可能是因为原作写的时候较早，那时候的命令有的细节不符合当前的Github设置，后面会详细说到，在此之前，请先参考我的第一篇博客【点我】了解如何在Ubuntu下搭建Github博客的，实际上，在Win系统的操作大同小异，无非是如何实现Win到Linux系统的过渡。
+深坑在哪里？开头说到的深坑，是其他作者在修改_confi">
+<meta property="og:updated_time" content="2016-08-28T02:39:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to build a Blog with Hexo on Github">
-<meta name="twitter:description" content="##This is the first post of my blog here, and will show how to build it.
-##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js
-##Note : change username into real one, supposed your Github id is xxx, repla">
+<meta name="twitter:title" content="如何在Win系统实现Github博客的管理">
+<meta name="twitter:description" content="本文参考了其他作者的文章【点我】里面有比较详细的说明，但是有一个地方是深坑，这可能是因为原作写的时候较早，那时候的命令有的细节不符合当前的Github设置，后面会详细说到，在此之前，请先参考我的第一篇博客【点我】了解如何在Ubuntu下搭建Github博客的，实际上，在Win系统的操作大同小异，无非是如何实现Win到Linux系统的过渡。
+深坑在哪里？开头说到的深坑，是其他作者在修改_confi">
 
 
 
@@ -120,9 +117,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/08/23/How to build a Blog with Hexo on Github/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/08/27/如何在Win系统实现Github博客的管理/"/>
 
-  <title> How to build a Blog with Hexo on Github | 天青色等烟雨 </title>
+  <title> 如何在Win系统实现Github博客的管理 | 天青色等烟雨 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -242,7 +239,7 @@
             
             
               
-                How to build a Blog with Hexo on Github
+                如何在Win系统实现Github博客的管理
               
             
           </h1>
@@ -254,8 +251,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-08-23T21:16:05+08:00" content="2016-08-23">
-              2016-08-23
+            <time itemprop="dateCreated" datetime="2016-08-27T21:57:00+08:00" content="2016-08-27">
+              2016-08-27
             </time>
           </span>
 
@@ -282,44 +279,17 @@
       
 
       
-        <p>##This is the first post of my blog here, and will show how to build it.</p>
-<p>##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js</p>
-<p>##Note : change username into real one, supposed your Github id is xxx, replace username with xxx.</p>
-<p>1/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install node.js</div></pre></td></tr></table></figure>
-<p>2/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt install git-core</div></pre></td></tr></table></figure>
-<p>3/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt install npm</div></pre></td></tr></table></figure>
-<p>4/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo npm install -g hexo-cli</div></pre></td></tr></table></figure>
-<p>5/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> /home/van/downloads/</div></pre></td></tr></table></figure>
-<p>you choose a path.</p>
-<p>6/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mkdir TestB<span class="built_in">log</span></div></pre></td></tr></table></figure>
-<p>7/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> TestB<span class="built_in">log</span></div></pre></td></tr></table></figure>
-<p>8/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/username/username.github.io.git</div></pre></td></tr></table></figure>
-<p>9/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init username.github.io</div></pre></td></tr></table></figure>
-<p>10/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> username.github.io</div><div class="line">$ npm install</div></pre></td></tr></table></figure>
-<p>11/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo s</div></pre></td></tr></table></figure>
-<p>type:<strong>localhost:4000</strong> in brower,<br>it should work now, but the <a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> is still 404 error.</p>
-<p>12/ open _config.yml and modify as follows:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line"><span class="built_in">type</span>: git</div><div class="line">repo: https://github.com/username/username .github.io.git</div><div class="line">branch: master</div></pre></td></tr></table></figure>
-<p>13/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo d</div><div class="line">$ hexo s</div></pre></td></tr></table></figure>
-<p>now the <a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> should work,<br>and plz note:in less case , if the port 4000 is occupied,<br>set <strong>$ hexo server -p 5000</strong> or some big number.</p>
-<p>14/ change a Theme</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> your-hexo-site </div><div class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
-<p>modify in _config.yaml:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Theme: next</div></pre></td></tr></table></figure>
-<p>15/ and now you got it. ^^)</p>
+        <p> 本文参考了<a href="http://www.jianshu.com/p/985d07d88ef4" target="_blank" rel="external">其他作者的文章【点我】</a>里面有比较详细的说明，但是有一个地方是深坑，这可能是因为原作写的时候较早，那时候的命令有的细节不符合当前的Github设置，后面会详细说到，在此之前，请先参考我的<a href="https://vansnowpea.github.io/2016/08/23/How%20to%20build%20a%20Blog%20with%20Hexo%20on%20Github/" target="_blank" rel="external">第一篇博客【点我】</a>了解如何在Ubuntu下搭建Github博客的，实际上，在Win系统的操作大同小异，无非是如何实现Win到Linux系统的过渡。</p>
+<p>深坑在哪里？开头说到的深坑，是其他作者在修改_config.yml文件的    deploy部分的命令是：</p>
+<pre><code>type: github
+</code></pre><p>而如今正确的命令是：</p>
+<pre><code>type: git
+</code></pre><p>不然，hexo d的命令无法发挥作用，始终造成本机资料修改无法更新到服务器上去。而找到这个错误之前，搜索了很多其他地方的修改比对，消耗时间较多。</p>
+<p>PS：需要补充说明的是，在不同电脑上安装Hexo遇到过失败的现象，一般是npm安装不完全导致的，可选的备用方案是使用淘宝的npm源。不过命令会变成cnpm：</p>
+<pre><code>$ sudo npm install -g cnpm --registry=https://registry.npm.taobao.org
 
+$ sudo cnpm install hexo-cli -g
+</code></pre>
       
     </div>
 
@@ -344,12 +314,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/08/27/Ubuntu系统安装遇到的一些坑/" rel="next" title="Ubuntu系统安装遇到的一些坑">
+                <i class="fa fa-chevron-left"></i> Ubuntu系统安装遇到的一些坑
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/08/27/推荐MarkdownPad 作为Win系统本机端的MarkDwon编辑器/" rel="prev" title="推荐MarkdownPad 作为Win系统本机端的MarkDwon编辑器">
-                推荐MarkdownPad 作为Win系统本机端的MarkDwon编辑器 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/05/Ubuntu中Nginx安装遇到的错误/" rel="prev" title="Ubuntu中Nginx安装遇到的错误">
+                Ubuntu中Nginx安装遇到的错误 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
