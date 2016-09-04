@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="fdsafdsafdas">
+<meta name="description" content="简介：Python是很不错的编程语言，Django是基于Python的web框架，Postgresql是数据库, Psycopg用来给Python和Postgresql的一个桥接的工具，Bootstrap是模版工具。全文需要英语基础。
+Django应用是如何工作的？用户在浏览器中输入URL后回车, 浏览器会对URL进行检查, 首先判断协议,如果是http就按照 Web 来处理, 然互调用DNS查询">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Windows下Python+Django制作网站的方法">
 <meta property="og:url" content="http://yoursite.com/2016/09/05/Windows下Python+Django制作网站的方法/index.html">
 <meta property="og:site_name" content="天青色等烟雨">
-<meta property="og:description" content="fdsafdsafdas">
-<meta property="og:updated_time" content="2016-09-04T16:22:37.000Z">
+<meta property="og:description" content="简介：Python是很不错的编程语言，Django是基于Python的web框架，Postgresql是数据库, Psycopg用来给Python和Postgresql的一个桥接的工具，Bootstrap是模版工具。全文需要英语基础。
+Django应用是如何工作的？用户在浏览器中输入URL后回车, 浏览器会对URL进行检查, 首先判断协议,如果是http就按照 Web 来处理, 然互调用DNS查询">
+<meta property="og:updated_time" content="2016-09-04T16:24:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows下Python+Django制作网站的方法">
-<meta name="twitter:description" content="fdsafdsafdas">
+<meta name="twitter:description" content="简介：Python是很不错的编程语言，Django是基于Python的web框架，Postgresql是数据库, Psycopg用来给Python和Postgresql的一个桥接的工具，Bootstrap是模版工具。全文需要英语基础。
+Django应用是如何工作的？用户在浏览器中输入URL后回车, 浏览器会对URL进行检查, 首先判断协议,如果是http就按照 Web 来处理, 然互调用DNS查询">
 
 
 
@@ -276,7 +279,28 @@
       
 
       
-        <p>fdsafdsafdas </p>
+        <h1 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h1><p>Python是很不错的编程语言，Django是基于Python的web框架，Postgresql是数据库, Psycopg用来给Python和Postgresql的一个桥接的工具，Bootstrap是模版工具。全文需要英语基础。</p>
+<h1 id="Django应用是如何工作的？"><a href="#Django应用是如何工作的？" class="headerlink" title="Django应用是如何工作的？"></a>Django应用是如何工作的？</h1><p>用户在浏览器中输入URL后回车, 浏览器会对URL进行检查, 首先判断协议,如果是http就按照 Web 来处理, 然互调用DNS查询, 将域名转换为IP地址, 然后经过网络传输到达对应Web服务器, 服务器对url进行解析后, 调用View中的逻辑(MTV中的V), 其中又涉及到Model(MTV中的M), 与数据库的进行交互, 将数据发到Template(MTV中的T)进行渲染, 然后发送到浏览器中, 浏览器以合适的方式呈现给用户<br>大致工作流程就是这样，从流程可以看出，我们需要做的就是： </p>
+<ul>
+<li>编写相应的 url</li>
+<li>编写数据库（Model</li>
+<li>编写处理 Http 请求的视图函数（View）</li>
+<li>编写需要渲染的模板（Template）</li>
+</ul>
+<h1 id="软件版本和官网："><a href="#软件版本和官网：" class="headerlink" title="软件版本和官网："></a>软件版本和官网：</h1><ul>
+<li>Python V3.5.2        官网：www.python.org</li>
+<li>Django V1.10        官网：www.djangoproject.com</li>
+<li>Postgresql V9.5.4   官网： www.postgresql.org</li>
+<li>Psycopg V2.6.2     官网：<a href="http://initd.org/psycopg/" target="_blank" rel="external">http://initd.org/psycopg/</a></li>
+<li>Bootstrap V3.3.5    官网：<a href="http://www.bootcss.com/" target="_blank" rel="external">http://www.bootcss.com/</a></li>
+</ul>
+<h2 id="说明：-开头的命令是在CMD窗口下，"><a href="#说明：-开头的命令是在CMD窗口下，" class="headerlink" title="说明：$开头的命令是在CMD窗口下，"></a>说明：$开头的命令是在CMD窗口下，</h2><h2 id="gt-gt-gt-的命令表示Python在调试窗口的命令。"><a href="#gt-gt-gt-的命令表示Python在调试窗口的命令。" class="headerlink" title="&gt;&gt;&gt;的命令表示Python在调试窗口的命令。"></a>&gt;&gt;&gt;的命令表示Python在调试窗口的命令。</h2><h2 id="没有的开头符号的表示在-py文件里的代码"><a href="#没有的开头符号的表示在-py文件里的代码" class="headerlink" title="没有的开头符号的表示在.py文件里的代码 ##"></a>没有的开头符号的表示在.py文件里的代码 ##</h2><h1 id="1、-创建虚拟环境"><a href="#1、-创建虚拟环境" class="headerlink" title="1、    创建虚拟环境"></a>1、    创建虚拟环境</h1><p>为了防止后续Django版本升级带来的可能的兼容性问题，首先创建一个新的操作环境，其实就是一个单独的文件夹。打开CMD窗口，使用cd..命令退到C盘根目录，创建一个自定义名字的文件夹，这里以test1命名。可自定义其他名字，那样请在此文后续有test1的地方都替换成你的命名：<br>$ python –m venv test1<br>$ cd test1<br>$ cd Scripts<br>$ activate.bat</p>
+<p>说明：<br>venv是Python V3版本后才有的，如果V2版本不支持。可以看到创建的test1文件夹里面有4个文件，其中一个是Scripts，代表Python的脚本文件。最后你的Dos路径前面会有(test1)的字样，表示虚拟环境创建成功。<br>也可用pip freeze 命令来检测当前路径下安装的库，可以和Python真实安装路径对比，当然这一步可忽略。</p>
+<h1 id="2、安装Django"><a href="#2、安装Django" class="headerlink" title="2、安装Django"></a>2、安装Django</h1><p>$ pip install django</p>
+<h1 id="3、-创建工程"><a href="#3、-创建工程" class="headerlink" title="3、    创建工程"></a>3、    创建工程</h1><p>在test1文件夹路径下，输入：<br>$ django-admin startproject django1<br>这就创建了一个名字为django1的工程，其实就是一个网站，注意可自定义名字替换掉django1，但取名不要和python内置函数冲突。<br>如果在电脑里查看，则在test1文件夹里多了一个django1的文件夹，当打开django1文件夹，里面有一个manager.py和django1的文件夹，包含4个文件。</p>
+<h1 id="4、运行网站"><a href="#4、运行网站" class="headerlink" title="4、运行网站"></a>4、运行网站</h1><p>$ cd django1<br>$ python manage.py runserver<br>到浏览器中输入 ： localhost：8000  或者127.0.0.1：8000,当出现It worked!字样，则成功。从输入网址，到出现界面的这个角度，你已经有一个网站了，虽然里面没什么内容，也许你会说，这也叫网站？别着急，内容会在后续慢慢添加。</p>
+<p>Tips：<br>Django官网的文档给出了详细的说明，英文，网址：<a href="https://docs.djangoproject.com/en/1.10/intro/tutorial01/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.10/intro/tutorial01/</a></p>
+<h1 id="5、创建app"><a href="#5、创建app" class="headerlink" title="5、创建app"></a>5、创建app</h1><p>这里命名为blog，可自定义。<br>  $ python manage.py startapp blog<br>可以看到会多了一个blog的文件夹，里面有一个migrations文件夹和一些py文件。<br>同时，我们应该修改setting.py文件的app部分的代码，放在第6部分讲解。</p>
 
       
     </div>
@@ -408,7 +432,7 @@
               
             
             
-              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介："><span class="nav-number">1.</span> <span class="nav-text">简介：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Django应用是如何工作的？"><span class="nav-number">2.</span> <span class="nav-text">Django应用是如何工作的？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件版本和官网："><span class="nav-number">3.</span> <span class="nav-text">软件版本和官网：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#说明：-开头的命令是在CMD窗口下，"><span class="nav-number">3.1.</span> <span class="nav-text">说明：$开头的命令是在CMD窗口下，</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gt-gt-gt-的命令表示Python在调试窗口的命令。"><span class="nav-number">3.2.</span> <span class="nav-text">>>>的命令表示Python在调试窗口的命令。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#没有的开头符号的表示在-py文件里的代码"><span class="nav-number">3.3.</span> <span class="nav-text">没有的开头符号的表示在.py文件里的代码 ##</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1、-创建虚拟环境"><span class="nav-number">4.</span> <span class="nav-text">1、    创建虚拟环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2、安装Django"><span class="nav-number">5.</span> <span class="nav-text">2、安装Django</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3、-创建工程"><span class="nav-number">6.</span> <span class="nav-text">3、    创建工程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4、运行网站"><span class="nav-number">7.</span> <span class="nav-text">4、运行网站</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5、创建app"><span class="nav-number">8.</span> <span class="nav-text">5、创建app</span></a></li></ol></div>
             
           </div>
         </section>
