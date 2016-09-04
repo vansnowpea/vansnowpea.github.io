@@ -288,6 +288,32 @@
 <p>再次把更新后数据导入到数据库：<br>    $ python manage.py migrate</p>
 <p>再次刷新数据库，发现数据表从10变成了11，多了一个我们自己定义的article，那为何显示的是article，而不是blog呢？这是因为blog是定义的app的名字，而在数据库相关的代码中，在class Meta部分，定义的名字是article，对应的代码是：db_table = ‘article’。</p>
 <p>基于以上经验，以后牵涉数据的操作，可考虑先运行makeigrations命令，再运行migrate命令。xxx表示对应app名字。<br>$ python manage.py makemigrations xxx<br>$ python manage.py migrate</p>
+<h1 id="9、修改首页和页面模版"><a href="#9、修改首页和页面模版" class="headerlink" title="9、修改首页和页面模版"></a>9、修改首页和页面模版</h1><p>之前我们打开本地首页，出现的是It works字样，是系统自带的。既然要做自己的站点如blog，那自然是需要修改的，以下是最简单的举例。<br>首先我们查看Django官网的关于views的说明，地址为：<br><a href="https://docs.djangoproject.com/en/1.10/topics/http/views/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.10/topics/http/views/</a><br>打开 C:\XXXX\django1\blog 路径下的views.py文件，修改代码为：</p>
+<pre><code>from django.shortcuts import render
+from django.http import HttpResponse
+import datetime
+
+# Create your views here.
+def home(request):
+    now = datetime.datetime.now()
+    html = &quot;&lt;html&gt;&lt;body&gt;It is now %s.&lt;/body&gt;&lt;/html&gt;&quot; % now
+    return HttpResponse(html)`
+</code></pre><p>由于打开url的时候，当views的改变也需要在url联动配置修改，故打开C:\XXXX\django1\django1 路径下的urls.py文件，修改代码为：<br>    from django.conf.urls import url<br>    from django.contrib import admin<br>    from blog import views</p>
+<pre><code>urlpatterns = [
+    url(r&apos;^admin/&apos;, admin.site.urls),
+    url(r&apos;^$&apos;, views.home),
+]`
+</code></pre><p>注意到：上述修改的代码里，已经牵涉了HTML语言，当然这里很简单。<br>此时，在浏览器输入：<a href="http://localhost:8000/，如下图显示的是自定义的当前时间：" target="_blank" rel="external">http://localhost:8000/，如下图显示的是自定义的当前时间：</a></p>
+<p>此时问题来了，怎么看都感觉HTML语言写起来比Python的代码要复杂，尤其是如果页面的内容繁多，那不是要写成马了？所以，我们需要用到模版功能。<br>到C:\XXXX\django1\blog 路径下，新建名为：templates的文件夹，注意这个名字是Django默认的，所以不要自定义其他名称。<br>关于模版，一种是引用别人的模版，一些优秀的模版用和看起来都很舒服。<br>这里演示自己创建一个简易模版。方法为：<br>在Sublime Text 的File中新建一个文件，把代码：</p>
+<html><body>It is now, now or not?</body></html>
+
+<p>复制进去，然后保存到C:\XXXX\django1\blog\templates 路径，Sublime Text会识别成后缀为html的文件，这样就是一个html语言的模版了，注意特意增加了：now or not?字样用于和之前的方法比对。<br>接下来，为了方便，我们可以使用render()函数。网址为：<br><a href="https://docs.djangoproject.com/en/1.10/topics/http/shortcuts/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.10/topics/http/shortcuts/</a></p>
+<p>这样，views.py文件的home函数也修改成了：</p>
+<pre><code>def home(request):
+
+    return render(request, &apos;home.html&apos;)
+</code></pre><p>然后我们发现，本地首页跟着改变了：</p>
+<p>Tips：一些调试错误的小技巧<br>    views.py增加的函数，需要在urls.py进行导入和更新操作，模版制定后，为了尝试增加或者修改内容，可能引起意外的404错误，所以，最好单独备份一份正常的模版。</p>
 <h1 id="11-参考：-fanhuaxiu-com"><a href="#11-参考：-fanhuaxiu-com" class="headerlink" title="11 参考：  fanhuaxiu.com"></a>11 参考：  fanhuaxiu.com</h1>
           
         
