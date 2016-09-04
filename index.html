@@ -337,7 +337,13 @@ urlpatterns = [
     url(r&apos;^$&apos;, views.home),`
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-</code></pre><h1 id="11-参考：-fanhuaxiu-com"><a href="#11-参考：-fanhuaxiu-com" class="headerlink" title="11 参考：  fanhuaxiu.com"></a>11 参考：  fanhuaxiu.com</h1>
+</code></pre><p>接下来，根据官网要求C:\XXXX\django1\blog\ 路径下，也就是在app的目录下建立static的文件夹，并把我们下载解压的Bootstrap的3个文件夹放到static路径。</p>
+<p>并从网上下载一个Bootstrap的模版范例，把对应的images文件和xxx.html文件一起放到C:\xxxx\django1\blog\templates 路径。<br>首先直接双击打开里面的index.html，可以看到浏览器显示的地址是：file:///C:/xxx/mysite/blog/templates/index.html<br>现在想在localhost：8000下，也显示相同的内容。<br>首先打开views.py，把home改成index，因为我们一开始的主页名字定义为home，而现在模版的首页名字是index。但是当我们回车，发现界面如下：</p>
+<p>并且，根据要求，我们把带有link href 后面的代码，根据上图都修改成形如下面的语句（红色加粗为添加的）：</p>
+<pre><code>&lt;link href=&quot;{% static "css/bootstrap.css" %}&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; media=&quot;all&quot;&gt;
+</code></pre><p>最后，我们就得到了和直接双击index.html一样的效果，如下图（中文是我添加，为庆祝女排奥运夺冠）：</p>
+<p>也许你会说，这网页也不是很漂亮啊，其实这里主要是选了一个简单的网页模版，<br>用来示范操作的，可以谷歌到很多精彩的bootstrap的框架模版，但如果要修改成自己的，<br>也是需要在HTML里修改不少内容，再加上本身我对前端的知识也比较有限。<br>到这里，就完成了Python+Django实现网站的教程了。<br>当然要做一个内容较多的网站还是需要很多后续工作的。 ”——）</p>
+<h1 id="11-参考：-fanhuaxiu-com"><a href="#11-参考：-fanhuaxiu-com" class="headerlink" title="11 参考：  fanhuaxiu.com"></a>11 参考：  fanhuaxiu.com</h1>
           
         
       
