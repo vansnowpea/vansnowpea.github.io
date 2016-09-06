@@ -84,22 +84,54 @@
 
 
 
-<meta name="description" content="##This is the first post of my blog here, and will show how to build it.
-##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js
-##Note : change username into real one, supposed your Github id is xxx, repla">
+<meta name="description" content="查阅地址为：【点我】
+这份教程讲解的比较详细，可以看看。
+引入模块
+import tornado.httpserver
+
+import tornado.ioloop
+
+import tornado.options
+
+import tornado.web
+这四个都是Tornado的模块。它们四个在一般的网站开发中，都要用到，基本作用分别是：
+
+tornado.httpserver：这个模块就是用来">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to build a Blog with Hexo on Github">
-<meta property="og:url" content="http://yoursite.com/2016/08/23/How to build a Blog with Hexo on Github/index.html">
+<meta property="og:title" content="推荐Tornado的中文教程">
+<meta property="og:url" content="http://yoursite.com/2016/09/06/安装Scrapy的一些坑/index.html">
 <meta property="og:site_name" content="天青色等烟雨">
-<meta property="og:description" content="##This is the first post of my blog here, and will show how to build it.
-##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js
-##Note : change username into real one, supposed your Github id is xxx, repla">
-<meta property="og:updated_time" content="2016-08-28T02:34:36.000Z">
+<meta property="og:description" content="查阅地址为：【点我】
+这份教程讲解的比较详细，可以看看。
+引入模块
+import tornado.httpserver
+
+import tornado.ioloop
+
+import tornado.options
+
+import tornado.web
+这四个都是Tornado的模块。它们四个在一般的网站开发中，都要用到，基本作用分别是：
+
+tornado.httpserver：这个模块就是用来">
+<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/tornado.jpg">
+<meta property="og:updated_time" content="2016-09-06T15:46:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to build a Blog with Hexo on Github">
-<meta name="twitter:description" content="##This is the first post of my blog here, and will show how to build it.
-##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js
-##Note : change username into real one, supposed your Github id is xxx, repla">
+<meta name="twitter:title" content="推荐Tornado的中文教程">
+<meta name="twitter:description" content="查阅地址为：【点我】
+这份教程讲解的比较详细，可以看看。
+引入模块
+import tornado.httpserver
+
+import tornado.ioloop
+
+import tornado.options
+
+import tornado.web
+这四个都是Tornado的模块。它们四个在一般的网站开发中，都要用到，基本作用分别是：
+
+tornado.httpserver：这个模块就是用来">
+<meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com/tornado.jpg">
 
 
 
@@ -120,9 +152,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/08/23/How to build a Blog with Hexo on Github/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/06/安装Scrapy的一些坑/"/>
 
-  <title> How to build a Blog with Hexo on Github | 天青色等烟雨 </title>
+  <title> 推荐Tornado的中文教程 | 天青色等烟雨 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -242,7 +274,7 @@
             
             
               
-                How to build a Blog with Hexo on Github
+                推荐Tornado的中文教程
               
             
           </h1>
@@ -254,8 +286,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-08-23T21:16:05+08:00" content="2016-08-23">
-              2016-08-23
+            <time itemprop="dateCreated" datetime="2016-09-06T14:59:28+08:00" content="2016-09-06">
+              2016-09-06
             </time>
           </span>
 
@@ -282,43 +314,26 @@
       
 
       
-        <p>##This is the first post of my blog here, and will show how to build it.</p>
-<p>##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js</p>
-<p>##Note : change username into real one, supposed your Github id is xxx, replace username with xxx.</p>
-<p>1/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install node.js</div></pre></td></tr></table></figure>
-<p>2/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt install git-core</div></pre></td></tr></table></figure>
-<p>3/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt install npm</div></pre></td></tr></table></figure>
-<p>4/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo npm install -g hexo-cli</div></pre></td></tr></table></figure>
-<p>5/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> /home/van/downloads/</div></pre></td></tr></table></figure>
-<p>you choose a path.</p>
-<p>6/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mkdir TestB<span class="built_in">log</span></div></pre></td></tr></table></figure>
-<p>7/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> TestB<span class="built_in">log</span></div></pre></td></tr></table></figure>
-<p>8/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/username/username.github.io.git</div></pre></td></tr></table></figure>
-<p>9/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init username.github.io</div></pre></td></tr></table></figure>
-<p>10/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> username.github.io</div><div class="line">$ npm install</div></pre></td></tr></table></figure>
-<p>11/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo s</div></pre></td></tr></table></figure>
-<p>type:<strong>localhost:4000</strong> in brower,<br>it should work now, but the <a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> is still 404 error.</p>
-<p>12/ open _config.yml and modify as follows:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line"><span class="built_in">type</span>: git</div><div class="line">repo: https://github.com/username/username .github.io.git</div><div class="line">branch: master</div></pre></td></tr></table></figure>
-<p>13/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo d</div><div class="line">$ hexo s</div></pre></td></tr></table></figure>
-<p>now the <a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> should work,<br>and plz note:in less case , if the port 4000 is occupied,<br>set <strong>$ hexo server -p 5000</strong> or some big number.</p>
-<p>14/ change a Theme</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> your-hexo-site </div><div class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
-<p>modify in _config.yaml:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Theme: next</div></pre></td></tr></table></figure>
-<p>15/ and now you got it. ^^)</p>
+        <p><img src="http://ocg7i7pt6.bkt.clouddn.com/tornado.jpg" alt=""></p>
+<p>查阅<a href="http://docs.pythontab.com/tornado/introduction-to-tornado/" target="_blank" rel="external">地址为：【点我】</a></p>
+<p>这份教程讲解的比较详细，可以看看。</p>
+<p>引入模块</p>
+<pre><code>import tornado.httpserver
+
+import tornado.ioloop
+
+import tornado.options
+
+import tornado.web
+</code></pre><p>这四个都是Tornado的模块。它们四个在一般的网站开发中，都要用到，基本作用分别是：</p>
+<ul>
+<li>tornado.httpserver：这个模块就是用来解决web服务器的http协议问题，它提供了不少属性方法，实现客户端和服务器端的互通。Tornado的非阻塞、单线程的特点在这个模块中体现。</li>
+<li>tornado.ioloop：这个也非常重要，能够实现非阻塞socket循环，不能互通一次就结束。</li>
+<li>tornado.options：这是命令行解析模块，也常用到。</li>
+<li>tornado.web：这是必不可少的模块，它提供了一个简单的Web框架与异步功能，从而使其扩展到大量打开的连接，使其成为理想的长轮询。</li>
+</ul>
+<h1 id="一些建议："><a href="#一些建议：" class="headerlink" title="一些建议："></a>一些建议：</h1><p>class IndexHandler():</p>
+<p>   这个类是请求处理程序类，那么就最好用Handler结尾，这样在名称上很明确，是干什么的。</p>
 
       
     </div>
@@ -344,13 +359,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/09/06/推荐Tornado的中文教程 - 副本/" rel="next" title="推荐Tornado的中文教程">
+                <i class="fa fa-chevron-left"></i> 推荐Tornado的中文教程
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/08/27/推荐MarkdownPad 作为Win系统本机端的MarkDwon编辑器/" rel="prev" title="推荐MarkdownPad 作为Win系统本机端的MarkDwon编辑器">
-                推荐MarkdownPad 作为Win系统本机端的MarkDwon编辑器 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -450,7 +465,7 @@
               
             
             
-              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一些建议："><span class="nav-number">1.</span> <span class="nav-text">一些建议：</span></a></li></ol></div>
             
           </div>
         </section>
