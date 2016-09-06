@@ -235,6 +235,108 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/05/Ubuntu中Nginx安装遇到的错误/" itemprop="url">
+                  Ubuntu中Nginx安装遇到的错误
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-05T00:02:28+08:00" content="2016-09-05">
+              2016-09-05
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>说明：在2台电脑相同版本的Ubuntu系统中，遇到了不同的现象，一台一开始死活出现Nginx启动异常。已经根据Nginx官网提示安装了cong的key，依然失败，以下是解决过程，感谢谷歌。</p>
+<hr>
+<p>1、现象：在尝试了一些方案后，出现的错误现象也有不同，最后的症状是：</p>
+<p><strong>nginx: [emerg] open() “/etc/nginx/nginx.conf” failed (2: No such file or directory)</strong></p>
+<p>2、 一开始查阅的一些方案也没搞定，<a href="http://serverfault.com/questions/317191/how-to-install-nginx-and-install-the-configuration-files-too" target="_blank" rel="external">以下网址</a>的方案，测试成功，运行命令是：</p>
+<pre><code>sodu apt-get remove --purge nginx nginx-full nginx-common 
+sodu apt-get install nginx 
+</code></pre><p>3、其他的错误现象，以后遇到了再更新进来。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/28/如何实现Win下写文章自动更新Github的博客/" itemprop="url">
                   实现Win下本机操作自动更新Hexo到远程Github
                 </a>
@@ -862,7 +964,7 @@ $ sudo cnpm install hexo-cli -g
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
