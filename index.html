@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -248,7 +248,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-06T14:59:28+08:00" content="2016-09-06">
               2016-09-06
             </time>
@@ -297,6 +297,8 @@ import tornado.web
 <li>tornado.options：这是命令行解析模块，也常用到。</li>
 <li>tornado.web：这是必不可少的模块，它提供了一个简单的Web框架与异步功能，从而使其扩展到大量打开的连接，使其成为理想的长轮询。</li>
 </ul>
+<h1 id="一些建议："><a href="#一些建议：" class="headerlink" title="一些建议："></a>一些建议：</h1><p>class IndexHandler():</p>
+<p>   这个类是请求处理程序类，那么就最好用Handler结尾，这样在名称上很明确，是干什么的。</p>
 
           
         
@@ -359,7 +361,7 @@ import tornado.web
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-05T01:59:28+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -457,7 +459,7 @@ import tornado.web
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:40:28+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -615,7 +617,7 @@ urlpatterns = [
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:20:28+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -744,7 +746,7 @@ class Meta:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:03:39+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -848,7 +850,7 @@ class Meta:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:03:39+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -969,7 +971,7 @@ git push sae master:1
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:03:39+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -1069,7 +1071,7 @@ git push sae master:1
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:03:39+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -1200,7 +1202,7 @@ crawler.start();
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:02:29+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -1297,7 +1299,7 @@ crawler.start();
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:02:28+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -1457,7 +1459,7 @@ pass
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">16</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1504,7 +1506,7 @@ pass
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
