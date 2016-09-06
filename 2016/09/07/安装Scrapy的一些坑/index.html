@@ -96,7 +96,7 @@ error: Microsoft Visual C++ 9.0 is required. Get it from http://aka.ms/vcpython2
 提示一些安装包，一个还试试需要安装VC++ 9.0 。 
 error: Microsoft Visual C++ 9.0 is required. Get it from http://aka.ms/vcpython27  
 意思是：Micorsoft Visual C++ Compiler for Python 2.7  问题到了微软">
-<meta property="og:updated_time" content="2016-09-06T17:30:48.000Z">
+<meta property="og:updated_time" content="2016-09-06T17:31:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安装Scrapy的一些坑">
 <meta name="twitter:description" content="症状：无论Win 7 还是Ubuntu，一开始安装都出错了。
@@ -291,7 +291,12 @@ error: Microsoft Visual C++ 9.0 is required. Get it from http://aka.ms/vcpython2
 <p>意思是：Micorsoft Visual C++ Compiler for Python 2.7  问题到了微软官网，点了下载按钮，就进入界面死循环了。。。</p>
 <p>记录有人分享的安装经验，一看，是比一般的pip直接安装的库要麻烦许多。</p>
 <p>scrapy的安装不难就是挺麻烦的，需要安装scrapy的一些依赖包，以现有机子环境为例说明一些安装过程<br>系统：win7 64bit<br>安装步骤：<br>1.先安装Python，机子是64位的，所以Python最好安装64位的，不然依赖包安装出错，下载的是2.7版本。<br>2.安装scrapy依赖包，下载对应的Python2.7 64位版本：<br>pywin32；</p>
-<p>Twisted:；<br>zope.interface；<br>lxml；<br>pyOpenSSL；<br>这些软件应用通过百度可以查询的到。<br>3.安装scrapy，可以直接下载scrapy回来通过setup.py install安装，也可以通过eazy_install scrapy安装，后面这种安装需要先安装eazy_install.py，安装完成后 在控制台输入scrapy，有信息输出说明安装成功。</p>
+<p>Twisted:；</p>
+<p>zope.interface；</p>
+<p>lxml；</p>
+<p>pyOpenSSL；</p>
+<p>这些软件应用通过百度可以查询的到。</p>
+<p>3.安装scrapy，可以直接下载scrapy回来通过setup.py install安装，也可以通过eazy_install scrapy安装，后面这种安装需要先安装eazy_install.py，安装完成后 在控制台输入scrapy，有信息输出说明安装成功。</p>
 
       
     </div>
