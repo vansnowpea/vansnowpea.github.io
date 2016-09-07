@@ -97,7 +97,7 @@ error: Microsoft Visual C++ 9.0 is required. Get it from http://aka.ms/vcpython2
 error: Microsoft Visual C++ 9.0 is required. Get it from http://aka.ms/vcpython27  
 意思是：Micorsoft Visual C++ Compiler for Python 2.7  到了微软官网，点了下载">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/scrapy.png">
-<meta property="og:updated_time" content="2016-09-07T03:08:03.000Z">
+<meta property="og:updated_time" content="2016-09-07T03:10:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安装Scrapy的一些坑">
 <meta name="twitter:description" content="症状：无论Win 7 还是Ubuntu，一开始安装都出错了。
@@ -312,7 +312,7 @@ error: command &apos;C:\\Users\\Administrator.USER-20160103QG\\AppData\\Local\\P
 <p>后来我换了一个路径，把whl文件放到了C盘根目录，测试：</p>
 <p>attempt to call a nil value<br>C:>pip install lxml-3.6.4-cp27-cp27m-win_amd64.whl<br>lxml-3.6.4-cp27-cp27m-win_amd64.whl is not a supported wheel on this platform.</p>
 <p>此时的提示是：此平台不支持这个whl文件。</p>
-<p>那么思考：下载的是64位的whl，系统也是Win7 64位的，但是等等，Python是32位的？  果然经过核对，原来这个Python版本是老早刚学的时候一直用的32位的，于是，马上更换下载 lxml-3.6.4-cp27-cp27m-win32.whl，然后继续安装，得到ok的结果，如下：</p>
+<p>那么思考：下载的是64位的whl，系统也是Win7 64位的，<strong>但是等等，Python是32位的？</strong>  果然经过核对，原来这个Python版本是老早刚学的时候一直用的32位的，于是，马上更换下载 lxml-3.6.4-cp27-cp27m-win32.whl，然后继续安装，得到ok的结果，如下：</p>
 <p>attempt to call a nil value<br>C:>pip install lxml-3.6.4-cp27-cp27m-win32.whl<br>Processing c:\lxml-3.6.4-cp27-cp27m-win32.whl<br>Installing collected packages: lxml<br>Successfully installed lxml-3.6.4</p>
 <p>然后继续运行安装scrapy 搞定！</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/scrapy.png" alt=""></p>
