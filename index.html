@@ -293,6 +293,13 @@ error: command &apos;C:\\Users\\Administrator.USER-20160103QG\\AppData\\Local\\P
 ----------------------------------------
 </code></pre><p>Command “c:\python27\python.exe -u -c “import setuptools, tokenize;<strong>file</strong>=’c:\users\admini~1.use\appdata\local\temp\pip-build-u4tij9\lxml\setup.py’;exec(compile(getattr(tokenize, ‘open’, open)(<strong>file</strong>).read().replace(‘\r\n’, ‘\n’), <strong>file</strong>, ‘exec’))” install –record c:\users\admini~1.use\appdata\local\temp\pip-ywtnot-record\install-record.txt –single-version-externally-managed –compile” failed with error code 1 in c:\users\admini~1.use\appdata\local\temp\pip-build-u4tij9\lxml\</p>
 <p>从上面的信息看：基于lxml的libxml2 and libxslt这两个包需要安装，但pip install lxml 也是错误提示，依然有需要安装VC++的提示，可刚不是装过了吗？。。。。 想了下 之前有装另外一个版本，所以刚是repair的方式，干脆卸载了重新装一次看看？结果一样错误。</p>
+<p>到知乎上：<br>深海鱼<br>77 人赞同<br>刚从这个大坑里爬出来：</p>
+<ol>
+<li>安装wheel，命令行运行：<br>pip install wheel<br>2.在这里下载对应的.whl文件，注意别改文件名！ <a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml" target="_blank" rel="external">http://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml</a></li>
+<li>进入.whl所在的文件夹，执行命令即可完成安装<br>pip install 带后缀的完整文件名</li>
+</ol>
+<p>对应操作，结果也失败了，如下：</p>
+<p>attempt to call a nil value<br>C:\Python27\Scripts&gt;easy_install lxml-3.6.4-cp27-cp27m-win_amd64.whl<br>Processing lxml-3.6.4-cp27-cp27m-win_amd64.whl<br>error: Couldn’t find a setup script in C:\Python27\Scripts\lxml-3.6.4-cp27-cp27m-win_amd64.whl</p>
 <p>记录有人分享的安装经验，一看，是比一般的pip直接安装的库要麻烦许多。</p>
 <p>scrapy的安装不难就是挺麻烦的，需要安装scrapy的一些依赖包，以现有机子环境为例说明一些安装过程<br>系统：win7 64bit<br>安装步骤：<br>1.先安装Python，机子是64位的，所以Python最好安装64位的，不然依赖包安装出错，下载的是2.7版本。<br>2.安装scrapy依赖包，下载对应的Python2.7 64位版本：<br>pywin32；</p>
 <p>Twisted:；</p>
