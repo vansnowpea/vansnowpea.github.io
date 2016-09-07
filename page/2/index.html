@@ -235,6 +235,137 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/05/基于神箭手的简易爬虫示范--切糕王子--/" itemprop="url">
+                  基于神箭手的简易爬虫示范--切糕王子--
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-05T00:03:39+08:00" content="2016-09-05">
+              2016-09-05
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>说明：<a href="http://www.jianshu.com/p/fdbf41090a36" target="_blank" rel="external">原文【点我】</a>的第一课。</p>
+<hr>
+<p>1、如果是第一次接触爬虫，搜索一些范例，比如相对最流行的scrapy（Python）的来说，你看到完整的但是感觉很长的代码，就头大了。 网页上的示范代码，还有一个可能的也是很大的问题是因为不同网站的对代码的支持方式，导致的缩进问题，而刚好Python对缩进的报错，在较多的代码的时候，是很让人抓狂的。</p>
+<p>2、好在现在已经有很多第三方平台，可以大大简化一些基础代码的编写，所以以神箭手 <a href="http://www.shenjianshou.cn" target="_blank" rel="external">官网【点我】 </a>为基础，一个简单的范例。</p>
+<p>3、代码分析：</p>
+<pre><code>var configs = {
+    domains: [&quot;www.qiegaowz.com&quot;],
+    scanUrls: [&quot;http://www.qiegaowz.com/product/Default.html&quot;],
+    contentUrlRegexes: [&quot;http://www\\.qiegaowz\\.com/product/.{36}\\.html&quot;],
+    helperUrlRegexes: [&quot;http://www\\.qiegaowz\\.com/product/Default\\.html&quot;], //可留空
+    fields: [
+            {
+                // 第一个抽取项
+                name: &quot;thumbnail&quot;,
+                selector: &quot;//div[contains(@class,&apos;showpic&apos;)]/img/@src&quot;, //默认使用XPath
+                required: true //是否不能为空
+            },
+            {  
+                // 商品标题  
+                name: &quot;title&quot;,  
+                selector: &quot;//div[contains(@class,&apos;showproduct&apos;)]/h1&quot; 
+            }, 
+            {
+                // 其他抽取项
+                name: &quot;content&quot;,
+                selector: &quot;//div[contains(@class,&apos;shownewdes&apos;)]&quot; 
+            }
+    ]
+};
+
+var crawler = new Crawler(configs);
+crawler.start();
+</code></pre><p>4、从代码长度来看相对简单，而且只需要根据domains，scanUrls,fields内容等对应修改。原文已经对需要修改的地方，做了较详细的解释，同时，也需要对正则表达式，xpath有基础了解。必须了解：正则的点和问号都是要转义的，并且转义需要两个\，另外关于正则表达式，可参考<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143193331387014ccd1040c814dee8b2164bb4f064cff000" target="_blank" rel="external">廖雪峰的网站内容 【点我】</a>。</p>
+<p>5、最后总结下：依托神箭手，写爬虫的主要核心步骤就是3步：</p>
+<pre><code>1. 选入口Url 
+2. 限定内容页和中间页
+3. 写内容页抽取规则
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/05/编程初学者如何使用搜索引擎/" itemprop="url">
                   编程初学者如何使用搜索引擎
                 </a>
@@ -1209,7 +1340,7 @@ $ sudo cnpm install hexo-cli -g
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
