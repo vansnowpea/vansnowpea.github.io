@@ -96,7 +96,7 @@ error: Microsoft Visual C++ 9.0 is required. Get it from http://aka.ms/vcpython2
 提示一些安装包，一个还试试需要安装VC++ 9.0 。 
 error: Microsoft Visual C++ 9.0 is required. Get it from http://aka.ms/vcpython27  
 意思是：Micorsoft Visual C++ Compiler for Python 2.7  到了微软官网">
-<meta property="og:updated_time" content="2016-09-07T00:36:39.000Z">
+<meta property="og:updated_time" content="2016-09-07T00:42:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安装Scrapy的一些坑">
 <meta name="twitter:description" content="症状：无论Win 7 还是Ubuntu，一开始安装都出错了。
@@ -298,6 +298,7 @@ error: command &apos;C:\\Users\\Administrator.USER-20160103QG\\AppData\\Local\\P
 
 ----------------------------------------
 </code></pre><p>Command “c:\python27\python.exe -u -c “import setuptools, tokenize;<strong>file</strong>=’c:\users\admini~1.use\appdata\local\temp\pip-build-u4tij9\lxml\setup.py’;exec(compile(getattr(tokenize, ‘open’, open)(<strong>file</strong>).read().replace(‘\r\n’, ‘\n’), <strong>file</strong>, ‘exec’))” install –record c:\users\admini~1.use\appdata\local\temp\pip-ywtnot-record\install-record.txt –single-version-externally-managed –compile” failed with error code 1 in c:\users\admini~1.use\appdata\local\temp\pip-build-u4tij9\lxml\</p>
+<p>从上面的信息看：基于lxml的libxml2 and libxslt这两个包需要安装，但pip install lxml 也是错误提示，依然有需要安装VC++的提示，可刚不是装过了吗？。。。。</p>
 <p>记录有人分享的安装经验，一看，是比一般的pip直接安装的库要麻烦许多。</p>
 <p>scrapy的安装不难就是挺麻烦的，需要安装scrapy的一些依赖包，以现有机子环境为例说明一些安装过程<br>系统：win7 64bit<br>安装步骤：<br>1.先安装Python，机子是64位的，所以Python最好安装64位的，不然依赖包安装出错，下载的是2.7版本。<br>2.安装scrapy依赖包，下载对应的Python2.7 64位版本：<br>pywin32；</p>
 <p>Twisted:；</p>
