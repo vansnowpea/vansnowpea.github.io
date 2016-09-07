@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -248,7 +248,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-07T10:59:28+08:00" content="2016-09-07">
               2016-09-07
             </time>
@@ -332,7 +332,7 @@
               
                 
                 <a class="post-title-link" href="/2016/09/07/beautiful soup的基础学习/" itemprop="url">
-                  安装Scrapy的一些坑
+                  beautiful soup的基础学习
                 </a>
               
             
@@ -344,8 +344,8 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-07T01:59:28+08:00" content="2016-09-07">
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-09-07T04:59:28+08:00" content="2016-09-07">
               2016-09-07
             </time>
           </span>
@@ -375,46 +375,9 @@
       
         
           
-            <p>症状：无论Win 7 还是Ubuntu，一开始安装都出错了。</p>
-<p>提示一些安装包，需要安装VC++ 9.0 。 </p>
-<p>error: Microsoft Visual C++ 9.0 is required. Get it from <a href="http://aka.ms/vcpython27" target="_blank" rel="external">http://aka.ms/vcpython27</a>  </p>
-<p>意思是：Micorsoft Visual C++ Compiler for Python 2.7  到了微软官网，点了下载按钮，就进入界面死循环了。。。 想想微软也不至于这么坑，然后换了一个电脑可以下载了，似乎是第一个电脑的火狐浏览器没有对下载地址进行响应。</p>
-<p>安装之后，又跳出了以下界面的错误：</p>
-<p> <strong> make sure the development packages of libxml2 and libxslt are installed </strong></p>
-<pre><code>*********************************************************************************
-Could not find function xmlCheckVersion in library libxml2. Is libxml2 installed?
-*********************************************************************************
-error: command &apos;C:\\Users\\Administrator.USER-20160103QG\\AppData\\Local\\Programs\\Common\\Microsoft\\Visual C++ for Python\\9.0\\VC\\Bin\\cl.exe&apos; failed with exit status 2
-
-----------------------------------------
-</code></pre><p>Command “c:\python27\python.exe -u -c “import setuptools, tokenize;<strong>file</strong>=’c:\users\admini~1.use\appdata\local\temp\pip-build-u4tij9\lxml\setup.py’;exec(compile(getattr(tokenize, ‘open’, open)(<strong>file</strong>).read().replace(‘\r\n’, ‘\n’), <strong>file</strong>, ‘exec’))” install –record c:\users\admini~1.use\appdata\local\temp\pip-ywtnot-record\install-record.txt –single-version-externally-managed –compile” failed with error code 1 in c:\users\admini~1.use\appdata\local\temp\pip-build-u4tij9\lxml\</p>
-<p>从上面的信息看：基于lxml的libxml2 and libxslt这两个包需要安装，但pip install lxml 也是错误提示，依然有需要安装VC++的提示，可刚不是装过了吗？。。。。 想了下 之前有装另外一个版本，所以刚是repair的方式，干脆卸载了重新装一次看看？结果一样错误。</p>
-<p>到知乎上：<br>深海鱼<br>77 人赞同<br>刚从这个大坑里爬出来：</p>
-<ol>
-<li>安装wheel，命令行运行：<br>pip install wheel<br>2.在这里下载对应的.whl文件，注意别改文件名！ <a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml" target="_blank" rel="external">http://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml</a></li>
-<li>进入.whl所在的文件夹，执行命令即可完成安装<br>pip install 带后缀的完整文件名</li>
-</ol>
-<p>对应操作，结果也失败了，如下：</p>
-<pre><code>attempt to call a nil value
-C:\Python27\Scripts&gt;pip install lxml-3.6.4-cp27-cp27m-win_amd64.whl
-Processing lxml-3.6.4-cp27-cp27m-win_amd64.whl
-error: Couldn&apos;t find a setup script in C:\Python27\Scripts\lxml-3.6.4-cp27-cp27m-win_amd64.whl
-</code></pre><p>这错误提示需要一个安装脚本，可下载的是一个单独的ｗｈｌ文件，这。。。</p>
-<p>后来我换了一个路径，把whl文件放到了C盘根目录，测试：</p>
-<pre><code>attempt to call a nil value
-C:\&gt;pip install lxml-3.6.4-cp27-cp27m-win_amd64.whl
-lxml-3.6.4-cp27-cp27m-win_amd64.whl is not a supported wheel on this platform.
-</code></pre><p>此时的提示是：此平台不支持这个whl文件。</p>
-<p>那么思考：下载的是64位的whl，系统也是Win7 64位的，<strong>但是等等，Python是32位的？</strong>  果然经过核对，原来这个Python版本是老早刚学的时候一直用的32位的，于是，马上更换下载 lxml-3.6.4-cp27-cp27m-win32.whl，然后继续安装，得到ok的结果，如下：</p>
-<pre><code>attempt to call a nil value
-C:\&gt;pip install lxml-3.6.4-cp27-cp27m-win32.whl
-Processing c:\lxml-3.6.4-cp27-cp27m-win32.whl
-Installing collected packages: lxml
-Successfully installed lxml-3.6.4
-</code></pre><p>然后继续运行安装scrapy 搞定！</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/scrapy.png" alt=""></p>
-<p>总结：<br>1、后来查了lxml的官网，<a href="http://lxml.de/installation.html" target="_blank" rel="external">http://lxml.de/installation.html</a>  上面也有说道win系统的安装错误的非官方方案，其实就是知乎上的那个方案，不过官网上没写whl文件怎么安装，但可以搜索到。</p>
-<p>2、64位还是32位？<br>  因为系统是64位的，所以一般情况下载都已经习惯找64位的下，本篇开头就是。但是针对python安装的第三方库，需要根据python是32位还是64位来，而本篇恰巧是32位的python，以后注意。</p>
+            <p>为什么选用BS4呢？ 可以尽可能的规避复杂的正则表达式RE。 而功能上，配合requests也是相当好的。</p>
+<p>BS4是Beautiful Soup V4.x的简称，官方的中文教程可参考<a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc.zh/" target="_blank" rel="external">此链接【点我】</a></p>
+<p>而另一片博客写的更细致，可参考<a href="http://cuiqingcai.com/1319.html" target="_blank" rel="external">【转载请注明：静觅 » Python爬虫利器二之Beautiful Soup的用法</a></p>
 
           
         
@@ -477,7 +440,7 @@ Successfully installed lxml-3.6.4
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-07T01:59:28+08:00" content="2016-09-07">
               2016-09-07
             </time>
@@ -610,7 +573,7 @@ Successfully installed lxml-3.6.4
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-06T14:59:28+08:00" content="2016-09-06">
               2016-09-06
             </time>
@@ -724,7 +687,7 @@ import tornado.web
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-05T01:59:28+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -822,7 +785,7 @@ import tornado.web
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:40:28+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -980,7 +943,7 @@ urlpatterns = [
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:20:28+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -1109,7 +1072,7 @@ class Meta:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:03:39+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -1213,7 +1176,7 @@ class Meta:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:03:39+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -1334,7 +1297,7 @@ git push sae master:1
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:03:39+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -1446,7 +1409,7 @@ git push sae master:1
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">19</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1493,7 +1456,7 @@ git push sae master:1
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
