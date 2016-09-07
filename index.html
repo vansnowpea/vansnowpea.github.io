@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -248,7 +248,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-07T10:59:28+08:00" content="2016-09-07">
               2016-09-07
             </time>
@@ -344,7 +344,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-07T01:59:28+08:00" content="2016-09-07">
               2016-09-07
             </time>
@@ -395,14 +395,23 @@ error: command &apos;C:\\Users\\Administrator.USER-20160103QG\\AppData\\Local\\P
 <li>进入.whl所在的文件夹，执行命令即可完成安装<br>pip install 带后缀的完整文件名</li>
 </ol>
 <p>对应操作，结果也失败了，如下：</p>
-<p>attempt to call a nil value<br>C:\Python27\Scripts&gt;pip install lxml-3.6.4-cp27-cp27m-win_amd64.whl<br>Processing lxml-3.6.4-cp27-cp27m-win_amd64.whl<br>error: Couldn’t find a setup script in C:\Python27\Scripts\lxml-3.6.4-cp27-cp27m-win_amd64.whl</p>
-<p>这错误提示需要一个安装脚本，可下载的是一个单独的ｗｈｌ文件，这。。。</p>
+<pre><code>attempt to call a nil value
+C:\Python27\Scripts&gt;pip install lxml-3.6.4-cp27-cp27m-win_amd64.whl
+Processing lxml-3.6.4-cp27-cp27m-win_amd64.whl
+error: Couldn&apos;t find a setup script in C:\Python27\Scripts\lxml-3.6.4-cp27-cp27m-win_amd64.whl
+</code></pre><p>这错误提示需要一个安装脚本，可下载的是一个单独的ｗｈｌ文件，这。。。</p>
 <p>后来我换了一个路径，把whl文件放到了C盘根目录，测试：</p>
-<p>attempt to call a nil value<br>C:>pip install lxml-3.6.4-cp27-cp27m-win_amd64.whl<br>lxml-3.6.4-cp27-cp27m-win_amd64.whl is not a supported wheel on this platform.</p>
-<p>此时的提示是：此平台不支持这个whl文件。</p>
+<pre><code>attempt to call a nil value
+C:\&gt;pip install lxml-3.6.4-cp27-cp27m-win_amd64.whl
+lxml-3.6.4-cp27-cp27m-win_amd64.whl is not a supported wheel on this platform.
+</code></pre><p>此时的提示是：此平台不支持这个whl文件。</p>
 <p>那么思考：下载的是64位的whl，系统也是Win7 64位的，<strong>但是等等，Python是32位的？</strong>  果然经过核对，原来这个Python版本是老早刚学的时候一直用的32位的，于是，马上更换下载 lxml-3.6.4-cp27-cp27m-win32.whl，然后继续安装，得到ok的结果，如下：</p>
-<p>attempt to call a nil value<br>C:>pip install lxml-3.6.4-cp27-cp27m-win32.whl<br>Processing c:\lxml-3.6.4-cp27-cp27m-win32.whl<br>Installing collected packages: lxml<br>Successfully installed lxml-3.6.4</p>
-<p>然后继续运行安装scrapy 搞定！</p>
+<pre><code>attempt to call a nil value
+C:\&gt;pip install lxml-3.6.4-cp27-cp27m-win32.whl
+Processing c:\lxml-3.6.4-cp27-cp27m-win32.whl
+Installing collected packages: lxml
+Successfully installed lxml-3.6.4
+</code></pre><p>然后继续运行安装scrapy 搞定！</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/scrapy.png" alt=""></p>
 <p>总结：<br>1、后来查了lxml的官网，<a href="http://lxml.de/installation.html" target="_blank" rel="external">http://lxml.de/installation.html</a>  上面也有说道win系统的安装错误的非官方方案，其实就是知乎上的那个方案，不过官网上没写whl文件怎么安装，但可以搜索到。</p>
 <p>2、64位还是32位？<br>  因为系统是64位的，所以一般情况下载都已经习惯找64位的下，本篇开头就是。但是针对python安装的第三方库，需要根据python是32位还是64位来，而本篇恰巧是32位的python，以后注意。</p>
@@ -468,7 +477,7 @@ error: command &apos;C:\\Users\\Administrator.USER-20160103QG\\AppData\\Local\\P
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-06T14:59:28+08:00" content="2016-09-06">
               2016-09-06
             </time>
@@ -582,7 +591,7 @@ import tornado.web
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-05T01:59:28+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -680,7 +689,7 @@ import tornado.web
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:40:28+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -838,7 +847,7 @@ urlpatterns = [
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:20:28+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -967,7 +976,7 @@ class Meta:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:03:39+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -1071,7 +1080,7 @@ class Meta:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:03:39+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -1192,7 +1201,7 @@ git push sae master:1
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:03:39+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -1292,7 +1301,7 @@ git push sae master:1
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:03:39+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -1435,7 +1444,7 @@ crawler.start();
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">18</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1482,7 +1491,7 @@ crawler.start();
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
