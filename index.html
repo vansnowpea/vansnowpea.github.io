@@ -402,8 +402,9 @@ import tornado.web
 <li>tornado.options：这是命令行解析模块，也常用到。</li>
 <li>tornado.web：这是必不可少的模块，它提供了一个简单的Web框架与异步功能，从而使其扩展到大量打开的连接，使其成为理想的长轮询。</li>
 </ul>
-<h1 id="一些建议："><a href="#一些建议：" class="headerlink" title="一些建议："></a>一些建议：</h1><p>class IndexHandler():</p>
+<h1 id="一些知识点："><a href="#一些知识点：" class="headerlink" title="一些知识点："></a>一些知识点：</h1><p>1、class IndexHandler():</p>
 <p>   这个类是请求处理程序类，那么就最好用Handler结尾，这样在名称上很明确，是干什么的。</p>
+<p>2、前端后端的数据连接：通过ajax提交到了后端，后端借助于get_argument()方法得到了所提交的数据（用户名和密码）。</p>
 
           
         
