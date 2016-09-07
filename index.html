@@ -236,7 +236,7 @@
               
                 
                 <a class="post-title-link" href="/2016/09/07/Http权威指南 书籍下载和推荐/" itemprop="url">
-                  安装Scrapy的一些坑
+                  《Http权威指南》 完整版 书籍下载和推荐
                 </a>
               
             
@@ -249,7 +249,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-07T01:59:28+08:00" content="2016-09-07">
+            <time itemprop="dateCreated" datetime="2016-09-07T10:59:28+08:00" content="2016-09-07">
               2016-09-07
             </time>
           </span>
@@ -279,30 +279,10 @@
       
         
           
-            <p>症状：无论Win 7 还是Ubuntu，一开始安装都出错了。</p>
-<p>提示一些安装包，需要安装VC++ 9.0 。 </p>
-<p>error: Microsoft Visual C++ 9.0 is required. Get it from <a href="http://aka.ms/vcpython27" target="_blank" rel="external">http://aka.ms/vcpython27</a>  </p>
-<p>意思是：Micorsoft Visual C++ Compiler for Python 2.7  到了微软官网，点了下载按钮，就进入界面死循环了。。。 想想微软也不至于这么坑，然后换了一个电脑可以下载了，似乎是第一个电脑的火狐浏览器没有对下载地址进行响应。</p>
-<p>安装之后，又跳出了以下界面的错误：</p>
-<p> <strong> make sure the development packages of libxml2 and libxslt are installed </strong></p>
-<pre><code>*********************************************************************************
-Could not find function xmlCheckVersion in library libxml2. Is libxml2 installed?
-*********************************************************************************
-error: command &apos;C:\\Users\\Administrator.USER-20160103QG\\AppData\\Local\\Programs\\Common\\Microsoft\\Visual C++ for Python\\9.0\\VC\\Bin\\cl.exe&apos; failed with exit status 2
+            <h1 id="下载地址【点我】："><a href="#下载地址【点我】：" class="headerlink" title="下载地址【点我】："></a><a href="http://ocg7i7pt6.bkt.clouddn.com/HTTP%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%EF%BC%88%E7%9C%9F%E6%AD%A3%E7%9A%84%E5%AE%8C%E6%95%B4%E7%89%88%EF%BC%8C%E9%80%81%E7%BB%99%E7%88%B1%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%BA%BA%EF%BC%89.pdf" target="_blank" rel="external">下载地址【点我】</a>：</h1><p><img src="http://ocg7i7pt6.bkt.clouddn.com/111.png" alt=""></p>
+<p>说明：全文主要目录：</p>
+<p>可参考：<a href="http://baike.baidu.com/link?url=VfzWb4lL-ktk5UE0TNVUE5rjrjZbpGSPdkTPO70NRSc0vVf48GdgehNQGr351UFCtY266E3d6TCQqTb3gg9zBq" target="_blank" rel="external">百科地址【点我】</a></p>
 
-----------------------------------------
-</code></pre><p>Command “c:\python27\python.exe -u -c “import setuptools, tokenize;<strong>file</strong>=’c:\users\admini~1.use\appdata\local\temp\pip-build-u4tij9\lxml\setup.py’;exec(compile(getattr(tokenize, ‘open’, open)(<strong>file</strong>).read().replace(‘\r\n’, ‘\n’), <strong>file</strong>, ‘exec’))” install –record c:\users\admini~1.use\appdata\local\temp\pip-ywtnot-record\install-record.txt –single-version-externally-managed –compile” failed with error code 1 in c:\users\admini~1.use\appdata\local\temp\pip-build-u4tij9\lxml\</p>
-<p>从上面的信息看：基于lxml的libxml2 and libxslt这两个包需要安装，但pip install lxml 也是错误提示，依然有需要安装VC++的提示，可刚不是装过了吗？。。。。 想了下 之前有装另外一个版本，所以刚是repair的方式，干脆卸载了重新装一次看看？结果一样错误。</p>
-<p>到知乎上：<br>深海鱼<br>77 人赞同<br>刚从这个大坑里爬出来：</p>
-<ol>
-<li>安装wheel，命令行运行：<br>pip install wheel<br>2.在这里下载对应的.whl文件，注意别改文件名！ <a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml" target="_blank" rel="external">http://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml</a></li>
-<li>进入.whl所在的文件夹，执行命令即可完成安装<br>pip install 带后缀的完整文件名</li>
-</ol>
-<p>对应操作，结果也失败了，如下：</p>
-<p>attempt to call a nil value<br>C:\Python27\Scripts&gt;pip install lxml-3.6.4-cp27-cp27m-win_amd64.whl<br>Processing lxml-3.6.4-cp27-cp27m-win_amd64.whl<br>error: Couldn’t find a setup script in C:\Python27\Scripts\lxml-3.6.4-cp27-cp27m-win_amd64.whl</p>
-<p>这错误提示需要一个安装脚本，可下载的是一个单独的ｗｈｌ文件，这。。。</p>
-<hr>
-<h2 id="先分割下，这次是蛋疼的分割线。"><a href="#先分割下，这次是蛋疼的分割线。" class="headerlink" title="先分割下，这次是蛋疼的分割线。"></a>先分割下，这次是蛋疼的分割线。</h2>
           
         
       
