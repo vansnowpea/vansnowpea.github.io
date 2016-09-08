@@ -96,7 +96,7 @@
 而另一篇博客写的更细致，可参考【转载请注明：静觅 » Python爬虫利器二之Beautiful Soup的用法">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/fdafd.gif">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/22.png">
-<meta property="og:updated_time" content="2016-09-08T07:36:14.000Z">
+<meta property="og:updated_time" content="2016-09-08T08:33:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="beautiful soup+ Xpath的基础操作">
 <meta name="twitter:description" content="Beautiful Soup 是 python 的一个库，最主要的功能是从网页抓取数据,BS4是Beautiful Soup V4.x的简称。为什么选用BS4呢？ 可以尽可能的规避复杂的正则表达式RE。 而功能上，配合requests也是相当好的。
@@ -322,7 +322,7 @@ selector = etree.HTML(html)
 links = selector.xpath(&apos;//h4/a/text()&apos;)
 for link in links:
     print link
-</code></pre><p>说明：其中需要会查阅HTML的基础技巧，用一个图动图来概括：</p>
+</code></pre><p>说明：其中需要会查阅HTML的基础技巧，用一个图动图(来自本文末尾的文章)来概括：</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/fdafd.gif" alt=""></p>
 <p>不过第一个方法，显示的是乱码，但是一开始就规定了UTF8格式，原因待定。如图：</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/22.png" alt=""></p>
