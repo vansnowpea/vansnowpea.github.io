@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -248,7 +248,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-09T16:59:28+08:00" content="2016-09-09">
               2016-09-09
             </time>
@@ -309,6 +309,19 @@ p {text-indent: -5em; padding-left: 5em;}
 justify
 </code></pre><p>字间隔等，其他略</p>
 <pre><code>p.spread {word-spacing: 30px;}
+</code></pre><p>7、列表，和html的列表类似，但在style先加载了text/css和ul.disc：</p>
+<pre><code>&lt;head&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+ul.disc {list-style-type: disc}
+&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;ul class=&quot;disc&quot;&gt;
+&lt;li&gt;咖啡&lt;/li&gt;
+&lt;li&gt;茶&lt;/li&gt;
+&lt;li&gt;可口可乐&lt;/li&gt;
+&lt;/ul&gt;
 </code></pre>
           
         
@@ -371,7 +384,7 @@ justify
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-09T14:59:28+08:00" content="2016-09-09">
               2016-09-09
             </time>
@@ -534,7 +547,7 @@ justify
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-09T01:59:28+08:00" content="2016-09-09">
               2016-09-09
             </time>
@@ -632,7 +645,7 @@ justify
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-07T16:59:28+08:00" content="2016-09-07">
               2016-09-07
             </time>
@@ -767,7 +780,7 @@ for link in links:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-07T10:59:28+08:00" content="2016-09-07">
               2016-09-07
             </time>
@@ -863,7 +876,7 @@ for link in links:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-07T01:59:28+08:00" content="2016-09-07">
               2016-09-07
             </time>
@@ -996,7 +1009,7 @@ Successfully installed lxml-3.6.4
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-06T14:59:28+08:00" content="2016-09-06">
               2016-09-06
             </time>
@@ -1110,7 +1123,7 @@ import tornado.web
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-05T01:59:28+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -1208,7 +1221,7 @@ import tornado.web
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:40:28+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -1366,7 +1379,7 @@ urlpatterns = [
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:20:28+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -1507,7 +1520,7 @@ class Meta:
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">22</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1554,7 +1567,7 @@ class Meta:
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
