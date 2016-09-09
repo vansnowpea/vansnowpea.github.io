@@ -84,24 +84,36 @@
 
 
 
-<meta name="description" content="##This is the first post of my blog here, and will show how to build it.
-##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js
-##Note : change username into real one, supposed your Github id is xxx, repl">
+<meta name="description" content="说明：以下内容学习自：http://www.w3school.com.cn/1、以下记录了一些常用的html元素，块，类，第一个是html和head，用来申明是html文件，以及head部分的代码：
+2、h1 定义标题的开始 
+3、body 定义 HTML 文档的主体
+4、P表示段落
+5、table 定义 HTML 表格
+6、a 用来定义链接，如下代码 
+&amp;lt;a href=&amp;quot;http">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to build a Blog with Hexo on Github">
-<meta property="og:url" content="http://yoursite.com/2016/08/23/How to build a Blog with Hexo on Github/index.html">
+<meta property="og:title" content="HTML基础学习小结">
+<meta property="og:url" content="http://yoursite.com/2016/09/09/CSS基础学习小结/index.html">
 <meta property="og:site_name" content="天青色等烟雨">
-<meta property="og:description" content="##This is the first post of my blog here, and will show how to build it.
-##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js
-##Note : change username into real one, supposed your Github id is xxx, repl">
-<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/python.png">
-<meta property="og:updated_time" content="2016-09-08T07:41:42.000Z">
+<meta property="og:description" content="说明：以下内容学习自：http://www.w3school.com.cn/1、以下记录了一些常用的html元素，块，类，第一个是html和head，用来申明是html文件，以及head部分的代码：
+2、h1 定义标题的开始 
+3、body 定义 HTML 文档的主体
+4、P表示段落
+5、table 定义 HTML 表格
+6、a 用来定义链接，如下代码 
+&amp;lt;a href=&amp;quot;http">
+<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/htmlbuju.png">
+<meta property="og:updated_time" content="2016-09-09T07:38:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to build a Blog with Hexo on Github">
-<meta name="twitter:description" content="##This is the first post of my blog here, and will show how to build it.
-##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js
-##Note : change username into real one, supposed your Github id is xxx, repl">
-<meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com/python.png">
+<meta name="twitter:title" content="HTML基础学习小结">
+<meta name="twitter:description" content="说明：以下内容学习自：http://www.w3school.com.cn/1、以下记录了一些常用的html元素，块，类，第一个是html和head，用来申明是html文件，以及head部分的代码：
+2、h1 定义标题的开始 
+3、body 定义 HTML 文档的主体
+4、P表示段落
+5、table 定义 HTML 表格
+6、a 用来定义链接，如下代码 
+&amp;lt;a href=&amp;quot;http">
+<meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com/htmlbuju.png">
 
 
 
@@ -122,9 +134,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/08/23/How to build a Blog with Hexo on Github/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/09/CSS基础学习小结/"/>
 
-  <title> How to build a Blog with Hexo on Github | 天青色等烟雨 </title>
+  <title> HTML基础学习小结 | 天青色等烟雨 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -244,7 +256,7 @@
             
             
               
-                How to build a Blog with Hexo on Github
+                HTML基础学习小结
               
             
           </h1>
@@ -256,8 +268,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-08-23T21:16:05+08:00" content="2016-08-23">
-              2016-08-23
+            <time itemprop="dateCreated" datetime="2016-09-09T14:59:28+08:00" content="2016-09-09">
+              2016-09-09
             </time>
           </span>
 
@@ -284,44 +296,76 @@
       
 
       
-        <p><img src="http://ocg7i7pt6.bkt.clouddn.com/python.png" alt=""></p>
-<p>##This is the first post of my blog here, and will show how to build it.</p>
-<p>##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js</p>
-<p>##Note : change username into real one, supposed your Github id is xxx, replace username with xxx.</p>
-<p>1/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install node.js</div></pre></td></tr></table></figure>
-<p>2/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt install git-core</div></pre></td></tr></table></figure>
-<p>3/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt install npm</div></pre></td></tr></table></figure>
-<p>4/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo npm install -g hexo-cli</div></pre></td></tr></table></figure>
-<p>5/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> /home/van/downloads/</div></pre></td></tr></table></figure>
-<p>you choose a path.</p>
-<p>6/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mkdir TestB<span class="built_in">log</span></div></pre></td></tr></table></figure>
-<p>7/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> TestB<span class="built_in">log</span></div></pre></td></tr></table></figure>
-<p>8/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/username/username.github.io.git</div></pre></td></tr></table></figure>
-<p>9/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init username.github.io</div></pre></td></tr></table></figure>
-<p>10/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> username.github.io</div><div class="line">$ npm install</div></pre></td></tr></table></figure>
-<p>11/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo s</div></pre></td></tr></table></figure>
-<p>type:<strong>localhost:4000</strong> in brower,<br>it should work now, but the <a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> is still 404 error.</p>
-<p>12/ open _config.yml and modify as follows:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line"><span class="built_in">type</span>: git</div><div class="line">repo: https://github.com/username/username .github.io.git</div><div class="line">branch: master</div></pre></td></tr></table></figure>
-<p>13/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo d</div><div class="line">$ hexo s</div></pre></td></tr></table></figure>
-<p>now the <a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> should work,<br>and plz note:in less case , if the port 4000 is occupied,<br>set <strong>$ hexo server -p 5000</strong> or some big number.</p>
-<p>14/ change a Theme</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> your-hexo-site </div><div class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
-<p>modify in _config.yaml:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Theme: next</div></pre></td></tr></table></figure>
-<p>15/ and now you got it. ^^)</p>
+        <h1 id="说明：以下内容学习自：http-www-w3school-com-cn"><a href="#说明：以下内容学习自：http-www-w3school-com-cn" class="headerlink" title="说明：以下内容学习自：http://www.w3school.com.cn/"></a>说明：以下内容学习自：<a href="http://www.w3school.com.cn/" target="_blank" rel="external">http://www.w3school.com.cn/</a></h1><p>1、<br>以下记录了一些常用的html元素，块，类，第一个是html和head，用来申明是html文件，以及head部分的代码：<br></p>
+<p>2、<br>h1 定义标题的开始 <br></p>
+<p>3、<br>body 定义 HTML 文档的主体<br></p>
+<p>4、<br>P表示段落<br></p>
+<p>5、<br>table 定义 HTML 表格<br></p>
+<p>6、<br>a 用来定义链接，如下代码 <br></p>
+<pre><code>&lt;a href=&quot;http://www.w3school.com.cn&quot;&gt;This is a link&lt;/a&gt;
+</code></pre><p>7、</p>
+<p>img 定义图像如下代码 <br> </p>
+<pre><code>&lt;img src=&quot;w3school.jpg&quot; width=&quot;104&quot; height=&quot;142&quot; /&gt;
+</code></pre><p>8、</p>
+<p>无序列表始于 ul 标签。每个列表项始于 li。代码和效果如下：</p>
+<pre><code>&lt;ul&gt;
+  &lt;li&gt;咖啡&lt;/li&gt;
+  &lt;li&gt;茶&lt;/li&gt;
+  &lt;li&gt;牛奶&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre><ul><br>  <li>咖啡</li><br>  <li>茶</li><br>  <li>牛奶</li><br></ul>
+
+
+<p>9、div是块级元素，它是可用于组合其他 HTML 元素的容器，浏览器通常会在 div 元素前后放置一个换行符。另一个常见的用途是文档布局。它取代了使用表格定义布局的老式方法，感觉可以理解成一个函数或集合。举例：</p>
+<pre><code>&lt;div style=&quot;color:#00FF00&quot;&gt;
+&lt;h3&gt;This is a header&lt;/h3&gt;
+&lt;p&gt;This is a paragraph.&lt;/p&gt;
+&lt;/div&gt;
+</code></pre><div style="color:#00FF00"><br>    <h3>This is a header</h3><br>    <p>This is a paragraph.</p><br>    </div>
+
+
+<p>10、 span 元素，然后对这个 span 元素的父元素，即 p 元素应用 class，这样就可以对这个类的子元素 span 应用相应的样式了。</p>
+<pre><code>&lt;p class=&quot;tip&quot;&gt;&lt;span&gt;提示：&lt;/span&gt;... ... ...&lt;/p&gt;
+</code></pre><p>或者CSS：</p>
+<pre><code>p.tip span {
+        font-weight:bold;
+        color:#ff9955;
+}
+</code></pre><p>11、类的概念，以div的一段代码为例，可以发现，在head部分定义了一个cities的类，然后div引用了这个类，作用是把背景设置为黑色，字体为白色，margin和padding都设置为20px，另外类引用到span也是差不多的，形如<span class="xxx">：</span></p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+.cities {
+    background-color:black;
+    color:white;
+    margin:20px;
+    padding:20px;
+}    
+&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;div class=&quot;cities&quot;&gt;
+&lt;h2&gt;London&lt;/h2&gt;
+
+&lt;p&gt;London is the capital city of England. It is the most populous city in the United Kingdom, with a metropolitan area of over 13 million inhabitants.&lt;/p&gt;
+
+&lt;p&gt;Standing on the River Thames, London has been a major settlement for two millennia, its history going back to its founding by the Romans, who named it Londinium.&lt;/p&gt;
+&lt;/div&gt; 
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>12、布局，用一张图来体验下，其实就是一些文字+底色的布局，但是看上去有点大气，用到了#符号，以及<br>div id=”header”这样的形式，具体代码<a href="http://www.w3school.com.cn/html/html_layout.asp" target="_blank" rel="external">参考这里【点我】</a></p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/htmlbuju.png" alt=""></p>
+<p>13、响应式设计，明显感觉Bootstrap的模式要好，所以省略。</p>
+<p>14、框架：frameset  可以在同一个浏览器窗口中显示不止一个页面。</p>
+<p>15、内联框架 iframe</p>
+<p>16、背景，一个是背景颜色，形如：body bgcolor=”#000000” 一个是背景图，形如 body background=”<a href="http://www.w3school.com.cn/clouds.gif" target="_blank" rel="external">http://www.w3school.com.cn/clouds.gif</a>“</p>
+<p>17、脚本：JavaScript 使 HTML 页面具有更强的动态和交互性。</p>
+<p>18、实体，关于一些特殊符号在html的格式，<a href="http://www.w3school.com.cn/html/html_entities.asp" target="_blank" rel="external">参考此链接【点我】</a></p>
+<p>19、颜色，列表出了一些常用颜色 ，其列出的一些配色，作为底色感觉不错，<a href="http://www.w3school.com.cn/html/html_colors.asp" target="_blank" rel="external">参考此链接【点我】</a> 以及<a href="http://www.w3school.com.cn/html/html_colornames.asp" target="_blank" rel="external">这个网址【点我】</a></p>
 
       
     </div>
@@ -347,13 +391,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/09/09/HTML基础学习小结/" rel="next" title="HTML基础学习小结">
+                <i class="fa fa-chevron-left"></i> HTML基础学习小结
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/08/27/推荐MarkdownPad 作为Win系统本机端的MarkDwon编辑器/" rel="prev" title="推荐MarkdownPad 作为Win系统本机端的MarkDwon编辑器">
-                推荐MarkdownPad 作为Win系统本机端的MarkDwon编辑器 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -453,7 +497,7 @@
               
             
             
-              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明：以下内容学习自：http-www-w3school-com-cn"><span class="nav-number">1.</span> <span class="nav-text">说明：以下内容学习自：http://www.w3school.com.cn/</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.1.</span> <span class="nav-text">This is a header</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
