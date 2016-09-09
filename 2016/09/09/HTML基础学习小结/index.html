@@ -108,7 +108,7 @@ img 定义图像如下代码
 7、
 img 定义图像如下代码  
 &amp;lt;img sr">
-<meta property="og:updated_time" content="2016-09-09T05:49:00.000Z">
+<meta property="og:updated_time" content="2016-09-09T06:04:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML基础学习小结">
 <meta name="twitter:description" content="1、最简单的格式，输出文字：
@@ -201,7 +201,7 @@ img 定义图像如下代码
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -211,7 +211,7 @@ img 定义图像如下代码
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -274,7 +274,7 @@ img 定义图像如下代码
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-09T01:59:28+08:00" content="2016-09-09">
               2016-09-09
             </time>
@@ -331,8 +331,14 @@ img 定义图像如下代码
 </code></pre><div style="color:#00FF00"><br>    <h3>This is a header</h3><br>    <p>This is a paragraph.</p><br>    </div>
 
 
-<p>10、</p>
-
+<p>10、 span 元素，然后对这个 span 元素的父元素，即 p 元素应用 class，这样就可以对这个类的子元素 span 应用相应的样式了。</p>
+<pre><code>&lt;p class=&quot;tip&quot;&gt;&lt;span&gt;提示：&lt;/span&gt;... ... ...&lt;/p&gt;
+</code></pre><p>或者CSS：</p>
+<pre><code>p.tip span {
+        font-weight:bold;
+        color:#ff9955;
+}
+</code></pre>
       
     </div>
 
@@ -412,10 +418,10 @@ img 定义图像如下代码
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -432,7 +438,7 @@ img 定义图像如下代码
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">21</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -490,7 +496,7 @@ img 定义图像如下代码
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
