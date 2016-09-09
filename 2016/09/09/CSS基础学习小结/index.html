@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/09/09/CSS基础学习小结/index.html">
 <meta property="og:site_name" content="天青色等烟雨">
 <meta property="og:description" content="说明：以下内容学习自：http://www.w3school.com.cn/1、简介：由于两种主要的浏览器（Netscape 和 Internet Explorer）不断地将新的 HTML 标签和属性（比如字体标签和颜色属性）添加到 HTML 规范中，创建文档内容清晰地独立于文档表现层的站点变得越来越困难。为了解决这个问题，万维网联盟（W3C），这个非营利的标准化联盟，肩负起了 HTML 标准化的">
-<meta property="og:updated_time" content="2016-09-09T11:11:22.000Z">
+<meta property="og:updated_time" content="2016-09-09T11:15:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS基础学习小结">
 <meta name="twitter:description" content="说明：以下内容学习自：http://www.w3school.com.cn/1、简介：由于两种主要的浏览器（Netscape 和 Internet Explorer）不断地将新的 HTML 标签和属性（比如字体标签和颜色属性）添加到 HTML 规范中，创建文档内容清晰地独立于文档表现层的站点变得越来越困难。为了解决这个问题，万维网联盟（W3C），这个非营利的标准化联盟，肩负起了 HTML 标准化的">
@@ -174,7 +174,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -184,7 +184,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -247,7 +247,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-09T16:59:28+08:00" content="2016-09-09">
               2016-09-09
             </time>
@@ -280,17 +280,20 @@
 <p>2、选择器：selector {declaration1; declaration2; … declarationN } 以及分组和继承。</p>
 <p>3、id选择器和类选择器，在Html基础学习的帖子已经接触了。</p>
 <p>4、如何插入样式表：</p>
-<ul>
-<li>外部样式表,浏览器会从文件 mystyle.css 中读到样式声明，并根据它来格式文档。</li>
-<li> <head><br> <link rel="stylesheet" type="text/css" href="mystyle.css"><br> </head>
-
-
-
-
-
-</li>
-</ul>
-
+<p>A) 外部样式表,浏览器会从文件 mystyle.css 中读到样式声明，并根据它来格式文档。</p>
+<pre><code>&lt;head&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;mystyle.css&quot; /&gt;
+&lt;/head&gt;
+</code></pre><p>B)内部样式表 当单个文档需要特殊的样式时，就应该使用内部样式表。你可以使用 <style> 标签在文档头部定义内部样式表.</p>
+<pre><code>&lt;head&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+  hr {color: sienna;}
+  p {margin-left: 20px;}
+  body {background-image: url(&quot;images/back40.gif&quot;);}
+&lt;/style&gt;
+&lt;/head&gt;
+</code></pre><p>C) 内联样式,慎用<br>D）多重样式</p>
+</style></p>
       
     </div>
 
@@ -370,10 +373,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -390,7 +393,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">22</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -448,7 +451,7 @@
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
