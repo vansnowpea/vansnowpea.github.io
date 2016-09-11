@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/re%202.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/re%203.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/re%204.png">
-<meta property="og:updated_time" content="2016-09-11T09:29:47.000Z">
+<meta property="og:updated_time" content="2016-09-11T10:34:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则式学习小结">
 <meta name="twitter:description" content="说明：以下内容学习自：http://www.imooc.com/由于这个视频教程已经说的比较详细，请参考原视频教程，这里为总结
@@ -185,7 +185,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Accueil
+            Startseite
           </a>
         </li>
       
@@ -195,7 +195,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -258,7 +258,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posté le</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
               2016-09-11
             </time>
@@ -308,7 +308,26 @@
 <li>获取图片地址，</li>
 <li>抓去图片内容并保存到本地，</li>
 </ol>
+<p>源代码：</p>
+<pre><code>import re
+import urllib2
 
+test_url = &apos;http://www.imooc.com/course/list&apos;
+req = urllib2.urlopen(test_url)
+buf = req.read()
+print buf
+
+listurl = re.findall(r&apos;http:.+\.jpg&apos;, buf)
+print listurl
+
+i = 0
+for url in listurl:
+    f = open(str(i)+&apos;.jpg&apos;, &apos;w&apos;)
+    req = urllib2.urlopen(url)
+    buf = req.read()
+    f.write(buf)
+    i += 1
+</code></pre>
       
     </div>
 
@@ -388,10 +407,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table Des Matières
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Ensemble
+            Übersicht
           </li>
         </ul>
       
@@ -408,7 +427,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">24</span>
-              <span class="site-state-item-name">articles</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -466,11 +485,11 @@
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  Thème -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>
