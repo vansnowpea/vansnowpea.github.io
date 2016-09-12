@@ -281,14 +281,40 @@
           
             <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/712" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、首先这个教程使用了V3的python，作者也讲到了一些功能函数，在V2不支持，经过测试，比如，urllib在V2就没有.request方法，实际上，网上反馈已经把urllib2合并到urllib中了。考虑到以后v3总会代替掉v2， 咱也升级算了。 顺便把win7也换成了win10, 貌似开机速度比win7还快。</p>
 <p>2、直接上代码吧，加了中文注释，和视频教程大同小异的：之前的代码都是在sublime或者cmder里面操作，可发现换到V3以后，一个print在sublime中断报错提示，可完全一样的代码我用ipython又可以运行，好诧异。<br>所以，最后我干脆跑到pycharm去调试的。forx</p>
-<p><strong>author</strong> = ‘Administrator’</p>
-<h1 id="coding-utf-8"><a href="#coding-utf-8" class="headerlink" title="coding:utf-8"></a>coding:utf-8</h1><p>import re<br>from urllib.request import urlopen<br>from bs4 import BeautifulSoup as bs</p>
-<h1 id="使用urllib的urlopen方法，去打开维基百科的首页，读取，并用utf-8解码"><a href="#使用urllib的urlopen方法，去打开维基百科的首页，读取，并用utf-8解码" class="headerlink" title="使用urllib的urlopen方法，去打开维基百科的首页，读取，并用utf-8解码"></a>使用urllib的urlopen方法，去打开维基百科的首页，读取，并用utf-8解码</h1><p>resp = urlopen(‘<a href="https://en.wikipedia.org/wiki/Main_Page&#39;).read().decode(&#39;utf-8" target="_blank" rel="external">https://en.wikipedia.org/wiki/Main_Page&#39;).read().decode(&#39;utf-8</a>‘)</p>
-<h1 id="使用BeautifulSoup去解析，其中html-parser是默认的解析器"><a href="#使用BeautifulSoup去解析，其中html-parser是默认的解析器" class="headerlink" title="使用BeautifulSoup去解析，其中html.parser是默认的解析器"></a>使用BeautifulSoup去解析，其中html.parser是默认的解析器</h1><p>soup = bs(resp, ‘html.parser’)</p>
-<h1 id="获取所有的-wiki-开头的a标签的href属性。"><a href="#获取所有的-wiki-开头的a标签的href属性。" class="headerlink" title="获取所有的/wiki/开头的a标签的href属性。"></a>获取所有的/wiki/开头的a标签的href属性。</h1><p>listUrls = soup.find_all(‘a’, href=re.compile(r’^/wiki/‘))<br>print(listUrls)</p>
-<h1 id="输出所有的词条对应的名称和URL"><a href="#输出所有的词条对应的名称和URL" class="headerlink" title="输出所有的词条对应的名称和URL"></a>输出所有的词条对应的名称和URL</h1><p>for url in listUrls:</p>
-<h1 id="排除-jpg-JPG结尾的"><a href="#排除-jpg-JPG结尾的" class="headerlink" title="排除.jpg JPG结尾的"></a>排除.jpg JPG结尾的</h1><p>if not re.search(‘.(jpg|JPG)$’, url[‘href’]):</p>
-<h1 id="显示名称和网址的格式"><a href="#显示名称和网址的格式" class="headerlink" title="显示名称和网址的格式"></a>显示名称和网址的格式</h1><h1 id="string只能显示一个，而get-text-可显示标签下所有的文字。"><a href="#string只能显示一个，而get-text-可显示标签下所有的文字。" class="headerlink" title="string只能显示一个，而get_text()可显示标签下所有的文字。"></a>string只能显示一个，而get_text()可显示标签下所有的文字。</h1><p>print(url.get_text(), ‘&lt;—-&gt;’, ‘<a href="https://en.wikipedia.org&#39;+url[&#39;href" target="_blank" rel="external">https://en.wikipedia.org&#39;+url[&#39;href</a>‘])</p>
+<pre><code>__author__ = &apos;Administrator&apos;
+# coding:utf-8
+
+import re
+from urllib.request import urlopen
+from bs4 import BeautifulSoup as bs
+
+# 使用urllib的urlopen方法，去打开维基百科的首页，读取，并用utf-8解码
+resp = urlopen(&apos;https://en.wikipedia.org/wiki/Main_Page&apos;).read().decode(&apos;utf-8&apos;)
+
+# 使用BeautifulSoup去解析，其中html.parser是默认的解析器
+soup = bs(resp, &apos;html.parser&apos;)
+# 获取所有的/wiki/开头的a标签的href属性。
+listUrls = soup.find_all(&apos;a&apos;, href=re.compile(r&apos;^/wiki/&apos;))
+print(listUrls)
+
+# 输出所有的词条对应的名称和URL
+for url in listUrls:
+    # 排除.jpg JPG结尾的
+    if not re.search(&apos;\.(jpg|JPG)$&apos;, url[&apos;href&apos;]):
+        # 显示名称和网址的格式
+        # string只能显示一个，而get_text()可显示标签下所有的文字。
+        print(url.get_text(), &apos;&lt;----&gt;&apos;, &apos;https://en.wikipedia.org&apos;+url[&apos;href&apos;])
+</code></pre><p>3、win10遇到的问题：<br>   MP出错，提示awesomium_v1.6.5异常，好在MP能提示到官网提供awesomium_v1.6.6_sdk_win.exe的下载，第一次安装失败，卡机，后重启Win10修复。</p>
+<p>4、方法总结：</p>
+<ul>
+<li>urllib相关函数得到网址和解码；</li>
+<li>bs4进行解析，可使用默认的解析器或者lxml等解析器；</li>
+<li>根据要求和RE规则，找到所有的地址列表</li>
+<li>for循环后加工</li>
+</ul>
+<p>5、结果展示：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/wiki%20citiao.png" alt=""></p>
+<p>6、PS：作者提到的chrome插件postman通过翻墙下了最新版，看下载量和5星评级应该不错，不过暂时我还没体验到他的威力，以后有感悟的话，再更新。</p>
 
           
         
