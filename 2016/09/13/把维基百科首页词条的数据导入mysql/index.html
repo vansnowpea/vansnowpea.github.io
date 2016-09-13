@@ -98,7 +98,7 @@ __author__ = &amp;apos;Administrator&amp;apo">
 __author__ = &amp;apos;Administrator&amp;apo">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%20wiki%20setting.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/wiki%20success.png">
-<meta property="og:updated_time" content="2016-09-13T08:27:18.000Z">
+<meta property="og:updated_time" content="2016-09-13T08:29:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="把维基百科首页词条的数据导入mysql【Python】">
 <meta name="twitter:description" content="说明：以下内容学习自：http://www.imooc.com/1、此文是跟着上一篇来写的，之前，已经完成了对维基百科词条的数据采集工作。
@@ -186,7 +186,7 @@ __author__ = &amp;apos;Administrator&amp;apo">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -196,7 +196,7 @@ __author__ = &amp;apos;Administrator&amp;apo">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -259,7 +259,7 @@ __author__ = &amp;apos;Administrator&amp;apo">
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-13T00:59:28+08:00" content="2016-09-13">
               2016-09-13
             </time>
@@ -288,7 +288,7 @@ __author__ = &amp;apos;Administrator&amp;apo">
       
 
       
-        <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/712" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、此文是跟着上一篇来写的，之前，已经完成了对维基百科词条的数据采集工作。</p>
+        <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/712" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、<a href="https://vansnowpea.github.io/2016/09/13/%E7%BB%B4%E5%9F%BA%E7%99%BE%E7%A7%91%E9%A6%96%E9%A1%B5%E8%AF%8D%E6%9D%A1%E7%9A%84%E7%88%AC%E5%8F%96/" target="_blank" rel="external">此文是跟着上一篇来写的</a>，之前，已经完成了对维基百科词条的数据采集工作。</p>
 <p>2、本文和作者示范不同的地方是，建立数据库和表格的工具我维持使用了sqlyog软件，作者用的是哪个不确定，因为视频看不清上面的名字。</p>
 <p>3、代码如下，已经有一定说明，原作者可没提供代码哦：</p>
 <pre><code>__author__ = &apos;Administrator&apos;
@@ -341,7 +341,7 @@ for url in listUrls:
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%20wiki%20setting.png" alt=""></p>
 <p>B）数据库的插入和执行命令，因为不太熟悉，对着视频敲代码都错误了几次  ）：</p>
 <p>C）当程序没有报错，在sqlyog查看表格要先刷新</p>
-<p>D）在之前的帖子，是在python2.7下，通过sqlyog的import MySQLdb 来操作mysql的，并且，代码中的密码对应的是passwd，而这个和直接用python 运行pymysql的对应命令password是不同的，要分清楚。 </p>
+<p>D）<a href="https://vansnowpea.github.io/2016/09/11/Python%E6%93%8D%E4%BD%9CMySQL%E6%95%B0%E6%8D%AE%E5%BA%93/" target="_blank" rel="external">在之前的帖子，是在python2.7下，通过sqlyog的import MySQLdb 来操作mysql的</a>，并且，代码中的密码对应的是passwd，而这个和直接用python 运行pymysql的对应命令password是不同的，要分清楚。 </p>
 <p>5、结果图，有一丝喜悦感：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/wiki%20success.png" alt=""></p>
 
       
@@ -423,10 +423,10 @@ for url in listUrls:
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -443,7 +443,7 @@ for url in listUrls:
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">28</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -501,7 +501,7 @@ for url in listUrls:
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
