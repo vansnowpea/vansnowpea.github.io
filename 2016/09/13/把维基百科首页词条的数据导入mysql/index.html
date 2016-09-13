@@ -98,7 +98,7 @@ __author__ = &amp;apos;Administrator&amp;apo">
 __author__ = &amp;apos;Administrator&amp;apo">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%20wiki%20setting.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/wiki%20success.png">
-<meta property="og:updated_time" content="2016-09-13T08:29:00.000Z">
+<meta property="og:updated_time" content="2016-09-13T08:31:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="把维基百科首页词条的数据导入mysql【Python】">
 <meta name="twitter:description" content="说明：以下内容学习自：http://www.imooc.com/1、此文是跟着上一篇来写的，之前，已经完成了对维基百科词条的数据采集工作。
@@ -186,7 +186,7 @@ __author__ = &amp;apos;Administrator&amp;apo">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -196,7 +196,7 @@ __author__ = &amp;apos;Administrator&amp;apo">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -259,7 +259,7 @@ __author__ = &amp;apos;Administrator&amp;apo">
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-13T00:59:28+08:00" content="2016-09-13">
               2016-09-13
             </time>
@@ -337,9 +337,9 @@ for url in listUrls:
         finally:
             connection.close()
 </code></pre><p>4、其中关键的步骤有：</p>
-<p>A）：sqlyog中表达的制作和设置，千万注意，id的int类型，需要添加自增，否则运行程序会报错： “Field ‘id’ doesn’t have a default value</p>
+<p>A）：sqlyog中表格的制作和设置，千万注意，id的int类型，需要添加自增，否则运行程序会报错： “Field ‘id’ doesn’t have a default value</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%20wiki%20setting.png" alt=""></p>
-<p>B）数据库的插入和执行命令，因为不太熟悉，对着视频敲代码都错误了几次  ）：</p>
+<p>B）数据库的插入和执行命令，因为不太熟悉，对着视频敲代码都错误了几次，并且要主义以下代码<code>urls</code> (<code>urlname</code>, <code>urlhref</code>)使用的是Tab键上面的那个上点号</p>
 <p>C）当程序没有报错，在sqlyog查看表格要先刷新</p>
 <p>D）<a href="https://vansnowpea.github.io/2016/09/11/Python%E6%93%8D%E4%BD%9CMySQL%E6%95%B0%E6%8D%AE%E5%BA%93/" target="_blank" rel="external">在之前的帖子，是在python2.7下，通过sqlyog的import MySQLdb 来操作mysql的</a>，并且，代码中的密码对应的是passwd，而这个和直接用python 运行pymysql的对应命令password是不同的，要分清楚。 </p>
 <p>5、结果图，有一丝喜悦感：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/wiki%20success.png" alt=""></p>
@@ -423,10 +423,10 @@ for url in listUrls:
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -443,7 +443,7 @@ for url in listUrls:
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">28</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -501,7 +501,7 @@ for url in listUrls:
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
