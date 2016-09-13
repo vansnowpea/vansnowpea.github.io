@@ -86,25 +86,22 @@
 
 <meta name="description" content="说明：以下内容学习自：http://www.imooc.com/1、此文是跟着上一篇来写的，之前，已经完成了对维基百科词条的数据采集工作。
 2、本文和作者示范不同的地方是，建立数据库和表格的工具我维持使用了sqlyog软件，作者用的是哪个不确定，因为视频看不清上面的名字。
-3、代码如下，已经有一定说明，原作者可没提供代码哦：
-__author__ = &amp;apos;Administrator&amp;apo">
+3、代码如下，已经有一定说明，原作者可没提供代码哦，请把password对应的密码部分，从xxxx修改成你的真实数据库密码：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="把维基百科首页词条的数据导入mysql【Python】">
 <meta property="og:url" content="http://yoursite.com/2016/09/13/把维基百科首页词条的数据导入mysql/index.html">
 <meta property="og:site_name" content="天青色等烟雨">
 <meta property="og:description" content="说明：以下内容学习自：http://www.imooc.com/1、此文是跟着上一篇来写的，之前，已经完成了对维基百科词条的数据采集工作。
 2、本文和作者示范不同的地方是，建立数据库和表格的工具我维持使用了sqlyog软件，作者用的是哪个不确定，因为视频看不清上面的名字。
-3、代码如下，已经有一定说明，原作者可没提供代码哦：
-__author__ = &amp;apos;Administrator&amp;apo">
+3、代码如下，已经有一定说明，原作者可没提供代码哦，请把password对应的密码部分，从xxxx修改成你的真实数据库密码：">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%20wiki%20setting.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/wiki%20success.png">
-<meta property="og:updated_time" content="2016-09-13T09:02:30.000Z">
+<meta property="og:updated_time" content="2016-09-13T09:25:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="把维基百科首页词条的数据导入mysql【Python】">
 <meta name="twitter:description" content="说明：以下内容学习自：http://www.imooc.com/1、此文是跟着上一篇来写的，之前，已经完成了对维基百科词条的数据采集工作。
 2、本文和作者示范不同的地方是，建立数据库和表格的工具我维持使用了sqlyog软件，作者用的是哪个不确定，因为视频看不清上面的名字。
-3、代码如下，已经有一定说明，原作者可没提供代码哦：
-__author__ = &amp;apos;Administrator&amp;apo">
+3、代码如下，已经有一定说明，原作者可没提供代码哦，请把password对应的密码部分，从xxxx修改成你的真实数据库密码：">
 <meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%20wiki%20setting.png">
 
 
@@ -186,7 +183,7 @@ __author__ = &amp;apos;Administrator&amp;apo">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Accueil
           </a>
         </li>
       
@@ -196,7 +193,7 @@ __author__ = &amp;apos;Administrator&amp;apo">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -259,7 +256,7 @@ __author__ = &amp;apos;Administrator&amp;apo">
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posté le</span>
             <time itemprop="dateCreated" datetime="2016-09-13T00:59:28+08:00" content="2016-09-13">
               2016-09-13
             </time>
@@ -290,7 +287,7 @@ __author__ = &amp;apos;Administrator&amp;apo">
       
         <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/712" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、<a href="https://vansnowpea.github.io/2016/09/13/%E7%BB%B4%E5%9F%BA%E7%99%BE%E7%A7%91%E9%A6%96%E9%A1%B5%E8%AF%8D%E6%9D%A1%E7%9A%84%E7%88%AC%E5%8F%96/" target="_blank" rel="external">此文是跟着上一篇来写的</a>，之前，已经完成了对维基百科词条的数据采集工作。</p>
 <p>2、本文和作者示范不同的地方是，建立数据库和表格的工具我维持使用了sqlyog软件，作者用的是哪个不确定，因为视频看不清上面的名字。</p>
-<p>3、代码如下，已经有一定说明，原作者可没提供代码哦：</p>
+<p>3、代码如下，已经有一定说明，原作者可没提供代码哦，请把password对应的密码部分，从xxxx修改成你的真实数据库密码：</p>
 <pre><code>__author__ = &apos;Administrator&apos;
 # coding:utf-8
 # 运行在python 3.5.2
@@ -319,7 +316,7 @@ for url in listUrls:
         # 得到数据库的连接
         connection = pymysql.connect(host=&apos;localhost&apos;,
                                user=&apos;root&apos;,
-                               password=&apos;fanka111&apos;,
+                               password=&apos;XXXX&apos;,
                                db=&apos;wikiurl&apos;,
                                charset=&apos;utf8&apos;
                                )
@@ -423,10 +420,10 @@ for url in listUrls:
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table Des Matières
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Ensemble
           </li>
         </ul>
       
@@ -443,7 +440,7 @@ for url in listUrls:
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">28</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">articles</span>
             </a>
           </div>
 
@@ -501,11 +498,11 @@ for url in listUrls:
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  Theme -
+  Thème -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>
