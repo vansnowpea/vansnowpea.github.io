@@ -102,7 +102,7 @@
     motion: true,
     duoshuo: {
       userId: 0,
-      author: 'Author'
+      author: 'Penulis'
     }
   };
 </script>
@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Beranda
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Arsip
           </a>
         </li>
       
@@ -248,7 +248,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Diposting di</span>
             <time itemprop="dateCreated" datetime="2016-09-13T23:59:28+08:00" content="2016-09-13">
               2016-09-13
             </time>
@@ -279,62 +279,11 @@
       
         
           
-            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/video/12634" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、使用pdfminer3k，如果直接pip安装非常卡导致失败，所以去<a href="https://pypi.python.org/pypi/pdfminer3k/" target="_blank" rel="external">https://pypi.python.org/pypi/pdfminer3k/</a> 用迅雷下载后，在对应路径，用python setup.py install 来安装。</p>
-<p>2、在下载文件的docs文件夹下有一个index.html，里面有 PDFMiner API相关的说明，操作流程如下2个图：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/pdf1.png" alt=""></p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/pdf2.png" alt=""></p>
-<p>3、示范代码：</p>
-<pre><code>__author__ = &apos;Administrator&apos;
-# python 3.5.2
-
-from pdfminer.pdfparser import PDFParser, PDFDocument
-from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
-from pdfminer.pdfdevice import PDFDevice
-from pdfminer.layout import LAParams
-from pdfminer.converter import PDFPageAggregator
-
-# 获取文档对象，以二进制读的模式。
-fp = open(&apos;naacl06-shinyama.pdf&apos;, &apos;rb&apos;)
-
-# 创建一个与文档关联的parser
-parser = PDFParser(fp)
-
-# pdf文档的对象
-doc = PDFDocument()
-
-# 连接解释器和文档对象
-parser.set_document(doc)
-doc.set_parser(parser)
-
-# 初始化文档
-doc.initialize(&apos;&apos;)
-
-# 创建pdf资源管理器
-resource = PDFResourceManager()
-
-# 创建参数分析器
-laparam = LAParams()
-
-# 创建一个聚合器
-device = PDFPageAggregator(resource, laparams=laparam)
-
-# 创建一个页面解释器
-interpreter = PDFPageInterpreter(resource, device)
-
-#使用文档对象从页面读取内容
-for page in doc.get_pages():
-    # 使用页面解释器来读取
-    interpreter.process_page(page)
-
-    # 使用聚合器来获取内容
-    layout = device.get_result()
-
-    for out in layout:
-        if hasattr(out, &apos;get_text&apos;):
-            print(out.get_text())
-</code></pre><p>4、结果展示，读取了示范pdf的几乎所有文字，不包括一些图，表格公式等复杂的： </p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/pdf%203%20result.png" alt=""></p>
-<p>7、总结：如果需要写论文什么的，感觉还是挺有用的，作者提到了还有一些更高级的功能，不过没有展开，有点可惜，另外pdfminer3k的最后更新时间2012/07/20，貌似作者停止更新了。而一个朋友反馈：pdf解析器和修改器现在最好的应该是一个JAVA库，还有一个就是Adobe和foxit提供的API。</p>
+            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/video/12634" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、首先记录一个遇到的问题，一开始vi编辑模式下按方向键会变成ABCD,ubuntu下 vi输入方向键会变成ABCD，这是ubuntu预装的是vim tiny版本，安装vim full版本即可解决。先卸载vim-tiny：</p>
+<pre><code>$ sudo apt-get remove vim-common
+</code></pre><p>再安装vim full：</p>
+<pre><code>$ sudo apt-get install vim
+</code></pre><p>2、</p>
 
           
         
@@ -397,7 +346,7 @@ for page in doc.get_pages():
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Diposting di</span>
             <time itemprop="dateCreated" datetime="2016-09-13T23:59:28+08:00" content="2016-09-13">
               2016-09-13
             </time>
@@ -546,7 +495,7 @@ for page in doc.get_pages():
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Diposting di</span>
             <time itemprop="dateCreated" datetime="2016-09-13T00:59:28+08:00" content="2016-09-13">
               2016-09-13
             </time>
@@ -675,7 +624,7 @@ for url in listUrls:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Diposting di</span>
             <time itemprop="dateCreated" datetime="2016-09-13T00:59:28+08:00" content="2016-09-13">
               2016-09-13
             </time>
@@ -860,7 +809,7 @@ finally:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Diposting di</span>
             <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
               2016-09-11
             </time>
@@ -995,7 +944,7 @@ for url in listurl:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Diposting di</span>
             <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
               2016-09-11
             </time>
@@ -1106,7 +1055,7 @@ for url in listurl:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Diposting di</span>
             <time itemprop="dateCreated" datetime="2016-09-09T16:59:28+08:00" content="2016-09-09">
               2016-09-09
             </time>
@@ -1206,7 +1155,7 @@ for url in listurl:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Diposting di</span>
             <time itemprop="dateCreated" datetime="2016-09-09T16:59:28+08:00" content="2016-09-09">
               2016-09-09
             </time>
@@ -1344,7 +1293,7 @@ ul.disc {list-style-type: disc}
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Diposting di</span>
             <time itemprop="dateCreated" datetime="2016-09-09T14:59:28+08:00" content="2016-09-09">
               2016-09-09
             </time>
@@ -1507,7 +1456,7 @@ ul.disc {list-style-type: disc}
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Diposting di</span>
             <time itemprop="dateCreated" datetime="2016-09-09T01:59:28+08:00" content="2016-09-09">
               2016-09-09
             </time>
@@ -1617,7 +1566,7 @@ ul.disc {list-style-type: disc}
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">29</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posting</span>
             </a>
           </div>
 
@@ -1664,11 +1613,11 @@ ul.disc {list-style-type: disc}
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  Theme -
+  Tema -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>
