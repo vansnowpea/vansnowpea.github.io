@@ -84,27 +84,21 @@
 
 
 
-<meta name="description" content="上图中我在文章中输入的，竟然引发了Hexo的 Hexo g 命令的异常报错：
-FATAL [Line xx, Column yy]  unknown block tag:  load 
-在Hexo官网上，现在也没找到到底如何解决，以及具体的原因，只能猜测是引发了内置函数的冲突。
-在数千字的文章中定位找到这个bug ，也是花了点时间。 不过好在定位出来了。 这是第一次遇到在文章中，而非源代码，也能">
+<meta name="description" content="说明：以下内容学习自：http://www.imooc.com/1、首先这个教程使用了V3的python，作者也讲到了一些功能函数，在V2不支持，经过测试，比如，urllib在V2就没有.request方法，实际上，网上反馈已经把urllib2合并到urllib中了。考虑到以后v3总会代替掉v2， 咱也升级算了。 顺便把win7也换成了win10, 貌似开机速度比win7还快。
+2、直接上代码吧，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo模版一个bug的发现和记录">
-<meta property="og:url" content="http://yoursite.com/2016/09/05/Hexo模版一个bug的发现和记录/index.html">
+<meta property="og:title" content="维基百科首页词条的爬取【Python】">
+<meta property="og:url" content="http://yoursite.com/2016/09/13/维基百科首页词条的爬取 - 副本/index.html">
 <meta property="og:site_name" content="天青色等烟雨">
-<meta property="og:description" content="上图中我在文章中输入的，竟然引发了Hexo的 Hexo g 命令的异常报错：
-FATAL [Line xx, Column yy]  unknown block tag:  load 
-在Hexo官网上，现在也没找到到底如何解决，以及具体的原因，只能猜测是引发了内置函数的冲突。
-在数千字的文章中定位找到这个bug ，也是花了点时间。 不过好在定位出来了。 这是第一次遇到在文章中，而非源代码，也能">
-<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/hexo%20load%E6%8A%A5%E9%94%99.png">
-<meta property="og:updated_time" content="2016-09-05T00:29:17.000Z">
+<meta property="og:description" content="说明：以下内容学习自：http://www.imooc.com/1、首先这个教程使用了V3的python，作者也讲到了一些功能函数，在V2不支持，经过测试，比如，urllib在V2就没有.request方法，实际上，网上反馈已经把urllib2合并到urllib中了。考虑到以后v3总会代替掉v2， 咱也升级算了。 顺便把win7也换成了win10, 貌似开机速度比win7还快。
+2、直接上代码吧，">
+<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/wiki%20citiao.png">
+<meta property="og:updated_time" content="2016-09-12T17:32:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo模版一个bug的发现和记录">
-<meta name="twitter:description" content="上图中我在文章中输入的，竟然引发了Hexo的 Hexo g 命令的异常报错：
-FATAL [Line xx, Column yy]  unknown block tag:  load 
-在Hexo官网上，现在也没找到到底如何解决，以及具体的原因，只能猜测是引发了内置函数的冲突。
-在数千字的文章中定位找到这个bug ，也是花了点时间。 不过好在定位出来了。 这是第一次遇到在文章中，而非源代码，也能">
-<meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com/hexo%20load%E6%8A%A5%E9%94%99.png">
+<meta name="twitter:title" content="维基百科首页词条的爬取【Python】">
+<meta name="twitter:description" content="说明：以下内容学习自：http://www.imooc.com/1、首先这个教程使用了V3的python，作者也讲到了一些功能函数，在V2不支持，经过测试，比如，urllib在V2就没有.request方法，实际上，网上反馈已经把urllib2合并到urllib中了。考虑到以后v3总会代替掉v2， 咱也升级算了。 顺便把win7也换成了win10, 貌似开机速度比win7还快。
+2、直接上代码吧，">
+<meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com/wiki%20citiao.png">
 
 
 
@@ -125,9 +119,9 @@ FATAL [Line xx, Column yy]  unknown block tag:  load
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/05/Hexo模版一个bug的发现和记录/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/13/维基百科首页词条的爬取 - 副本/"/>
 
-  <title> Hexo模版一个bug的发现和记录 | 天青色等烟雨 </title>
+  <title> 维基百科首页词条的爬取【Python】 | 天青色等烟雨 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -247,7 +241,7 @@ FATAL [Line xx, Column yy]  unknown block tag:  load
             
             
               
-                Hexo模版一个bug的发现和记录
+                维基百科首页词条的爬取【Python】
               
             
           </h1>
@@ -259,8 +253,8 @@ FATAL [Line xx, Column yy]  unknown block tag:  load
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-05T01:59:28+08:00" content="2016-09-05">
-              2016-09-05
+            <time itemprop="dateCreated" datetime="2016-09-13T00:59:28+08:00" content="2016-09-13">
+              2016-09-13
             </time>
           </span>
 
@@ -287,11 +281,42 @@ FATAL [Line xx, Column yy]  unknown block tag:  load
       
 
       
-        <p><img src="http://ocg7i7pt6.bkt.clouddn.com/hexo%20load%E6%8A%A5%E9%94%99.png" alt=""></p>
-<p>上图中我在文章中输入的，竟然引发了Hexo的 Hexo g 命令的异常报错：</p>
-<p>FATAL<unknown path=""> [Line xx, Column yy]<br>  unknown block tag:  load </unknown></p>
-<p>在Hexo官网上，现在也没找到到底如何解决，以及具体的原因，只能猜测是引发了内置函数的冲突。</p>
-<p>在数千字的文章中定位找到这个bug ，也是花了点时间。 不过好在定位出来了。 这是第一次遇到在文章中，而非源代码，也能引发bug，一开始没想到会这样，后来想了下其原理应该是在内容更新前，Hexo会扫描发布内容中所含有的代码类，这一次很不幸引发了冲突。 </p>
+        <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/712" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、首先这个教程使用了V3的python，作者也讲到了一些功能函数，在V2不支持，经过测试，比如，urllib在V2就没有.request方法，实际上，网上反馈已经把urllib2合并到urllib中了。考虑到以后v3总会代替掉v2， 咱也升级算了。 顺便把win7也换成了win10, 貌似开机速度比win7还快。</p>
+<p>2、直接上代码吧，加了中文注释，和视频教程大同小异的：之前的代码都是在sublime或者cmder里面操作，可发现换到V3以后，一个print在sublime中断报错提示，可完全一样的代码我用ipython又可以运行，好诧异。<br>所以，最后我干脆跑到pycharm去调试的。</p>
+<pre><code>__author__ = &apos;Administrator&apos;
+# coding:utf-8
+
+import re
+from urllib.request import urlopen
+from bs4 import BeautifulSoup as bs
+
+# 使用urllib的urlopen方法，去打开维基百科的首页，读取，并用utf-8解码
+resp = urlopen(&apos;https://en.wikipedia.org/wiki/Main_Page&apos;).read().decode(&apos;utf-8&apos;)
+
+# 使用BeautifulSoup去解析，其中html.parser是默认的解析器
+soup = bs(resp, &apos;html.parser&apos;)
+# 获取所有的/wiki/开头的a标签的href属性。
+listUrls = soup.find_all(&apos;a&apos;, href=re.compile(r&apos;^/wiki/&apos;))
+print(listUrls)
+
+# 输出所有的词条对应的名称和URL
+for url in listUrls:
+    # 排除.jpg JPG结尾的
+    if not re.search(&apos;\.(jpg|JPG)$&apos;, url[&apos;href&apos;]):
+        # 显示名称和网址的格式
+        # string只能显示一个，而get_text()可显示标签下所有的文字。
+        print(url.get_text(), &apos;&lt;----&gt;&apos;, &apos;https://en.wikipedia.org&apos;+url[&apos;href&apos;])
+</code></pre><p>3、win10遇到的问题：<br>   MP出错，提示awesomium_v1.6.5异常，好在MP能提示到官网提供awesomium_v1.6.6_sdk_win.exe的下载，第一次安装失败，卡机，后重启Win10修复。</p>
+<p>4、方法总结：</p>
+<ul>
+<li>urllib相关函数得到网址和解码；</li>
+<li>bs4进行解析，可使用默认的解析器或者lxml等解析器；</li>
+<li>根据要求和RE规则，找到所有的地址列表</li>
+<li>for循环后加工</li>
+</ul>
+<p>5、结果展示：网址直接可打开对应的wiki信息哦。</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/wiki%20citiao.png" alt=""></p>
+<p>6、PS：作者提到的chrome插件postman通过翻墙下了最新版，看下载量和5星评级应该不错，不过暂时我还没体验到他的威力，以后有感悟的话，再更新。</p>
 
       
     </div>
@@ -317,17 +342,13 @@ FATAL [Line xx, Column yy]  unknown block tag:  load
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/05/Windows下Python+Django制作网站的方法2/" rel="next" title="Windows下Python+Django制作网站的方法（2）">
-                <i class="fa fa-chevron-left"></i> Windows下Python+Django制作网站的方法（2）
+              <a href="/2016/09/13/维基百科首页词条的爬取/" rel="next" title="维基百科首页词条的爬取【Python】">
+                <i class="fa fa-chevron-left"></i> 维基百科首页词条的爬取【Python】
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/06/推荐Tornado的中文教程/" rel="prev" title="推荐Tornado的中文教程">
-                推荐Tornado的中文教程 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -427,7 +448,7 @@ FATAL [Line xx, Column yy]  unknown block tag:  load
               
             
             
-              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明：以下内容学习自：http-www-imooc-com"><span class="nav-number">1.</span> <span class="nav-text">说明：以下内容学习自：http://www.imooc.com/</span></a></li></ol></div>
             
           </div>
         </section>

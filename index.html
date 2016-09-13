@@ -235,6 +235,135 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/13/维基百科首页词条的爬取 - 副本/" itemprop="url">
+                  维基百科首页词条的爬取【Python】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-13T00:59:28+08:00" content="2016-09-13">
+              2016-09-13
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/712" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、首先这个教程使用了V3的python，作者也讲到了一些功能函数，在V2不支持，经过测试，比如，urllib在V2就没有.request方法，实际上，网上反馈已经把urllib2合并到urllib中了。考虑到以后v3总会代替掉v2， 咱也升级算了。 顺便把win7也换成了win10, 貌似开机速度比win7还快。</p>
+<p>2、直接上代码吧，加了中文注释，和视频教程大同小异的：之前的代码都是在sublime或者cmder里面操作，可发现换到V3以后，一个print在sublime中断报错提示，可完全一样的代码我用ipython又可以运行，好诧异。<br>所以，最后我干脆跑到pycharm去调试的。</p>
+<pre><code>__author__ = &apos;Administrator&apos;
+# coding:utf-8
+
+import re
+from urllib.request import urlopen
+from bs4 import BeautifulSoup as bs
+
+# 使用urllib的urlopen方法，去打开维基百科的首页，读取，并用utf-8解码
+resp = urlopen(&apos;https://en.wikipedia.org/wiki/Main_Page&apos;).read().decode(&apos;utf-8&apos;)
+
+# 使用BeautifulSoup去解析，其中html.parser是默认的解析器
+soup = bs(resp, &apos;html.parser&apos;)
+# 获取所有的/wiki/开头的a标签的href属性。
+listUrls = soup.find_all(&apos;a&apos;, href=re.compile(r&apos;^/wiki/&apos;))
+print(listUrls)
+
+# 输出所有的词条对应的名称和URL
+for url in listUrls:
+    # 排除.jpg JPG结尾的
+    if not re.search(&apos;\.(jpg|JPG)$&apos;, url[&apos;href&apos;]):
+        # 显示名称和网址的格式
+        # string只能显示一个，而get_text()可显示标签下所有的文字。
+        print(url.get_text(), &apos;&lt;----&gt;&apos;, &apos;https://en.wikipedia.org&apos;+url[&apos;href&apos;])
+</code></pre><p>3、win10遇到的问题：<br>   MP出错，提示awesomium_v1.6.5异常，好在MP能提示到官网提供awesomium_v1.6.6_sdk_win.exe的下载，第一次安装失败，卡机，后重启Win10修复。</p>
+<p>4、方法总结：</p>
+<ul>
+<li>urllib相关函数得到网址和解码；</li>
+<li>bs4进行解析，可使用默认的解析器或者lxml等解析器；</li>
+<li>根据要求和RE规则，找到所有的地址列表</li>
+<li>for循环后加工</li>
+</ul>
+<p>5、结果展示：网址直接可打开对应的wiki信息哦。</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/wiki%20citiao.png" alt=""></p>
+<p>6、PS：作者提到的chrome插件postman通过翻墙下了最新版，看下载量和5星评级应该不错，不过暂时我还没体验到他的威力，以后有感悟的话，再更新。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/13/维基百科首页词条的爬取/" itemprop="url">
                   维基百科首页词条的爬取【Python】
                 </a>
@@ -1316,102 +1445,6 @@ for link in links:
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/07/Http权威指南 书籍下载和推荐/" itemprop="url">
-                  《Http权威指南》 完整版 书籍下载和推荐
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-07T10:59:28+08:00" content="2016-09-07">
-              2016-09-07
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="下载地址【点我】："><a href="#下载地址【点我】：" class="headerlink" title="下载地址【点我】："></a><a href="http://ocg7i7pt6.bkt.clouddn.com/HTTP%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%EF%BC%88%E7%9C%9F%E6%AD%A3%E7%9A%84%E5%AE%8C%E6%95%B4%E7%89%88%EF%BC%8C%E9%80%81%E7%BB%99%E7%88%B1%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%BA%BA%EF%BC%89.pdf" target="_blank" rel="external">下载地址【点我】</a>：</h1><p><img src="http://ocg7i7pt6.bkt.clouddn.com/111.png" alt=""></p>
-<p>说明：全文主要目录：</p>
-<p>可参考：<a href="http://baike.baidu.com/link?url=VfzWb4lL-ktk5UE0TNVUE5rjrjZbpGSPdkTPO70NRSc0vVf48GdgehNQGr351UFCtY266E3d6TCQqTb3gg9zBq" target="_blank" rel="external">百科地址【点我】</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1457,7 +1490,7 @@ for link in links:
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
