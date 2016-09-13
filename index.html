@@ -314,7 +314,7 @@ for url in listUrls:
                                db=&apos;wikiurl&apos;,
                                charset=&apos;utf8&apos;
                                )
-        print(&apos;I got it&apos;)
+
         try:
             # 创建会话指针
             with connection.cursor() as cursor:
@@ -327,7 +327,13 @@ for url in listUrls:
 
         finally:
             connection.close()
-</code></pre><p>4、</p>
+</code></pre><p>4、其中关键的步骤有：</p>
+<p>A）：sqlyog中表达的制作和设置，千万注意，id的int类型，需要添加自增，否则运行程序会报错： “Field ‘id’ doesn’t have a default value</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%20wiki%20setting.png" alt=""></p>
+<p>B）数据库的插入和执行命令，因为不太熟悉，对着视频敲代码都错误了几次  ）：</p>
+<p>C）当程序没有报错，在sqlyog查看表格要先刷新</p>
+<p>D）在之前的帖子，是在python2.7下，通过sqlyog的import MySQLdb 来操作mysql的，并且，代码中的密码对应的是passwd，而这个和直接用python 运行pymysql的对应命令password是不同的，要分清楚。 </p>
+<p>5、结果图：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/wiki%20success.png" alt=""></p>
 
           
         
