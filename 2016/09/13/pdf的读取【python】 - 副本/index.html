@@ -84,24 +84,23 @@
 
 
 
-<meta name="description" content="本来想看《鸟哥的Linux私房菜》，可一看要1774页，顿时伤感啊有木有。先看看开始部分吧，讲解了Unix系统的来龙去脉以及Linux的诞生历史等。写的还是挺详细的。那时候的系统界面看着真是古董，然后鼠标拖到最后，进入了现在的Linux的Shell界面，竟然有一丝激动。
-这几天看了点爬虫的知识，感觉就是看别人的HTML分析部分很easy的样子，但自己看的总是有点云里雾里的。。。
-所以奔着有问题解">
+<meta name="description" content="说明：以下内容学习自：http://www.imooc.com/1、使用pdfminer3k，如果直接pip安装非常卡导致失败，所以去https://pypi.python.org/pypi/pdfminer3k/ 用迅雷下载后，在对应路径，用python setup.py install 来安装。
+2、在下载文件的docs文件夹下有一个index.html，里面有 PDFMiner API相关的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux的历史和HTML学习的必要">
-<meta property="og:url" content="http://yoursite.com/2016/09/09/Linux的历史和HTML学习的必要/index.html">
+<meta property="og:title" content="pdf的读取【python】">
+<meta property="og:url" content="http://yoursite.com/2016/09/13/pdf的读取【python】 - 副本/index.html">
 <meta property="og:site_name" content="天青色等烟雨">
-<meta property="og:description" content="本来想看《鸟哥的Linux私房菜》，可一看要1774页，顿时伤感啊有木有。先看看开始部分吧，讲解了Unix系统的来龙去脉以及Linux的诞生历史等。写的还是挺详细的。那时候的系统界面看着真是古董，然后鼠标拖到最后，进入了现在的Linux的Shell界面，竟然有一丝激动。
-这几天看了点爬虫的知识，感觉就是看别人的HTML分析部分很easy的样子，但自己看的总是有点云里雾里的。。。
-所以奔着有问题解">
-<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/Tulips.jpg">
-<meta property="og:updated_time" content="2016-09-08T16:26:59.000Z">
+<meta property="og:description" content="说明：以下内容学习自：http://www.imooc.com/1、使用pdfminer3k，如果直接pip安装非常卡导致失败，所以去https://pypi.python.org/pypi/pdfminer3k/ 用迅雷下载后，在对应路径，用python setup.py install 来安装。
+2、在下载文件的docs文件夹下有一个index.html，里面有 PDFMiner API相关的">
+<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/pdf1.png">
+<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/pdf2.png">
+<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/pdf%203%20result.png">
+<meta property="og:updated_time" content="2016-09-13T15:56:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux的历史和HTML学习的必要">
-<meta name="twitter:description" content="本来想看《鸟哥的Linux私房菜》，可一看要1774页，顿时伤感啊有木有。先看看开始部分吧，讲解了Unix系统的来龙去脉以及Linux的诞生历史等。写的还是挺详细的。那时候的系统界面看着真是古董，然后鼠标拖到最后，进入了现在的Linux的Shell界面，竟然有一丝激动。
-这几天看了点爬虫的知识，感觉就是看别人的HTML分析部分很easy的样子，但自己看的总是有点云里雾里的。。。
-所以奔着有问题解">
-<meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com/Tulips.jpg">
+<meta name="twitter:title" content="pdf的读取【python】">
+<meta name="twitter:description" content="说明：以下内容学习自：http://www.imooc.com/1、使用pdfminer3k，如果直接pip安装非常卡导致失败，所以去https://pypi.python.org/pypi/pdfminer3k/ 用迅雷下载后，在对应路径，用python setup.py install 来安装。
+2、在下载文件的docs文件夹下有一个index.html，里面有 PDFMiner API相关的">
+<meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com/pdf1.png">
 
 
 
@@ -122,9 +121,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/09/Linux的历史和HTML学习的必要/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/13/pdf的读取【python】 - 副本/"/>
 
-  <title> Linux的历史和HTML学习的必要 | 天青色等烟雨 </title>
+  <title> pdf的读取【python】 | 天青色等烟雨 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -244,7 +243,7 @@
             
             
               
-                Linux的历史和HTML学习的必要
+                pdf的读取【python】
               
             
           </h1>
@@ -256,8 +255,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-09T01:59:28+08:00" content="2016-09-09">
-              2016-09-09
+            <time itemprop="dateCreated" datetime="2016-09-13T23:59:28+08:00" content="2016-09-13">
+              2016-09-13
             </time>
           </span>
 
@@ -284,11 +283,62 @@
       
 
       
-        <p><img src="http://ocg7i7pt6.bkt.clouddn.com/Tulips.jpg" alt=""></p>
-<p>本来想看《鸟哥的Linux私房菜》，可一看要1774页，顿时伤感啊有木有。先看看开始部分吧，讲解了Unix系统的来龙去脉以及Linux的诞生历史等。写的还是挺详细的。那时候的系统界面看着真是古董，然后鼠标拖到最后，进入了现在的Linux的Shell界面，竟然有一丝激动。</p>
-<p>这几天看了点爬虫的知识，感觉就是看别人的HTML分析部分很easy的样子，但自己看的总是有点云里雾里的。。。</p>
-<p>所以奔着有问题解决问题先的思路，先暂停Linux书籍，而是先看HTML了。</p>
-<p>那么，推荐下较有人气的<a href="http://www.w3school.com.cn/" target="_blank" rel="external">W3school【点我】</a></p>
+        <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/video/12634" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、使用pdfminer3k，如果直接pip安装非常卡导致失败，所以去<a href="https://pypi.python.org/pypi/pdfminer3k/" target="_blank" rel="external">https://pypi.python.org/pypi/pdfminer3k/</a> 用迅雷下载后，在对应路径，用python setup.py install 来安装。</p>
+<p>2、在下载文件的docs文件夹下有一个index.html，里面有 PDFMiner API相关的说明，操作流程如下2个图：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/pdf1.png" alt=""></p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/pdf2.png" alt=""></p>
+<p>3、示范代码：</p>
+<pre><code>__author__ = &apos;Administrator&apos;
+# python 3.5.2
+
+from pdfminer.pdfparser import PDFParser, PDFDocument
+from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
+from pdfminer.pdfdevice import PDFDevice
+from pdfminer.layout import LAParams
+from pdfminer.converter import PDFPageAggregator
+
+# 获取文档对象，以二进制读的模式。
+fp = open(&apos;naacl06-shinyama.pdf&apos;, &apos;rb&apos;)
+
+# 创建一个与文档关联的parser
+parser = PDFParser(fp)
+
+# pdf文档的对象
+doc = PDFDocument()
+
+# 连接解释器和文档对象
+parser.set_document(doc)
+doc.set_parser(parser)
+
+# 初始化文档
+doc.initialize(&apos;&apos;)
+
+# 创建pdf资源管理器
+resource = PDFResourceManager()
+
+# 创建参数分析器
+laparam = LAParams()
+
+# 创建一个聚合器
+device = PDFPageAggregator(resource, laparams=laparam)
+
+# 创建一个页面解释器
+interpreter = PDFPageInterpreter(resource, device)
+
+#使用文档对象从页面读取内容
+for page in doc.get_pages():
+    # 使用页面解释器来读取
+    interpreter.process_page(page)
+
+    # 使用聚合器来获取内容
+    layout = device.get_result()
+
+    for out in layout:
+        if hasattr(out, &apos;get_text&apos;):
+            print(out.get_text())
+</code></pre><p>4、结果展示，读取了示范pdf的几乎所有文字，不包括一些图，表格公式等复杂的： </p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/pdf%203%20result.png" alt=""></p>
+<p>7、总结：如果需要写论文什么的，感觉还是挺有用的，作者提到了还有一些更高级的功能，不过没有展开，有点可惜，另外pdfminer3k的最后更新时间2012/07/20，貌似作者停止更新了。而一个朋友反馈：pdf解析器和修改器现在最好的应该是一个JAVA库，还有一个就是Adobe和foxit提供的API。</p>
 
       
     </div>
@@ -314,17 +364,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/07/beautiful soup+ Xpath的基础操作/" rel="next" title="beautiful soup+ Xpath的基础操作">
-                <i class="fa fa-chevron-left"></i> beautiful soup+ Xpath的基础操作
+              <a href="/2016/09/13/pdf的读取【python】/" rel="next" title="pdf的读取【python】">
+                <i class="fa fa-chevron-left"></i> pdf的读取【python】
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/09/HTML基础学习小结/" rel="prev" title="HTML基础学习小结">
-                HTML基础学习小结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -424,7 +470,7 @@
               
             
             
-              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明：以下内容学习自：http-www-imooc-com"><span class="nav-number">1.</span> <span class="nav-text">说明：以下内容学习自：http://www.imooc.com/</span></a></li></ol></div>
             
           </div>
         </section>
