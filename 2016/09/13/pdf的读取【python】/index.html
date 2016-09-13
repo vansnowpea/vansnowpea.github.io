@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/pdf1.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/pdf2.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/pdf%203%20result.png">
-<meta property="og:updated_time" content="2016-09-13T15:52:36.000Z">
+<meta property="og:updated_time" content="2016-09-13T15:56:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pdf的读取【python】">
 <meta name="twitter:description" content="说明：以下内容学习自：http://www.imooc.com/1、使用pdfminer3k，如果直接pip安装非常卡导致失败，所以去https://pypi.python.org/pypi/pdfminer3k/ 用迅雷下载后，在对应路径，用python setup.py install 来安装。
@@ -181,7 +181,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -191,7 +191,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -254,7 +254,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-13T23:59:28+08:00" content="2016-09-13">
               2016-09-13
             </time>
@@ -338,7 +338,7 @@ for page in doc.get_pages():
             print(out.get_text())
 </code></pre><p>4、结果展示，读取了示范pdf的几乎所有文字，不包括一些图，表格公式等复杂的： </p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/pdf%203%20result.png" alt=""></p>
-<p>7、总结：如果需要写论文什么的，感觉还是挺有用的，作者提到了还有一些更高级的功能，不过没有展开，有点可惜，另外感到疑问的是pdfminer3k的最后更新时间2012/07/20， 但是他是支持python 3的 ， 这就神奇了。</p>
+<p>7、总结：如果需要写论文什么的，感觉还是挺有用的，作者提到了还有一些更高级的功能，不过没有展开，有点可惜，另外pdfminer3k的最后更新时间2012/07/20，貌似作者停止更新了。而一个朋友反馈：pdf解析器和修改器现在最好的应该是一个JAVA库，还有一个就是Adobe和foxit提供的API</p>
 
       
     </div>
@@ -419,10 +419,10 @@ for page in doc.get_pages():
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -439,7 +439,7 @@ for page in doc.get_pages():
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">28</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -497,7 +497,7 @@ for page in doc.get_pages():
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
