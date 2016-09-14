@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="天青色等烟雨">
 <meta property="og:description" content="说明：以下内容学习自：http://www.imooc.com/1、首先要感谢原作者非常细致的讲解，在网页分析的时候还是学到了一些很有用的技巧。后续会总结。
 2、这次是跟着作者，使用了Eclipse + Pydev的软件调试的，相对于Pycharm，他的优点就是可以动态插入需要的类和方法，而同比Pycharm只能动态匹配类，方法就没反应了。不过在界面配色方面明显没有Pyhcarm做的好。总之，目前">
-<meta property="og:updated_time" content="2016-09-14T15:01:31.000Z">
+<meta property="og:updated_time" content="2016-09-14T15:05:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="百度百科1000个页面数据的抓取【python】">
 <meta name="twitter:description" content="说明：以下内容学习自：http://www.imooc.com/1、首先要感谢原作者非常细致的讲解，在网页分析的时候还是学到了一些很有用的技巧。后续会总结。
@@ -457,10 +457,11 @@ if __name__ == &quot;__main__&quot;:
 <p>或者当去掉utf-8输出，又遇到gbk编码的问题：<br>UnicodeEncodeError: ‘gbk’ codec can’t encode character ‘\u02c8’ in position 19: illegal multibyte sequence</p>
 <p>5、总结：</p>
 <ul>
-<li><p>首先，原作者在一个工程下，建立一个package，然后把几个主要的类单独列出了py文件，这样的方式更为规范，此文为粘贴代码简便，统一到了一起。<br>实际编程，应用第一种模式为佳。</p>
+<li><p>首先，原作者在一个工程下，建立一个package，然后把几个主要的类单独列出了py文件，这样的方式更为规范，此文为粘贴代码简便，统一到了一起。实际，应用第一种模式为佳。</p>
 </li>
-<li><p>其次，在分析html的分类入口处，比如python关键词地方的对应html代码，使用右键–&gt;检查（或F12，然后点击上面有“类”的地方，比如此文是关键词python在类lemmaWgt-lemmaTitle-title下的h1标题，然后再右键–&gt;Edit as html，就可以在一个段落里轻松复制这断html代码了。否则在F12模式下不能直接上下复制的）<br>-<br>-经过比较python 2， 如果检索的关键词是数字，一样不能使用.encode(‘utf-8’)， 那么原作者的演示视频为何都没有报错？ 这应该是他当时的爬虫没有搜寻到数字关键词，而我的遇到了。 </p>
+<li><p>其次，在分析html的分类入口处，比如python关键词地方的对应html代码，使用右键–&gt;检查（或F12，然后点击上面有“类”的地方，比如此文是关键词python在类lemmaWgt-lemmaTitle-title下的h1标题，然后再右键–&gt;Edit as html，就可以在一个段落里轻松复制这断html代码了。否则在F12模式下不能直接上下复制的）</p>
 </li>
+<li>经过比较python 2， 如果检索的关键词是数字，一样不能使用.encode(‘utf-8’)， 那么原作者的演示视频为何都没有报错？ 这应该是他当时的爬虫没有搜寻到数字关键词，而我的遇到了。 </li>
 </ul>
 
       
