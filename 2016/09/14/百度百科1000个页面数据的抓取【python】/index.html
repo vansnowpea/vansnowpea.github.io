@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="天青色等烟雨">
 <meta property="og:description" content="说明：以下内容学习自：http://www.imooc.com/1、首先要感谢原作者非常细致的讲解，在网页分析的时候还是学到了一些很有用的技巧。后续会总结。
 2、这次是跟着作者，使用了Eclipse + Pydev的软件调试的，相对于Pycharm，他的优点就是可以动态插入需要的类和方法，而同比Pycharm只能动态匹配类，方法就没反应了。不过在界面配色方面明显没有Pyhcarm做的好。总之，目前">
-<meta property="og:updated_time" content="2016-09-14T14:17:47.000Z">
+<meta property="og:updated_time" content="2016-09-14T14:44:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="百度百科1000个页面数据的抓取【python】">
 <meta name="twitter:description" content="说明：以下内容学习自：http://www.imooc.com/1、首先要感谢原作者非常细致的讲解，在网页分析的时候还是学到了一些很有用的技巧。后续会总结。
@@ -177,7 +177,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Accueil
+            Startseite
           </a>
         </li>
       
@@ -187,7 +187,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -250,7 +250,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posté le</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-14T21:59:28+08:00" content="2016-09-14">
               2016-09-14
             </time>
@@ -456,6 +456,13 @@ if __name__ == &quot;__main__&quot;:
 </code></pre><p>4、原作者是的html_outputer.py 文件包含了3个函数，最后一个是把爬虫数据导出到一个.html文件里，但是按照他的源代码，最后我总是得到错误提示如下，提示整数不能用来encode，也就是爬到的百科名词有的是纯数字的，比如设想是10086 ，另外在python 2 到3 的切换使用中，也确实遇到好几在V2 下ok的代码，到了V3失败，很多是来自解码方面的异常。：</p>
 <p>AttributeError: ‘int’ object has no attribute ‘encode’</p>
 <p>或者<br>UnicodeEncodeError: ‘gbk’ codec can’t encode character ‘\u02c8’ in position 19: illegal multibyte sequence</p>
+<p>5、总结：</p>
+<ul>
+<li><p>首先，原作者在一个工程下，建立一个package，然后把几个主要的类单独列出了py文件，这样的方式更为规范，此文为粘贴代码简便，统一到了一起。<br>实际编程，应用第一种模式为佳。</p>
+</li>
+<li><p>其次，在分析html的分类入口处，比如python关键词地方的对应html代码，使用右键–&gt;检查（或F12，然后点击上面有“类”的地方，比如此文是关键词python在类lemmaWgt-lemmaTitle-title下的h1标题，然后再右键–&gt;Edit as html，就可以在一个段落里轻松复制这断html代码了。否则在F12模式下不能直接上下复制的）<br>-<br>-经过比较python 2， 如果检索的关键词是数字，一样不能使用.encode(‘utf-8’)， 那么原作者的演示视频为何都没有报错？ 这应该是他当时的爬虫没有搜寻到数字关键词，而我的遇到了。 </p>
+</li>
+</ul>
 
       
     </div>
@@ -536,10 +543,10 @@ if __name__ == &quot;__main__&quot;:
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table Des Matières
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Ensemble
+            Übersicht
           </li>
         </ul>
       
@@ -556,7 +563,7 @@ if __name__ == &quot;__main__&quot;:
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">30</span>
-              <span class="site-state-item-name">articles</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -614,11 +621,11 @@ if __name__ == &quot;__main__&quot;:
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  Thème -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>
