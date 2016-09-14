@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="天青色等烟雨">
 <meta property="og:description" content="说明：以下内容学习自：http://www.imooc.com/1、首先要感谢原作者非常细致的讲解，在网页分析的时候还是学到了一些很有用的技巧。后续会总结。
 2、这次是跟着作者，使用了Eclipse + Pydev的软件调试的，相对于Pycharm，他的优点就是可以动态插入需要的类和方法，而同比Pycharm只能动态匹配类，方法就没反应了。不过在界面配色方面明显没有Pyhcarm做的好。总之，目前">
-<meta property="og:updated_time" content="2016-09-14T14:17:34.000Z">
+<meta property="og:updated_time" content="2016-09-14T14:17:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="百度百科1000个页面数据的抓取【python】">
 <meta name="twitter:description" content="说明：以下内容学习自：http://www.imooc.com/1、首先要感谢原作者非常细致的讲解，在网页分析的时候还是学到了一些很有用的技巧。后续会总结。
@@ -177,7 +177,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Accueil
           </a>
         </li>
       
@@ -187,7 +187,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -250,7 +250,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posté le</span>
             <time itemprop="dateCreated" datetime="2016-09-14T21:59:28+08:00" content="2016-09-14">
               2016-09-14
             </time>
@@ -311,7 +311,7 @@ class HtmlOutputer(object):
         for data in self.datas:
             fout.write(&quot;&lt;tr&gt;&quot;)
             fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;url&apos;])
-            # 原作者使用了.encode(&apos;utf-8&apos;)的代码，但报错
+            # 原作者使用了.encode(&apos;utf-8&apos;)的代码，但在python 3 报错
             # fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;title&apos;]).encode(&apos;utf-8&apos;)
             # fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;summary&apos;]).encode(&apos;utf-8&apos;)
             fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;title&apos;])
@@ -536,10 +536,10 @@ if __name__ == &quot;__main__&quot;:
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table Des Matières
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Ensemble
           </li>
         </ul>
       
@@ -556,7 +556,7 @@ if __name__ == &quot;__main__&quot;:
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">30</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">articles</span>
             </a>
           </div>
 
@@ -614,11 +614,11 @@ if __name__ == &quot;__main__&quot;:
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  Theme -
+  Thème -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>

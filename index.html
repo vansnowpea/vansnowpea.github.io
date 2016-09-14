@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Accueil
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -248,7 +248,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posté le</span>
             <time itemprop="dateCreated" datetime="2016-09-14T21:59:28+08:00" content="2016-09-14">
               2016-09-14
             </time>
@@ -311,7 +311,7 @@ class HtmlOutputer(object):
         for data in self.datas:
             fout.write(&quot;&lt;tr&gt;&quot;)
             fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;url&apos;])
-            # 原作者使用了.encode(&apos;utf-8&apos;)的代码，但报错
+            # 原作者使用了.encode(&apos;utf-8&apos;)的代码，但在python 3 报错
             # fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;title&apos;]).encode(&apos;utf-8&apos;)
             # fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;summary&apos;]).encode(&apos;utf-8&apos;)
             fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;title&apos;])
@@ -518,7 +518,7 @@ if __name__ == &quot;__main__&quot;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posté le</span>
             <time itemprop="dateCreated" datetime="2016-09-13T23:59:28+08:00" content="2016-09-13">
               2016-09-13
             </time>
@@ -619,7 +619,7 @@ if __name__ == &quot;__main__&quot;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posté le</span>
             <time itemprop="dateCreated" datetime="2016-09-13T23:59:28+08:00" content="2016-09-13">
               2016-09-13
             </time>
@@ -768,7 +768,7 @@ for page in doc.get_pages():
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posté le</span>
             <time itemprop="dateCreated" datetime="2016-09-13T00:59:28+08:00" content="2016-09-13">
               2016-09-13
             </time>
@@ -897,7 +897,7 @@ for url in listUrls:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posté le</span>
             <time itemprop="dateCreated" datetime="2016-09-13T00:59:28+08:00" content="2016-09-13">
               2016-09-13
             </time>
@@ -1082,7 +1082,7 @@ finally:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posté le</span>
             <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
               2016-09-11
             </time>
@@ -1217,7 +1217,7 @@ for url in listurl:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posté le</span>
             <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
               2016-09-11
             </time>
@@ -1328,7 +1328,7 @@ for url in listurl:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posté le</span>
             <time itemprop="dateCreated" datetime="2016-09-09T16:59:28+08:00" content="2016-09-09">
               2016-09-09
             </time>
@@ -1428,7 +1428,7 @@ for url in listurl:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posté le</span>
             <time itemprop="dateCreated" datetime="2016-09-09T16:59:28+08:00" content="2016-09-09">
               2016-09-09
             </time>
@@ -1566,7 +1566,7 @@ ul.disc {list-style-type: disc}
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posté le</span>
             <time itemprop="dateCreated" datetime="2016-09-09T14:59:28+08:00" content="2016-09-09">
               2016-09-09
             </time>
@@ -1741,7 +1741,7 @@ ul.disc {list-style-type: disc}
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">30</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">articles</span>
             </a>
           </div>
 
@@ -1788,11 +1788,11 @@ ul.disc {list-style-type: disc}
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  Theme -
+  Thème -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>
