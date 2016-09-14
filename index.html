@@ -311,8 +311,11 @@ class HtmlOutputer(object):
         for data in self.datas:
             fout.write(&quot;&lt;tr&gt;&quot;)
             fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;url&apos;])
-            fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;title&apos;]).encode(&apos;utf-8&apos;)
-            fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;summary&apos;]).encode(&apos;utf-8&apos;)
+            #             原作者使用了.encode(&apos;utf-8&apos;)的代码，但报错
+            #fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;title&apos;]).encode(&apos;utf-8&apos;)
+            #fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;summary&apos;]).encode(&apos;utf-8&apos;)
+            fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;title&apos;])
+            fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;summary&apos;])
             fout.write(&quot;&lt;/tr&gt;&quot;)
 
         fout.write(&quot;&lt;/body&gt;&quot;)
@@ -450,7 +453,10 @@ if __name__ == &quot;__main__&quot;:
     obj_spider = SpiderMain()
     # 运行爬虫函数
     obj_spider.craw(root_url)
-</code></pre>
+</code></pre><p>4、原作者是的html_outputer.py 文件包含了3个函数，最后一个是把爬虫数据导出到一个.html文件里，但是按照他的源代码，最后我总是得到错误提示如下，提示整数不能用来encode，也就是爬到的百科名词有的是纯数字的，比如设想是10086 ，另外在python 2 到3 的切换使用中，也确实遇到好几在V2 下ok的代码，到了V3失败，很多是来自解码方面的异常。：</p>
+<p>AttributeError: ‘int’ object has no attribute ‘encode’</p>
+<p>或者<br>UnicodeEncodeError: ‘gbk’ codec can’t encode character ‘\u02c8’ in position 19: illegal multibyte sequence</p>
+
           
         
       
