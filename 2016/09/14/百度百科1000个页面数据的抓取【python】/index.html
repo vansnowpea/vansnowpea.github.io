@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="天青色等烟雨">
 <meta property="og:description" content="说明：以下内容学习自：http://www.imooc.com/1、首先要感谢原作者非常细致的讲解，在网页分析的时候还是学到了一些很有用的技巧。后续会总结。
 2、这次是跟着作者，使用了Eclipse + Pydev的软件调试的，相对于Pycharm，他的优点就是可以动态插入需要的类和方法，而同比Pycharm只能动态匹配类，方法就没反应了。不过在界面配色方面明显没有Pyhcarm做的好。总之，目前">
-<meta property="og:updated_time" content="2016-09-14T14:44:20.000Z">
+<meta property="og:updated_time" content="2016-09-14T14:45:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="百度百科1000个页面数据的抓取【python】">
 <meta name="twitter:description" content="说明：以下内容学习自：http://www.imooc.com/1、首先要感谢原作者非常细致的讲解，在网页分析的时候还是学到了一些很有用的技巧。后续会总结。
@@ -455,7 +455,7 @@ if __name__ == &quot;__main__&quot;:
     obj_spider.craw(root_url)
 </code></pre><p>4、原作者是的html_outputer.py 文件包含了3个函数，最后一个是把爬虫数据导出到一个.html文件里，但是按照他的源代码，最后我总是得到错误提示如下，提示整数不能用来encode，也就是爬到的百科名词有的是纯数字的，比如设想是10086 ，另外在python 2 到3 的切换使用中，也确实遇到好几在V2 下ok的代码，到了V3失败，很多是来自解码方面的异常。：</p>
 <p>AttributeError: ‘int’ object has no attribute ‘encode’</p>
-<p>或者<br>UnicodeEncodeError: ‘gbk’ codec can’t encode character ‘\u02c8’ in position 19: illegal multibyte sequence</p>
+<p>或者当去掉utf-8输出，又遇到gbk编码的问题：<br>UnicodeEncodeError: ‘gbk’ codec can’t encode character ‘\u02c8’ in position 19: illegal multibyte sequence</p>
 <p>5、总结：</p>
 <ul>
 <li><p>首先，原作者在一个工程下，建立一个package，然后把几个主要的类单独列出了py文件，这样的方式更为规范，此文为粘贴代码简便，统一到了一起。<br>实际编程，应用第一种模式为佳。</p>
