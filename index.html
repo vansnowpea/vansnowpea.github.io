@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -235,6 +235,107 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/13/百度百科1000个页面数据的抓取【python】/" itemprop="url">
+                  Ubuntu下操作Django时的大杂烩【python】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-13T23:59:28+08:00" content="2016-09-13">
+              2016-09-13
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/video/12634" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、首先记录一个遇到的问题，一开始vi编辑模式下按方向键会变成ABCD,ubuntu下 vi输入方向键会变成ABCD，这是ubuntu预装的是vim tiny版本，安装vim full版本即可解决。先卸载vim-tiny：</p>
+<pre><code>$ sudo apt-get remove vim-common
+</code></pre><p>再安装vim full：</p>
+<pre><code>$ sudo apt-get install vim
+</code></pre><p>2、倒腾了半天，总算把vi的命令模式和插入模式搞明白了。搜索是“？+关键词”，下一个是字母：“n”，还有很多命令，可参考这里：<a href="http://www.cnblogs.com/emanlee/archive/2011/11/10/2243930.html" target="_blank" rel="external">http://www.cnblogs.com/emanlee/archive/2011/11/10/2243930.html</a><br>, 一开始因为第一条中记录的问题，导致一直输入错误。</p>
+<p>3、遇到问题：<br>  第一个电脑上，用pip isntall django后运行正常，第二个就报错 找不到django-admin 后来改用sudo apt install python-django才可以，不过貌似版本不是1.10.1的最新版，而是1.8.7的。</p>
+<p>4、Show Intention Actions ： 视频教程快速插入类和函数用的Ctrl+1的快捷键？查了下pycharm是Alt+Enter，但是明显这个设置要比Ctrl+1的模式反人类。 直接在setting–&gt;Keymap 搜索Alt竟然找不到的，原来他是按照左边的名次来搜索的，Show Intention Actions，本来想给他按照视频教程的快捷键修改，但是发现可以用鼠标双击的模式来定义，并且检测没有冲突，这下甚好。但问题又来了，只能自动识别类，不能识别下面的方法，而这一点上，Eclipse+pydev倒是做的很好。</p>
+<p>5、一个意外的发现： pycharm能在console调用ipython，而且带了显示函数的功能，如下图，问题是我忘记怎么把他调用出来了。：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/pycharm%20ipython.png" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/13/Ubuntu下操作Django/" itemprop="url">
                   Ubuntu下操作Django时的大杂烩【python】
                 </a>
@@ -248,7 +349,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-13T23:59:28+08:00" content="2016-09-13">
               2016-09-13
             </time>
@@ -349,7 +450,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-13T23:59:28+08:00" content="2016-09-13">
               2016-09-13
             </time>
@@ -498,7 +599,7 @@ for page in doc.get_pages():
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-13T00:59:28+08:00" content="2016-09-13">
               2016-09-13
             </time>
@@ -627,7 +728,7 @@ for url in listUrls:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-13T00:59:28+08:00" content="2016-09-13">
               2016-09-13
             </time>
@@ -812,7 +913,7 @@ finally:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
               2016-09-11
             </time>
@@ -947,7 +1048,7 @@ for url in listurl:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
               2016-09-11
             </time>
@@ -1058,7 +1159,7 @@ for url in listurl:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-09T16:59:28+08:00" content="2016-09-09">
               2016-09-09
             </time>
@@ -1158,7 +1259,7 @@ for url in listurl:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-09T16:59:28+08:00" content="2016-09-09">
               2016-09-09
             </time>
@@ -1296,7 +1397,7 @@ ul.disc {list-style-type: disc}
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-09T14:59:28+08:00" content="2016-09-09">
               2016-09-09
             </time>
@@ -1425,104 +1526,6 @@ ul.disc {list-style-type: disc}
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/09/Linux的历史和HTML学习的必要/" itemprop="url">
-                  Linux的历史和HTML学习的必要
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-09-09T01:59:28+08:00" content="2016-09-09">
-              2016-09-09
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="http://ocg7i7pt6.bkt.clouddn.com/Tulips.jpg" alt=""></p>
-<p>本来想看《鸟哥的Linux私房菜》，可一看要1774页，顿时伤感啊有木有。先看看开始部分吧，讲解了Unix系统的来龙去脉以及Linux的诞生历史等。写的还是挺详细的。那时候的系统界面看着真是古董，然后鼠标拖到最后，进入了现在的Linux的Shell界面，竟然有一丝激动。</p>
-<p>这几天看了点爬虫的知识，感觉就是看别人的HTML分析部分很easy的样子，但自己看的总是有点云里雾里的。。。</p>
-<p>所以奔着有问题解决问题先的思路，先暂停Linux书籍，而是先看HTML了。</p>
-<p>那么，推荐下较有人气的<a href="http://www.w3school.com.cn/" target="_blank" rel="external">W3school【点我】</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1568,8 +1571,8 @@ ul.disc {list-style-type: disc}
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">29</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1616,7 +1619,7 @@ ul.disc {list-style-type: disc}
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
