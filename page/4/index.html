@@ -235,6 +235,107 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/27/Ubuntu系统安装遇到的一些坑/" itemprop="url">
+                  Ubuntu系统安装遇到的一些坑
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-08-27T01:44:05+08:00" content="2016-08-27">
+              2016-08-27
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>说明:虽然win10 已经开始支持子系统运行Ubuntu了。 但因为个人倾向win7的精简风格，W+U双系统测试，剧情比较悲催，记录之。</strong></p>
+<p>1、一开始通过本机Win+virtualbox（Ubuntu），预期解决本机数据不能复制到Virtualbox的问题,故尝试装Win+Ubuntu双系统。</p>
+<p>2、由于2个Win的双系统对本机其他盘的文件没影响，一开始惯性思维装Ubuntu也问题不大，但实际问题很大。这是后来才发现，使用Ubuntu不仅要修改硬盘格式，还要修改其他Bios设置。</p>
+<p>3、这导致我一马平川的装好Ubuntu的时候（鼠标点太快），发现Win已经全部没了。很多历史的总结文档，好在大部分有云存储。</p>
+<p>4、发现本机Ubuntu有不少问题，这是因为第一，Linux的熟悉度不够，第二，一些第三方软件的使用，比较麻烦，比如安装命令不确定带来的错误，有的非常难搞定安装和使用，而在Win下超简单。于是想采用本机Ubuntu+virtualbox（Win7）的方案，又发现，在Ubuntu下，运行Virtualbox的窗口比较小（没找到直接调试的地方），这使得Win的体验感很差，而在Win下，使用Virtualbox的窗口可简单调整。第三是，发现一运行Virtualbox就特别卡。</p>
+<p>5、最后决定，本机换回Win，但是从Ubuntu到Win的切换又遇到问题。  首先，修改了Bios，但是硬盘格式没有修改，这是因为搜索别人的经验建议Win7以上保留该格式。最后通过U盘带PE+iso的方案。  可进入PE怎么调试也装不上Win，经过多轮比对测试发现，还是硬盘读取数据异常。  测试修改硬盘格式，终于读取了iso。</p>
+<p>6、单机安装Win，又遇到问题，因为没有任何驱动，主要是网卡。这样我手机的东西不能直接通过数据线连到电脑，  本来想明天到其他电脑通过copy网卡驱动在搞，后来突然想到通过手机下载万能网卡驱动到SD卡，然后手机SD卡+读卡器安装到电脑。这样就一下搞定了。</p>
+<p>7、总结不足的地方，惯性思维导致丢失了硬盘数据，第一次本机换装Linux系统，没查到硬盘格式不同，导致后来很多问题。事后发现，Win+Ubuntu的双系统，应该在Win分区，但很繁琐。或者单独给Ubuntu装，或者继续用Win+Virtualbox的方案，或者装Win10 insider_preview版本。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/27/推荐MarkdownPad 作为Win系统本机端的MarkDwon编辑器/" itemprop="url">
                   推荐MarkdownPad 作为Win系统本机端的MarkDwon编辑器
                 </a>
@@ -485,7 +586,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
