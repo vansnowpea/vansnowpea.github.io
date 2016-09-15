@@ -295,7 +295,7 @@
 </blockquote>
 </blockquote>
 <p>2、requests的documents官网：  <a href="http://www.python-requests.org/en/master/" target="_blank" rel="external">http://www.python-requests.org/en/master/</a><br>建议阅读下其documents，写的还是挺清楚的。</p>
-<p>3、基本使用：<br>import requests<br>r = requests.get(‘<a href="https://api.github.com/events" target="_blank" rel="external">https://api.github.com/events</a>‘)<br>r.text</p>
+<p>3、基本使用：<br>import requests<br>r = requests.get(‘<a href="https://api.github.com/events" target="_blank" rel="external">https://api.github.com/events</a>‘)<br>r.text<br>r.content   # 以字节的方式访问请求响应体，对于非文本请求</p>
 <p>r = requests.post(‘<a href="http://httpbin.org/post" target="_blank" rel="external">http://httpbin.org/post</a>‘, data = {‘key’:’value’})</p>
 
           

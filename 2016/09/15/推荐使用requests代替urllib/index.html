@@ -94,7 +94,7 @@
 <meta property="og:description" content="说明:之前爬虫时读取网址内容用的都是urllib，这是python自带的，但如果使用复杂点的功能，还是推荐requests第三方库，这是因为这个库很优秀1、比较，参考自： http://www.jb51.net/article/63711.htm：
 
 一个复杂一点的例子：现在让我们尝试下复杂点得例子：使用GET方法获取http://foo.test/secret的资源，这次需要基本的http验证。">
-<meta property="og:updated_time" content="2016-09-15T01:17:56.000Z">
+<meta property="og:updated_time" content="2016-09-15T01:19:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="推荐使用requests代替urllib【python】">
 <meta name="twitter:description" content="说明:之前爬虫时读取网址内容用的都是urllib，这是python自带的，但如果使用复杂点的功能，还是推荐requests第三方库，这是因为这个库很优秀1、比较，参考自： http://www.jb51.net/article/63711.htm：
@@ -298,7 +298,7 @@
 </blockquote>
 </blockquote>
 <p>2、requests的documents官网：  <a href="http://www.python-requests.org/en/master/" target="_blank" rel="external">http://www.python-requests.org/en/master/</a><br>建议阅读下其documents，写的还是挺清楚的。</p>
-<p>3、基本使用：<br>import requests<br>r = requests.get(‘<a href="https://api.github.com/events" target="_blank" rel="external">https://api.github.com/events</a>‘)<br>r.text</p>
+<p>3、基本使用：<br>import requests<br>r = requests.get(‘<a href="https://api.github.com/events" target="_blank" rel="external">https://api.github.com/events</a>‘)<br>r.text<br>r.content   # 以字节的方式访问请求响应体，对于非文本请求</p>
 <p>r = requests.post(‘<a href="http://httpbin.org/post" target="_blank" rel="external">http://httpbin.org/post</a>‘, data = {‘key’:’value’})</p>
 
       
