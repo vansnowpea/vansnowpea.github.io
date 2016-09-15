@@ -88,7 +88,7 @@
 2、本文亮点在网址分析处，使用了CSS path，目前在谷歌浏览器下显示为Copy selector ，这和原文的Copy CSS Path是不同的，就本文，这个分析方法完全避开了正则式，从中，也体现了bs4的强大。
 3、代码：
 # -*- coding: utf-8 -*-
-# python">
+python 3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="爬取瓜子网上海地区二手车的信息【python】">
 <meta property="og:url" content="http://yoursite.com/2016/09/15/爬取瓜子网上海地区二手车的信息/index.html">
@@ -97,16 +97,16 @@
 2、本文亮点在网址分析处，使用了CSS path，目前在谷歌浏览器下显示为Copy selector ，这和原文的Copy CSS Path是不同的，就本文，这个分析方法完全避开了正则式，从中，也体现了bs4的强大。
 3、代码：
 # -*- coding: utf-8 -*-
-# python">
+python 3">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/guazi%20shanghai.png">
-<meta property="og:updated_time" content="2016-09-15T11:16:20.000Z">
+<meta property="og:updated_time" content="2016-09-15T11:17:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="爬取瓜子网上海地区二手车的信息【python】">
 <meta name="twitter:description" content="说明原文连接1、在原文基础上稍作修改，目标地区为上海，更改了网址显示和价格显示部分。并增加了数据库导入。
 2、本文亮点在网址分析处，使用了CSS path，目前在谷歌浏览器下显示为Copy selector ，这和原文的Copy CSS Path是不同的，就本文，这个分析方法完全避开了正则式，从中，也体现了bs4的强大。
 3、代码：
 # -*- coding: utf-8 -*-
-# python">
+python 3">
 <meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com/guazi%20shanghai.png">
 
 
@@ -294,42 +294,52 @@
 <p>2、本文亮点在网址分析处，使用了CSS path，目前在谷歌浏览器下显示为Copy selector ，这和原文的Copy CSS Path是不同的，就本文，这个分析方法完全避开了正则式，从中，也体现了bs4的强大。</p>
 <p>3、代码：</p>
 <pre><code># -*- coding: utf-8 -*-
-# python 3.5.2
+</code></pre><h1 id="python-3-5-2"><a href="#python-3-5-2" class="headerlink" title="python 3.5.2"></a>python 3.5.2</h1><p>from bs4 import BeautifulSoup<br>import requests<br>import pymysql.cursors</p>
+<p>def detailOper(url):<br>    web_data = requests.get(url)</p>
+<pre><code># soup = BeautifulSoup(web_data.text, &apos;lxml&apos;)
+soup = BeautifulSoup(web_data.text, &apos;html.parser&apos;)
 
-from bs4 import BeautifulSoup
-import requests
+# body &gt; div.w &gt; div.list &gt; ul &gt; li:nth-child(1) &gt; div &gt; p.infoBox &gt; a
+# above is the css path , or copy selector in Google Chrome F12
+# we can delete &quot;body &gt; div.w &gt;&quot; as the whole site under Class = &apos;w&apos;
+# modify it for all cars info: div.list &gt; ul &gt; li &gt; div &gt; p.infoBox &gt; a
+titles = soup.select(&apos;div.list &gt; ul &gt; li &gt; div &gt; p.infoBox &gt; a&apos;)
 
-def detailOper(url):
-    web_data = requests.get(url)
-    # soup = BeautifulSoup(web_data.text, &apos;lxml&apos;)
-    soup = BeautifulSoup(web_data.text, &apos;html.parser&apos;)
+# get price info with F12: body &gt; div.w &gt; div.list &gt; ul &gt; li:nth-child(1) &gt; div &gt; p.priType-s &gt; span &gt; i
+# modify it for all price: div.list &gt; ul &gt; li &gt; div &gt; p.priType-s &gt; span &gt; i
+prices = soup.select(&apos;div.list &gt; ul &gt; li &gt; div &gt; p.priType-s &gt; span &gt; i&apos;)
+for title, price in zip(titles, prices):
+    data = {
+    &apos;车型&apos;: title.get_text(),
+    &apos;网址&apos;: &apos;http://www.guazi.com&apos;+ title.get(&apos;href&apos;),
+    #&apos;price&apos;:price.get_text().replace(u&apos;万&apos;, &apos;&apos;).replace(&apos; &apos;, &apos;&apos;)
+    &apos;价格&apos;: price.get_text().replace(&apos;\n&apos;, &apos;&apos;).replace(&apos; &apos;, &apos;&apos;)
+}
 
-    # body &gt; div.w &gt; div.list &gt; ul &gt; li:nth-child(1) &gt; div &gt; p.infoBox &gt; a
-    # above is the css path , or copy selector in Google Chrome F12
-    # we can delete &quot;body &gt; div.w &gt;&quot; as the whole site under Class = &apos;w&apos;
-    # modify it for all cars info: div.list &gt; ul &gt; li &gt; div &gt; p.infoBox &gt; a
-    titles = soup.select(&apos;div.list &gt; ul &gt; li &gt; div &gt; p.infoBox &gt; a&apos;)
+    connection = pymysql.connect(host=&apos;localhost&apos;,
+                                 user=&apos;root&apos;,
+                                 password=&apos;fanka111&apos;,
+                                 db=&apos;guazi&apos;,
+                                 charset=&apos;utf8&apos;
+                                 )
 
-    # get price info with F12: body &gt; div.w &gt; div.list &gt; ul &gt; li:nth-child(1) &gt; div &gt; p.priType-s &gt; span &gt; i
-    # modify it for all price: div.list &gt; ul &gt; li &gt; div &gt; p.priType-s &gt; span &gt; i
-    prices = soup.select(&apos;div.list &gt; ul &gt; li &gt; div &gt; p.priType-s &gt; span &gt; i&apos;)
-    for title, price in zip(titles, prices):
-        data = {
-        &apos;车型&apos;: title.get_text(),
-        &apos;网址&apos;: &apos;http://www.guazi.com&apos;+ title.get(&apos;href&apos;),
-        #&apos;price&apos;:price.get_text().replace(u&apos;万&apos;, &apos;&apos;).replace(&apos; &apos;, &apos;&apos;)
-        &apos;价格&apos;: price.get_text().replace(&apos;\n&apos;, &apos;&apos;).replace(&apos; &apos;, &apos;&apos;)
-    }
-    print(data)
+    try:
+        # 创建会话指针
+        with connection.cursor() as cursor:
+            # 创建sql语句
+            sql = &apos;insert into `guazi1` (`车型`, `价格`, `网址`) values(%s, %s, %s)&apos;
+            # 执行sql语句
+            cursor.execute(sql, (data[&apos;车型&apos;], data[&apos;价格&apos;],data[&apos;网址&apos;]))
 
-def start():
-    urls = [&apos;http://www.guazi.com/sh/buy/o{}/&apos;.format(str(i)) for i in range(1, 51, 1)]
-    for url in urls:
-        detailOper(url)
+            # 提交
+            connection.commit()
 
-if __name__ == &apos;__main__&apos;:
-    start()
-</code></pre><p>4、部分结果展示：</p>
+    finally:
+        connection.close()
+# print(data)
+</code></pre><p>def start():<br>    urls = [‘<a href="http://www.guazi.com/sh/buy/o{}/&#39;.format(str(i" target="_blank" rel="external">http://www.guazi.com/sh/buy/o{}/&#39;.format(str(i</a>)) for i in range(1, 51, 1)]<br>    for url in urls:<br>        detailOper(url)</p>
+<p>if <strong>name</strong> == ‘<strong>main</strong>‘:<br>    start()</p>
+<p>4、部分结果展示：</p>
 <pre><code>{&apos;车型&apos;: &apos;东南V5菱致 2013款 1.5 手动 舒适型CNG&apos;, &apos;价格&apos;: &apos;已降价&apos;, &apos;网址&apos;: &apos;http://www.guazi.com/sh/3000216790x.htm&apos;}
 {&apos;车型&apos;: &apos;福特蒙迪欧 2013款 致胜 2.3 自动 时尚型&apos;, &apos;价格&apos;: &apos;9.00万&apos;, &apos;网址&apos;: &apos;http://www.guazi.com/sh/3000237200x.htm&apos;}
 {&apos;车型&apos;: &apos;斯柯达明锐 2010款 明锐 1.6 手动 逸致版&apos;, &apos;价格&apos;: &apos;3.80万&apos;, &apos;网址&apos;: &apos;http://www.guazi.com/sh/3000222224x.htm&apos;}
@@ -474,7 +484,7 @@ if __name__ == &apos;__main__&apos;:
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明原文连接"><span class="nav-number">1.</span> <span class="nav-text">说明原文连接</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明原文连接"><span class="nav-number">1.</span> <span class="nav-text">说明原文连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python-3-5-2"><span class="nav-number">2.</span> <span class="nav-text">python 3.5.2</span></a></li></ol></div>
             
           </div>
         </section>
