@@ -102,7 +102,7 @@ fr">
 # python 3.5.2
 
 fr">
-<meta property="og:updated_time" content="2016-09-15T10:10:48.000Z">
+<meta property="og:updated_time" content="2016-09-15T10:16:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="爬取瓜子网上海地区二手车的信息【python】">
 <meta name="twitter:description" content="说明原文连接1、在原文基础上稍作修改，目标地区为上海，更改了网址显示和价格显示部分。
@@ -192,7 +192,7 @@ fr">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -202,7 +202,7 @@ fr">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -265,7 +265,7 @@ fr">
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-15T18:59:28+08:00" content="2016-09-15">
               2016-09-15
             </time>
@@ -319,12 +319,12 @@ def detailOper(url):
     prices = soup.select(&apos;div.list &gt; ul &gt; li &gt; div &gt; p.priType-s &gt; span &gt; i&apos;)
     for title, price in zip(titles, prices):
         data = {
-            &apos;title&apos;: title.get_text(),
-            &apos;detailHerf&apos;: &apos;http://www.guazi.com&apos;+ title.get(&apos;href&apos;),
-            #&apos;price&apos;:price.get_text().replace(u&apos;万&apos;, &apos;&apos;).replace(&apos; &apos;, &apos;&apos;)
-            &apos;price&apos;: price.get_text().replace(&apos;\n&apos;, &apos;&apos;).replace(&apos; &apos;, &apos;&apos;)
-        }
-        print(data)
+        &apos;车型&apos;: title.get_text(),
+        &apos;网址&apos;: &apos;http://www.guazi.com&apos;+ title.get(&apos;href&apos;),
+        #&apos;price&apos;:price.get_text().replace(u&apos;万&apos;, &apos;&apos;).replace(&apos; &apos;, &apos;&apos;)
+        &apos;价格&apos;: price.get_text().replace(&apos;\n&apos;, &apos;&apos;).replace(&apos; &apos;, &apos;&apos;)
+    }
+    print(data)
 
 def start():
     urls = [&apos;http://www.guazi.com/sh/buy/o{}/&apos;.format(str(i)) for i in range(1, 51, 1)]
@@ -465,10 +465,10 @@ if __name__ == &apos;__main__&apos;:
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -485,7 +485,7 @@ if __name__ == &apos;__main__&apos;:
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">33</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -543,7 +543,7 @@ if __name__ == &apos;__main__&apos;:
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
