@@ -94,7 +94,7 @@
 <meta property="og:description" content="说明:win10中python3.5.2遇到lxml安装问题的记录1、错误提示：  error: Unable to find vcvarsall.bat
 2、由于在python 2.7 和win7下遇到过类似的问题，当时用安装wheel文件的方法，不过这次失败，
 3、该问题的产生是在windows环境中，python 的 Setup需要调用一个vcvarsall.bat的文件，该文件需要安装c+">
-<meta property="og:updated_time" content="2016-09-15T02:33:26.000Z">
+<meta property="og:updated_time" content="2016-09-15T02:47:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="win10中python3.5.2遇到lxml安装问题的记录【python】">
 <meta name="twitter:description" content="说明:win10中python3.5.2遇到lxml安装问题的记录1、错误提示：  error: Unable to find vcvarsall.bat
@@ -284,7 +284,7 @@
       
         <h1 id="说明-win10中python3-5-2遇到lxml安装问题的记录"><a href="#说明-win10中python3-5-2遇到lxml安装问题的记录" class="headerlink" title="说明:win10中python3.5.2遇到lxml安装问题的记录"></a>说明:win10中python3.5.2遇到lxml安装问题的记录</h1><p>1、错误提示：  error: Unable to find vcvarsall.bat</p>
 <p>2、由于在python 2.7 和win7下遇到过类似的问题，当时用安装wheel文件的方法，不过这次失败，</p>
-<p>3、该问题的产生是在windows环境中，python 的 Setup需要调用一个vcvarsall.bat的文件，该文件需要安装c++编程环境才会有，经查知乎上有人给出了答案，由于python 3.5使用的SDK环境和3.4是不同的，所以需要安装VC++最新版，或者VS2015 添加VC和python相关组件， ，请参考：<a href="http://www.zhihu.com/question/26857761" target="_blank" rel="external">http://www.zhihu.com/question/26857761</a> 里面的“代代树”的回复。</p>
+<p>3、该问题的产生是在windows环境中，python 的 Setup需要调用一个vcvarsall.bat的文件，该文件需要安装c++编程环境才会有，经查知乎上有人给出了答案，由于python 3.5使用的SDK环境和3.4是不同的，所以需要安装VC++最新版，或者VS2015 添加VC和python相关组件， ，请参考：<a href="http://www.zhihu.com/question/26857761" target="_blank" rel="external">http://www.zhihu.com/question/26857761</a> 里面的“代代树”的回复。但是第一次安装遇到retry的失败，关闭了相关VS的进程，重新装，貌似就可以了。</p>
 
       
     </div>
