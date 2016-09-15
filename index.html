@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -248,7 +248,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-15T18:59:28+08:00" content="2016-09-15">
               2016-09-15
             </time>
@@ -282,7 +282,10 @@
             <h1 id="说明原文连接【点我】"><a href="#说明原文连接【点我】" class="headerlink" title="说明原文连接【点我】"></a><a href="http://www.jianshu.com/p/15eb2a39ffe0" target="_blank" rel="external">说明原文连接【点我】</a></h1><p>1、在原文基础上稍作修改，目标地区为上海，更改了网址显示和价格显示部分。并增加了数据库导入，请把密码XXXX修改为你的密码。</p>
 <p>2、本文亮点在网址分析处，使用了CSS path，目前在谷歌浏览器下显示为Copy selector ，这和原文的Copy CSS Path是不同的，就本文，这个分析方法完全避开了正则式，从中，也体现了bs4的强大。</p>
 <p>3、代码：</p>
-<h1 id="coding-utf-8"><a href="#coding-utf-8" class="headerlink" title="-- coding: utf-8 --"></a>-<em>- coding: utf-8 -</em>-</h1><h1 id="python-3-5-2"><a href="#python-3-5-2" class="headerlink" title="python 3.5.2"></a>python 3.5.2</h1><pre><code>from bs4 import BeautifulSoup
+<pre><code># -*- coding: utf-8 -*-
+# python 3.5.2
+
+from bs4 import BeautifulSoup
 import requests
 import pymysql.cursors
 
@@ -413,7 +416,7 @@ if __name__ == &apos;__main__&apos;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-15T11:59:28+08:00" content="2016-09-15">
               2016-09-15
             </time>
@@ -510,7 +513,7 @@ if __name__ == &apos;__main__&apos;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-15T09:59:28+08:00" content="2016-09-15">
               2016-09-15
             </time>
@@ -621,7 +624,7 @@ if __name__ == &apos;__main__&apos;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-14T21:59:28+08:00" content="2016-09-14">
               2016-09-14
             </time>
@@ -898,7 +901,7 @@ if __name__ == &quot;__main__&quot;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-13T23:59:28+08:00" content="2016-09-13">
               2016-09-13
             </time>
@@ -999,7 +1002,7 @@ if __name__ == &quot;__main__&quot;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-13T23:59:28+08:00" content="2016-09-13">
               2016-09-13
             </time>
@@ -1148,7 +1151,7 @@ for page in doc.get_pages():
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-13T00:59:29+08:00" content="2016-09-13">
               2016-09-13
             </time>
@@ -1333,7 +1336,7 @@ finally:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-13T00:59:28+08:00" content="2016-09-13">
               2016-09-13
             </time>
@@ -1462,7 +1465,7 @@ for url in listUrls:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
               2016-09-11
             </time>
@@ -1597,7 +1600,7 @@ for url in listurl:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
               2016-09-11
             </time>
@@ -1720,7 +1723,7 @@ for url in listurl:
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">33</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1767,7 +1770,7 @@ for url in listurl:
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
