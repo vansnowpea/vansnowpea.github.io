@@ -279,11 +279,45 @@
       
         
           
-            <h1 id="说明-win10中python3-5-2遇到lxml安装问题的记录"><a href="#说明-win10中python3-5-2遇到lxml安装问题的记录" class="headerlink" title="说明:win10中python3.5.2遇到lxml安装问题的记录"></a>说明:win10中python3.5.2遇到lxml安装问题的记录</h1><p>1、错误提示：  error: Unable to find vcvarsall.bat</p>
-<p>2、由于在python 2.7 和win7下遇到过类似的问题，当时用安装wheel文件的方法，不过这次失败， 另外在python2.7时代，是有一个微软的支持版本的： Microsoft Visual C++ Compiler for Python 2.7（只有 2.7</p>
-<p>3、该问题windows环境中，python 的 Setup需要调用一个vcvarsall.bat的文件，该文件需要安装c++编程环境才会有，经查知乎上有人给出了答案，由于python 3.5使用的SDK环境和3.4是不同的，所以需要安装VC++最新版，或者VS2015 添加VC和python相关组件， ，请参考：<a href="http://www.zhihu.com/question/26857761" target="_blank" rel="external">http://www.zhihu.com/question/26857761</a> 里面的“代代树”的回复。但是第一次安装遇到retry的失败，关闭了相关VS的进程，重新装，貌似就可以安装了，但安装完毕后，问题没有解决，依然存在啊，什么鬼？</p>
-<p>4、然后又发现别人推荐了<a href="https://anaconda.org/或者https://www.continuum.io/downloads的Anaconda安装解决方式，一看官网支持python最新版，这就好感爆棚了。果断下载安装，不过结果依然失败，有点闹腾。以后解决了再更新。" target="_blank" rel="external">https://anaconda.org/或者https://www.continuum.io/downloads的Anaconda安装解决方式，一看官网支持python最新版，这就好感爆棚了。果断下载安装，不过结果依然失败，有点闹腾。以后解决了再更新。</a></p>
+            <h1 id="说明原文连接"><a href="#说明原文连接" class="headerlink" title="说明原文连接"></a><a href="http://www.jianshu.com/p/15eb2a39ffe0" target="_blank" rel="external">说明原文连接</a></h1><p>1、在原文基础上稍作修改，目标地区为上海，更改了网址显示和价格显示部分。</p>
+<p>2、代码：</p>
+<pre><code># -*- coding: utf-8 -*-
+# python 3.5.2
 
+from bs4 import BeautifulSoup
+import requests
+
+def detailOper(url):
+    web_data = requests.get(url)
+    # soup = BeautifulSoup(web_data.text, &apos;lxml&apos;)
+    soup = BeautifulSoup(web_data.text, &apos;html.parser&apos;)
+
+    # body &gt; div.w &gt; div.list &gt; ul &gt; li:nth-child(1) &gt; div &gt; p.infoBox &gt; a
+    # above is the css path , or copy selector in Google Chrome F12
+    # we can delete &quot;body &gt; div.w &gt;&quot; as the whole site under Class = &apos;w&apos;
+    # modify it for all cars info: div.list &gt; ul &gt; li &gt; div &gt; p.infoBox &gt; a
+    titles = soup.select(&apos;div.list &gt; ul &gt; li &gt; div &gt; p.infoBox &gt; a&apos;)
+
+    # get price info with F12: body &gt; div.w &gt; div.list &gt; ul &gt; li:nth-child(1) &gt; div &gt; p.priType-s &gt; span &gt; i
+    # modify it for all price: div.list &gt; ul &gt; li &gt; div &gt; p.priType-s &gt; span &gt; i
+    prices = soup.select(&apos;div.list &gt; ul &gt; li &gt; div &gt; p.priType-s &gt; span &gt; i&apos;)
+    for title, price in zip(titles, prices):
+        data = {
+            &apos;title&apos;: title.get_text(),
+            &apos;detailHerf&apos;: &apos;http://www.guazi.com&apos;+ title.get(&apos;href&apos;),
+            #&apos;price&apos;:price.get_text().replace(u&apos;万&apos;, &apos;&apos;).replace(&apos; &apos;, &apos;&apos;)
+            &apos;price&apos;: price.get_text().replace(&apos;\n&apos;, &apos;&apos;).replace(&apos; &apos;, &apos;&apos;)
+        }
+        print(data)
+
+def start():
+    urls = [&apos;http://www.guazi.com/sh/buy/o{}/&apos;.format(str(i)) for i in range(1, 51, 1)]
+    for url in urls:
+        detailOper(url)
+
+if __name__ == &apos;__main__&apos;:
+    start()
+</code></pre>
           
         
       
