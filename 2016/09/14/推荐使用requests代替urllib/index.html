@@ -84,19 +84,22 @@
 
 
 
-<meta name="description" content="说明：以下内容学习自：http://www.imooc.com/1、首先要感谢原作者非常细致的讲解，在网页分析的时候还是学到了一些很有用的技巧。后续会总结。
-2、这次是跟着作者，使用了Eclipse + Pydev的软件调试的，相对于Pycharm，他的优点就是可以动态插入需要的类和方法，而同比Pycharm只能动态匹配类，方法就没反应了。不过在界面配色方面明显没有Pyhcarm做的好。总之，目前">
+<meta name="description" content="说明:之前爬虫时读取网址内容用的都是urllib，这是python自带的，但如果使用复杂点的功能，还是推荐requests第三方库，这是因为这个库很优秀1、比较，参考自： http://www.jb51.net/article/63711.htm：
+
+一个复杂一点的例子：现在让我们尝试下复杂点得例子：使用GET方法获取http://foo.test/secret的资源，这次需要基本的http验证。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="百度百科1000个页面数据的抓取【python】">
 <meta property="og:url" content="http://yoursite.com/2016/09/14/推荐使用requests代替urllib/index.html">
 <meta property="og:site_name" content="天青色等烟雨">
-<meta property="og:description" content="说明：以下内容学习自：http://www.imooc.com/1、首先要感谢原作者非常细致的讲解，在网页分析的时候还是学到了一些很有用的技巧。后续会总结。
-2、这次是跟着作者，使用了Eclipse + Pydev的软件调试的，相对于Pycharm，他的优点就是可以动态插入需要的类和方法，而同比Pycharm只能动态匹配类，方法就没反应了。不过在界面配色方面明显没有Pyhcarm做的好。总之，目前">
-<meta property="og:updated_time" content="2016-09-14T15:05:57.000Z">
+<meta property="og:description" content="说明:之前爬虫时读取网址内容用的都是urllib，这是python自带的，但如果使用复杂点的功能，还是推荐requests第三方库，这是因为这个库很优秀1、比较，参考自： http://www.jb51.net/article/63711.htm：
+
+一个复杂一点的例子：现在让我们尝试下复杂点得例子：使用GET方法获取http://foo.test/secret的资源，这次需要基本的http验证。">
+<meta property="og:updated_time" content="2016-09-15T01:10:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="百度百科1000个页面数据的抓取【python】">
-<meta name="twitter:description" content="说明：以下内容学习自：http://www.imooc.com/1、首先要感谢原作者非常细致的讲解，在网页分析的时候还是学到了一些很有用的技巧。后续会总结。
-2、这次是跟着作者，使用了Eclipse + Pydev的软件调试的，相对于Pycharm，他的优点就是可以动态插入需要的类和方法，而同比Pycharm只能动态匹配类，方法就没反应了。不过在界面配色方面明显没有Pyhcarm做的好。总之，目前">
+<meta name="twitter:description" content="说明:之前爬虫时读取网址内容用的都是urllib，这是python自带的，但如果使用复杂点的功能，还是推荐requests第三方库，这是因为这个库很优秀1、比较，参考自： http://www.jb51.net/article/63711.htm：
+
+一个复杂一点的例子：现在让我们尝试下复杂点得例子：使用GET方法获取http://foo.test/secret的资源，这次需要基本的http验证。">
 
 
 
@@ -177,7 +180,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -187,7 +190,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -250,7 +253,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-14T21:59:28+08:00" content="2016-09-14">
               2016-09-14
             </time>
@@ -279,190 +282,23 @@
       
 
       
-        <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/563" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、首先要感谢原作者非常细致的讲解，在网页分析的时候还是学到了一些很有用的技巧。后续会总结。</p>
-<p>2、这次是跟着作者，使用了Eclipse + Pydev的软件调试的，相对于Pycharm，他的优点就是可以动态插入需要的类和方法，而同比Pycharm只能动态匹配类，方法就没反应了。不过在界面配色方面明显没有Pyhcarm做的好。总之，目前的配色方案不满意，但将就下吧。</p>
-<p>3、原作者使用的Python 2的版本，我的版本（大部分还是照作者的）已经修改到3的版本了，。虽然感觉作者的代码，有的地方写的有点小啰嗦，不过看他视频现场操作，还是感觉细节有很多值得借鉴的地方。</p>
-<pre><code># -*- coding: utf-8 -*-
-# python 3.5.2
-
-from urllib.request import urlopen
-from bs4 import BeautifulSoup
-from urllib.parse import urlparse
-import re
-import urllib
-
-
-class HtmlOutputer(object):
-    def __init__(self):
-        self.datas = []
-
-    def collect_data(self, data):
-        if data is None:
-            return
-        self.datas.append(data)
-
-    def outputer_html(self):
-        fout = open(&apos;output.html&apos;, &apos;w&apos;)
-        fout.write(&quot;&lt;html&gt;&quot;)
-        fout.write(&quot;&lt;body&gt;&quot;)
-        fout.write(&quot;&lt;table&gt;&quot;)
-
-        # accii
-        for data in self.datas:
-            fout.write(&quot;&lt;tr&gt;&quot;)
-            fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;url&apos;])
-            # 原作者使用了.encode(&apos;utf-8&apos;)的代码，但在python 3 测试报错
-            fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;title&apos;]).encode(&apos;utf-8&apos;)
-            fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;summary&apos;]).encode(&apos;utf-8&apos;)
-
-            fout.write(&quot;&lt;/tr&gt;&quot;)
-
-        fout.write(&quot;&lt;/body&gt;&quot;)
-        fout.write(&quot;&lt;/table&gt;&quot;)
-        fout.write(&quot;&lt;/html&gt;&quot;)
-        fout.close()
-
-
-class HtmlParser(object):
-    def _get_new_urls(self, page_url, soup):
-        new_urls = set()
-        # /view/123.htm
-        links = soup.find_all(&apos;a&apos;, href=re.compile(r&apos;/view/\d+\.htm&apos;))
-        for link in links:
-            new_url = link[&apos;href&apos;]
-
-            new_full_url = urllib.parse.urljoin(page_url, new_url)
-            new_urls.add(new_full_url)
-        return new_urls
-
-    def _get_new_data(self, page_url, soup):
-        # http://baike.baidu.com/view/21087.htm
-        res_data = {}
-        res_data[&apos;url&apos;] = page_url
-        # &lt;dd class=&quot;lemmaWgt-lemmaTitle-title&quot;&gt;&lt;h1&gt;Python&lt;/h1&gt;
-        title_node = soup.find(&apos;dd&apos;, class_=&quot;lemmaWgt-lemmaTitle-title&quot;).find(&quot;h1&quot;)
-        res_data[&apos;title&apos;] = title_node.get_text()
-
-        # &lt;div class=&quot;lemma-summary&quot; label-module=&quot;lemmaSummary&quot;&gt;
-        summery_node = soup.find(&apos;div&apos;, class_=&quot;lemma-summary&quot;)
-        res_data[&apos;summery&apos;] = summery_node.get_text()
-
-        return res_data
-
-    def parse(self, page_url, html_cont):
-        if page_url is None or html_cont is None:
-            return
-        soup = BeautifulSoup(html_cont, &apos;html.parser&apos;, from_encoding=&apos;uft-8&apos;)
-        new_urls = self._get_new_urls(page_url, soup)
-        new_data = self._get_new_data(page_url, soup)
-
-        return new_urls, new_data
-
-
-class HtmlDownloader(object):
-    def download(self, url):
-        if url is None:
-            return None
-
-        response = urlopen(url)
-        if response.getcode() != 200:
-            return None
-        return response.read()
-
-
-class UrlManager(object):
-    def __init__(self):
-        self.new_urls = set()
-        self.old_urls = set()
-
-    def add_new_url(self, url):
-        if url is None:
-            return
-        if url not in self.new_urls and url not in self.old_urls:
-            self.new_urls.add(url)
-
-    def add_new_urls(self, urls):
-        if urls is None or len(urls) == 0:
-            return
-        for url in urls:
-            self.add_new_url(url)
-
-    def has_new_url(self):
-        return len(self.new_urls) != 0
-
-    def get_new_url(self):
-        new_url = self.new_urls.pop()
-        self.old_urls.add(new_url)
-        return new_url
-
-
-
-
-class SpiderMain(object):
-    def __init__(self):
-        # url 管理器
-        self.urls = UrlManager()
-        # 下载器
-        self.downloader = HtmlDownloader()
-
-        # 解析器
-        self.parser = HtmlParser()
-
-        # 输出器
-        self.outputer = HtmlOutputer()
-
-    def craw(self, root_url):
-        count = 1
-        # 入口url添加
-        self.urls.add_new_url(root_url)
-
-        # 如果有新的url
-        while self.urls.has_new_url():
-            try:
-
-                # 获取新的url
-                new_url = self.urls.get_new_url()
-                print(&apos;craw %d : %s&apos; % (count, new_url))
-
-                # 启动下载器下载页面
-                html_cont = self.downloader.download(new_url)
-
-                # 解析器来解析新的地址和数据
-                new_urls, new_data = self.parser.parse(new_url, html_cont)
-
-                # 把新的地址添加到urls
-                self.urls.add_new_urls(new_urls)
-
-                # 输出和收集数据
-                self.outputer.collect_data(new_data)
-
-                if count == 1000:
-                    break
-                count += 1
-            except:
-                print(&apos;craw failed.&apos;)
-
-        # 输出数据
-        self.outputer.outputer_html()
-
-
-if __name__ == &quot;__main__&quot;:
-    root_url = &quot;http://baike.baidu.com/view/21087.htm&quot;
-    # 创建一个爬虫对象
-    obj_spider = SpiderMain()
-    # 运行爬虫函数
-    obj_spider.craw(root_url)
-</code></pre><p>4、原作者是的html_outputer.py 文件包含了3个函数，最后一个是把爬虫数据导出到一个.html文件里，但是按照他的源代码，最后我总是得到错误提示如下，提示整数不能用来encode，也就是爬到的百科名词有的是纯数字的，比如设想是10086 ，另外在python 2 到3 的切换使用中，也确实遇到好几在V2 下ok的代码，到了V3失败，很多是来自解码方面的异常。：</p>
-<p>AttributeError: ‘int’ object has no attribute ‘encode’</p>
-<p>或者当去掉utf-8输出，又遇到gbk编码的问题：<br>UnicodeEncodeError: ‘gbk’ codec can’t encode character ‘\u02c8’ in position 19: illegal multibyte sequence</p>
-<p>5、总结：</p>
-<ul>
-<li><p>首先，原作者在一个工程下，建立一个package，然后把几个主要的类单独列出了py文件，这样的方式更为规范，此文为粘贴代码简便，统一到了一起。实际，应用第一种模式为佳。</p>
-</li>
-<li><p>其次，在分析html的分类入口处，比如python关键词地方的对应html代码，使用右键–&gt;检查（或F12，然后点击上面有“类”的地方，比如此文是关键词python在类lemmaWgt-lemmaTitle-title下的h1标题，然后再右键–&gt;Edit as html，就可以在一个段落里轻松复制这断html代码了。否则在F12模式下不能直接上下复制的）</p>
-</li>
-<li>经过比较python 2， 如果检索的关键词是数字，一样不能使用.encode(‘utf-8’)， 那么原作者的演示视频为何都没有报错？ 这应该是他当时的爬虫没有搜寻到数字关键词，而我的遇到了。 </li>
-</ul>
+        <h1 id="说明-之前爬虫时读取网址内容用的都是urllib，这是python自带的，但如果使用复杂点的功能，还是推荐requests第三方库，这是因为这个库很优秀"><a href="#说明-之前爬虫时读取网址内容用的都是urllib，这是python自带的，但如果使用复杂点的功能，还是推荐requests第三方库，这是因为这个库很优秀" class="headerlink" title="说明:之前爬虫时读取网址内容用的都是urllib，这是python自带的，但如果使用复杂点的功能，还是推荐requests第三方库，这是因为这个库很优秀"></a>说明:之前爬虫时读取网址内容用的都是urllib，这是python自带的，但如果使用复杂点的功能，还是推荐requests第三方库，这是因为这个库很优秀</h1><p>1、比较，参考自： <a href="http://www.jb51.net/article/63711.htm：" target="_blank" rel="external">http://www.jb51.net/article/63711.htm：</a></p>
+<blockquote>
+<p>一个复杂一点的例子：<br>现在让我们尝试下复杂点得例子：使用GET方法获取<a href="http://foo.test/secret的资源，这次需要基本的http验证。使用上面的代码作为模板，好像我们只要把urllib2.urlopen(" target="_blank" rel="external">http://foo.test/secret的资源，这次需要基本的http验证。使用上面的代码作为模板，好像我们只要把urllib2.urlopen(</a>) 到requests.get()之间的代码换成可以发送username，password的请求就行了<br>这是urllib2的方法：</p>
+<blockquote>
+<blockquote>
+<p>import urllib2<br>url = ‘<a href="http://example.test/secret" target="_blank" rel="external">http://example.test/secret</a>‘<br>password_manager = urllib2.HTTPPasswordMgrWithDefaultRealm()<br>password_manager.add_password(None, url, ‘dan’, ‘h0tdish’)<br>auth_handler = urllib2.HTTPBasicAuthHandler(password_manager)<br>opener = urllib2.build_opener(auth_handler)<br>urllib2.install_opener(opener)<br>response = urllib2.urlopen(url)<br>response.getcode()<br>200<br>response.read()<br>‘Welcome to the secret page!’<br>一个简单的方法中实例化了2个类，然后组建了第三个类，最后还要装载到全局的urllib2模块中，最后才调用了urlopen，那么那两个复杂的类是什么的<br>迷惑了吗，  这里所有urllib2的文档 <a href="http://docs.python.org/release/2.7/library/urllib2.html" target="_blank" rel="external">http://docs.python.org/release/2.7/library/urllib2.html</a></p>
+</blockquote>
+</blockquote>
+<p>那Requests是怎么样解决同样的问题的呢？<br>Requests</p>
+<blockquote>
+<blockquote>
+<p>import requests<br>url = ‘<a href="http://example.test/secret" target="_blank" rel="external">http://example.test/secret</a>‘<br>response = requests.get(url,auth=(‘dan’,’h0tdish’))<br>response.status_code<br>200<br>response.content<br>u’Welcome to the secret page!’<br>只是在调用方法的时候增加了一个auth关键字函数</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>2、requests的documents官网：  <a href="http://www.python-requests.org/en/master/" target="_blank" rel="external">http://www.python-requests.org/en/master/</a><br>建议阅读下其documents，写的还是挺清楚的。</p>
+<p>3、</p>
 
       
     </div>
@@ -543,10 +379,10 @@ if __name__ == &quot;__main__&quot;:
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -563,7 +399,7 @@ if __name__ == &quot;__main__&quot;:
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">31</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -594,7 +430,7 @@ if __name__ == &quot;__main__&quot;:
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明：以下内容学习自：http-www-imooc-com"><span class="nav-number">1.</span> <span class="nav-text">说明：以下内容学习自：http://www.imooc.com/</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明-之前爬虫时读取网址内容用的都是urllib，这是python自带的，但如果使用复杂点的功能，还是推荐requests第三方库，这是因为这个库很优秀"><span class="nav-number">1.</span> <span class="nav-text">说明:之前爬虫时读取网址内容用的都是urllib，这是python自带的，但如果使用复杂点的功能，还是推荐requests第三方库，这是因为这个库很优秀</span></a></li></ol></div>
             
           </div>
         </section>
@@ -621,7 +457,7 @@ if __name__ == &quot;__main__&quot;:
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
