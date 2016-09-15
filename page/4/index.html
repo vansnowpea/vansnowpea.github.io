@@ -84,27 +84,12 @@
 
 
 
-<meta name="description" content="上图中我在文章中输入的，竟然引发了Hexo的 Hexo g 命令的异常报错：
-FATAL [Line xx, Column yy]  unknown block tag:  load 
-在Hexo官网上，现在也没找到到底如何解决，以及具体的原因，只能猜测是引发了内置函数的冲突。
-在数千字的文章中定位找到这个bug ，也是花了点时间。 不过好在定位出来了。 这是第一次遇到在文章中，而非源代码，也能">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Hexo模版一个bug的发现和记录">
-<meta property="og:url" content="http://yoursite.com/2016/09/05/Hexo模版一个bug的发现和记录/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="天青色等烟雨">
+<meta property="og:url" content="http://yoursite.com/page/4/index.html">
 <meta property="og:site_name" content="天青色等烟雨">
-<meta property="og:description" content="上图中我在文章中输入的，竟然引发了Hexo的 Hexo g 命令的异常报错：
-FATAL [Line xx, Column yy]  unknown block tag:  load 
-在Hexo官网上，现在也没找到到底如何解决，以及具体的原因，只能猜测是引发了内置函数的冲突。
-在数千字的文章中定位找到这个bug ，也是花了点时间。 不过好在定位出来了。 这是第一次遇到在文章中，而非源代码，也能">
-<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/hexo%20load%E6%8A%A5%E9%94%99.png">
-<meta property="og:updated_time" content="2016-09-05T00:29:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo模版一个bug的发现和记录">
-<meta name="twitter:description" content="上图中我在文章中输入的，竟然引发了Hexo的 Hexo g 命令的异常报错：
-FATAL [Line xx, Column yy]  unknown block tag:  load 
-在Hexo官网上，现在也没找到到底如何解决，以及具体的原因，只能猜测是引发了内置函数的冲突。
-在数千字的文章中定位找到这个bug ，也是花了点时间。 不过好在定位出来了。 这是第一次遇到在文章中，而非源代码，也能">
-<meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com/hexo%20load%E6%8A%A5%E9%94%99.png">
+<meta name="twitter:title" content="天青色等烟雨">
 
 
 
@@ -125,9 +110,9 @@ FATAL [Line xx, Column yy]  unknown block tag:  load
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/05/Hexo模版一个bug的发现和记录/"/>
+  <link rel="canonical" href="http://yoursite.com/page/4/"/>
 
-  <title> Hexo模版一个bug的发现和记录 | 天青色等烟雨 </title>
+  <title> 天青色等烟雨 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -148,7 +133,9 @@ FATAL [Line xx, Column yy]  unknown block tag:  load
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -225,9 +212,9 @@ FATAL [Line xx, Column yy]  unknown block tag:  load
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
   
@@ -247,7 +234,10 @@ FATAL [Line xx, Column yy]  unknown block tag:  load
             
             
               
-                Hexo模版一个bug的发现和记录
+                
+                <a class="post-title-link" href="/2016/08/23/How to build a Blog with Hexo on Github/" itemprop="url">
+                  How to build a Blog with Hexo on Github
+                </a>
               
             
           </h1>
@@ -259,8 +249,8 @@ FATAL [Line xx, Column yy]  unknown block tag:  load
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-05T01:59:28+08:00" content="2016-09-05">
-              2016-09-05
+            <time itemprop="dateCreated" datetime="2016-08-23T21:16:05+08:00" content="2016-08-23">
+              2016-08-23
             </time>
           </span>
 
@@ -287,26 +277,57 @@ FATAL [Line xx, Column yy]  unknown block tag:  load
       
 
       
-        <p><img src="http://ocg7i7pt6.bkt.clouddn.com/hexo%20load%E6%8A%A5%E9%94%99.png" alt=""></p>
-<p>上图中我在文章中输入的，竟然引发了Hexo的 Hexo g 命令的异常报错：</p>
-<p>FATAL<unknown path=""> [Line xx, Column yy]<br>  unknown block tag:  load </unknown></p>
-<p>在Hexo官网上，现在也没找到到底如何解决，以及具体的原因，只能猜测是引发了内置函数的冲突。</p>
-<p>在数千字的文章中定位找到这个bug ，也是花了点时间。 不过好在定位出来了。 这是第一次遇到在文章中，而非源代码，也能引发bug，一开始没想到会这样，后来想了下其原理应该是在内容更新前，Hexo会扫描发布内容中所含有的代码类，这一次很不幸引发了冲突。 </p>
+        
+          
+            <p><img src="http://ocg7i7pt6.bkt.clouddn.com/python.png" alt=""></p>
+<p>##This is the first post of my blog here, and will show how to build it.</p>
+<p>##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js</p>
+<p>##Note : change username into real one, supposed your Github id is xxx, replace username with xxx.</p>
+<p>1/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install node.js</div></pre></td></tr></table></figure>
+<p>2/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt install git-core</div></pre></td></tr></table></figure>
+<p>3/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt install npm</div></pre></td></tr></table></figure>
+<p>4/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo npm install -g hexo-cli</div></pre></td></tr></table></figure>
+<p>5/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> /home/van/downloads/</div></pre></td></tr></table></figure>
+<p>you choose a path.</p>
+<p>6/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mkdir TestB<span class="built_in">log</span></div></pre></td></tr></table></figure>
+<p>7/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> TestB<span class="built_in">log</span></div></pre></td></tr></table></figure>
+<p>8/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/username/username.github.io.git</div></pre></td></tr></table></figure>
+<p>9/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init username.github.io</div></pre></td></tr></table></figure>
+<p>10/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> username.github.io</div><div class="line">$ npm install</div></pre></td></tr></table></figure>
+<p>11/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo s</div></pre></td></tr></table></figure>
+<p>type:<strong>localhost:4000</strong> in brower,<br>it should work now, but the <a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> is still 404 error.</p>
+<p>12/ open _config.yml and modify as follows:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line"><span class="built_in">type</span>: git</div><div class="line">repo: https://github.com/username/username .github.io.git</div><div class="line">branch: master</div></pre></td></tr></table></figure>
+<p>13/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo d</div><div class="line">$ hexo s</div></pre></td></tr></table></figure>
+<p>now the <a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> should work,<br>and plz note:in less case , if the port 4000 is occupied,<br>set <strong>$ hexo server -p 5000</strong> or some big number.</p>
+<p>14/ change a Theme</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> your-hexo-site </div><div class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
+<p>modify in _config.yaml:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Theme: next</div></pre></td></tr></table></figure>
+<p>15/ and now you got it. ^^)</p>
 
+          
+        
       
     </div>
 
     <div>
       
-        
-
-      
     </div>
 
     <div>
-      
-        
-
       
     </div>
 
@@ -314,36 +335,23 @@ FATAL [Line xx, Column yy]  unknown block tag:  load
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/09/05/Windows下Python+Django制作网站的方法2/" rel="next" title="Windows下Python+Django制作网站的方法（2）">
-                <i class="fa fa-chevron-left"></i> Windows下Python+Django制作网站的方法（2）
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/06/推荐Tornado的中文教程/" rel="prev" title="推荐Tornado的中文教程">
-                推荐Tornado的中文教程 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
 
       
+      
+        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
+
 
 
           </div>
@@ -351,10 +359,6 @@ FATAL [Line xx, Column yy]  unknown block tag:  load
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -374,17 +378,8 @@ FATAL [Line xx, Column yy]  unknown block tag:  load
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -420,17 +415,6 @@ FATAL [Line xx, Column yy]  unknown block tag:  load
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -527,10 +511,6 @@ FATAL [Line xx, Column yy]  unknown block tag:  load
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 
