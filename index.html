@@ -280,7 +280,8 @@
         
           
             <h1 id="说明原文连接【点我】"><a href="#说明原文连接【点我】" class="headerlink" title="说明原文连接【点我】"></a><a href="http://www.jianshu.com/p/6002ef3434fd" target="_blank" rel="external">说明原文连接【点我】</a></h1><p>1、在原文基础上稍作修改，增加了mysql数据库的代码，但是在数据库中的显示结果不理想，主要是其格式不确定怎么设置。</p>
-<p>2、本文亮点使用json分析了异步数据，用的方法比较麻烦，但是起作用，</p>
+<p>2、本文亮点使用json分析了异步数据，用的方法比较麻烦，但是起作用，具体为通过firefox的网络+XHR功能，鼠标逐渐往下拉，来得到get请求，查看右侧的结果，以及找到步进规律和对应的json网址，如下图：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/firefox%20%E7%BD%91%E7%BB%9C%20xhr.png" alt=""></p>
 <p>3、配置：需要安装mongodb,并配置,同时建议安装其图形化工具robomongo，会方便不少，， mongo代码：</p>
 <pre><code>#coding:utf-8
 from bs4 import BeautifulSoup
@@ -356,7 +357,7 @@ def start():
         dealData(url)
 
 start()
-</code></pre><p>6、mysql数据显示，如下图：</p>
+</code></pre><p>6、mysql数据显示，如下图，比较杂乱：</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/mysql%20guoke.png" alt=""></p>
 
           
