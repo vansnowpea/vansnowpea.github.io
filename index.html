@@ -235,6 +235,180 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/16/selenium+PhantomJS 抓取斗鱼房间信息/" itemprop="url">
+                  使用json和mongo进行果壳网异步数据的爬取【python】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-16T10:59:28+08:00" content="2016-09-16">
+              2016-09-16
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明原文连接【点我】"><a href="#说明原文连接【点我】" class="headerlink" title="说明原文连接【点我】"></a><a href="http://www.jianshu.com/p/6002ef3434fd" target="_blank" rel="external">说明原文连接【点我】</a></h1><p>1、在原文基础上稍作修改，增加了mysql数据库的代码，但是在数据库中的显示结果不理想，主要是其格式不确定怎么设置。</p>
+<p>2、本文亮点使用json分析了异步数据，用的方法比较麻烦，但是起作用，具体为通过firefox的网络+XHR功能，鼠标逐渐往下拉，来得到get请求，查看右侧的结果，以及找到步进规律和对应的json网址，如下图：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/firefox%20%E7%BD%91%E7%BB%9C%20xhr.png" alt=""></p>
+<p>3、配置：需要安装mongodb,并配置,同时建议安装其图形化工具robomongo，会方便不少，， mongo代码：</p>
+<pre><code>#coding:utf-8
+from bs4 import BeautifulSoup
+import requests
+import json
+import pymongo
+
+url = &apos;http://www.guokr.com/scientific/&apos;
+
+def dealData(url):
+    client = pymongo.MongoClient(&apos;localhost&apos;, 27017)
+    guoke = client[&apos;guoke&apos;]
+    guokeData = guoke[&apos;guokeData&apos;]
+    web_data = requests.get(url)
+    datas = json.loads(web_data.text)
+    print(datas.keys())
+    for data in datas[&apos;result&apos;]:
+        guokeData.insert_one(data)
+
+def start():
+    urls = [&apos;http://www.guokr.com/apis/minisite/article.json?retrieve_type=by_subject&amp;limit=20&amp;offset={}&amp;_=1462252453410&apos;.format(str(i)) for i in range(20, 100, 20)]
+    for url in urls:
+        dealData(url)
+
+start()
+</code></pre><p>4、输出结果到robomongo，如图：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/robomongo%20guoke.png" alt=""></p>
+<p>5、使用mysql数据库，由于不确定输出的result应该用什么格式，我就用了varchar，但是这把一个列表都放到varchar中，导致长度非常长，看起来也很不爽，仅做记录。代码：</p>
+<pre><code>#coding:utf-8
+from bs4 import BeautifulSoup
+import requests
+import json
+import pymysql.cursors
+
+url = &apos;http://www.guokr.com/scientific/&apos;
+
+def dealData(url):
+    # client = pymongo.MongoClient(&apos;localhost&apos;, 27017)
+    # guoke = client[&apos;guoke&apos;]
+    # guokeData = guoke[&apos;guokeData&apos;]
+
+    web_data = requests.get(url)
+    datas = json.loads(web_data.text)
+    print(datas.keys())
+    for data in datas[&apos;result&apos;]:
+        #guokeData.insert_one(data)
+        print(data)
+        print (type(data))
+        connection = pymysql.connect(host=&apos;localhost&apos;,
+                                     user=&apos;root&apos;,
+                                     password=&apos;XXXX&apos;,
+                                     db=&apos;guoke&apos;,
+                                     charset=&apos;utf8&apos;
+                                     )
+
+        try:
+            # 创建会话指针
+            with connection.cursor() as cursor:
+                # 创建sql语句
+                sql = &apos;insert into `guoke1` (`result`) values(%s)&apos;
+                # 执行sql语句
+                cursor.execute(sql, (str(data)))
+
+                # 提交
+                connection.commit()
+        finally:
+            connection.close()
+
+def start():
+    urls = [&apos;http://www.guokr.com/apis/minisite/article.json?retrieve_type=by_subject&amp;limit=20&amp;offset={}&amp;_=1462252453410&apos;.format(str(i)) for i in range(20, 100, 20)]
+    for url in urls:
+
+        dealData(url)
+
+start()
+</code></pre><p>6、mysql数据显示，如下图，比较杂乱：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/mysql%20guoke.png" alt=""></p>
+<p>7、总结：异步加载的网页爬取有所麻烦，后续会使用selenium工具来相对方便的操作， 同时，可以感觉到mongodb有其特色，</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/16/使用json和mongo进行果壳网异步数据的爬取/" itemprop="url">
                   使用json和mongo进行果壳网异步数据的爬取【python】
                 </a>
@@ -1605,117 +1779,6 @@ for url in listUrls:
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/11/Python操作MySQL数据库/" itemprop="url">
-                  Python操作MySQL数据库
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
-              2016-09-11
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/475" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>简介：本课程讲解Python如何开发MySQL数据库程序。首先介绍Python开发数据库程序的通用接口规范，然后搭建Python开发数据库程序的开发环境，接着了解了通用接口规范中的connection、cursor两大对象之后，介绍如何增删改查数据库，最后以实例代码演示数据库程序的开发流程。</p>
-<p>1、教程说到以下网址<a href="http://sourceforge.net/projects/mysql-python下载mysql-pyhon" target="_blank" rel="external">http://sourceforge.net/projects/mysql-python下载mysql-pyhon</a> 的连接器，针对python2.7的。 一开始安装失败，提示找不到python，原来此台电脑我的python 是64位的，貌似那个连接器是针对32位的，所有我又到以下网址下载了64位的连接器： <a href="http://www.codegood.com/download/11/" target="_blank" rel="external">http://www.codegood.com/download/11/</a><br>这下就能识别到python了， 但是一看版本是1.2.3的，而最新版是1.2.5的，考虑到mysql 5.6默认的msi也是32位的，我就把python 2.7.12换到了32位统一下吧。   安装成功后，在python下输入如下命令会成功，否则报错：</p>
-<pre><code>&gt;&gt;&gt; import MySQLdb
-&gt;&gt;&gt;
-</code></pre><p>2、然后根据教程要使用sqlyog，官网卡机，只好装国内版本，我用的这个连接（Ultimate 版本: （终极是最好的））： <a href="http://www.liangchan.net/soft/download.asp?softid=6633&amp;downid=8&amp;id=6658" target="_blank" rel="external">http://www.liangchan.net/soft/download.asp?softid=6633&amp;downid=8&amp;id=6658</a></p>
-<p>随后在sqlyog新建一个数据库，并设置下utf8编码，如下图：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%201.png" alt=""></p>
-<p>3、编写一个imooc.py 来建立connection连接，<strong>千万注意代码中的密码对应的是passwd，而不是全称的password哦。</strong></p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/db%20api%20connection.png" alt=""></p>
-<p>4、通过connection来创建游标对象cursor： </p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/cursor.png" alt=""></p>
-<p>5、select查询数据</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/select%20%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE.png" alt=""></p>
-<p>6、数据库 I U D 操作：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/%E6%95%B0%E6%8D%AE%E5%BA%93u%20i%20d.png" alt=""></p>
-<p>7、sqlyog的表单操作，要创建2个列就要在新建的表中，增加2个属性，如下图：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%20%E8%A1%A8%E6%A0%BC%E8%AE%BE%E7%BD%AE%E5%88%97.png" alt=""></p>
-<p>8、同时推荐W3C的SQL教程，地址是： <a href="http://www.w3school.com.cn/sql/index.asp" target="_blank" rel="external">http://www.w3school.com.cn/sql/index.asp</a></p>
-<p>9、刚发现<a href="http://www.jianshu.com/p/a014b26ba7ca" target="_blank" rel="external">这个帖子</a>也有写的比较详细，可参考</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1761,7 +1824,7 @@ for url in listUrls:
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">34</span>
+              <span class="site-state-item-count">35</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>

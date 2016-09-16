@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -235,6 +235,117 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/11/Python操作MySQL数据库/" itemprop="url">
+                  Python操作MySQL数据库
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
+              2016-09-11
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/475" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>简介：本课程讲解Python如何开发MySQL数据库程序。首先介绍Python开发数据库程序的通用接口规范，然后搭建Python开发数据库程序的开发环境，接着了解了通用接口规范中的connection、cursor两大对象之后，介绍如何增删改查数据库，最后以实例代码演示数据库程序的开发流程。</p>
+<p>1、教程说到以下网址<a href="http://sourceforge.net/projects/mysql-python下载mysql-pyhon" target="_blank" rel="external">http://sourceforge.net/projects/mysql-python下载mysql-pyhon</a> 的连接器，针对python2.7的。 一开始安装失败，提示找不到python，原来此台电脑我的python 是64位的，貌似那个连接器是针对32位的，所有我又到以下网址下载了64位的连接器： <a href="http://www.codegood.com/download/11/" target="_blank" rel="external">http://www.codegood.com/download/11/</a><br>这下就能识别到python了， 但是一看版本是1.2.3的，而最新版是1.2.5的，考虑到mysql 5.6默认的msi也是32位的，我就把python 2.7.12换到了32位统一下吧。   安装成功后，在python下输入如下命令会成功，否则报错：</p>
+<pre><code>&gt;&gt;&gt; import MySQLdb
+&gt;&gt;&gt;
+</code></pre><p>2、然后根据教程要使用sqlyog，官网卡机，只好装国内版本，我用的这个连接（Ultimate 版本: （终极是最好的））： <a href="http://www.liangchan.net/soft/download.asp?softid=6633&amp;downid=8&amp;id=6658" target="_blank" rel="external">http://www.liangchan.net/soft/download.asp?softid=6633&amp;downid=8&amp;id=6658</a></p>
+<p>随后在sqlyog新建一个数据库，并设置下utf8编码，如下图：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%201.png" alt=""></p>
+<p>3、编写一个imooc.py 来建立connection连接，<strong>千万注意代码中的密码对应的是passwd，而不是全称的password哦。</strong></p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/db%20api%20connection.png" alt=""></p>
+<p>4、通过connection来创建游标对象cursor： </p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/cursor.png" alt=""></p>
+<p>5、select查询数据</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/select%20%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE.png" alt=""></p>
+<p>6、数据库 I U D 操作：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/%E6%95%B0%E6%8D%AE%E5%BA%93u%20i%20d.png" alt=""></p>
+<p>7、sqlyog的表单操作，要创建2个列就要在新建的表中，增加2个属性，如下图：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%20%E8%A1%A8%E6%A0%BC%E8%AE%BE%E7%BD%AE%E5%88%97.png" alt=""></p>
+<p>8、同时推荐W3C的SQL教程，地址是： <a href="http://www.w3school.com.cn/sql/index.asp" target="_blank" rel="external">http://www.w3school.com.cn/sql/index.asp</a></p>
+<p>9、刚发现<a href="http://www.jianshu.com/p/a014b26ba7ca" target="_blank" rel="external">这个帖子</a>也有写的比较详细，可参考</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/11/正则式学习小结/" itemprop="url">
                   正则式学习小结
                 </a>
@@ -248,7 +359,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
               2016-09-11
             </time>
@@ -383,7 +494,7 @@ for url in listurl:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-09T16:59:28+08:00" content="2016-09-09">
               2016-09-09
             </time>
@@ -483,7 +594,7 @@ for url in listurl:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-09T16:59:28+08:00" content="2016-09-09">
               2016-09-09
             </time>
@@ -621,7 +732,7 @@ ul.disc {list-style-type: disc}
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-09T14:59:28+08:00" content="2016-09-09">
               2016-09-09
             </time>
@@ -784,7 +895,7 @@ ul.disc {list-style-type: disc}
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-09T01:59:28+08:00" content="2016-09-09">
               2016-09-09
             </time>
@@ -882,7 +993,7 @@ ul.disc {list-style-type: disc}
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-07T16:59:28+08:00" content="2016-09-07">
               2016-09-07
             </time>
@@ -1017,7 +1128,7 @@ for link in links:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-07T10:59:28+08:00" content="2016-09-07">
               2016-09-07
             </time>
@@ -1113,7 +1224,7 @@ for link in links:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-07T01:59:28+08:00" content="2016-09-07">
               2016-09-07
             </time>
@@ -1246,7 +1357,7 @@ Successfully installed lxml-3.6.4
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-06T14:59:28+08:00" content="2016-09-06">
               2016-09-06
             </time>
@@ -1326,104 +1437,6 @@ import tornado.web
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/05/Hexo模版一个bug的发现和记录/" itemprop="url">
-                  Hexo模版一个bug的发现和记录
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-09-05T01:59:28+08:00" content="2016-09-05">
-              2016-09-05
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="http://ocg7i7pt6.bkt.clouddn.com/hexo%20load%E6%8A%A5%E9%94%99.png" alt=""></p>
-<p>上图中我在文章中输入的，竟然引发了Hexo的 Hexo g 命令的异常报错：</p>
-<p>FATAL<unknown path=""> [Line xx, Column yy]<br>  unknown block tag:  load </unknown></p>
-<p>在Hexo官网上，现在也没找到到底如何解决，以及具体的原因，只能猜测是引发了内置函数的冲突。</p>
-<p>在数千字的文章中定位找到这个bug ，也是花了点时间。 不过好在定位出来了。 这是第一次遇到在文章中，而非源代码，也能引发bug，一开始没想到会这样，后来想了下其原理应该是在内容更新前，Hexo会扫描发布内容中所含有的代码类，这一次很不幸引发了冲突。 </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1469,8 +1482,8 @@ import tornado.web
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">34</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1517,7 +1530,7 @@ import tornado.web
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

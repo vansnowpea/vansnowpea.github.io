@@ -84,22 +84,29 @@
 
 
 
-<meta name="description" content="说明:虽然win10 已经开始支持子系统运行Ubuntu了。 但因为个人倾向win7的精简风格，W+U双系统测试，剧情比较悲催，记录之。
-1、一开始通过本机Win+virtualbox（Ubuntu），预期解决本机数据不能复制到Virtualbox的问题,故尝试装Win+Ubuntu双系统。
-2、由于2个Win的双系统对本机其他盘的文件没影响，一开始惯性思维装Ubuntu也问题不大，但实际问题很大">
+<meta name="description" content="说明原文连接【点我】1、在原文基础上稍作修改，增加了mysql数据库的代码，但是在数据库中的显示结果不理想，主要是其格式不确定怎么设置。
+2、本文亮点使用json分析了异步数据，用的方法比较麻烦，但是起作用，具体为通过firefox的网络+XHR功能，鼠标逐渐往下拉，来得到get请求，查看右侧的结果，以及找到步进规律和对应的json网址，如下图：
+
+3、配置：需要安装mongodb,并配置,同时建">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu系统安装遇到的一些坑">
-<meta property="og:url" content="http://yoursite.com/2016/08/27/Ubuntu系统安装遇到的一些坑/index.html">
+<meta property="og:title" content="使用json和mongo进行果壳网异步数据的爬取【python】">
+<meta property="og:url" content="http://yoursite.com/2016/09/16/selenium+PhantomJS 抓取斗鱼房间信息/index.html">
 <meta property="og:site_name" content="天青色等烟雨">
-<meta property="og:description" content="说明:虽然win10 已经开始支持子系统运行Ubuntu了。 但因为个人倾向win7的精简风格，W+U双系统测试，剧情比较悲催，记录之。
-1、一开始通过本机Win+virtualbox（Ubuntu），预期解决本机数据不能复制到Virtualbox的问题,故尝试装Win+Ubuntu双系统。
-2、由于2个Win的双系统对本机其他盘的文件没影响，一开始惯性思维装Ubuntu也问题不大，但实际问题很大">
-<meta property="og:updated_time" content="2016-08-27T13:03:58.000Z">
+<meta property="og:description" content="说明原文连接【点我】1、在原文基础上稍作修改，增加了mysql数据库的代码，但是在数据库中的显示结果不理想，主要是其格式不确定怎么设置。
+2、本文亮点使用json分析了异步数据，用的方法比较麻烦，但是起作用，具体为通过firefox的网络+XHR功能，鼠标逐渐往下拉，来得到get请求，查看右侧的结果，以及找到步进规律和对应的json网址，如下图：
+
+3、配置：需要安装mongodb,并配置,同时建">
+<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/firefox%20%E7%BD%91%E7%BB%9C%20xhr.png">
+<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/robomongo%20guoke.png">
+<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/mysql%20guoke.png">
+<meta property="og:updated_time" content="2016-09-16T02:58:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ubuntu系统安装遇到的一些坑">
-<meta name="twitter:description" content="说明:虽然win10 已经开始支持子系统运行Ubuntu了。 但因为个人倾向win7的精简风格，W+U双系统测试，剧情比较悲催，记录之。
-1、一开始通过本机Win+virtualbox（Ubuntu），预期解决本机数据不能复制到Virtualbox的问题,故尝试装Win+Ubuntu双系统。
-2、由于2个Win的双系统对本机其他盘的文件没影响，一开始惯性思维装Ubuntu也问题不大，但实际问题很大">
+<meta name="twitter:title" content="使用json和mongo进行果壳网异步数据的爬取【python】">
+<meta name="twitter:description" content="说明原文连接【点我】1、在原文基础上稍作修改，增加了mysql数据库的代码，但是在数据库中的显示结果不理想，主要是其格式不确定怎么设置。
+2、本文亮点使用json分析了异步数据，用的方法比较麻烦，但是起作用，具体为通过firefox的网络+XHR功能，鼠标逐渐往下拉，来得到get请求，查看右侧的结果，以及找到步进规律和对应的json网址，如下图：
+
+3、配置：需要安装mongodb,并配置,同时建">
+<meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com/firefox%20%E7%BD%91%E7%BB%9C%20xhr.png">
 
 
 
@@ -120,9 +127,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/08/27/Ubuntu系统安装遇到的一些坑/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/16/selenium+PhantomJS 抓取斗鱼房间信息/"/>
 
-  <title> Ubuntu系统安装遇到的一些坑 | 天青色等烟雨 </title>
+  <title> 使用json和mongo进行果壳网异步数据的爬取【python】 | 天青色等烟雨 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -242,7 +249,7 @@
             
             
               
-                Ubuntu系统安装遇到的一些坑
+                使用json和mongo进行果壳网异步数据的爬取【python】
               
             
           </h1>
@@ -254,8 +261,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-08-27T01:44:05+08:00" content="2016-08-27">
-              2016-08-27
+            <time itemprop="dateCreated" datetime="2016-09-16T10:59:28+08:00" content="2016-09-16">
+              2016-09-16
             </time>
           </span>
 
@@ -282,14 +289,87 @@
       
 
       
-        <p><strong>说明:虽然win10 已经开始支持子系统运行Ubuntu了。 但因为个人倾向win7的精简风格，W+U双系统测试，剧情比较悲催，记录之。</strong></p>
-<p>1、一开始通过本机Win+virtualbox（Ubuntu），预期解决本机数据不能复制到Virtualbox的问题,故尝试装Win+Ubuntu双系统。</p>
-<p>2、由于2个Win的双系统对本机其他盘的文件没影响，一开始惯性思维装Ubuntu也问题不大，但实际问题很大。这是后来才发现，使用Ubuntu不仅要修改硬盘格式，还要修改其他Bios设置。</p>
-<p>3、这导致我一马平川的装好Ubuntu的时候（鼠标点太快），发现Win已经全部没了。很多历史的总结文档，好在大部分有云存储。</p>
-<p>4、发现本机Ubuntu有不少问题，这是因为第一，Linux的熟悉度不够，第二，一些第三方软件的使用，比较麻烦，比如安装命令不确定带来的错误，有的非常难搞定安装和使用，而在Win下超简单。于是想采用本机Ubuntu+virtualbox（Win7）的方案，又发现，在Ubuntu下，运行Virtualbox的窗口比较小（没找到直接调试的地方），这使得Win的体验感很差，而在Win下，使用Virtualbox的窗口可简单调整。第三是，发现一运行Virtualbox就特别卡。</p>
-<p>5、最后决定，本机换回Win，但是从Ubuntu到Win的切换又遇到问题。  首先，修改了Bios，但是硬盘格式没有修改，这是因为搜索别人的经验建议Win7以上保留该格式。最后通过U盘带PE+iso的方案。  可进入PE怎么调试也装不上Win，经过多轮比对测试发现，还是硬盘读取数据异常。  测试修改硬盘格式，终于读取了iso。</p>
-<p>6、单机安装Win，又遇到问题，因为没有任何驱动，主要是网卡。这样我手机的东西不能直接通过数据线连到电脑，  本来想明天到其他电脑通过copy网卡驱动在搞，后来突然想到通过手机下载万能网卡驱动到SD卡，然后手机SD卡+读卡器安装到电脑。这样就一下搞定了。</p>
-<p>7、总结不足的地方，惯性思维导致丢失了硬盘数据，第一次本机换装Linux系统，没查到硬盘格式不同，导致后来很多问题。事后发现，Win+Ubuntu的双系统，应该在Win分区，但很繁琐。或者单独给Ubuntu装，或者继续用Win+Virtualbox的方案，或者装Win10 insider_preview版本。</p>
+        <h1 id="说明原文连接【点我】"><a href="#说明原文连接【点我】" class="headerlink" title="说明原文连接【点我】"></a><a href="http://www.jianshu.com/p/6002ef3434fd" target="_blank" rel="external">说明原文连接【点我】</a></h1><p>1、在原文基础上稍作修改，增加了mysql数据库的代码，但是在数据库中的显示结果不理想，主要是其格式不确定怎么设置。</p>
+<p>2、本文亮点使用json分析了异步数据，用的方法比较麻烦，但是起作用，具体为通过firefox的网络+XHR功能，鼠标逐渐往下拉，来得到get请求，查看右侧的结果，以及找到步进规律和对应的json网址，如下图：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/firefox%20%E7%BD%91%E7%BB%9C%20xhr.png" alt=""></p>
+<p>3、配置：需要安装mongodb,并配置,同时建议安装其图形化工具robomongo，会方便不少，， mongo代码：</p>
+<pre><code>#coding:utf-8
+from bs4 import BeautifulSoup
+import requests
+import json
+import pymongo
+
+url = &apos;http://www.guokr.com/scientific/&apos;
+
+def dealData(url):
+    client = pymongo.MongoClient(&apos;localhost&apos;, 27017)
+    guoke = client[&apos;guoke&apos;]
+    guokeData = guoke[&apos;guokeData&apos;]
+    web_data = requests.get(url)
+    datas = json.loads(web_data.text)
+    print(datas.keys())
+    for data in datas[&apos;result&apos;]:
+        guokeData.insert_one(data)
+
+def start():
+    urls = [&apos;http://www.guokr.com/apis/minisite/article.json?retrieve_type=by_subject&amp;limit=20&amp;offset={}&amp;_=1462252453410&apos;.format(str(i)) for i in range(20, 100, 20)]
+    for url in urls:
+        dealData(url)
+
+start()
+</code></pre><p>4、输出结果到robomongo，如图：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/robomongo%20guoke.png" alt=""></p>
+<p>5、使用mysql数据库，由于不确定输出的result应该用什么格式，我就用了varchar，但是这把一个列表都放到varchar中，导致长度非常长，看起来也很不爽，仅做记录。代码：</p>
+<pre><code>#coding:utf-8
+from bs4 import BeautifulSoup
+import requests
+import json
+import pymysql.cursors
+
+url = &apos;http://www.guokr.com/scientific/&apos;
+
+def dealData(url):
+    # client = pymongo.MongoClient(&apos;localhost&apos;, 27017)
+    # guoke = client[&apos;guoke&apos;]
+    # guokeData = guoke[&apos;guokeData&apos;]
+
+    web_data = requests.get(url)
+    datas = json.loads(web_data.text)
+    print(datas.keys())
+    for data in datas[&apos;result&apos;]:
+        #guokeData.insert_one(data)
+        print(data)
+        print (type(data))
+        connection = pymysql.connect(host=&apos;localhost&apos;,
+                                     user=&apos;root&apos;,
+                                     password=&apos;XXXX&apos;,
+                                     db=&apos;guoke&apos;,
+                                     charset=&apos;utf8&apos;
+                                     )
+
+        try:
+            # 创建会话指针
+            with connection.cursor() as cursor:
+                # 创建sql语句
+                sql = &apos;insert into `guoke1` (`result`) values(%s)&apos;
+                # 执行sql语句
+                cursor.execute(sql, (str(data)))
+
+                # 提交
+                connection.commit()
+        finally:
+            connection.close()
+
+def start():
+    urls = [&apos;http://www.guokr.com/apis/minisite/article.json?retrieve_type=by_subject&amp;limit=20&amp;offset={}&amp;_=1462252453410&apos;.format(str(i)) for i in range(20, 100, 20)]
+    for url in urls:
+
+        dealData(url)
+
+start()
+</code></pre><p>6、mysql数据显示，如下图，比较杂乱：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/mysql%20guoke.png" alt=""></p>
+<p>7、总结：异步加载的网页爬取有所麻烦，后续会使用selenium工具来相对方便的操作， 同时，可以感觉到mongodb有其特色，</p>
 
       
     </div>
@@ -315,17 +395,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/27/推荐MarkdownPad 作为Win系统本机端的MarkDwon编辑器/" rel="next" title="推荐MarkdownPad 作为Win系统本机端的MarkDwon编辑器">
-                <i class="fa fa-chevron-left"></i> 推荐MarkdownPad 作为Win系统本机端的MarkDwon编辑器
+              <a href="/2016/09/16/使用json和mongo进行果壳网异步数据的爬取/" rel="next" title="使用json和mongo进行果壳网异步数据的爬取【python】">
+                <i class="fa fa-chevron-left"></i> 使用json和mongo进行果壳网异步数据的爬取【python】
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/08/27/如何在Win系统实现Github博客的管理/" rel="prev" title="如何在Win系统实现Github博客的管理">
-                如何在Win系统实现Github博客的管理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -425,7 +501,7 @@
               
             
             
-              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明原文连接【点我】"><span class="nav-number">1.</span> <span class="nav-text">说明原文连接【点我】</span></a></li></ol></div>
             
           </div>
         </section>
