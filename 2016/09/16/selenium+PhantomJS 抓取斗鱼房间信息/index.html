@@ -84,29 +84,16 @@
 
 
 
-<meta name="description" content="说明原文连接【点我】1、在原文基础上稍作修改，增加了mysql数据库的代码，但是在数据库中的显示结果不理想，主要是其格式不确定怎么设置。
-2、本文亮点使用json分析了异步数据，用的方法比较麻烦，但是起作用，具体为通过firefox的网络+XHR功能，鼠标逐渐往下拉，来得到get请求，查看右侧的结果，以及找到步进规律和对应的json网址，如下图：
-
-3、配置：需要安装mongodb,并配置,同时建">
+<meta name="description" content="说明原文连接【点我】1、">
 <meta property="og:type" content="article">
 <meta property="og:title" content="selenium+PhantomJS 抓取斗鱼房间信息【python】">
 <meta property="og:url" content="http://yoursite.com/2016/09/16/selenium+PhantomJS 抓取斗鱼房间信息/index.html">
 <meta property="og:site_name" content="天青色等烟雨">
-<meta property="og:description" content="说明原文连接【点我】1、在原文基础上稍作修改，增加了mysql数据库的代码，但是在数据库中的显示结果不理想，主要是其格式不确定怎么设置。
-2、本文亮点使用json分析了异步数据，用的方法比较麻烦，但是起作用，具体为通过firefox的网络+XHR功能，鼠标逐渐往下拉，来得到get请求，查看右侧的结果，以及找到步进规律和对应的json网址，如下图：
-
-3、配置：需要安装mongodb,并配置,同时建">
-<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/firefox%20%E7%BD%91%E7%BB%9C%20xhr.png">
-<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/robomongo%20guoke.png">
-<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/mysql%20guoke.png">
-<meta property="og:updated_time" content="2016-09-16T03:00:33.000Z">
+<meta property="og:description" content="说明原文连接【点我】1、">
+<meta property="og:updated_time" content="2016-09-16T03:01:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="selenium+PhantomJS 抓取斗鱼房间信息【python】">
-<meta name="twitter:description" content="说明原文连接【点我】1、在原文基础上稍作修改，增加了mysql数据库的代码，但是在数据库中的显示结果不理想，主要是其格式不确定怎么设置。
-2、本文亮点使用json分析了异步数据，用的方法比较麻烦，但是起作用，具体为通过firefox的网络+XHR功能，鼠标逐渐往下拉，来得到get请求，查看右侧的结果，以及找到步进规律和对应的json网址，如下图：
-
-3、配置：需要安装mongodb,并配置,同时建">
-<meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com/firefox%20%E7%BD%91%E7%BB%9C%20xhr.png">
+<meta name="twitter:description" content="说明原文连接【点我】1、">
 
 
 
@@ -187,7 +174,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -197,7 +184,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -260,7 +247,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-16T12:59:28+08:00" content="2016-09-16">
               2016-09-16
             </time>
@@ -289,87 +276,7 @@
       
 
       
-        <h1 id="说明原文连接【点我】"><a href="#说明原文连接【点我】" class="headerlink" title="说明原文连接【点我】"></a><a href="http://www.jianshu.com/p/6002ef3434fd" target="_blank" rel="external">说明原文连接【点我】</a></h1><p>1、在原文基础上稍作修改，增加了mysql数据库的代码，但是在数据库中的显示结果不理想，主要是其格式不确定怎么设置。</p>
-<p>2、本文亮点使用json分析了异步数据，用的方法比较麻烦，但是起作用，具体为通过firefox的网络+XHR功能，鼠标逐渐往下拉，来得到get请求，查看右侧的结果，以及找到步进规律和对应的json网址，如下图：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/firefox%20%E7%BD%91%E7%BB%9C%20xhr.png" alt=""></p>
-<p>3、配置：需要安装mongodb,并配置,同时建议安装其图形化工具robomongo，会方便不少，， mongo代码：</p>
-<pre><code>#coding:utf-8
-from bs4 import BeautifulSoup
-import requests
-import json
-import pymongo
-
-url = &apos;http://www.guokr.com/scientific/&apos;
-
-def dealData(url):
-    client = pymongo.MongoClient(&apos;localhost&apos;, 27017)
-    guoke = client[&apos;guoke&apos;]
-    guokeData = guoke[&apos;guokeData&apos;]
-    web_data = requests.get(url)
-    datas = json.loads(web_data.text)
-    print(datas.keys())
-    for data in datas[&apos;result&apos;]:
-        guokeData.insert_one(data)
-
-def start():
-    urls = [&apos;http://www.guokr.com/apis/minisite/article.json?retrieve_type=by_subject&amp;limit=20&amp;offset={}&amp;_=1462252453410&apos;.format(str(i)) for i in range(20, 100, 20)]
-    for url in urls:
-        dealData(url)
-
-start()
-</code></pre><p>4、输出结果到robomongo，如图：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/robomongo%20guoke.png" alt=""></p>
-<p>5、使用mysql数据库，由于不确定输出的result应该用什么格式，我就用了varchar，但是这把一个列表都放到varchar中，导致长度非常长，看起来也很不爽，仅做记录。代码：</p>
-<pre><code>#coding:utf-8
-from bs4 import BeautifulSoup
-import requests
-import json
-import pymysql.cursors
-
-url = &apos;http://www.guokr.com/scientific/&apos;
-
-def dealData(url):
-    # client = pymongo.MongoClient(&apos;localhost&apos;, 27017)
-    # guoke = client[&apos;guoke&apos;]
-    # guokeData = guoke[&apos;guokeData&apos;]
-
-    web_data = requests.get(url)
-    datas = json.loads(web_data.text)
-    print(datas.keys())
-    for data in datas[&apos;result&apos;]:
-        #guokeData.insert_one(data)
-        print(data)
-        print (type(data))
-        connection = pymysql.connect(host=&apos;localhost&apos;,
-                                     user=&apos;root&apos;,
-                                     password=&apos;XXXX&apos;,
-                                     db=&apos;guoke&apos;,
-                                     charset=&apos;utf8&apos;
-                                     )
-
-        try:
-            # 创建会话指针
-            with connection.cursor() as cursor:
-                # 创建sql语句
-                sql = &apos;insert into `guoke1` (`result`) values(%s)&apos;
-                # 执行sql语句
-                cursor.execute(sql, (str(data)))
-
-                # 提交
-                connection.commit()
-        finally:
-            connection.close()
-
-def start():
-    urls = [&apos;http://www.guokr.com/apis/minisite/article.json?retrieve_type=by_subject&amp;limit=20&amp;offset={}&amp;_=1462252453410&apos;.format(str(i)) for i in range(20, 100, 20)]
-    for url in urls:
-
-        dealData(url)
-
-start()
-</code></pre><p>6、mysql数据显示，如下图，比较杂乱：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/mysql%20guoke.png" alt=""></p>
-<p>7、总结：异步加载的网页爬取有所麻烦，后续会使用selenium工具来相对方便的操作， 同时，可以感觉到mongodb有其特色，</p>
+        <h1 id="说明原文连接【点我】"><a href="#说明原文连接【点我】" class="headerlink" title="说明原文连接【点我】"></a><a href="http://www.jianshu.com/p/520749be7377" target="_blank" rel="external">说明原文连接【点我】</a></h1><p>1、</p>
 
       
     </div>
@@ -450,10 +357,10 @@ start()
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -470,7 +377,7 @@ start()
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">35</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -528,7 +435,7 @@ start()
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
