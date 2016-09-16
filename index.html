@@ -673,7 +673,7 @@ if __name__ == &apos;__main__&apos;:
               
                 
                 <a class="post-title-link" href="/2016/09/15/win10中python3.5.2遇到lxml安装问题的记录/" itemprop="url">
-                  win10中python3.5.2遇到lxml安装问题的记录【python】
+                  win10中python3.5.2遇到lxml安装问题缺少vcvarsall.bat的解决方案和记录【python】
                 </a>
               
             
@@ -723,7 +723,7 @@ if __name__ == &apos;__main__&apos;:
 <p>4、然后又发现别人推荐了<a href="https://anaconda.org/或者https://www.continuum.io/downloads的Anaconda安装解决方式，一看官网支持python最新版，这就好感爆棚了。果断下载安装，不过结果依然失败，有点闹腾。又是什么鬼？" target="_blank" rel="external">https://anaconda.org/或者https://www.continuum.io/downloads的Anaconda安装解决方式，一看官网支持python最新版，这就好感爆棚了。果断下载安装，不过结果依然失败，有点闹腾。又是什么鬼？</a><br>   原来，漏看了一句，安装后，还需要通过conda install lxml命令安装，</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/conda%20lxml.png" alt=""></p>
 <p>然后通过λ pip install -U lxml<br>Requirement already up-to-date: lxml in d:\anaconda3\lib\site-packages</p>
-<p>发现是把lxml安装在d:\anaconda3\lib\site-packages<br>所以我尝试把这个lxml文件夹复制到python安装目录对应的site-packages</p>
+<p>发现是把lxml安装在d:\anaconda3\lib\site-packages<br>所以我尝试把这个lxml文件夹复制到python安装目录对应的site-packages<br>这下终于搞定了。</p>
 
           
         
