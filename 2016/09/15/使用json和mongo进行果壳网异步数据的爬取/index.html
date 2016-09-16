@@ -84,25 +84,27 @@
 
 
 
-<meta name="description" content="说明：以下内容学习自：http://www.imooc.com/1、此文是跟着上一篇来写的，之前，已经完成了对维基百科词条的数据采集工作。
-2、本文和作者示范不同的地方是，建立数据库和表格的工具我维持使用了sqlyog软件，作者用的是哪个不确定，因为视频看不清上面的名字。
-3、代码如下，已经有一定说明，原作者可没提供代码哦，请把password对应的密码部分，从xxxx修改成你的真实数据库密码：">
+<meta name="description" content="说明原文连接【点我】1、在原文基础上稍作修改，目标地区为上海，更改了网址显示和价格显示部分。并增加了数据库导入，请把密码XXXX修改为你的密码。
+2、本文亮点在网址分析处，使用了CSS path，目前在谷歌浏览器下显示为Copy selector ，这和原文的Copy CSS Path是不同的，就本文，这个分析方法完全避开了正则式，从中，也体现了bs4的强大。
+3、代码：
+# -*- coding">
 <meta property="og:type" content="article">
-<meta property="og:title" content="把维基百科首页词条的数据导入mysql以及读取操作【Python】">
-<meta property="og:url" content="http://yoursite.com/2016/09/13/把维基百科首页词条的数据导入mysql/index.html">
+<meta property="og:title" content="爬取瓜子网上海地区二手车的信息【python】">
+<meta property="og:url" content="http://yoursite.com/2016/09/15/使用json和mongo进行果壳网异步数据的爬取/index.html">
 <meta property="og:site_name" content="天青色等烟雨">
-<meta property="og:description" content="说明：以下内容学习自：http://www.imooc.com/1、此文是跟着上一篇来写的，之前，已经完成了对维基百科词条的数据采集工作。
-2、本文和作者示范不同的地方是，建立数据库和表格的工具我维持使用了sqlyog软件，作者用的是哪个不确定，因为视频看不清上面的名字。
-3、代码如下，已经有一定说明，原作者可没提供代码哦，请把password对应的密码部分，从xxxx修改成你的真实数据库密码：">
-<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%20wiki%20setting.png">
-<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/wiki%20success.png">
-<meta property="og:updated_time" content="2016-09-15T10:33:29.000Z">
+<meta property="og:description" content="说明原文连接【点我】1、在原文基础上稍作修改，目标地区为上海，更改了网址显示和价格显示部分。并增加了数据库导入，请把密码XXXX修改为你的密码。
+2、本文亮点在网址分析处，使用了CSS path，目前在谷歌浏览器下显示为Copy selector ，这和原文的Copy CSS Path是不同的，就本文，这个分析方法完全避开了正则式，从中，也体现了bs4的强大。
+3、代码：
+# -*- coding">
+<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/guazi%20shanghai.png">
+<meta property="og:updated_time" content="2016-09-15T11:24:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="把维基百科首页词条的数据导入mysql以及读取操作【Python】">
-<meta name="twitter:description" content="说明：以下内容学习自：http://www.imooc.com/1、此文是跟着上一篇来写的，之前，已经完成了对维基百科词条的数据采集工作。
-2、本文和作者示范不同的地方是，建立数据库和表格的工具我维持使用了sqlyog软件，作者用的是哪个不确定，因为视频看不清上面的名字。
-3、代码如下，已经有一定说明，原作者可没提供代码哦，请把password对应的密码部分，从xxxx修改成你的真实数据库密码：">
-<meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%20wiki%20setting.png">
+<meta name="twitter:title" content="爬取瓜子网上海地区二手车的信息【python】">
+<meta name="twitter:description" content="说明原文连接【点我】1、在原文基础上稍作修改，目标地区为上海，更改了网址显示和价格显示部分。并增加了数据库导入，请把密码XXXX修改为你的密码。
+2、本文亮点在网址分析处，使用了CSS path，目前在谷歌浏览器下显示为Copy selector ，这和原文的Copy CSS Path是不同的，就本文，这个分析方法完全避开了正则式，从中，也体现了bs4的强大。
+3、代码：
+# -*- coding">
+<meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com/guazi%20shanghai.png">
 
 
 
@@ -123,9 +125,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/13/把维基百科首页词条的数据导入mysql/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/15/使用json和mongo进行果壳网异步数据的爬取/"/>
 
-  <title> 把维基百科首页词条的数据导入mysql以及读取操作【Python】 | 天青色等烟雨 </title>
+  <title> 爬取瓜子网上海地区二手车的信息【python】 | 天青色等烟雨 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -245,7 +247,7 @@
             
             
               
-                把维基百科首页词条的数据导入mysql以及读取操作【Python】
+                爬取瓜子网上海地区二手车的信息【python】
               
             
           </h1>
@@ -257,8 +259,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-13T00:59:29+08:00" content="2016-09-13">
-              2016-09-13
+            <time itemprop="dateCreated" datetime="2016-09-15T18:59:28+08:00" content="2016-09-15">
+              2016-09-15
             </time>
           </span>
 
@@ -285,98 +287,81 @@
       
 
       
-        <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/712" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、<a href="https://vansnowpea.github.io/2016/09/13/%E7%BB%B4%E5%9F%BA%E7%99%BE%E7%A7%91%E9%A6%96%E9%A1%B5%E8%AF%8D%E6%9D%A1%E7%9A%84%E7%88%AC%E5%8F%96/" target="_blank" rel="external">此文是跟着上一篇来写的</a>，之前，已经完成了对维基百科词条的数据采集工作。</p>
-<p>2、本文和作者示范不同的地方是，建立数据库和表格的工具我维持使用了sqlyog软件，作者用的是哪个不确定，因为视频看不清上面的名字。</p>
-<p>3、代码如下，已经有一定说明，原作者可没提供代码哦，请把password对应的密码部分，从xxxx修改成你的真实数据库密码：</p>
-<pre><code>__author__ = &apos;Administrator&apos;
-# coding:utf-8
-# 运行在python 3.5.2
+        <h1 id="说明原文连接【点我】"><a href="#说明原文连接【点我】" class="headerlink" title="说明原文连接【点我】"></a><a href="http://www.jianshu.com/p/15eb2a39ffe0" target="_blank" rel="external">说明原文连接【点我】</a></h1><p>1、在原文基础上稍作修改，目标地区为上海，更改了网址显示和价格显示部分。并增加了数据库导入，请把密码XXXX修改为你的密码。</p>
+<p>2、本文亮点在网址分析处，使用了CSS path，目前在谷歌浏览器下显示为Copy selector ，这和原文的Copy CSS Path是不同的，就本文，这个分析方法完全避开了正则式，从中，也体现了bs4的强大。</p>
+<p>3、代码：</p>
+<pre><code># -*- coding: utf-8 -*-
+# python 3.5.2
 
-import re
-from urllib.request import urlopen
-from bs4 import BeautifulSoup as bs
+from bs4 import BeautifulSoup
+import requests
 import pymysql.cursors
 
-# 使用urllib的urlopen方法，去打开维基百科的首页，读取，并用utf-8解码
-resp = urlopen(&apos;https://en.wikipedia.org/wiki/Main_Page&apos;).read().decode(&apos;utf-8&apos;)
+def detailOper(url):
+    web_data = requests.get(url)
+    # soup = BeautifulSoup(web_data.text, &apos;lxml&apos;)
+    soup = BeautifulSoup(web_data.text, &apos;html.parser&apos;)
 
-# 使用BeautifulSoup去解析，其中html.parser是默认的解析器
-soup = bs(resp, &apos;html.parser&apos;)
-# 获取所有的/wiki/开头的a标签的href属性。
-listUrls = soup.find_all(&apos;a&apos;, href=re.compile(r&apos;^/wiki/&apos;))
-print(listUrls)
+    # body &gt; div.w &gt; div.list &gt; ul &gt; li:nth-child(1) &gt; div &gt; p.infoBox &gt; a
+    # above is the css path , or copy selector in Google Chrome F12
+    # we can delete &quot;body &gt; div.w &gt;&quot; as the whole site under Class = &apos;w&apos;
+    # modify it for all cars info: div.list &gt; ul &gt; li &gt; div &gt; p.infoBox &gt; a
+    titles = soup.select(&apos;div.list &gt; ul &gt; li &gt; div &gt; p.infoBox &gt; a&apos;)
 
-# 输出所有的词条对应的名称和URL
-for url in listUrls:
-    # 排除.jpg JPG结尾的
-    if not re.search(&apos;\.(jpg|JPG)$&apos;, url[&apos;href&apos;]):
-        # 显示名称和网址的格式
-        # string只能显示一个，而get_text()可显示标签下所有的文字。
-        print(url.get_text(), &apos;&lt;----&gt;&apos;, &apos;https://en.wikipedia.org&apos;+url[&apos;href&apos;])
-        # 得到数据库的连接
+    # get price info with F12: body &gt; div.w &gt; div.list &gt; ul &gt; li:nth-child(1) &gt; div &gt; p.priType-s &gt; span &gt; i
+    # modify it for all price: div.list &gt; ul &gt; li &gt; div &gt; p.priType-s &gt; span &gt; i
+    prices = soup.select(&apos;div.list &gt; ul &gt; li &gt; div &gt; p.priType-s &gt; span &gt; i&apos;)
+    for title, price in zip(titles, prices):
+        data = {
+        &apos;车型&apos;: title.get_text(),
+        &apos;网址&apos;: &apos;http://www.guazi.com&apos;+ title.get(&apos;href&apos;),
+        #&apos;price&apos;:price.get_text().replace(u&apos;万&apos;, &apos;&apos;).replace(&apos; &apos;, &apos;&apos;)
+        &apos;价格&apos;: price.get_text().replace(&apos;\n&apos;, &apos;&apos;).replace(&apos; &apos;, &apos;&apos;)
+    }
+
         connection = pymysql.connect(host=&apos;localhost&apos;,
-                               user=&apos;root&apos;,
-                               password=&apos;XXXX&apos;,
-                               db=&apos;wikiurl&apos;,
-                               charset=&apos;utf8&apos;
-                               )
+                                     user=&apos;root&apos;,
+                                     password=&apos;XXXX&apos;,
+                                     db=&apos;guazi&apos;,
+                                     charset=&apos;utf8&apos;
+                                     )
 
         try:
             # 创建会话指针
             with connection.cursor() as cursor:
                 # 创建sql语句
-                sql = &apos;insert into `urls` (`urlname`, `urlhref`) values(%s, %s)&apos;
+                sql = &apos;insert into `guazi1` (`车型`, `价格`, `网址`) values(%s, %s, %s)&apos;
                 # 执行sql语句
-                cursor.execute(sql, (url.get_text(), &apos;https://en.wikipedia.org&apos; + url[&apos;href&apos;]))
+                cursor.execute(sql, (data[&apos;车型&apos;], data[&apos;价格&apos;],data[&apos;网址&apos;]))
+
                 # 提交
                 connection.commit()
 
         finally:
             connection.close()
-</code></pre><p>4、其中关键的步骤有：</p>
-<p>A）：sqlyog中表格的制作和设置，千万注意，id的int类型，需要添加自增，否则运行程序会报错： “Field ‘id’ doesn’t have a default value</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%20wiki%20setting.png" alt=""></p>
-<p>B）数据库的插入和执行命令，因为不太熟悉，对着视频敲代码都错误了几次，并且要注意以下代码<code>urls</code> (<code>urlname</code>, <code>urlhref</code>)使用的是Tab键上面的那个上点号</p>
-<p>C）当程序没有报错，在sqlyog查看表格要先刷新</p>
-<p>D）<a href="https://vansnowpea.github.io/2016/09/11/Python%E6%93%8D%E4%BD%9CMySQL%E6%95%B0%E6%8D%AE%E5%BA%93/" target="_blank" rel="external">在之前的帖子，是在python2.7下，通过sqlyog的import MySQLdb 来操作mysql的</a>，并且，代码中的密码对应的是passwd，而这个和直接用python 运行pymysql的对应命令password是不同的，要分清楚。 </p>
-<p>5、结果图，有一丝喜悦感：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/wiki%20success.png" alt=""></p>
-<p>6、读取操作: 代码中，需要导入的包，和写入数据库的想同，主要的差别是读取数据需要额外的命令，比如，fetchall，fetchmany(size=n)这样的。相关读取的代码如下：</p>
-<pre><code># 运行在python 3.5.2
+    # print(data)
 
+def start():
+    urls = [&apos;http://www.guazi.com/sh/buy/o{}/&apos;.format(str(i)) for i in range(1, 51, 1)]
+    for url in urls:
+        detailOper(url)
 
-import pymysql.cursors
-
-connection = pymysql.connect(host=&apos;localhost&apos;,
-                       user=&apos;root&apos;,
-                       password=&apos;XXXX&apos;,
-                       db=&apos;wikiurl&apos;,
-                       charset=&apos;utf8&apos;
-                       )
-
-try:
-    # 创建会话指针
-    with connection.cursor() as cursor:
-        # 创建需要查询数据的sql语句
-        sql = &apos;select `urlname`, `urlhref` from `urls` where `id` is not null&apos;
-        # 执行sql语句，计算数据库的总数量
-        count = cursor.execute(sql)
-        print(count)
-        # 查询数据
-        result = cursor.fetchmany(size=3)
-        #result = cursor.fetchall()
-        print(result)
-
-
-finally:
-    connection.close()
-</code></pre><p>7、总结： 如轮是写入还是读取数据库，总流程基本为：</p>
-<ul>
-<li>导入巡行所需要的包，比如import pymysql.cursors</li>
-<li>连接数据库，填写必要的数据库登录信息，和表格信息，编码信息等。</li>
-<li>定义绘画指针和需要操作的数据库语句</li>
-<li>执行相关操作，比如写入，查询等。其中写入操作还需要执行cursor.commit() 来完成提交。</li>
-<li>最后，无论如何，都要在finnally中执行connection.close()来关闭数据库。</li>
-</ul>
+if __name__ == &apos;__main__&apos;:
+    start()
+</code></pre><p>4、部分结果展示：</p>
+<pre><code>{&apos;车型&apos;: &apos;东南V5菱致 2013款 1.5 手动 舒适型CNG&apos;, &apos;价格&apos;: &apos;已降价&apos;, &apos;网址&apos;: &apos;http://www.guazi.com/sh/3000216790x.htm&apos;}
+{&apos;车型&apos;: &apos;福特蒙迪欧 2013款 致胜 2.3 自动 时尚型&apos;, &apos;价格&apos;: &apos;9.00万&apos;, &apos;网址&apos;: &apos;http://www.guazi.com/sh/3000237200x.htm&apos;}
+{&apos;车型&apos;: &apos;斯柯达明锐 2010款 明锐 1.6 手动 逸致版&apos;, &apos;价格&apos;: &apos;3.80万&apos;, &apos;网址&apos;: &apos;http://www.guazi.com/sh/3000222224x.htm&apos;}
+{&apos;车型&apos;: &apos;大众速腾 2014款 速腾 1.4TSI 手动 豪华型&apos;, &apos;价格&apos;: &apos;已降价&apos;, &apos;网址&apos;: &apos;http://www.guazi.com/sh/3000415677x.htm&apos;}
+{&apos;车型&apos;: &apos;福特蒙迪欧 2011款 蒙迪欧致胜 2.3 自动 时尚型&apos;, &apos;价格&apos;: &apos;3.99万&apos;, &apos;网址&apos;: &apos;http://www.guazi.com/sh/3000218992x.htm&apos;}
+{&apos;车型&apos;: &apos;大众CC2015款 CC 1.8TSI 双离合 豪华型&apos;, &apos;价格&apos;: &apos;已降价&apos;, &apos;网址&apos;: &apos;http://www.guazi.com/sh/3000431976x.htm&apos;}
+{&apos;车型&apos;: &apos;大众Polo2014款 1.6 自动 舒适版&apos;, &apos;价格&apos;: &apos;19.50万&apos;, &apos;网址&apos;: &apos;http://www.guazi.com/sh/3000428176x.htm&apos;}
+{&apos;车型&apos;: &apos;吉利GX7 2013款 1.8 手动 尊贵型&apos;, &apos;价格&apos;: &apos;已降价&apos;, &apos;网址&apos;: &apos;http://www.guazi.com/sh/3000215362x.htm&apos;}
+{&apos;车型&apos;: &apos;标致3008 2013款 1.6THP 自动 至尚版&apos;, &apos;价格&apos;: &apos;8.10万&apos;, &apos;网址&apos;: &apos;http://www.guazi.com/sh/3000240867x.htm&apos;}
+{&apos;车型&apos;: &apos;比亚迪F3 2010款 1.5 手动 新白金版 GLX-i 豪华型&apos;, &apos;价格&apos;: &apos;4.50万&apos;, &apos;网址&apos;: &apos;http://www.guazi.com/sh/3000205737x.htm&apos;}
+{&apos;车型&apos;: &apos;五菱荣光S 2014款 1.2 手动 标准型7-8座&apos;, &apos;价格&apos;: &apos;9.98万&apos;, &apos;网址&apos;: &apos;http://www.guazi.com/sh/3000243019x.htm&apos;}
+</code></pre><p>5、导入到了mysql中，看起来更方便。如果需要对数据进一步操作，可以在数据库中进行相关排序，如下图：<br>   <img src="http://ocg7i7pt6.bkt.clouddn.com/guazi%20shanghai.png" alt=""></p>
+<p>6、本文可拓展点： 有的价格抓取是 已降价，但不知道降价后的价格，  只抓了上海地区的，如果是想全国地区的，研究了网页代码，css path都是body &gt; div.header &gt; div.hd-top.clearfix &gt; div.c2city &gt; a &gt; span  里面没有具体的城市名字，也许是用ajax的？　以后会了再更新。</p>
 
       
     </div>
@@ -402,17 +387,13 @@ finally:
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/13/维基百科首页词条的爬取/" rel="next" title="维基百科首页词条的爬取【Python】">
-                <i class="fa fa-chevron-left"></i> 维基百科首页词条的爬取【Python】
+              <a href="/2016/09/15/爬取瓜子网上海地区二手车的信息/" rel="next" title="爬取瓜子网上海地区二手车的信息【python】">
+                <i class="fa fa-chevron-left"></i> 爬取瓜子网上海地区二手车的信息【python】
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/13/pdf的读取【python】/" rel="prev" title="pdf的读取【python】">
-                pdf的读取【python】 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -512,7 +493,7 @@ finally:
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明：以下内容学习自：http-www-imooc-com"><span class="nav-number">1.</span> <span class="nav-text">说明：以下内容学习自：http://www.imooc.com/</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明原文连接【点我】"><span class="nav-number">1.</span> <span class="nav-text">说明原文连接【点我】</span></a></li></ol></div>
             
           </div>
         </section>
