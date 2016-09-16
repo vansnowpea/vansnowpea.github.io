@@ -280,7 +280,54 @@
         
           
             <h1 id="说明原文连接【点我】"><a href="#说明原文连接【点我】" class="headerlink" title="说明原文连接【点我】"></a><a href="http://www.jianshu.com/p/520749be7377" target="_blank" rel="external">说明原文连接【点我】</a></h1><p>1、环境：selenium+PhantomJS<br>   selenium 可直接安装 ： pip install -U selenium<br>   PhantomJS： 官网下载，设置对应bin的路径为环境变量。</p>
-<p>2、</p>
+<p>2、本文使用了单元测试的方法，原文做了一定的说明，就不重复了。 </p>
+<p>3、代码：</p>
+<pre><code>#coding:utf-8
+import unittest
+from selenium import webdriver
+from bs4 import BeautifulSoup
+
+
+class seleniumTest(unittest.TestCase):
+    def setUp(self):
+        self.driver = webdriver.PhantomJS()
+
+    def testEle(self):
+        driver = self.driver
+        driver.get(&apos;http://www.douyu.com/directory/all&apos;)
+        soup = BeautifulSoup(driver.page_source, &apos;xml&apos;)
+        while True:
+            titles = soup.find_all(&apos;h3&apos;, {&apos;class&apos;: &apos;ellipsis&apos;})
+            nums = soup.find_all(&apos;span&apos;, {&apos;class&apos;: &apos;dy-num fr&apos;})
+            for title, num in zip(titles, nums):
+                print (title.get_text(), num.get_text())
+            if driver.page_source.find(&apos;shark-pager-disable-next&apos;) != -1:
+                break
+            elem = driver.find_element_by_class_name(&apos;shark-pager-next&apos;)
+            elem.click()
+            soup = BeautifulSoup(driver.page_source, &apos;xml&apos;)
+
+    def tearDown(self):
+        print (&apos;down&apos;)
+
+if __name__ == &quot;__main__&quot;:
+    unittest.main()
+</code></pre><p>4、其中的坑：<br>   在定义setUp（）函数里，如果默认使用webdriver的“.”查找功能，比如很可能你突然忘记PhantomJS的拼写了，那么查阅回车后，得到的是PhantomJS，注意不是PhantomJS() ，就会导致报错如下：</p>
+<pre><code>Error
+Traceback (most recent call last):
+  File &quot;C:\Users\Administrator\PycharmProjects\untitled\readpdf.py&quot;, line 13, in testEle
+    driver.get(&apos;http://www.douyu.com/directory/all&apos;)
+TypeError: get() missing 1 required positional argument: &apos;url&apos;
+</code></pre><p>如果我们分别type他们的信息：</p>
+<pre><code>print(type(webdriver.PhantomJS))
+
+print(type(webdriver.PhantomJS()))
+</code></pre><p>得到如下结果：</p>
+<pre><code>&lt;class &apos;type&apos;&gt;
+
+&lt;class &apos;selenium.webdriver.phantomjs.webdriver.WebDriver&apos;&gt;
+</code></pre><p>也就是说，加了括号，表示得到的是selenium.webdriver.phantomjs.webdriver.WebDriver的具体对象。</p>
+<p>5、<a href="http://blog.csdn.net/hackerain/article/details/24095117" target="_blank" rel="external">这篇文章【点我】</a>，对unittest做了有点详细的解释说明，可参考。</p>
 
           
         
@@ -720,7 +767,7 @@ if __name__ == &apos;__main__&apos;:
 <p>2、由于在python 2.7 和win7下遇到过类似的问题，当时用安装wheel文件的方法，不过这次失败， 另外在python2.7时代，是有一个微软的支持版本的： Microsoft Visual C++ Compiler for Python 2.7,只有2.7。</p>
 <p>3、该问题windows环境中，python 的 Setup需要调用一个vcvarsall.bat的文件，该文件需要安装c++编程环境才会有，经查知乎上有人给出了答案，由于python 3.5使用的SDK环境和3.4是不同的，所以需要安装VC++最新版，或者VS2015 添加VC和python相关组件， ，请参考：<a href="http://www.zhihu.com/question/26857761" target="_blank" rel="external">http://www.zhihu.com/question/26857761</a> 里面的“代代树”的回复。但是第一次安装遇到retry的失败，关闭了相关VS的进程，重新装，貌似就可以安装了，但安装完毕后，问题没有解决，依然存在啊，什么鬼？</p>
 <p><img src="https://pic2.zhimg.com/583990ef6536de3763fea804fa5a44fd_b.png" alt=""></p>
-<p>4、然后又发现别人推荐了<a href="https://anaconda.org/或者https://www.continuum.io/downloads的Anaconda安装解决方式，一看官网支持python最新版，这就好感爆棚了。果断下载安装，不过结果依然失败，有点闹腾。又是什么鬼？" target="_blank" rel="external">https://anaconda.org/或者https://www.continuum.io/downloads的Anaconda安装解决方式，一看官网支持python最新版，这就好感爆棚了。果断下载安装，不过结果依然失败，有点闹腾。又是什么鬼？</a><br>   原来，漏看了一句，安装后，还需要通过conda install lxml命令，</p>
+<p>4、然后又发现别人推荐了<a href="https://anaconda.org/或者https://www.continuum.io/downloads的Anaconda安装解决方式，一看官网支持python最新版，这就好感爆棚了。果断下载安装，不过结果依然失败，有点闹腾。又是什么鬼？" target="_blank" rel="external">https://anaconda.org/或者https://www.continuum.io/downloads的Anaconda安装解决方式，一看官网支持python最新版，这就好感爆棚了。果断下载安装，不过结果依然失败，有点闹腾。又是什么鬼？</a><br>   原来，漏看了一句，安装后，还需要通过conda install lxml命令，开始还以为他支持python3.5.2是自带了这些安装包，理解错误，</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/conda%20lxml.png" alt=""></p>
 <p>然后通过λ pip install -U lxml<br>Requirement already up-to-date: lxml in d:\anaconda3\lib\site-packages</p>
 <p>发现是把lxml安装在d:\anaconda3\lib\site-packages<br>所以我尝试把这个lxml文件夹复制到python安装目录对应的site-packages<br>然后测试原本在pycharm提示缺少lxml库的，继续运行，跳出了需要的结果界面。这下终于搞定了。</p>
