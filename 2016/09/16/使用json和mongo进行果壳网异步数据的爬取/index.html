@@ -84,27 +84,25 @@
 
 
 
-<meta name="description" content="说明原文连接【点我】1、在原文基础上稍作修改，目标地区为上海，更改了网址显示和价格显示部分。并增加了数据库导入，请把密码XXXX修改为你的密码。
-2、本文亮点在网址分析处，使用了CSS path，目前在谷歌浏览器下显示为Copy selector ，这和原文的Copy CSS Path是不同的，就本文，这个分析方法完全避开了正则式，从中，也体现了bs4的强大。
-3、代码：
-# -*- coding">
+<meta name="description" content="说明原文连接【点我】1、在原文基础上稍作修改，增加了mysql数据库的代码，但是在数据库中的显示结果不理想，主要是其格式不确定怎么设置。
+2、本文亮点使用json分析了异步数据，用的方法比较麻烦，但是起作用，
+3、配置：需要安装mongodb,并配置,同时建议安装其图形化工具robomongo，会方便不少，， mongo代码：
+#coding:utf-8from bs4 import Beauti">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用json和mongo进行果壳网异步数据的爬取【python】">
 <meta property="og:url" content="http://yoursite.com/2016/09/16/使用json和mongo进行果壳网异步数据的爬取/index.html">
 <meta property="og:site_name" content="天青色等烟雨">
-<meta property="og:description" content="说明原文连接【点我】1、在原文基础上稍作修改，目标地区为上海，更改了网址显示和价格显示部分。并增加了数据库导入，请把密码XXXX修改为你的密码。
-2、本文亮点在网址分析处，使用了CSS path，目前在谷歌浏览器下显示为Copy selector ，这和原文的Copy CSS Path是不同的，就本文，这个分析方法完全避开了正则式，从中，也体现了bs4的强大。
-3、代码：
-# -*- coding">
-<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/guazi%20shanghai.png">
-<meta property="og:updated_time" content="2016-09-16T02:32:00.000Z">
+<meta property="og:description" content="说明原文连接【点我】1、在原文基础上稍作修改，增加了mysql数据库的代码，但是在数据库中的显示结果不理想，主要是其格式不确定怎么设置。
+2、本文亮点使用json分析了异步数据，用的方法比较麻烦，但是起作用，
+3、配置：需要安装mongodb,并配置,同时建议安装其图形化工具robomongo，会方便不少，， mongo代码：
+#coding:utf-8from bs4 import Beauti">
+<meta property="og:updated_time" content="2016-09-16T02:35:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用json和mongo进行果壳网异步数据的爬取【python】">
-<meta name="twitter:description" content="说明原文连接【点我】1、在原文基础上稍作修改，目标地区为上海，更改了网址显示和价格显示部分。并增加了数据库导入，请把密码XXXX修改为你的密码。
-2、本文亮点在网址分析处，使用了CSS path，目前在谷歌浏览器下显示为Copy selector ，这和原文的Copy CSS Path是不同的，就本文，这个分析方法完全避开了正则式，从中，也体现了bs4的强大。
-3、代码：
-# -*- coding">
-<meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com/guazi%20shanghai.png">
+<meta name="twitter:description" content="说明原文连接【点我】1、在原文基础上稍作修改，增加了mysql数据库的代码，但是在数据库中的显示结果不理想，主要是其格式不确定怎么设置。
+2、本文亮点使用json分析了异步数据，用的方法比较麻烦，但是起作用，
+3、配置：需要安装mongodb,并配置,同时建议安装其图形化工具robomongo，会方便不少，， mongo代码：
+#coding:utf-8from bs4 import Beauti">
 
 
 
@@ -287,81 +285,14 @@
       
 
       
-        <h1 id="说明原文连接【点我】"><a href="#说明原文连接【点我】" class="headerlink" title="说明原文连接【点我】"></a><a href="http://www.jianshu.com/p/6002ef3434fd" target="_blank" rel="external">说明原文连接【点我】</a></h1><p>1、在原文基础上稍作修改，目标地区为上海，更改了网址显示和价格显示部分。并增加了数据库导入，请把密码XXXX修改为你的密码。</p>
-<p>2、本文亮点在网址分析处，使用了CSS path，目前在谷歌浏览器下显示为Copy selector ，这和原文的Copy CSS Path是不同的，就本文，这个分析方法完全避开了正则式，从中，也体现了bs4的强大。</p>
-<p>3、代码：</p>
-<pre><code># -*- coding: utf-8 -*-
-# python 3.5.2
-
-from bs4 import BeautifulSoup
-import requests
-import pymysql.cursors
-
-def detailOper(url):
-    web_data = requests.get(url)
-    # soup = BeautifulSoup(web_data.text, &apos;lxml&apos;)
-    soup = BeautifulSoup(web_data.text, &apos;html.parser&apos;)
-
-    # body &gt; div.w &gt; div.list &gt; ul &gt; li:nth-child(1) &gt; div &gt; p.infoBox &gt; a
-    # above is the css path , or copy selector in Google Chrome F12
-    # we can delete &quot;body &gt; div.w &gt;&quot; as the whole site under Class = &apos;w&apos;
-    # modify it for all cars info: div.list &gt; ul &gt; li &gt; div &gt; p.infoBox &gt; a
-    titles = soup.select(&apos;div.list &gt; ul &gt; li &gt; div &gt; p.infoBox &gt; a&apos;)
-
-    # get price info with F12: body &gt; div.w &gt; div.list &gt; ul &gt; li:nth-child(1) &gt; div &gt; p.priType-s &gt; span &gt; i
-    # modify it for all price: div.list &gt; ul &gt; li &gt; div &gt; p.priType-s &gt; span &gt; i
-    prices = soup.select(&apos;div.list &gt; ul &gt; li &gt; div &gt; p.priType-s &gt; span &gt; i&apos;)
-    for title, price in zip(titles, prices):
-        data = {
-        &apos;车型&apos;: title.get_text(),
-        &apos;网址&apos;: &apos;http://www.guazi.com&apos;+ title.get(&apos;href&apos;),
-        #&apos;price&apos;:price.get_text().replace(u&apos;万&apos;, &apos;&apos;).replace(&apos; &apos;, &apos;&apos;)
-        &apos;价格&apos;: price.get_text().replace(&apos;\n&apos;, &apos;&apos;).replace(&apos; &apos;, &apos;&apos;)
-    }
-
-        connection = pymysql.connect(host=&apos;localhost&apos;,
-                                     user=&apos;root&apos;,
-                                     password=&apos;XXXX&apos;,
-                                     db=&apos;guazi&apos;,
-                                     charset=&apos;utf8&apos;
-                                     )
-
-        try:
-            # 创建会话指针
-            with connection.cursor() as cursor:
-                # 创建sql语句
-                sql = &apos;insert into `guazi1` (`车型`, `价格`, `网址`) values(%s, %s, %s)&apos;
-                # 执行sql语句
-                cursor.execute(sql, (data[&apos;车型&apos;], data[&apos;价格&apos;],data[&apos;网址&apos;]))
-
-                # 提交
-                connection.commit()
-
-        finally:
-            connection.close()
-    # print(data)
-
-def start():
-    urls = [&apos;http://www.guazi.com/sh/buy/o{}/&apos;.format(str(i)) for i in range(1, 51, 1)]
-    for url in urls:
-        detailOper(url)
-
-if __name__ == &apos;__main__&apos;:
-    start()
-</code></pre><p>4、部分结果展示：</p>
-<pre><code>{&apos;车型&apos;: &apos;东南V5菱致 2013款 1.5 手动 舒适型CNG&apos;, &apos;价格&apos;: &apos;已降价&apos;, &apos;网址&apos;: &apos;http://www.guazi.com/sh/3000216790x.htm&apos;}
-{&apos;车型&apos;: &apos;福特蒙迪欧 2013款 致胜 2.3 自动 时尚型&apos;, &apos;价格&apos;: &apos;9.00万&apos;, &apos;网址&apos;: &apos;http://www.guazi.com/sh/3000237200x.htm&apos;}
-{&apos;车型&apos;: &apos;斯柯达明锐 2010款 明锐 1.6 手动 逸致版&apos;, &apos;价格&apos;: &apos;3.80万&apos;, &apos;网址&apos;: &apos;http://www.guazi.com/sh/3000222224x.htm&apos;}
-{&apos;车型&apos;: &apos;大众速腾 2014款 速腾 1.4TSI 手动 豪华型&apos;, &apos;价格&apos;: &apos;已降价&apos;, &apos;网址&apos;: &apos;http://www.guazi.com/sh/3000415677x.htm&apos;}
-{&apos;车型&apos;: &apos;福特蒙迪欧 2011款 蒙迪欧致胜 2.3 自动 时尚型&apos;, &apos;价格&apos;: &apos;3.99万&apos;, &apos;网址&apos;: &apos;http://www.guazi.com/sh/3000218992x.htm&apos;}
-{&apos;车型&apos;: &apos;大众CC2015款 CC 1.8TSI 双离合 豪华型&apos;, &apos;价格&apos;: &apos;已降价&apos;, &apos;网址&apos;: &apos;http://www.guazi.com/sh/3000431976x.htm&apos;}
-{&apos;车型&apos;: &apos;大众Polo2014款 1.6 自动 舒适版&apos;, &apos;价格&apos;: &apos;19.50万&apos;, &apos;网址&apos;: &apos;http://www.guazi.com/sh/3000428176x.htm&apos;}
-{&apos;车型&apos;: &apos;吉利GX7 2013款 1.8 手动 尊贵型&apos;, &apos;价格&apos;: &apos;已降价&apos;, &apos;网址&apos;: &apos;http://www.guazi.com/sh/3000215362x.htm&apos;}
-{&apos;车型&apos;: &apos;标致3008 2013款 1.6THP 自动 至尚版&apos;, &apos;价格&apos;: &apos;8.10万&apos;, &apos;网址&apos;: &apos;http://www.guazi.com/sh/3000240867x.htm&apos;}
-{&apos;车型&apos;: &apos;比亚迪F3 2010款 1.5 手动 新白金版 GLX-i 豪华型&apos;, &apos;价格&apos;: &apos;4.50万&apos;, &apos;网址&apos;: &apos;http://www.guazi.com/sh/3000205737x.htm&apos;}
-{&apos;车型&apos;: &apos;五菱荣光S 2014款 1.2 手动 标准型7-8座&apos;, &apos;价格&apos;: &apos;9.98万&apos;, &apos;网址&apos;: &apos;http://www.guazi.com/sh/3000243019x.htm&apos;}
-</code></pre><p>5、导入到了mysql中，看起来更方便。如果需要对数据进一步操作，可以在数据库中进行相关排序，如下图：<br>   <img src="http://ocg7i7pt6.bkt.clouddn.com/guazi%20shanghai.png" alt=""></p>
-<p>6、本文可拓展点： 有的价格抓取是 已降价，但不知道降价后的价格，  只抓了上海地区的，如果是想全国地区的，研究了网页代码，css path都是body &gt; div.header &gt; div.hd-top.clearfix &gt; div.c2city &gt; a &gt; span  里面没有具体的城市名字，也许是用ajax的？　以后会了再更新。</p>
+        <h1 id="说明原文连接【点我】"><a href="#说明原文连接【点我】" class="headerlink" title="说明原文连接【点我】"></a><a href="http://www.jianshu.com/p/6002ef3434fd" target="_blank" rel="external">说明原文连接【点我】</a></h1><p>1、在原文基础上稍作修改，增加了mysql数据库的代码，但是在数据库中的显示结果不理想，主要是其格式不确定怎么设置。</p>
+<p>2、本文亮点使用json分析了异步数据，用的方法比较麻烦，但是起作用，</p>
+<p>3、配置：需要安装mongodb,并配置,同时建议安装其图形化工具robomongo，会方便不少，， mongo代码：</p>
+<p>#coding:utf-8<br>from bs4 import BeautifulSoup<br>import requests<br>import json<br>import pymongo</p>
+<p>url = ‘<a href="http://www.guokr.com/scientific/" target="_blank" rel="external">http://www.guokr.com/scientific/</a>‘</p>
+<p>def dealData(url):<br>    client = pymongo.MongoClient(‘localhost’, 27017)<br>    guoke = client[‘guoke’]<br>    guokeData = guoke[‘guokeData’]<br>    web_data = requests.get(url)<br>    datas = json.loads(web_data.text)<br>    print(datas.keys())<br>    for data in datas[‘result’]:<br>        guokeData.insert_one(data)</p>
+<p>def start():<br>    urls = [‘<a href="http://www.guokr.com/apis/minisite/article.json?retrieve_type=by_subject&amp;limit=20&amp;offset={}&amp;_=1462252453410&#39;.format(str(i" target="_blank" rel="external">http://www.guokr.com/apis/minisite/article.json?retrieve_type=by_subject&amp;limit=20&amp;offset={}&amp;_=1462252453410&#39;.format(str(i</a>)) for i in range(20, 100, 20)]<br>    for url in urls:<br>        dealData(url)</p>
+<p>start()</p>
 
       
     </div>
