@@ -110,7 +110,7 @@ import time
 
 #shift-tab多行缩进(左)
 print (&amp;a">
-<meta property="og:updated_time" content="2016-09-17T16:40:44.000Z">
+<meta property="og:updated_time" content="2016-09-17T16:41:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于Selenium一键写CSDN博客并做成exe文件【python】">
 <meta name="twitter:description" content="参考：原文1和原文21、代码，原文python2，修改成了python 3，作者信息保留，请修改CSDN帐号登录信息：
@@ -383,7 +383,8 @@ click_markdown = driver.find_element_by_xpath(&quot;//p[@class=&apos;subtit&apos
 element = driver.find_element_by_name(&quot;passwd&quot;)
 element = driver.find_elements_by_tag_name(&quot;input&quot;)
 element = driver.find_element_by_xpath(&quot;//input[@id=&apos;passwd-id&apos;]&quot;)
-</code></pre>
+</code></pre><p>而且你在用 xpath 的时候还需要注意的是，如果有多个元素匹配了 xpath，它只会返回第一个匹配的元素。如果没有找到，那么会抛出 NoSuchElementException 的异常。</p>
+
       
     </div>
 
