@@ -84,22 +84,46 @@
 
 
 
-<meta name="description" content="说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查1、错误提示：  
-  File &amp;quot;D:\Anaconda3\lib\site-packages\selenium\webdriver\firefox\firefox_binary.py&amp;quot;, line 103, in _wait_until_connectable
-    raise WebDriv">
+<meta name="description" content="参考：原文1和原文21、代码：
+# -*- coding: utf-8 -*-
+#Author:哈士奇说喵
+#CSDN--实现一键写博客
+
+from selenium import webdriver
+import time
+
+#shift-tab多行缩进(左)
+print (&amp;apos;Please wait...Firefox loading...&amp;apos;)
+print (&amp;apos;--">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Firefox不能运行selenium的故障排查">
+<meta property="og:title" content="基于Selenium一键写CSDN博客并做成exe文件【python】">
 <meta property="og:url" content="http://yoursite.com/2016/09/17/基于Selenium一键写CSDN博客并做成exe文件/index.html">
 <meta property="og:site_name" content="天青色等烟雨">
-<meta property="og:description" content="说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查1、错误提示：  
-  File &amp;quot;D:\Anaconda3\lib\site-packages\selenium\webdriver\firefox\firefox_binary.py&amp;quot;, line 103, in _wait_until_connectable
-    raise WebDriv">
-<meta property="og:updated_time" content="2016-09-17T03:59:47.000Z">
+<meta property="og:description" content="参考：原文1和原文21、代码：
+# -*- coding: utf-8 -*-
+#Author:哈士奇说喵
+#CSDN--实现一键写博客
+
+from selenium import webdriver
+import time
+
+#shift-tab多行缩进(左)
+print (&amp;apos;Please wait...Firefox loading...&amp;apos;)
+print (&amp;apos;--">
+<meta property="og:updated_time" content="2016-09-17T16:02:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Firefox不能运行selenium的故障排查">
-<meta name="twitter:description" content="说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查1、错误提示：  
-  File &amp;quot;D:\Anaconda3\lib\site-packages\selenium\webdriver\firefox\firefox_binary.py&amp;quot;, line 103, in _wait_until_connectable
-    raise WebDriv">
+<meta name="twitter:title" content="基于Selenium一键写CSDN博客并做成exe文件【python】">
+<meta name="twitter:description" content="参考：原文1和原文21、代码：
+# -*- coding: utf-8 -*-
+#Author:哈士奇说喵
+#CSDN--实现一键写博客
+
+from selenium import webdriver
+import time
+
+#shift-tab多行缩进(左)
+print (&amp;apos;Please wait...Firefox loading...&amp;apos;)
+print (&amp;apos;--">
 
 
 
@@ -122,7 +146,7 @@
 
   <link rel="canonical" href="http://yoursite.com/2016/09/17/基于Selenium一键写CSDN博客并做成exe文件/"/>
 
-  <title> Firefox不能运行selenium的故障排查 | 天青色等烟雨 </title>
+  <title> 基于Selenium一键写CSDN博客并做成exe文件【python】 | 天青色等烟雨 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -242,7 +266,7 @@
             
             
               
-                Firefox不能运行selenium的故障排查
+                基于Selenium一键写CSDN博客并做成exe文件【python】
               
             
           </h1>
@@ -282,23 +306,63 @@
       
 
       
-        <h1 id="说明-Firefox中文最新版48不能运行selenium2-53-6的故障排查"><a href="#说明-Firefox中文最新版48不能运行selenium2-53-6的故障排查" class="headerlink" title="说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查"></a>说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查</h1><p>1、错误提示：  </p>
-<pre><code>  File &quot;D:\Anaconda3\lib\site-packages\selenium\webdriver\firefox\firefox_binary.py&quot;, line 103, in _wait_until_connectable
-    raise WebDriverException(&quot;Can&apos;t load the profile. Profile &quot;
-selenium.common.exceptions.WebDriverException: Message: Can&apos;t load the profile. Profile Dir: %s If you specified a log_file in the FirefoxBinary constructor, check it for details.
-</code></pre><p>2、排查版本： selenium已经是最新版2.53.6  firexfox也是最新中文版48</p>
-<p>谷歌： </p>
-<pre><code>http://stackoverflow.com/questions/37693106/selenium-2-53-not-working-on-firefox-47/37693374
-</code></pre><p>上面给了一个在selenium 在2.53.0时代，运行firefox 47版本的方法，感觉麻烦，所以我优选了退回低版本的策略，如下：</p>
-<p>3、评估是否firefox的48最新版还不支持？所以到firefox官网上，直接看到的最后的老版本是47， 测试安装了中文版，结果一样，继续卸载看46版本，使用的以下网址：</p>
-<pre><code>https://ftp.mozilla.org/pub/firefox/releases/
-https://ftp.mozilla.org/pub/firefox/releases/46.0.1/win64/en-US/
-</code></pre><p>一下就成功了。</p>
-<p>4、后来翻阅stackoverflow的帖子，发现有人反馈2.53.6已经支持firefox 48了。 但是我的咋就不行？ 猜测区别就是中文和英文，所以我就把46版本卸载了测试48英文版， </p>
-<pre><code>https://ftp.mozilla.org/pub/firefox/releases/48.0b1/win64/en-US/
-</code></pre><p>结果直接跳出firefox已停止工作。</p>
-<p>5、结论：就2.53.6的selenium版本，测试firefox 46 英文版稳定运行。47和48版本失败。操作系统Win10，所以建议使用46版本的firefox。</p>
+        <h1 id="参考：原文1和原文2"><a href="#参考：原文1和原文2" class="headerlink" title="参考：原文1和原文2"></a>参考：<a href="http://www.jianshu.com/p/a81800774d91" target="_blank" rel="external">原文1</a>和<a href="http://blog.csdn.net/mrlevo520/article/details/51840217" target="_blank" rel="external">原文2</a></h1><p>1、代码：</p>
+<pre><code># -*- coding: utf-8 -*-
+#Author:哈士奇说喵
+#CSDN--实现一键写博客
 
+from selenium import webdriver
+import time
+
+#shift-tab多行缩进(左)
+print (&apos;Please wait...Firefox loading...&apos;)
+print (&apos;---------------------------------&apos;)
+#reload(sys)
+
+PostUrl = &quot;https://passport.csdn.net/account/login?from=http://my.csdn.net/my/mycsdn&quot;
+driver=webdriver.Firefox()#用浏览器实现访问
+#driver = webdriver.PhantomJS(executable_path=&quot;phantomjs.exe&quot;)#没用浏览器
+driver.get(PostUrl)
+
+
+#账号填充输入
+elem_user = driver.find_element_by_id(&apos;username&apos;)
+elem_psw = driver.find_element_by_id(&apos;password&apos;)
+
+#可以自己修改登录名和账户密码，我自己的隐去了
+elem_user.send_keys(&apos;409085788@qq.com&apos;)
+elem_psw.send_keys(&apos;fanka111&apos;)
+
+
+#点击登录
+#click_login = driver.find_element_by_xpath(&quot;//input[@class=&apos;logging&apos;]&quot;)
+click_login = driver.find_element_by_xpath(&quot;//input[@class=&apos;logging&apos;]&quot;)
+click_login.click()
+print( &apos;log in...&apos;)
+print (&apos;---------------------------------&apos;)
+time.sleep(1)
+
+#先点击写博客图标，不然元素隐藏
+
+click_wbic = driver.find_element_by_xpath(&quot;//ul[@class=&apos;btns&apos;]/li[5]&quot;)
+click_wbic.click()
+print (&apos;jumping...&apos;)
+print (&apos;---------------------------------&apos;)
+
+
+click_choice = driver.find_element_by_xpath(&quot;//div[@class=&apos;wrap clearfix&apos;]/dl/dt[4]/a&quot;)
+click_choice.click()#将点击操作放在内部比较好
+#定位新页面元素，将handle重定位即可
+driver.switch_to_window(driver.window_handles[1])#定位弹出的第一个页面，也就是当前页面
+click_markdown = driver.find_element_by_xpath(&quot;//p[@class=&apos;subtit&apos;]/a&quot;)
+click_markdown.click()
+print (&apos;---------------------------------&apos;)
+print (&apos;here we go!&apos;)
+#关闭无关页面，也可以根据自己喜好保留无关页面
+driver.close()#关闭第二个页面，也就是一般编辑器下的CSDN
+driver.switch_to_window(driver.window_handles[0])#关闭第1个页面，也就是登录主页
+driver.close()
+</code></pre>
       
     </div>
 
@@ -429,7 +493,7 @@ https://ftp.mozilla.org/pub/firefox/releases/46.0.1/win64/en-US/
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明-Firefox中文最新版48不能运行selenium2-53-6的故障排查"><span class="nav-number">1.</span> <span class="nav-text">说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考：原文1和原文2"><span class="nav-number">1.</span> <span class="nav-text">参考：原文1和原文2</span></a></li></ol></div>
             
           </div>
         </section>
