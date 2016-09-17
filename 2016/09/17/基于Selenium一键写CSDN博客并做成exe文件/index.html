@@ -110,7 +110,7 @@ import time
 
 #shift-tab多行缩进(左)
 print (&amp;a">
-<meta property="og:updated_time" content="2016-09-17T16:32:30.000Z">
+<meta property="og:updated_time" content="2016-09-17T16:40:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于Selenium一键写CSDN博客并做成exe文件【python】">
 <meta name="twitter:description" content="参考：原文1和原文21、代码，原文python2，修改成了python 3，作者信息保留，请修改CSDN帐号登录信息：
@@ -204,7 +204,7 @@ print (&amp;a">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -214,7 +214,7 @@ print (&amp;a">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -277,7 +277,7 @@ print (&amp;a">
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-17T11:59:28+08:00" content="2016-09-17">
               2016-09-17
             </time>
@@ -376,7 +376,15 @@ click_markdown = driver.find_element_by_xpath(&quot;//p[@class=&apos;subtit&apos
 </code></pre><p>3、xpath的路径分析是直接通过检查中的代码换成xpath模式，而不是右键 copy–&gt; copy xpath模式。</p>
 <p>4、做成exe登录更简单些。</p>
 <p>5、全文需要安装firefox，为了保证和selenium兼容，我的是46英文版。</p>
+<p>6、又查阅了其他人的xpath分析方法，发现不一定要通过class来区分，如下：</p>
+<pre><code>&lt;input type=&quot;text&quot; name=&quot;passwd&quot; id=&quot;passwd-id&quot; /&gt;
 
+
+element = driver.find_element_by_id(&quot;passwd-id&quot;)
+element = driver.find_element_by_name(&quot;passwd&quot;)
+element = driver.find_elements_by_tag_name(&quot;input&quot;)
+element = driver.find_element_by_xpath(&quot;//input[@id=&apos;passwd-id&apos;]&quot;)
+</code></pre>
       
     </div>
 
@@ -456,10 +464,10 @@ click_markdown = driver.find_element_by_xpath(&quot;//p[@class=&apos;subtit&apos
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -476,7 +484,7 @@ click_markdown = driver.find_element_by_xpath(&quot;//p[@class=&apos;subtit&apos
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">37</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -534,7 +542,7 @@ click_markdown = driver.find_element_by_xpath(&quot;//p[@class=&apos;subtit&apos
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
