@@ -110,7 +110,7 @@ import time
 
 #shift-tab多行缩进(左)
 print (&amp;apos;Please wai">
-<meta property="og:updated_time" content="2016-09-17T16:02:53.000Z">
+<meta property="og:updated_time" content="2016-09-17T16:10:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于Selenium一键写CSDN博客并做成exe文件【python】">
 <meta name="twitter:description" content="参考：原文1和原文21、代码，原文python2，修改成了python 3，作者信息保留：
@@ -204,7 +204,7 @@ print (&amp;apos;Please wai">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -214,7 +214,7 @@ print (&amp;apos;Please wai">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -277,7 +277,7 @@ print (&amp;apos;Please wai">
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-17T11:59:28+08:00" content="2016-09-17">
               2016-09-17
             </time>
@@ -363,6 +363,16 @@ print (&apos;here we go!&apos;)
 driver.close()#关闭第二个页面，也就是一般编辑器下的CSDN
 driver.switch_to_window(driver.window_handles[0])#关闭第1个页面，也就是登录主页
 driver.close()
+</code></pre><p>2、代码分析：<br>一些按键的定位是使用了xpath的编写方式，以“登录”为例，右键，检查，然后找到最近的一个class，因为这个登录直接在一个class 里，如下代码：</p>
+<pre><code>&lt;input class=&quot;logging&quot; accesskey=&quot;l&quot; value=&quot;登 录&quot; tabindex=&quot;6&quot; type=&quot;button&quot; data-form-sbm=&quot;1474112762583.3015&quot;&gt;
+</code></pre><p>所以根据xpath的路径规则，是 //input[@class=’logging’]，然后，配合selenium的xpath选定语法，写为：</p>
+<pre><code>click_login = driver.find_element_by_xpath(&quot;//input[@class=&apos;logging&apos;]&quot;)
+</code></pre><p>而写博客的按键，有所小复杂，因为检查的时候，不是直接在类里，需要向上寻找一个父类，注意不是平行的类，因此代码相对复杂点，形如：</p>
+<pre><code>click_wbic = driver.find_element_by_xpath(&quot;//ul[@class=&apos;btns&apos;]/li[5]&quot;)
+
+click_choice = driver.find_element_by_xpath(&quot;//div[@class=&apos;wrap clearfix&apos;]/dl/dt[4]/a&quot;)
+
+click_markdown = driver.find_element_by_xpath(&quot;//p[@class=&apos;subtit&apos;]/a&quot;)
 </code></pre>
       
     </div>
@@ -443,10 +453,10 @@ driver.close()
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -463,7 +473,7 @@ driver.close()
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">37</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -521,7 +531,7 @@ driver.close()
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
