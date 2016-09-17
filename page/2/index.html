@@ -235,8 +235,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/11/Python操作MySQL数据库/" itemprop="url">
-                  Python操作MySQL数据库
+                <a class="post-title-link" href="/2016/09/13/维基百科首页词条的爬取/" itemprop="url">
+                  维基百科首页词条的爬取【Python】
                 </a>
               
             
@@ -249,8 +249,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
-              2016-09-11
+            <time itemprop="dateCreated" datetime="2016-09-13T00:59:28+08:00" content="2016-09-13">
+              2016-09-13
             </time>
           </span>
 
@@ -279,24 +279,42 @@
       
         
           
-            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/475" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>简介：本课程讲解Python如何开发MySQL数据库程序。首先介绍Python开发数据库程序的通用接口规范，然后搭建Python开发数据库程序的开发环境，接着了解了通用接口规范中的connection、cursor两大对象之后，介绍如何增删改查数据库，最后以实例代码演示数据库程序的开发流程。</p>
-<p>1、教程说到以下网址<a href="http://sourceforge.net/projects/mysql-python下载mysql-pyhon" target="_blank" rel="external">http://sourceforge.net/projects/mysql-python下载mysql-pyhon</a> 的连接器，针对python2.7的。 一开始安装失败，提示找不到python，原来此台电脑我的python 是64位的，貌似那个连接器是针对32位的，所有我又到以下网址下载了64位的连接器： <a href="http://www.codegood.com/download/11/" target="_blank" rel="external">http://www.codegood.com/download/11/</a><br>这下就能识别到python了， 但是一看版本是1.2.3的，而最新版是1.2.5的，考虑到mysql 5.6默认的msi也是32位的，我就把python 2.7.12换到了32位统一下吧。   安装成功后，在python下输入如下命令会成功，否则报错：</p>
-<pre><code>&gt;&gt;&gt; import MySQLdb
-&gt;&gt;&gt;
-</code></pre><p>2、然后根据教程要使用sqlyog，官网卡机，只好装国内版本，我用的这个连接（Ultimate 版本: （终极是最好的））： <a href="http://www.liangchan.net/soft/download.asp?softid=6633&amp;downid=8&amp;id=6658" target="_blank" rel="external">http://www.liangchan.net/soft/download.asp?softid=6633&amp;downid=8&amp;id=6658</a></p>
-<p>随后在sqlyog新建一个数据库，并设置下utf8编码，如下图：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%201.png" alt=""></p>
-<p>3、编写一个imooc.py 来建立connection连接，<strong>千万注意代码中的密码对应的是passwd，而不是全称的password哦。</strong></p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/db%20api%20connection.png" alt=""></p>
-<p>4、通过connection来创建游标对象cursor： </p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/cursor.png" alt=""></p>
-<p>5、select查询数据</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/select%20%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE.png" alt=""></p>
-<p>6、数据库 I U D 操作：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/%E6%95%B0%E6%8D%AE%E5%BA%93u%20i%20d.png" alt=""></p>
-<p>7、sqlyog的表单操作，要创建2个列就要在新建的表中，增加2个属性，如下图：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%20%E8%A1%A8%E6%A0%BC%E8%AE%BE%E7%BD%AE%E5%88%97.png" alt=""></p>
-<p>8、同时推荐W3C的SQL教程，地址是： <a href="http://www.w3school.com.cn/sql/index.asp" target="_blank" rel="external">http://www.w3school.com.cn/sql/index.asp</a></p>
-<p>9、刚发现<a href="http://www.jianshu.com/p/a014b26ba7ca" target="_blank" rel="external">这个帖子</a>也有写的比较详细，可参考</p>
+            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/712" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、首先这个教程使用了V3的python，作者也讲到了一些功能函数，在V2不支持，经过测试，比如，urllib在V2就没有.request方法，实际上，网上反馈已经把urllib2合并到urllib中了。考虑到以后v3总会代替掉v2， 咱也升级算了。 顺便把win7也换成了win10, 貌似开机速度比win7还快。</p>
+<p>2、直接上代码吧，加了中文注释，和视频教程大同小异的：之前的代码都是在sublime或者cmder里面操作，可发现换到V3以后，一个print在sublime中断报错提示，可完全一样的代码我用ipython又可以运行，好诧异。<br>所以，最后我干脆跑到pycharm去调试的。</p>
+<pre><code>__author__ = &apos;Administrator&apos;
+# coding:utf-8
+
+import re
+from urllib.request import urlopen
+from bs4 import BeautifulSoup as bs
+
+# 使用urllib的urlopen方法，去打开维基百科的首页，读取，并用utf-8解码
+resp = urlopen(&apos;https://en.wikipedia.org/wiki/Main_Page&apos;).read().decode(&apos;utf-8&apos;)
+
+# 使用BeautifulSoup去解析，其中html.parser是默认的解析器
+soup = bs(resp, &apos;html.parser&apos;)
+# 获取所有的/wiki/开头的a标签的href属性。
+listUrls = soup.find_all(&apos;a&apos;, href=re.compile(r&apos;^/wiki/&apos;))
+print(listUrls)
+
+# 输出所有的词条对应的名称和URL
+for url in listUrls:
+    # 排除.jpg JPG结尾的
+    if not re.search(&apos;\.(jpg|JPG)$&apos;, url[&apos;href&apos;]):
+        # 显示名称和网址的格式
+        # string只能显示一个，而get_text()可显示标签下所有的文字。
+        print(url.get_text(), &apos;&lt;----&gt;&apos;, &apos;https://en.wikipedia.org&apos;+url[&apos;href&apos;])
+</code></pre><p>3、win10遇到的问题：<br>   MP出错，提示awesomium_v1.6.5异常，好在MP能提示到官网提供awesomium_v1.6.6_sdk_win.exe的下载，第一次安装失败，卡机，后重启Win10修复。</p>
+<p>4、方法总结：</p>
+<ul>
+<li>urllib相关函数得到网址和解码；</li>
+<li>bs4进行解析，可使用默认的解析器或者lxml等解析器；</li>
+<li>根据要求和RE规则，找到所有的地址列表</li>
+<li>for循环后加工</li>
+</ul>
+<p>5、结果展示：网址直接可打开对应的wiki信息哦。</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/wiki%20citiao.png" alt=""></p>
+<p>6、PS：作者提到的chrome插件postman通过翻墙下了最新版，看下载量和5星评级应该不错，不过暂时我还没体验到他的威力，以后有感悟的话，再更新。</p>
 
           
         
@@ -481,8 +499,8 @@ for url in listurl:
             
               
                 
-                <a class="post-title-link" href="/2016/09/09/CSS基础学习小结/" itemprop="url">
-                  CSS基础学习小结
+                <a class="post-title-link" href="/2016/09/11/Python操作MySQL数据库/" itemprop="url">
+                  Python操作MySQL数据库
                 </a>
               
             
@@ -495,8 +513,8 @@ for url in listurl:
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-09T16:59:28+08:00" content="2016-09-09">
-              2016-09-09
+            <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
+              2016-09-11
             </time>
           </span>
 
@@ -525,51 +543,24 @@ for url in listurl:
       
         
           
-            <h1 id="说明：以下内容学习自：http-www-w3school-com-cn"><a href="#说明：以下内容学习自：http-www-w3school-com-cn" class="headerlink" title="说明：以下内容学习自：http://www.w3school.com.cn/"></a>说明：以下内容学习自：<a href="http://www.w3school.com.cn/" target="_blank" rel="external">http://www.w3school.com.cn/</a></h1><p>1、简介：由于两种主要的浏览器（Netscape 和 Internet Explorer）不断地将新的 HTML 标签和属性（比如字体标签和颜色属性）添加到 HTML 规范中，创建文档内容清晰地独立于文档表现层的站点变得越来越困难。<br>为了解决这个问题，万维网联盟（W3C），这个非营利的标准化联盟，肩负起了 HTML 标准化的使命，并在 HTML 4.0 之外创造出样式（Style）。</p>
-<p>2、选择器：selector {declaration1; declaration2; … declarationN } 以及分组和继承。</p>
-<p>3、id选择器和类选择器，在Html基础学习的帖子已经接触了。</p>
-<p>4、如何插入样式表：</p>
-<p>A) 外部样式表,浏览器会从文件 mystyle.css 中读到样式声明，并根据它来格式文档。</p>
-<pre><code>&lt;head&gt;
-&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;mystyle.css&quot; /&gt;
-&lt;/head&gt;
-</code></pre><p>B)内部样式表 当单个文档需要特殊的样式时，就应该使用内部样式表。你可以使用 style标签在文档头部定义内部样式表.</p>
-<pre><code>&lt;head&gt;
-&lt;style type=&quot;text/css&quot;&gt;
-  hr {color: sienna;}
-  p {margin-left: 20px;}
-  body {background-image: url(&quot;images/back40.gif&quot;);}
-&lt;/style&gt;
-&lt;/head&gt;
-</code></pre><p>C) 内联样式,慎用<br>D）多重样式</p>
-<p>5、背景，CSS 允许应用纯色作为背景，也允许使用背景图像创建相当复杂的效果。CSS 在这方面的能力远远在 HTML 之上。</p>
-<p>背景色：</p>
-<pre><code>p {background-color: gray;}
-</code></pre><p>背景图，下例的flower定义的一个类被引用到了段落Ｐ：</p>
-<pre><code>p.flower {background-image: url(/i/eg_bg_03.gif);}
-</code></pre><p>６、文本操作：　<br>缩进，注意参数可设置为负数，有“悬挂缩进”的作用：</p>
-<pre><code>p {text-indent: 5em;}
-p {text-indent: -5em; padding-left: 5em;}
-</code></pre><p>水平对齐：</p>
-<pre><code>text-align:center 
-justify
-</code></pre><p>字间隔等，其他略</p>
-<pre><code>p.spread {word-spacing: 30px;}
-</code></pre><p>7、列表，和html的列表类似，但在style先加载了text/css和ul.disc：</p>
-<pre><code>&lt;head&gt;
-&lt;style type=&quot;text/css&quot;&gt;
-ul.disc {list-style-type: disc}
-&lt;/style&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-&lt;ul class=&quot;disc&quot;&gt;
-&lt;li&gt;咖啡&lt;/li&gt;
-&lt;li&gt;茶&lt;/li&gt;
-&lt;li&gt;可口可乐&lt;/li&gt;
-&lt;/ul&gt;
-</code></pre><p>其中，设置表格颜色的部分，感觉要记录下，因为看上去比默认的好看不少，举例如下。<a href="http://www.w3school.com.cn/tiy/t.asp?f=csse_table_fancy" target="_blank" rel="external">代码【点我】</a>：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/css%20table.png" alt=""></p>
+            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/475" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>简介：本课程讲解Python如何开发MySQL数据库程序。首先介绍Python开发数据库程序的通用接口规范，然后搭建Python开发数据库程序的开发环境，接着了解了通用接口规范中的connection、cursor两大对象之后，介绍如何增删改查数据库，最后以实例代码演示数据库程序的开发流程。</p>
+<p>1、教程说到以下网址<a href="http://sourceforge.net/projects/mysql-python下载mysql-pyhon" target="_blank" rel="external">http://sourceforge.net/projects/mysql-python下载mysql-pyhon</a> 的连接器，针对python2.7的。 一开始安装失败，提示找不到python，原来此台电脑我的python 是64位的，貌似那个连接器是针对32位的，所有我又到以下网址下载了64位的连接器： <a href="http://www.codegood.com/download/11/" target="_blank" rel="external">http://www.codegood.com/download/11/</a><br>这下就能识别到python了， 但是一看版本是1.2.3的，而最新版是1.2.5的，考虑到mysql 5.6默认的msi也是32位的，我就把python 2.7.12换到了32位统一下吧。   安装成功后，在python下输入如下命令会成功，否则报错：</p>
+<pre><code>&gt;&gt;&gt; import MySQLdb
+&gt;&gt;&gt;
+</code></pre><p>2、然后根据教程要使用sqlyog，官网卡机，只好装国内版本，我用的这个连接（Ultimate 版本: （终极是最好的））： <a href="http://www.liangchan.net/soft/download.asp?softid=6633&amp;downid=8&amp;id=6658" target="_blank" rel="external">http://www.liangchan.net/soft/download.asp?softid=6633&amp;downid=8&amp;id=6658</a></p>
+<p>随后在sqlyog新建一个数据库，并设置下utf8编码，如下图：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%201.png" alt=""></p>
+<p>3、编写一个imooc.py 来建立connection连接，<strong>千万注意代码中的密码对应的是passwd，而不是全称的password哦。</strong></p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/db%20api%20connection.png" alt=""></p>
+<p>4、通过connection来创建游标对象cursor： </p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/cursor.png" alt=""></p>
+<p>5、select查询数据</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/select%20%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE.png" alt=""></p>
+<p>6、数据库 I U D 操作：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/%E6%95%B0%E6%8D%AE%E5%BA%93u%20i%20d.png" alt=""></p>
+<p>7、sqlyog的表单操作，要创建2个列就要在新建的表中，增加2个属性，如下图：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%20%E8%A1%A8%E6%A0%BC%E8%AE%BE%E7%BD%AE%E5%88%97.png" alt=""></p>
+<p>8、同时推荐W3C的SQL教程，地址是： <a href="http://www.w3school.com.cn/sql/index.asp" target="_blank" rel="external">http://www.w3school.com.cn/sql/index.asp</a></p>
+<p>9、刚发现<a href="http://www.jianshu.com/p/a014b26ba7ca" target="_blank" rel="external">这个帖子</a>也有写的比较详细，可参考</p>
 
           
         
@@ -670,6 +661,144 @@ ul.disc {list-style-type: disc}
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/python%20%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80%E8%A6%81%E6%B1%82.png" alt=""></p>
 <p>4、突然发现电脑超级卡，一看C盘的50G已经满了，这是什么鬼？ 原来是virtualbox 安装的系统全部塞在了C盘，由于ubuntu系统也要不断安装一些库，导致历史占用的空间越来越多。所以，设置virtualbox的安装路径到E盘，重新做了一个虚拟系统，这样C盘的空间就释放了。</p>
 <p>5、然后看了下正则式的知识，总结到下一篇吧。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/09/CSS基础学习小结/" itemprop="url">
+                  CSS基础学习小结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-09T16:59:28+08:00" content="2016-09-09">
+              2016-09-09
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明：以下内容学习自：http-www-w3school-com-cn"><a href="#说明：以下内容学习自：http-www-w3school-com-cn" class="headerlink" title="说明：以下内容学习自：http://www.w3school.com.cn/"></a>说明：以下内容学习自：<a href="http://www.w3school.com.cn/" target="_blank" rel="external">http://www.w3school.com.cn/</a></h1><p>1、简介：由于两种主要的浏览器（Netscape 和 Internet Explorer）不断地将新的 HTML 标签和属性（比如字体标签和颜色属性）添加到 HTML 规范中，创建文档内容清晰地独立于文档表现层的站点变得越来越困难。<br>为了解决这个问题，万维网联盟（W3C），这个非营利的标准化联盟，肩负起了 HTML 标准化的使命，并在 HTML 4.0 之外创造出样式（Style）。</p>
+<p>2、选择器：selector {declaration1; declaration2; … declarationN } 以及分组和继承。</p>
+<p>3、id选择器和类选择器，在Html基础学习的帖子已经接触了。</p>
+<p>4、如何插入样式表：</p>
+<p>A) 外部样式表,浏览器会从文件 mystyle.css 中读到样式声明，并根据它来格式文档。</p>
+<pre><code>&lt;head&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;mystyle.css&quot; /&gt;
+&lt;/head&gt;
+</code></pre><p>B)内部样式表 当单个文档需要特殊的样式时，就应该使用内部样式表。你可以使用 style标签在文档头部定义内部样式表.</p>
+<pre><code>&lt;head&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+  hr {color: sienna;}
+  p {margin-left: 20px;}
+  body {background-image: url(&quot;images/back40.gif&quot;);}
+&lt;/style&gt;
+&lt;/head&gt;
+</code></pre><p>C) 内联样式,慎用<br>D）多重样式</p>
+<p>5、背景，CSS 允许应用纯色作为背景，也允许使用背景图像创建相当复杂的效果。CSS 在这方面的能力远远在 HTML 之上。</p>
+<p>背景色：</p>
+<pre><code>p {background-color: gray;}
+</code></pre><p>背景图，下例的flower定义的一个类被引用到了段落Ｐ：</p>
+<pre><code>p.flower {background-image: url(/i/eg_bg_03.gif);}
+</code></pre><p>６、文本操作：　<br>缩进，注意参数可设置为负数，有“悬挂缩进”的作用：</p>
+<pre><code>p {text-indent: 5em;}
+p {text-indent: -5em; padding-left: 5em;}
+</code></pre><p>水平对齐：</p>
+<pre><code>text-align:center 
+justify
+</code></pre><p>字间隔等，其他略</p>
+<pre><code>p.spread {word-spacing: 30px;}
+</code></pre><p>7、列表，和html的列表类似，但在style先加载了text/css和ul.disc：</p>
+<pre><code>&lt;head&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+ul.disc {list-style-type: disc}
+&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;ul class=&quot;disc&quot;&gt;
+&lt;li&gt;咖啡&lt;/li&gt;
+&lt;li&gt;茶&lt;/li&gt;
+&lt;li&gt;可口可乐&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre><p>其中，设置表格颜色的部分，感觉要记录下，因为看上去比默认的好看不少，举例如下。<a href="http://www.w3school.com.cn/tiy/t.asp?f=csse_table_fancy" target="_blank" rel="external">代码【点我】</a>：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/css%20table.png" alt=""></p>
 
           
         
@@ -1323,120 +1452,6 @@ Successfully installed lxml-3.6.4
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/06/推荐Tornado的中文教程/" itemprop="url">
-                  推荐Tornado的中文教程
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-06T14:59:28+08:00" content="2016-09-06">
-              2016-09-06
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="http://ocg7i7pt6.bkt.clouddn.com/tornado.jpg" alt=""></p>
-<p>查阅<a href="http://docs.pythontab.com/tornado/introduction-to-tornado/" target="_blank" rel="external">地址为：【点我】</a></p>
-<p>这份教程讲解的比较详细，可以看看。</p>
-<p>引入模块</p>
-<pre><code>import tornado.httpserver
-
-import tornado.ioloop
-
-import tornado.options
-
-import tornado.web
-</code></pre><p>这四个都是Tornado的模块。它们四个在一般的网站开发中，都要用到，基本作用分别是：</p>
-<ul>
-<li>tornado.httpserver：这个模块就是用来解决web服务器的http协议问题，它提供了不少属性方法，实现客户端和服务器端的互通。Tornado的非阻塞、单线程的特点在这个模块中体现。</li>
-<li>tornado.ioloop：这个也非常重要，能够实现非阻塞socket循环，不能互通一次就结束。</li>
-<li>tornado.options：这是命令行解析模块，也常用到。</li>
-<li>tornado.web：这是必不可少的模块，它提供了一个简单的Web框架与异步功能，从而使其扩展到大量打开的连接，使其成为理想的长轮询。</li>
-</ul>
-<h1 id="一些知识点："><a href="#一些知识点：" class="headerlink" title="一些知识点："></a>一些知识点：</h1><p>1、class IndexHandler():</p>
-<p>   这个类是请求处理程序类，那么就最好用Handler结尾，这样在名称上很明确，是干什么的。</p>
-<p>2、前端后端的数据连接：通过ajax提交到了后端，后端借助于get_argument()方法得到了所提交的数据（用户名和密码）。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1482,7 +1497,7 @@ import tornado.web
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
