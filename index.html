@@ -357,6 +357,7 @@ element = driver.find_element_by_name(&quot;passwd&quot;)
 element = driver.find_elements_by_tag_name(&quot;input&quot;)
 element = driver.find_element_by_xpath(&quot;//input[@id=&apos;passwd-id&apos;]&quot;)
 </code></pre><p>而且你在用 xpath 的时候还需要注意的是，如果有多个元素匹配了 xpath，它只会返回第一个匹配的元素。如果没有找到，那么会抛出 NoSuchElementException 的异常。</p>
+<p>7、由于firefox的加载比较慢，所以想通过PhantomJS来测试，但是发现他不识别既定的xpath路径，应该说是部分不识别，开头的还是识别的，中间的报错，坑爹啊。</p>
 
           
         
