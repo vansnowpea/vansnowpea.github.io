@@ -351,9 +351,8 @@ click_markdown = driver.find_element_by_xpath(&quot;//p[@class=&apos;subtit&apos
 <p>5、全文需要安装firefox，为了保证和selenium兼容，我的是46英文版。</p>
 <p>6、又查阅了其他人的xpath分析方法，发现不一定要通过class来区分，如下：</p>
 <pre><code>&lt;input type=&quot;text&quot; name=&quot;passwd&quot; id=&quot;passwd-id&quot; /&gt;
-
-
-element = driver.find_element_by_id(&quot;passwd-id&quot;)
+</code></pre><p>这段html语言，可以用以下的几种方法来定位。</p>
+<pre><code>element = driver.find_element_by_id(&quot;passwd-id&quot;)
 element = driver.find_element_by_name(&quot;passwd&quot;)
 element = driver.find_elements_by_tag_name(&quot;input&quot;)
 element = driver.find_element_by_xpath(&quot;//input[@id=&apos;passwd-id&apos;]&quot;)

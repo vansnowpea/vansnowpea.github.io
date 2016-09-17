@@ -110,7 +110,7 @@ import time
 
 #shift-tab多行缩进(左)
 print (&amp;a">
-<meta property="og:updated_time" content="2016-09-17T16:40:12.000Z">
+<meta property="og:updated_time" content="2016-09-17T16:40:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于Selenium一键写CSDN博客并做成exe文件【python】">
 <meta name="twitter:description" content="参考：原文1和原文21、代码，原文python2，修改成了python 3，作者信息保留，请修改CSDN帐号登录信息：
@@ -378,9 +378,8 @@ click_markdown = driver.find_element_by_xpath(&quot;//p[@class=&apos;subtit&apos
 <p>5、全文需要安装firefox，为了保证和selenium兼容，我的是46英文版。</p>
 <p>6、又查阅了其他人的xpath分析方法，发现不一定要通过class来区分，如下：</p>
 <pre><code>&lt;input type=&quot;text&quot; name=&quot;passwd&quot; id=&quot;passwd-id&quot; /&gt;
-
-
-element = driver.find_element_by_id(&quot;passwd-id&quot;)
+</code></pre><p>这段html语言，可以用以下的几种方法来定位。</p>
+<pre><code>element = driver.find_element_by_id(&quot;passwd-id&quot;)
 element = driver.find_element_by_name(&quot;passwd&quot;)
 element = driver.find_elements_by_tag_name(&quot;input&quot;)
 element = driver.find_element_by_xpath(&quot;//input[@id=&apos;passwd-id&apos;]&quot;)
