@@ -297,7 +297,55 @@
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/selenium%2030pics.png" alt=""></p>
 <p>4、随机打开一个图，如下，可见测试ok：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/t1.png" alt=""></p>
 <p>5、代码：</p>
+<pre><code># -*- coding: utf-8 -*-
+# python 3.5.2
+# Author:vansnowpea
+# stocksnap 一个不错的图片网站的图片，右键保存抓取
 
+from selenium import webdriver
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
+
+
+print(&apos;Please wait...Firefox loading...&apos;)
+print(&apos;---------------------------------&apos;)
+
+
+url = &quot;https://stocksnap.io/&quot;
+
+# 用浏览器实现访问
+driver = webdriver.Firefox()
+driver.maximize_window()
+driver.get(url)
+
+# 得到总的jpgs的路径集合
+xpath = &quot;/html/body/div[4]/div[3]/div[2]/div//a/img&quot;
+
+# set profile
+fp = webdriver.FirefoxProfile()
+fp.set_preference(&apos;browser.download.folderList&apos;, 2)
+fp.set_preference(&apos;browser.download.manager.showWhenStarting&apos;, False)
+fp.set_preference(&apos;browser.download.dir&apos;, &apos;./yourfolder/&apos;)
+fp.set_preference(&apos;browser.helperApps.neverAsk.saveToDisk&apos;, &apos;image/jpeg&apos;)
+
+
+
+# 保存图片
+for element in driver.find_elements_by_xpath(xpath):
+    img_url = element.get_attribute(&apos;src&apos;)
+    img_desc = element.get_attribute(&apos;data-desc&apos;)
+
+    action = ActionChains(driver).move_to_element(element)
+    action.context_click(element)
+    action.send_keys(Keys.ARROW_DOWN)
+    action.send_keys(&apos;v&apos;)
+    action.perform()
+
+print(&apos;Well done! all pictures downloaded.&apos;)
+print(&apos;---------------------------------&apos;)
+
+# driver.close()
+</code></pre>
           
         
       
