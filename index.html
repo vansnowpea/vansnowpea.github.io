@@ -330,7 +330,7 @@ fp.set_preference(&apos;browser.helperApps.neverAsk.saveToDisk&apos;, &apos;imag
 
 
 
-# 保存图片
+# 保存图片,人工批量点保存，selenium无法操作操作系统级的对话框
 for element in driver.find_elements_by_xpath(xpath):
     img_url = element.get_attribute(&apos;src&apos;)
     img_desc = element.get_attribute(&apos;data-desc&apos;)
