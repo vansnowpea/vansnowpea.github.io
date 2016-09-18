@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -248,7 +248,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-18T10:59:28+08:00" content="2016-09-18">
               2016-09-18
             </time>
@@ -293,7 +293,7 @@
 </code></pre><p><img src="http://ocg7i7pt6.bkt.clouddn.com/stocksnap%20%E5%9B%BE%E7%89%87%E7%BD%91%E5%9D%80.png" alt=""></p>
 <p>3、既然这么爽的得到了图片地址，剩下就是批量下载保存了：</p>
 <p>这一次，先测试了用firefox模拟人工右键保存的方法，代码如下，保存那块还没整明白，也就是自动到出现图片保存的界面,根本原因是selenium无法操作操作系统级的对话框：</p>
-<p>索性快速人工点保存，依次得到30个图：</p>
+<p>索性快速人工点保存，30个图的保存位置都是重复的，依次得到30个图：</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/selenium%2030pics.png" alt=""></p>
 <p>4、随机打开一个图，如下，可见测试ok：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/t1.png" alt=""></p>
 <p>5、代码：</p>
@@ -345,7 +345,7 @@ print(&apos;Well done! all pictures downloaded.&apos;)
 print(&apos;---------------------------------&apos;)
 
 # driver.close()
-</code></pre><p>6、如果图片数量少，人工保存下也无妨，但数量大肯定不行，所以还是用常规的自动写入数据保存的方式。<strong>千万要注意的是，在python 3中，对数dict的关键词查找是in，比如：if n in previous:而在python 2 中是has_key,比如：if previous.has_key(n):</strong>对应代码为：</p>
+</code></pre><p>6、如果图片数量少，人工保存下也无妨，但数量大肯定不行，所以还是用常规的自动写入数据保存的方式。另外此网站是通过ajax异步加载，当鼠标放到首页30个图的下方，也就是浏览器底部区域，他又会自动加载新的图片出来。而通过新的第一层代码的模拟鼠标下移，可以得到更多的图片。<strong>千万要注意的是，在python 3中，对数dict的关键词查找是in，比如：if n in previous:而在python 2 中是has_key,比如：if previous.has_key(n):</strong>对应代码为：</p>
 <pre><code># python 3.5.2
 from selenium import webdriver  
 import time  
@@ -457,7 +457,7 @@ driver.close()
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-17T11:59:28+08:00" content="2016-09-17">
               2016-09-17
             </time>
@@ -629,7 +629,7 @@ element = driver.find_element_by_xpath(&quot;//input[@id=&apos;passwd-id&apos;]&
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-17T11:59:28+08:00" content="2016-09-17">
               2016-09-17
             </time>
@@ -738,7 +738,7 @@ https://ftp.mozilla.org/pub/firefox/releases/46.0.1/win64/en-US/
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-16T12:59:28+08:00" content="2016-09-16">
               2016-09-16
             </time>
@@ -920,7 +920,7 @@ soup = BeautifulSoup(driver.page_source, &apos;xml&apos;)
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-16T10:59:28+08:00" content="2016-09-16">
               2016-09-16
             </time>
@@ -1094,7 +1094,7 @@ start()
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-15T18:59:28+08:00" content="2016-09-15">
               2016-09-15
             </time>
@@ -1262,7 +1262,7 @@ if __name__ == &apos;__main__&apos;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-15T11:59:28+08:00" content="2016-09-15">
               2016-09-15
             </time>
@@ -1363,7 +1363,7 @@ if __name__ == &apos;__main__&apos;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-15T09:59:28+08:00" content="2016-09-15">
               2016-09-15
             </time>
@@ -1474,7 +1474,7 @@ if __name__ == &apos;__main__&apos;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-14T21:59:28+08:00" content="2016-09-14">
               2016-09-14
             </time>
@@ -1751,7 +1751,7 @@ if __name__ == &quot;__main__&quot;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-13T23:59:28+08:00" content="2016-09-13">
               2016-09-13
             </time>
@@ -1864,7 +1864,7 @@ if __name__ == &quot;__main__&quot;:
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">38</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1911,7 +1911,7 @@ if __name__ == &quot;__main__&quot;:
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
