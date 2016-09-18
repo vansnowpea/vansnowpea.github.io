@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/stocksnap%20%E5%9B%BE%E7%89%87%E7%BD%91%E5%9D%80.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/selenium%2030pics.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/t1.png">
-<meta property="og:updated_time" content="2016-09-18T05:56:45.000Z">
+<meta property="og:updated_time" content="2016-09-18T05:57:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="stocksnap 一个不错的图片网站的图片抓取【python】">
 <meta name="twitter:description" content="参考：原文1参考：原文21、原文1采用了scrapy方法，本文改编用selenium方法，并参考原文2首次采用模拟右键来保存图片。
@@ -193,7 +193,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -203,7 +203,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -266,7 +266,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-18T10:59:28+08:00" content="2016-09-18">
               2016-09-18
             </time>
@@ -361,7 +361,7 @@ print(&apos;Well done! all pictures downloaded.&apos;)
 print(&apos;---------------------------------&apos;)
 
 # driver.close()
-</code></pre><p>6、如果图片数量少，人工保存下也无妨，但数量大肯定不行，所以还是用常规的自动写入数据保存的方式， 在这个前提下，就可以进一步利用selenium自动识别ajax的功能，可以抓取更多的图片，而在上述的第一个方法中，默认的主页是30个图，除非你把鼠标拖到网页底部，才会加载新图片，以此循环。<strong>千万要注意的是，在python 3中，对数dict的关键词查找是in，比如：if previous.has_key(n):而在python 2 中是has_key,比如：if previous.has_key(n):</strong>对应代码为：</p>
+</code></pre><p>6、如果图片数量少，人工保存下也无妨，但数量大肯定不行，所以还是用常规的自动写入数据保存的方式。<strong>千万要注意的是，在python 3中，对数dict的关键词查找是in，比如：if previous.has_key(n):而在python 2 中是has_key,比如：if previous.has_key(n):</strong>对应代码为：</p>
 <pre><code># python 3.5.2
 from selenium import webdriver  
 import time  
@@ -491,10 +491,10 @@ driver.close()
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -511,7 +511,7 @@ driver.close()
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">38</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -569,7 +569,7 @@ driver.close()
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
