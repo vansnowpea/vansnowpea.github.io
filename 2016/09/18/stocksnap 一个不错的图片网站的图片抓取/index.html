@@ -85,18 +85,30 @@
 
 
 <meta name="description" content="参考：原文1、原文采用了scrapy方法，本文改编用selenium方法。
-2、">
+2、单独查看2个图的xpath，发现总体格式一致，编号部分有差异：
+/html/body/div[4]/div[3]/div[2]/div/div[1]/a/img
+
+/html/body/div[4]/div[3]/div[2]/div/div[11]/a/img
+这样我们就得到了在firefox下统一的xpath为：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="stocksnap 一个不错的图片网站的图片抓取【python】">
 <meta property="og:url" content="http://yoursite.com/2016/09/18/stocksnap 一个不错的图片网站的图片抓取/index.html">
 <meta property="og:site_name" content="天青色等烟雨">
 <meta property="og:description" content="参考：原文1、原文采用了scrapy方法，本文改编用selenium方法。
-2、">
-<meta property="og:updated_time" content="2016-09-18T00:37:41.000Z">
+2、单独查看2个图的xpath，发现总体格式一致，编号部分有差异：
+/html/body/div[4]/div[3]/div[2]/div/div[1]/a/img
+
+/html/body/div[4]/div[3]/div[2]/div/div[11]/a/img
+这样我们就得到了在firefox下统一的xpath为：">
+<meta property="og:updated_time" content="2016-09-18T00:42:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="stocksnap 一个不错的图片网站的图片抓取【python】">
 <meta name="twitter:description" content="参考：原文1、原文采用了scrapy方法，本文改编用selenium方法。
-2、">
+2、单独查看2个图的xpath，发现总体格式一致，编号部分有差异：
+/html/body/div[4]/div[3]/div[2]/div/div[1]/a/img
+
+/html/body/div[4]/div[3]/div[2]/div/div[11]/a/img
+这样我们就得到了在firefox下统一的xpath为：">
 
 
 
@@ -280,8 +292,13 @@
 
       
         <h1 id="参考：原文"><a href="#参考：原文" class="headerlink" title="参考：原文"></a>参考：<a href="http://www.jianshu.com/p/2528edf4485c" target="_blank" rel="external">原文</a></h1><p>1、原文采用了scrapy方法，本文改编用selenium方法。</p>
-<p>2、</p>
+<p>2、单独查看2个图的xpath，发现总体格式一致，编号部分有差异：</p>
+<pre><code>/html/body/div[4]/div[3]/div[2]/div/div[1]/a/img
 
+/html/body/div[4]/div[3]/div[2]/div/div[11]/a/img
+</code></pre><p>这样我们就得到了在firefox下统一的xpath为：</p>
+<pre><code>/html/body/div[4]/div[3]/div[2]/div//a/img
+</code></pre>
       
     </div>
 
