@@ -286,7 +286,8 @@
 /html/body/div[4]/div[3]/div[2]/div/div[11]/a/img
 </code></pre><p>这样我们就得到了在firefox下统一的xpath为，注意是删除div[i]部分，留下2个斜杠：</p>
 <pre><code>/html/body/div[4]/div[3]/div[2]/div//a/img
-</code></pre>
+</code></pre><p>此时，可能觉得为啥要删除，而不是用正则式.*代替？测试那样的结果是Nan，也就是说xpath的格式和re格式不能混搭。</p>
+
           
         
       
