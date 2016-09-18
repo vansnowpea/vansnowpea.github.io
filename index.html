@@ -345,8 +345,54 @@ print(&apos;Well done! all pictures downloaded.&apos;)
 print(&apos;---------------------------------&apos;)
 
 # driver.close()
-</code></pre><p>6、如果图片数量少，人工保存下也无妨，但数量大肯定不行，所以还是用常规的自动的方法再走一次。</p>
+</code></pre><p>6、如果图片数量少，人工保存下也无妨，但数量大肯定不行，所以还是用常规的自动的方法再走一次,对应代码为：</p>
+<pre><code>from selenium import webdriver  
+import time  
+import requests
 
+# 爬取页面地址  
+url = &quot;https://stocksnap.io/&quot;
+
+# 目标元素的xpath  
+xpath = &quot;/html/body/div[4]/div[3]/div[2]/div//a/img&quot;
+
+# 启动Firefox浏览器  
+driver = webdriver.Firefox()  
+
+# 最大化窗口，因为每一次爬取只能看到视窗内的图片  
+driver.maximize_window()  
+
+# 记录下载过的图片地址，避免重复下载  
+img_url_dic = {}  
+
+# 浏览器打开爬取页面  
+driver.get(url)  
+
+# 模拟滚动窗口以浏览下载更多图片  
+pos = 0  
+m = 0 # 图片编号  
+for i in range(10):  
+    pos += i*500 # 每次下滚500  
+    js = &quot;document.documentElement.scrollTop=%d&quot; % pos  
+    driver.execute_script(js)  
+    time.sleep(1)     
+
+    for element in driver.find_elements_by_xpath(xpath):  
+        img_url = element.get_attribute(&apos;src&apos;)  
+        # 保存图片到指定路径  
+        #if img_url != None and not img_url_dic.has_key(img_url):
+        if img_url != None :
+            img_url_dic[img_url] = &apos;&apos;  
+            m += 1  
+            ext = img_url.split(&apos;.&apos;)[-1]  
+            filename = str(m) + &apos;.&apos; + ext  
+            #保存图片数据  
+            data = requests.get(img_url).read()
+            f = open(&apos;./van/&apos; + filename, &apos;wb&apos;)
+            f.write(data)  
+            f.close()  
+driver.close()  
+</code></pre>
           
         
       
