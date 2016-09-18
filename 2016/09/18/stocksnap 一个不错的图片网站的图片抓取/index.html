@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/stocksnap%20%E5%9B%BE%E7%89%87%E7%BD%91%E5%9D%80.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/selenium%2030pics.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/t1.png">
-<meta property="og:updated_time" content="2016-09-18T03:12:14.000Z">
+<meta property="og:updated_time" content="2016-09-18T03:42:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="stocksnap 一个不错的图片网站的图片抓取【python】">
 <meta name="twitter:description" content="参考：原文1参考：原文21、原文1采用了scrapy方法，本文改编用selenium方法，并参考原文2首次采用模拟右键来保存图片。
@@ -373,7 +373,7 @@ url = &quot;https://stocksnap.io/&quot;
 xpath = &quot;/html/body/div[4]/div[3]/div[2]/div//a/img&quot;
 
 # 启动Firefox浏览器  
-driver = webdriver.Firefox()  
+driver = webdriver.PhantomJS()
 
 # 最大化窗口，因为每一次爬取只能看到视窗内的图片  
 driver.maximize_window()  
@@ -403,8 +403,8 @@ for i in range(10):
             ext = img_url.split(&apos;.&apos;)[-1]  
             filename = str(m) + &apos;.&apos; + ext  
             #保存图片数据  
-            data = urllib.requests.get(img_url).read()
-            f = open(&apos;./van/&apos; + filename, &apos;wb&apos;)
+            data = urllib.request.urlopen(img_url).read()
+            f = open(filename, &apos;wb&apos;)
             f.write(data)  
             f.close()  
 driver.close()  
