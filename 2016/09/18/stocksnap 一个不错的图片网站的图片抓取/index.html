@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/stocksnap%20%E5%9B%BE%E7%89%87%E7%BD%91%E5%9D%80.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/selenium%2030pics.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/t1.png">
-<meta property="og:updated_time" content="2016-09-18T02:14:25.000Z">
+<meta property="og:updated_time" content="2016-09-18T02:27:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="stocksnap 一个不错的图片网站的图片抓取【python】">
 <meta name="twitter:description" content="参考：原文1参考：原文21、原文1采用了scrapy方法，本文改编用selenium方法，并参考原文2首次采用模拟右键来保存图片。
@@ -308,7 +308,7 @@
 <pre><code>/html/body/div[4]/div[3]/div[2]/div//a/img/@src
 </code></pre><p><img src="http://ocg7i7pt6.bkt.clouddn.com/stocksnap%20%E5%9B%BE%E7%89%87%E7%BD%91%E5%9D%80.png" alt=""></p>
 <p>3、既然这么爽的得到了图片地址，剩下就是批量下载保存了：</p>
-<p>这一次，先测试了用firefox模拟人工邮件保存的方法，代码如下，保存那块还没整明白，也就是自动到出现图片保存的界面：</p>
+<p>这一次，先测试了用firefox模拟人工邮件保存的方法，代码如下，保存那块还没整明白，也就是自动到出现图片保存的界面,根本原因是selenium无法操作操作系统级的对话框：</p>
 <p>依次得到30个图：</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/selenium%2030pics.png" alt=""></p>
 <p>4、随机打开一个图，如下，可见测试ok：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/t1.png" alt=""></p>
