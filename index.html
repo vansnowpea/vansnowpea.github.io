@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -248,7 +248,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-18T10:59:28+08:00" content="2016-09-18">
               2016-09-18
             </time>
@@ -280,14 +280,17 @@
         
           
             <h1 id="参考：原文"><a href="#参考：原文" class="headerlink" title="参考：原文"></a>参考：<a href="http://www.jianshu.com/p/2528edf4485c" target="_blank" rel="external">原文</a></h1><p>1、原文采用了scrapy方法，本文改编用selenium方法。</p>
-<p>2、单独查看2个图的xpath，发现总体格式一致，编号部分有差异：</p>
+<p>2、网站分析：</p>
+<p>首先发现鼠标拖动到图片底部区域，主页又不断加载新的图片，可判断是异步的。另单独查看2个图的xpath，发现总体格式一致，编号部分有差异：</p>
 <pre><code>/html/body/div[4]/div[3]/div[2]/div/div[1]/a/img
 
 /html/body/div[4]/div[3]/div[2]/div/div[11]/a/img
 </code></pre><p>这样我们就得到了在firefox下统一的xpath为，注意是删除div[i]部分，留下2个斜杠：</p>
 <pre><code>/html/body/div[4]/div[3]/div[2]/div//a/img
 </code></pre><p>此时，可能觉得为啥要删除，而不是用正则式.*代替？测试那样的结果是Nan，也就是说xpath的格式和re格式不能混搭。</p>
-<p>3、</p>
+<p>而每个jpg地址在src属性中，对应的每个图片的jpg地址为，：</p>
+<pre><code>/html/body/div[4]/div[3]/div[2]/div//a/img/@src
+</code></pre><p>3、既然这么爽的得到了图片地址，剩下就是批量下载保存了：</p>
 
           
         
@@ -350,7 +353,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-17T11:59:28+08:00" content="2016-09-17">
               2016-09-17
             </time>
@@ -522,7 +525,7 @@ element = driver.find_element_by_xpath(&quot;//input[@id=&apos;passwd-id&apos;]&
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-17T11:59:28+08:00" content="2016-09-17">
               2016-09-17
             </time>
@@ -631,7 +634,7 @@ https://ftp.mozilla.org/pub/firefox/releases/46.0.1/win64/en-US/
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-16T12:59:28+08:00" content="2016-09-16">
               2016-09-16
             </time>
@@ -813,7 +816,7 @@ soup = BeautifulSoup(driver.page_source, &apos;xml&apos;)
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-16T10:59:28+08:00" content="2016-09-16">
               2016-09-16
             </time>
@@ -987,7 +990,7 @@ start()
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-15T18:59:28+08:00" content="2016-09-15">
               2016-09-15
             </time>
@@ -1155,7 +1158,7 @@ if __name__ == &apos;__main__&apos;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-15T11:59:28+08:00" content="2016-09-15">
               2016-09-15
             </time>
@@ -1256,7 +1259,7 @@ if __name__ == &apos;__main__&apos;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-15T09:59:28+08:00" content="2016-09-15">
               2016-09-15
             </time>
@@ -1367,7 +1370,7 @@ if __name__ == &apos;__main__&apos;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-14T21:59:28+08:00" content="2016-09-14">
               2016-09-14
             </time>
@@ -1644,7 +1647,7 @@ if __name__ == &quot;__main__&quot;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-13T23:59:28+08:00" content="2016-09-13">
               2016-09-13
             </time>
@@ -1757,7 +1760,7 @@ if __name__ == &quot;__main__&quot;:
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">38</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1804,7 +1807,7 @@ if __name__ == &quot;__main__&quot;:
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
