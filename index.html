@@ -345,7 +345,7 @@ print(&apos;Well done! all pictures downloaded.&apos;)
 print(&apos;---------------------------------&apos;)
 
 # driver.close()
-</code></pre><p>6、如果图片数量少，人工保存下也无妨，但数量大肯定不行，所以还是用常规的自动写入数据保存的方式。<strong>千万要注意的是，在python 3中，对数dict的关键词查找是in，比如：if previous.has_key(n):而在python 2 中是has_key,比如：if previous.has_key(n):</strong>对应代码为：</p>
+</code></pre><p>6、如果图片数量少，人工保存下也无妨，但数量大肯定不行，所以还是用常规的自动写入数据保存的方式。<strong>千万要注意的是，在python 3中，对数dict的关键词查找是in，比如：if n in previous::而在python 2 中是has_key,比如：if previous.has_key(n):</strong>对应代码为：</p>
 <pre><code># python 3.5.2
 from selenium import webdriver  
 import time  
