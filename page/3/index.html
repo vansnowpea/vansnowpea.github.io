@@ -235,6 +235,141 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/07/beautiful soup+ Xpath的基础操作/" itemprop="url">
+                  beautiful soup+ Xpath的基础操作
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-07T16:59:28+08:00" content="2016-09-07">
+              2016-09-07
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Beautiful Soup 是 python 的一个库，最主要的功能是从网页抓取数据,BS4是Beautiful Soup V4.x的简称。<br>为什么选用BS4呢？ 可以尽可能的规避复杂的正则表达式RE。 而功能上，配合requests也是相当好的。</p>
+<p>官方的中文教程可参考<a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc.zh/" target="_blank" rel="external">此链接【点我】</a></p>
+<p>而另一篇博客写的更细致，可参考<a href="http://cuiqingcai.com/1319.html" target="_blank" rel="external">【转载请注明：静觅 » Python爬虫利器二之Beautiful Soup的用法</a></p>
+<p>以下是分别通过BS4和Xpath方式得到的简书网的首页“热门”的20偏文章的标题</p>
+<p>完整的代码如下：</p>
+<pre><code>#coding:utf-8
+
+import re
+import urllib
+from bs4 import BeautifulSoup
+import time
+from lxml import etree
+
+def getHtml(url):
+    page = urllib.urlopen(url)
+    html = page.read()
+    return html
+
+html = getHtml(&quot;http://www.jianshu.com&quot;)
+
+#html 是爬取的网页源代码, 将一段文档传入BeautifulSoup 的构造方法,就能得到一个文档的对象
+soup = BeautifulSoup(html,&apos;html.parser&apos;,from_encoding=&apos;utf-8&apos;)
+#查找所有的h4标签 
+links = soup.find_all(&quot;h4&quot;)
+
+for link in links:
+    print link
+
+
+time.sleep(5)
+
+
+
+selector = etree.HTML(html)
+links = selector.xpath(&apos;//h4/a/text()&apos;)
+for link in links:
+    print link
+</code></pre><p>说明：其中需要会查阅HTML的基础技巧，用一个图动图(来自本文末尾的文章)来概括：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/fdafd.gif" alt=""></p>
+<p>不过第一个方法，显示的是乱码，但是一开始就规定了UTF8格式，原因待定。如图：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/22.png" alt=""></p>
+<p>参考：<a href="http://www.jianshu.com/p/ea007d71ce2a" target="_blank" rel="external">向右奔跑的文章【点我】</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/07/Http权威指南 书籍下载和推荐/" itemprop="url">
                   《Http权威指南》 完整版 书籍下载和推荐
                 </a>
@@ -786,140 +921,6 @@ urlpatterns = [
 </code></pre><p>最后，我们就得到了和直接双击index.html一样的效果，如下图（中文是我添加，为庆祝女排奥运夺冠）：</p>
 <p>也许你会说，这网页也不是很漂亮啊，其实这里主要是选了一个简单的网页模版，<br>用来示范操作的，可以谷歌到很多精彩的bootstrap的框架模版，但如果要修改成自己的，<br>也是需要在HTML里修改不少内容，再加上本身我对前端的知识也比较有限。<br>到这里，就完成了Python+Django实现网站的教程了。<br>当然要做一个内容较多的网站还是需要很多后续工作的。 ”——）</p>
 <h1 id="11-参考：-fanhuaxiu-com"><a href="#11-参考：-fanhuaxiu-com" class="headerlink" title="11 参考：  fanhuaxiu.com"></a>11 参考：  fanhuaxiu.com</h1>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/05/关于Xpath地址的分析小结/" itemprop="url">
-                  关于Xpath地址的分析小结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-05T00:20:28+08:00" content="2016-09-05">
-              2016-09-05
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="简介：-发现有时候遇到xpath的路径报错，然而使用的都是一些注明的插件工具，但不同浏览器的自带功能抱出来的xpath又有所差别，故做一个测试记录"><a href="#简介：-发现有时候遇到xpath的路径报错，然而使用的都是一些注明的插件工具，但不同浏览器的自带功能抱出来的xpath又有所差别，故做一个测试记录" class="headerlink" title="简介： 发现有时候遇到xpath的路径报错，然而使用的都是一些注明的插件工具，但不同浏览器的自带功能抱出来的xpath又有所差别，故做一个测试记录"></a>简介： 发现有时候遇到xpath的路径报错，然而使用的都是一些注明的插件工具，但不同浏览器的自带功能抱出来的xpath又有所差别，故做一个测试记录</h1><p>1、旁引： 因故装python 3 +2 的双蛇系统，是故再次要把anaconda配置到python 2 去然后搜网址的时候，看到一个评论，喜感，记录如下：</p>
-<p>问：anaconda与python什么关系</p>
-<p>答复：<br>python 是莽蛇，一般是陆上蛇<br>Anaconda 是美洲大水蛇。</p>
-<p>2、以豆瓣网电影斑块的“热门”按键为例，如图：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-19/181325132" alt=""></p>
-<p>在chrome里的xpath是：</p>
-<pre><code>//*[@id=&quot;gaia_frm&quot;]/div[1]/div[1]/label[1]
-</code></pre><p>在firefox 的firebug插件：：</p>
-<pre><code>/html/body/div[3]/div[1]/div/div[2]/div[4]/div[2]/div[1]/form/div[1]/div[1]/label[1]
-</code></pre><p>而firexfox的xpath checker插件则是：</p>
-<pre><code>id(&apos;gaia_frm&apos;)/x:div[1]/x:div[1]/x:label[1]
-</code></pre><p>又测试QQ浏览器为：</p>
-<pre><code>//*[@id=&quot;gaia_frm&quot;]/div[1]/div[1]/label[1]
-</code></pre><p>可以发现，谷歌和qq浏览器的格式一直，但firefox的不同不同浏览器显示的不尽相同，但最起码，倒过来看，还是基本相同，这其实是路径开头选择差异导致的，而到路径最后基本都一样。但还要看一个标签里，采用的是什么属性定位，比如通过id，通过name等的区别。</p>
-<ul>
-<li><p>其中，firefox的view pather差价显示的比较特别，带有X： 字样，估计是该差价自定义的xpath格式，但如果直接复制到python里，是不识别的，因此会报错。所以，如果要采用他的格式，需要把x： 给删掉。测试就通过了。也就是要修改成：</p>
-<p>  driver.find_element_by_xpath(“id(‘gaia_frm’)/div[1]/div[1]/label[1]”)</p>
-</li>
-</ul>
-<ul>
-<li><p>谷歌和qq的一样，只需要测试一个，结论直接通过：</p>
-<p>  driver.find_element_by_xpath(“//*[@id=\”gaia_frm\”]/div[1]/div[1]/label[1]”)</p>
-</li>
-</ul>
-<ul>
-<li><p>firebug的，结论通过：</p>
-<p>  driver.find_element_by_xpath(“/html/body/div[3]/div[1]/div/div[2]/div[4]/div[2]/div[1]/form/div[1]/div[1]/label[1]”</p>
-</li>
-</ul>
-<p>结论：</p>
-<ul>
-<li>谷歌和qq浏览器自带的xpath路径分析，可通过常规需求的测试（由于有隐藏元素的一些网页功能，遇到的话依然可能失败，还有就是动态刷新技术）</li>
-<li>由于我安装的firefox没看到自带的xpath分析功能，所以安装了firebug插件以及xpath checker插件，但xpath checker插件自带的格式却得不到浏览器的支持，需要特别注意。</li>
-<li>xpath checker在反向验证xpath路径的时候还是有用。</li>
-</ul>
-<p>关于最后一点展开下，也是经验总结：</p>
-<p>比如，你看别人的代码分析，因为你不确定他是使用浏览器自带的，还是自己定义的，还是插件的xpath路径，甚至可能对方根本没有任何注释，导致你看到xpath路径的时候，一头的晕，丫到底写的是啥呀？也许聪明的你会说，那可以到网页源代码查找一部分的关键词，确实可以，但也麻烦，举例来说：</p>
-<pre><code>driver_item.find_element_by_xpath(&quot;//div[@class=&apos;list-wp&apos;]/a[@class=&apos;more&apos;]&quot;).click()
-</code></pre><p>虽然可以知道要点击一个含有class=’more’的控件元素，但你会发现直接网页源代码木有！！ 为何？ 因为他的真实是双引号class=”more”<br>原来，因为selenium 的find_element_by_xpath(“XXX”) 命令，如果你把XXX用class=”more”直接代替，绝对的报错，为何，因为双引号冲突， 你可以反斜杠来区分，抑或用单引号，这就是原因所在。可见，即便你到网页源代码查找还是麻烦的很，更不要说，如果万一源代码里有好几个这样的查找单元了。</p>
-<p>而我们用，xpath checker反向验证，可以很快的让你知道，对方分析的是什么元素，如下图：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-19/185937608" alt=""></p>
-
           
         
       
