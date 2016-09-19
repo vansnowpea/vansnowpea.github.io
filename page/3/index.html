@@ -887,7 +887,7 @@ urlpatterns = [
 <pre><code>//*[@id=&quot;gaia_frm&quot;]/div[1]/div[1]/label[1]
 </code></pre><p>在firefox 的firebug插件：：</p>
 <pre><code>/html/body/div[3]/div[1]/div/div[2]/div[4]/div[2]/div[1]/form/div[1]/div[1]/label[1]
-</code></pre><p>而firexfox的view path插件则是：</p>
+</code></pre><p>而firexfox的xpath checker插件则是：</p>
 <pre><code>id(&apos;gaia_frm&apos;)/x:div[1]/x:div[1]/x:label[1]
 </code></pre><p>又测试QQ浏览器为：</p>
 <pre><code>//*[@id=&quot;gaia_frm&quot;]/div[1]/div[1]/label[1]
@@ -910,9 +910,10 @@ urlpatterns = [
 <p>结论：</p>
 <ul>
 <li>谷歌和qq浏览器自带的xpath路径分析，可通过常规需求的测试（由于有隐藏元素的一些网页功能，遇到的话依然可能失败，还有就是动态刷新技术）</li>
-<li>由于我安装的firefox没看到自带的xpath分析功能，所以安装了firebug插件以及view xpath插件，但view xpath插件自带的格式却得不到浏览器的支持，需要特别注意。</li>
-<li>view xpath在反向验证xpath路径的时候还是有用。比如，你看别人的代码分析，因为你不确定他是使用浏览器自带的，还是自己定义的，还是插件的xpath路径，甚至可能对方根本没有任何注释，导致你看到xpath路径的时候，一头的晕，丫到底写的是啥呀？那么view xpath反向验证就发挥作用了，可以很快的让你知道，对方分析的是什么元素。</li>
+<li>由于我安装的firefox没看到自带的xpath分析功能，所以安装了firebug插件以及xpath checker插件，但xpath checker插件自带的格式却得不到浏览器的支持，需要特别注意。</li>
+<li>xpath checker在反向验证xpath路径的时候还是有用。比如，你看别人的代码分析，因为你不确定他是使用浏览器自带的，还是自己定义的，还是插件的xpath路径，甚至可能对方根本没有任何注释，导致你看到xpath路径的时候，一头的晕，丫到底写的是啥呀？那么xpath checker反向验证就发挥作用了，可以很快的让你知道，对方分析的是什么元素，如下图：</li>
 </ul>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-19/185937608" alt=""></p>
 
           
         
