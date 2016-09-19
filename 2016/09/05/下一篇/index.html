@@ -95,7 +95,7 @@
 问：anaconda与python什么关系
 答复：python 是莽蛇，一般是陆上蛇Anacon">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-19/181325132">
-<meta property="og:updated_time" content="2016-09-19T10:19:18.000Z">
+<meta property="og:updated_time" content="2016-09-19T10:22:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Xpath地址的分析小结">
 <meta name="twitter:description" content="简介： 发现有时候遇到xpath的路径报错，然而使用的都是一些注明的插件工具，但不同浏览器的自带功能抱出来的xpath又有所差别，故做一个测试记录1、旁引： 因故装python 3 +2 的双蛇系统，是故再次要把anaconda配置到python 2 去然后搜网址的时候，看到一个评论，喜感，记录如下：
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -192,7 +192,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -255,7 +255,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:20:28+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -297,7 +297,9 @@
 <pre><code>id(&apos;gaia_frm&apos;)/x:div[1]/x:div[1]/x:label[1]
 </code></pre><p>又测试QQ浏览器为：</p>
 <pre><code>//*[@id=&quot;gaia_frm&quot;]/div[1]/div[1]/label[1]
-</code></pre>
+</code></pre><p>可以发现，不同浏览器显示的不尽相同，但最起码，倒过来看，还是基本相同，这其实是路径开头选择差异导致的，而到路径最后基本都一样。但还要看一个标签里，采用的是什么属性定位，比如通过id，通过name等的区别。</p>
+<p>其中，firefox的view pather差价显示的比较特别，带有X： 字样，估计是该差价自定义的xpath格式，但如果直接复制到python里，是不识别的，因此会报错。所以，如果要采用他的格式，需要把x： 给删掉。</p>
+
       
     </div>
 
@@ -381,10 +383,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -401,7 +403,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">39</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -459,7 +461,7 @@
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
