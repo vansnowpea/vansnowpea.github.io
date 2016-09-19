@@ -885,14 +885,28 @@ urlpatterns = [
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-19/181325132" alt=""></p>
 <p>在chrome里的xpath是：</p>
 <pre><code>//*[@id=&quot;gaia_frm&quot;]/div[1]/div[1]/label[1]
-</code></pre><p>在firefox里是：</p>
+</code></pre><p>在firefox 的firebug插件：：</p>
 <pre><code>/html/body/div[3]/div[1]/div/div[2]/div[4]/div[2]/div[1]/form/div[1]/div[1]/label[1]
 </code></pre><p>而firexfox的view path插件则是：</p>
 <pre><code>id(&apos;gaia_frm&apos;)/x:div[1]/x:div[1]/x:label[1]
 </code></pre><p>又测试QQ浏览器为：</p>
 <pre><code>//*[@id=&quot;gaia_frm&quot;]/div[1]/div[1]/label[1]
-</code></pre><p>可以发现，不同浏览器显示的不尽相同，但最起码，倒过来看，还是基本相同，这其实是路径开头选择差异导致的，而到路径最后基本都一样。但还要看一个标签里，采用的是什么属性定位，比如通过id，通过name等的区别。</p>
-<p>其中，firefox的view pather差价显示的比较特别，带有X： 字样，估计是该差价自定义的xpath格式，但如果直接复制到python里，是不识别的，因此会报错。所以，如果要采用他的格式，需要把x： 给删掉。</p>
+</code></pre><p>可以发现，谷歌和qq浏览器的格式一直，但firefox的不同不同浏览器显示的不尽相同，但最起码，倒过来看，还是基本相同，这其实是路径开头选择差异导致的，而到路径最后基本都一样。但还要看一个标签里，采用的是什么属性定位，比如通过id，通过name等的区别。</p>
+<ul>
+<li><p>其中，firefox的view pather差价显示的比较特别，带有X： 字样，估计是该差价自定义的xpath格式，但如果直接复制到python里，是不识别的，因此会报错。所以，如果要采用他的格式，需要把x： 给删掉。测试就通过了。也就是要修改成：</p>
+<p>  driver.find_element_by_xpath(“id(‘gaia_frm’)/div[1]/div[1]/label[1]”)</p>
+</li>
+</ul>
+<ul>
+<li><p>谷歌和qq的一样，只需要测试一个，结论直接通过：</p>
+<p>  driver.find_element_by_xpath(“//*[@id=\”gaia_frm\”]/div[1]/div[1]/label[%1]”)</p>
+</li>
+</ul>
+<ul>
+<li><p>firebug的，结论通过：</p>
+<p>  driver.find_element_by_xpath(“/html/body/div[3]/div[1]/div/div[2]/div[4]/div[2]/div[1]/form/div[1]/div[1]/label[%1]”</p>
+</li>
+</ul>
 
           
         
