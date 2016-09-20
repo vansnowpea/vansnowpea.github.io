@@ -94,7 +94,7 @@
 <meta property="og:description" content="简介： 之前直接测试mail.q63.com 以及 mail.qq.com的selenium登录都受阻，网站采用了较强的反爬技术，故用规避方法登陆1、QQ邮箱在右上角有基本登录，没有做加强反爬处理，而163的，则是通过www.163.com去找邮箱，发现接口是email.163.com，主义多了一个字幕e，是较早的登录接口。
 2、代码(请把你的帐号密码代替xxxx)，增加了自动判断数字代码：
 #">
-<meta property="og:updated_time" content="2016-09-20T01:35:24.000Z">
+<meta property="og:updated_time" content="2016-09-20T01:37:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="163和qq邮箱的自动登录--selenium【python】">
 <meta name="twitter:description" content="简介： 之前直接测试mail.q63.com 以及 mail.qq.com的selenium登录都受阻，网站采用了较强的反爬技术，故用规避方法登陆1、QQ邮箱在右上角有基本登录，没有做加强反爬处理，而163的，则是通过www.163.com去找邮箱，发现接口是email.163.com，主义多了一个字幕e，是较早的登录接口。
@@ -180,7 +180,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -190,7 +190,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -253,7 +253,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-20T10:20:28+08:00" content="2016-09-20">
               2016-09-20
             </time>
@@ -285,6 +285,7 @@
         <h1 id="简介：-之前直接测试mail-q63-com-以及-mail-qq-com的selenium登录都受阻，网站采用了较强的反爬技术，故用规避方法登陆"><a href="#简介：-之前直接测试mail-q63-com-以及-mail-qq-com的selenium登录都受阻，网站采用了较强的反爬技术，故用规避方法登陆" class="headerlink" title="简介： 之前直接测试mail.q63.com 以及 mail.qq.com的selenium登录都受阻，网站采用了较强的反爬技术，故用规避方法登陆"></a>简介： 之前直接测试mail.q63.com 以及 mail.qq.com的selenium登录都受阻，网站采用了较强的反爬技术，故用规避方法登陆</h1><p>1、QQ邮箱在右上角有基本登录，没有做加强反爬处理，而163的，则是通过www.163.com去找邮箱，发现接口是email.163.com，主义多了一个字幕e，是较早的登录接口。</p>
 <p>2、代码(请把你的帐号密码代替xxxx)，增加了自动判断数字代码：</p>
 <pre><code># coding:utf-8
+# python 3.5.2
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import selenium.webdriver.support.ui as ui
@@ -325,7 +326,10 @@ def run():
 
 
 run()
-</code></pre>
+</code></pre><p>3、pycharm输出：</p>
+<p>1-QQ免费邮箱<br>2-163免费邮箱<br>请输入对应数字：4<br>输入错误，请重新输入 :)<br>1-QQ免费邮箱<br>2-163免费邮箱<br>请输入对应数字：2<br>————–Log In————</p>
+<p>Process finished with exit code 0</p>
+
       
     </div>
 
@@ -405,10 +409,10 @@ run()
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -425,7 +429,7 @@ run()
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">40</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -483,7 +487,7 @@ run()
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
