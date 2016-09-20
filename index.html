@@ -235,202 +235,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/20/豆瓣电影的检索爬虫【python】/" itemprop="url">
-                  豆瓣电影的检索爬虫【python】
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-20T14:20:28+08:00" content="2016-09-20">
-              2016-09-20
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="简介：-豆瓣网的电影分类比较清晰，比较了音乐板块，还是感觉电影板块用来做爬虫比较合适"><a href="#简介：-豆瓣网的电影分类比较清晰，比较了音乐板块，还是感觉电影板块用来做爬虫比较合适" class="headerlink" title="简介： 豆瓣网的电影分类比较清晰，比较了音乐板块，还是感觉电影板块用来做爬虫比较合适"></a>简介： 豆瓣网的电影分类比较清晰，比较了音乐板块，还是感觉电影板块用来做爬虫比较合适</h1><p>1、在参考他文的基础上，进行了学习分析。本文将记录和探讨细节部分。</p>
-<p>2、url定义为电影板块： <a href="https://movie.douban.com/" target="_blank" rel="external">https://movie.douban.com/</a></p>
-<p>3、遇到大型网站数据抓取，尤其是海外站点，因为延时造成的失败经常发生，遇到这样的情况，则建议用ui的加载until功能，在本测试案例中没有使用，因为测试结果响应较快。</p>
-<p>4、因为要从大量的数据进行排序筛选，所以xpath的路径要尽可能的精确，如果直接用firebug的自带xpath地址，在排序检索，并提交内容时，可能因为路径有一个层级的差别导致失败报错。尽管很多时候，这个差别在图标点击上的效果一样。所以也是坑之一。</p>
-<p>5、由于selenium的加载浏览器比较消耗内存，很可能在此状态下，浏览器的响应延缓较大，因此，需要写好print信息，或者logging信息，以更明确程序执行点。</p>
-<p>6、多选项排序的时候，建议做成gui，这是因为可以减少后续使用的重复输入。</p>
-<p>7、一般来说，热评总是不缺，但是长评对于新电影是可能空缺的，为此，务必要加载try–except方式，来规避这样的情况。</p>
-<p>8、功能实现，为简单，只按照豆瓣电影默认的按照热门—-按热门排序，爬取了前20的电影的名字，网址，热评和长评信息，</p>
-<p>9、代码如下：</p>
-<pre><code># coding:utf-8
-# 改编，精简版
-# python 3.5.2
-# 豆瓣网排名抓取和影评抓取V1.0
-
-import time
-from selenium import webdriver
-import selenium.webdriver.support.ui as ui
-
-url = &quot;https://movie.douban.com/&quot;
-browser = webdriver.Firefox()
-browser1 = webdriver.PhantomJS()
-browser.get(url)
-
-SUMRESOURCES = 0
-
-# 热门
-browser.find_element_by_xpath(&quot;//*[@id=\&quot;gaia_frm\&quot;]/div[1]/div[1]/label[1]&quot;).click()
-
-# 按热度排序
-browser.find_element_by_xpath(&quot;//*[@id=\&quot;gaia_frm\&quot;]/div[3]/div[1]/label[1]&quot;).click()
-
-# 加载更多
-browser.find_element_by_xpath(&quot;//*[@id=\&quot;gaia\&quot;]/div[4]/a&quot;).click()
-time.sleep(2)
-
-def get_title():
-
-    global SUMRESOURCES
-    # 定义抓top 20的电影
-    num = 20
-    # 定义抓长评
-    long = 0
-    for i in range(1, num+1):
-            try:
-                # 抓第i个图的基本信息
-                title_list = browser.find_element_by_xpath(&quot;//*[@id=\&quot;gaia\&quot;]/div[4]/div/a[%d]&quot;%i)
-                print(&apos;------------------NO--&apos;+ &apos;&apos;+str(SUMRESOURCES+1) +&apos;--------------------&apos;)
-                print(&apos;film name:&apos;, title_list.text)
-                film_link = title_list.get_attribute(&apos;href&apos;)
-                print(&apos;film link:&apos;, film_link)
-                SUMRESOURCES += 1
-                get_detail(film_link,long)
-            except:
-                print(&apos;不能抓到影视信息&apos;)
-
-
-def get_detail(url,long=0):
-    browser1.get(url)
-
-    # 简介内容
-    jian_jie = browser1.find_element_by_xpath(&quot;/html/body/div[3]/div[1]/div/div[1]/div[3]/div/span[1]&quot;).text
-    print(&apos;电影简介：&apos;, jian_jie)
-
-    # 热门评论
-    # /html/body/div[3]/div[1]/div/div[1]/div[7]/div[2]/div[1]/a[1]
-    browser1.find_element_by_xpath(&quot;//*[@id=\&quot;hot-comments-tab\&quot;]&quot;).click()
-    for i in range(1, 5):
-        try:
-            # /html/body/div[3]/div[1]/div/div[1]/div[6]/div[2]/div[2]/div[1]/div[3]/div/p
-            re_ping = browser1.find_element_by_xpath(&quot;//*[@id=\&quot;hot-comments\&quot;]/div[%d]/div/p&quot;%i).text
-            print(&apos;-----&apos;+&apos;热评:&apos;+&apos;------&apos;)
-            print(u&apos;最新热评:&apos;+ re_ping)
-        except:
-            print(&apos;抓取热评失败&apos;)
-
-
-
-    if long == 1:
-        try:
-            # 点开下拉三角，展开长评
-            # 使用对应img里自带的class
-            browser1.find_element_by_xpath(&quot;//img[@class=&apos;bn-arrow&apos;]&quot;).click()
-            time.sleep(1)
-            # 修正剧透的bug
-            # 常规路径：/html/body/div[3]/div[1]/div/div[1]/div[8]/div[2]/div[1]/div[2]/div[2]/div[1]
-            # bug后的路径： /html/body/div[3]/div[1]/div/div[1]/div[8]/div[2]/div[1]/div[2]/div[2]/div[2]/div
-            long_get = browser1.find_element_by_xpath(&quot;//div[@class=&apos;review-bd&apos;]/div[2]/div&quot;)
-
-            if long_get.text.encode(&apos;utf-8&apos;)==&apos;提示: 这篇影评可能有剧透&apos;:
-
-                print(&apos;发现恶心的剧透！将跳过！&apos;)
-                long_ping = browser1.find_element_by_xpath(&quot;//div[@class=&apos;review-bd&apos;]/div[2]/div[2]&quot;)
-            else:
-                long_ping = long_get
-            print(&apos;----------------------------------------&apos;+&apos;长评:&apos;+&apos;----------------------------------------&apos;)
-            print(&apos;长评:&apos;, long_ping.text)
-        except:
-            print(&apos;抓取长评失败&apos;)
-
-
-
-if __name__==&quot;__main__&quot;:
-    get_title()
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/09/20/163和qq邮箱的自动登录--selenium【python】/" itemprop="url">
                   163和qq邮箱的自动登录--selenium【python】
                 </a>
@@ -925,6 +729,115 @@ driver.close()
             
               
                 
+                <a class="post-title-link" href="/2016/09/17/Firefox不能运行selenium的故障排查/" itemprop="url">
+                  Firefox不能运行selenium的故障排查
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-17T11:59:28+08:00" content="2016-09-17">
+              2016-09-17
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明-Firefox中文最新版48不能运行selenium2-53-6的故障排查"><a href="#说明-Firefox中文最新版48不能运行selenium2-53-6的故障排查" class="headerlink" title="说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查"></a>说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查</h1><p>1、错误提示：  </p>
+<pre><code>  File &quot;D:\Anaconda3\lib\site-packages\selenium\webdriver\firefox\firefox_binary.py&quot;, line 103, in _wait_until_connectable
+    raise WebDriverException(&quot;Can&apos;t load the profile. Profile &quot;
+selenium.common.exceptions.WebDriverException: Message: Can&apos;t load the profile. Profile Dir: %s If you specified a log_file in the FirefoxBinary constructor, check it for details.
+</code></pre><p>2、排查版本： selenium已经是最新版2.53.6  firexfox也是最新中文版48</p>
+<p>谷歌： </p>
+<pre><code>http://stackoverflow.com/questions/37693106/selenium-2-53-not-working-on-firefox-47/37693374
+</code></pre><p>上面给了一个在selenium 在2.53.0时代，运行firefox 47版本的方法，感觉麻烦，所以我优选了退回低版本的策略，如下：</p>
+<p>3、评估是否firefox的48最新版还不支持？所以到firefox官网上，直接看到的最后的老版本是47， 测试安装了中文版，结果一样，继续卸载看46版本，使用的以下网址：</p>
+<pre><code>https://ftp.mozilla.org/pub/firefox/releases/
+https://ftp.mozilla.org/pub/firefox/releases/46.0.1/win64/en-US/
+</code></pre><p>一下就成功了。</p>
+<p>4、后来翻阅stackoverflow的帖子，发现有人反馈2.53.6已经支持firefox 48了。 但是我的咋就不行？ 猜测区别就是中文和英文，所以我就把46版本卸载了测试48英文版， </p>
+<pre><code>https://ftp.mozilla.org/pub/firefox/releases/48.0b1/win64/en-US/
+</code></pre><p>结果直接跳出firefox已停止工作。</p>
+<p>5、结论：就2.53.6的selenium版本，测试firefox 46 英文版稳定运行。47和48版本失败。操作系统Win10，所以建议使用46版本的firefox。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/17/基于Selenium一键写CSDN博客并做成exe文件/" itemprop="url">
                   基于Selenium一键写CSDN博客并做成exe文件【python】
                 </a>
@@ -1048,115 +961,6 @@ element = driver.find_elements_by_tag_name(&quot;input&quot;)
 element = driver.find_element_by_xpath(&quot;//input[@id=&apos;passwd-id&apos;]&quot;)
 </code></pre><p>而且你在用 xpath 的时候还需要注意的是，如果有多个元素匹配了 xpath，它只会返回第一个匹配的元素。如果没有找到，那么会抛出 NoSuchElementException 的异常。</p>
 <p>7、由于firefox的加载比较慢，所以想通过PhantomJS来测试，但是发现他不识别既定的xpath路径，应该说是部分不识别，开头的还是识别的，中间的报错，坑爹啊。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/17/Firefox不能运行selenium的故障排查/" itemprop="url">
-                  Firefox不能运行selenium的故障排查
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-17T11:59:28+08:00" content="2016-09-17">
-              2016-09-17
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="说明-Firefox中文最新版48不能运行selenium2-53-6的故障排查"><a href="#说明-Firefox中文最新版48不能运行selenium2-53-6的故障排查" class="headerlink" title="说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查"></a>说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查</h1><p>1、错误提示：  </p>
-<pre><code>  File &quot;D:\Anaconda3\lib\site-packages\selenium\webdriver\firefox\firefox_binary.py&quot;, line 103, in _wait_until_connectable
-    raise WebDriverException(&quot;Can&apos;t load the profile. Profile &quot;
-selenium.common.exceptions.WebDriverException: Message: Can&apos;t load the profile. Profile Dir: %s If you specified a log_file in the FirefoxBinary constructor, check it for details.
-</code></pre><p>2、排查版本： selenium已经是最新版2.53.6  firexfox也是最新中文版48</p>
-<p>谷歌： </p>
-<pre><code>http://stackoverflow.com/questions/37693106/selenium-2-53-not-working-on-firefox-47/37693374
-</code></pre><p>上面给了一个在selenium 在2.53.0时代，运行firefox 47版本的方法，感觉麻烦，所以我优选了退回低版本的策略，如下：</p>
-<p>3、评估是否firefox的48最新版还不支持？所以到firefox官网上，直接看到的最后的老版本是47， 测试安装了中文版，结果一样，继续卸载看46版本，使用的以下网址：</p>
-<pre><code>https://ftp.mozilla.org/pub/firefox/releases/
-https://ftp.mozilla.org/pub/firefox/releases/46.0.1/win64/en-US/
-</code></pre><p>一下就成功了。</p>
-<p>4、后来翻阅stackoverflow的帖子，发现有人反馈2.53.6已经支持firefox 48了。 但是我的咋就不行？ 猜测区别就是中文和英文，所以我就把46版本卸载了测试48英文版， </p>
-<pre><code>https://ftp.mozilla.org/pub/firefox/releases/48.0b1/win64/en-US/
-</code></pre><p>结果直接跳出firefox已停止工作。</p>
-<p>5、结论：就2.53.6的selenium版本，测试firefox 46 英文版稳定运行。47和48版本失败。操作系统Win10，所以建议使用46版本的firefox。</p>
 
           
         
@@ -1810,11 +1614,122 @@ if __name__ == &apos;__main__&apos;:
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/15/推荐使用requests代替urllib/" itemprop="url">
+                  推荐使用requests代替urllib【python】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-15T09:59:28+08:00" content="2016-09-15">
+              2016-09-15
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明-之前爬虫时读取网址内容用的都是urllib，这是python自带的，但如果使用复杂点的功能，还是推荐requests第三方库，这是因为这个库很优秀"><a href="#说明-之前爬虫时读取网址内容用的都是urllib，这是python自带的，但如果使用复杂点的功能，还是推荐requests第三方库，这是因为这个库很优秀" class="headerlink" title="说明:之前爬虫时读取网址内容用的都是urllib，这是python自带的，但如果使用复杂点的功能，还是推荐requests第三方库，这是因为这个库很优秀"></a>说明:之前爬虫时读取网址内容用的都是urllib，这是python自带的，但如果使用复杂点的功能，还是推荐requests第三方库，这是因为这个库很优秀</h1><p>1、比较，参考自： <a href="http://www.jb51.net/article/63711.htm：" target="_blank" rel="external">http://www.jb51.net/article/63711.htm：</a></p>
+<blockquote>
+<p>一个复杂一点的例子：<br>现在让我们尝试下复杂点得例子：使用GET方法获取<a href="http://foo.test/secret的资源，这次需要基本的http验证。使用上面的代码作为模板，好像我们只要把urllib2.urlopen(" target="_blank" rel="external">http://foo.test/secret的资源，这次需要基本的http验证。使用上面的代码作为模板，好像我们只要把urllib2.urlopen(</a>) 到requests.get()之间的代码换成可以发送username，password的请求就行了<br>这是urllib2的方法：</p>
+<blockquote>
+<blockquote>
+<p>import urllib2<br>url = ‘<a href="http://example.test/secret" target="_blank" rel="external">http://example.test/secret</a>‘<br>password_manager = urllib2.HTTPPasswordMgrWithDefaultRealm()<br>password_manager.add_password(None, url, ‘dan’, ‘h0tdish’)<br>auth_handler = urllib2.HTTPBasicAuthHandler(password_manager)<br>opener = urllib2.build_opener(auth_handler)<br>urllib2.install_opener(opener)<br>response = urllib2.urlopen(url)<br>response.getcode()<br>200<br>response.read()<br>‘Welcome to the secret page!’<br>一个简单的方法中实例化了2个类，然后组建了第三个类，最后还要装载到全局的urllib2模块中，最后才调用了urlopen，那么那两个复杂的类是什么的<br>迷惑了吗，  这里所有urllib2的文档 <a href="http://docs.python.org/release/2.7/library/urllib2.html" target="_blank" rel="external">http://docs.python.org/release/2.7/library/urllib2.html</a></p>
+</blockquote>
+</blockquote>
+<p>那Requests是怎么样解决同样的问题的呢？<br>Requests</p>
+<blockquote>
+<blockquote>
+<p>import requests<br>url = ‘<a href="http://example.test/secret" target="_blank" rel="external">http://example.test/secret</a>‘<br>response = requests.get(url,auth=(‘dan’,’h0tdish’))<br>response.status_code<br>200<br>response.content<br>u’Welcome to the secret page!’<br>只是在调用方法的时候增加了一个auth关键字函数</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>2、requests的documents官网：  <a href="http://www.python-requests.org/en/master/" target="_blank" rel="external">http://www.python-requests.org/en/master/</a><br>建议阅读下其documents，写的还是挺清楚的。</p>
+<p>3、基本使用：<br>import requests<br>r = requests.get(‘<a href="https://api.github.com/events" target="_blank" rel="external">https://api.github.com/events</a>‘)<br>r.text<br>r.content   # 以字节的方式访问请求响应体，对于非文本请求</p>
+<p>r = requests.post(‘<a href="http://httpbin.org/post" target="_blank" rel="external">http://httpbin.org/post</a>‘, data = {‘key’:’value’})</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1855,7 +1770,7 @@ if __name__ == &apos;__main__&apos;:
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-count">40</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
