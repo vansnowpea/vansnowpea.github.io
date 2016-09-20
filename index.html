@@ -279,13 +279,110 @@
       
         
           
-            <h1 id="简介：-豆瓣网的电影分类比较清晰，比较了音乐板块，还是感觉电影板块用来做爬虫比较合适"><a href="#简介：-豆瓣网的电影分类比较清晰，比较了音乐板块，还是感觉电影板块用来做爬虫比较合适" class="headerlink" title="简介： 豆瓣网的电影分类比较清晰，比较了音乐板块，还是感觉电影板块用来做爬虫比较合适"></a>简介： 豆瓣网的电影分类比较清晰，比较了音乐板块，还是感觉电影板块用来做爬虫比较合适</h1><p>1、在参考他文的基础上，进行了学习分析和复写，因此代码就略，请直接看参考文章。本文将记录和探讨细节部分。</p>
+            <h1 id="简介：-豆瓣网的电影分类比较清晰，比较了音乐板块，还是感觉电影板块用来做爬虫比较合适"><a href="#简介：-豆瓣网的电影分类比较清晰，比较了音乐板块，还是感觉电影板块用来做爬虫比较合适" class="headerlink" title="简介： 豆瓣网的电影分类比较清晰，比较了音乐板块，还是感觉电影板块用来做爬虫比较合适"></a>简介： 豆瓣网的电影分类比较清晰，比较了音乐板块，还是感觉电影板块用来做爬虫比较合适</h1><p>1、在参考他文的基础上，进行了学习分析。本文将记录和探讨细节部分。</p>
 <p>2、url定义为电影板块： <a href="https://movie.douban.com/" target="_blank" rel="external">https://movie.douban.com/</a></p>
-<p>3、由于豆瓣网是一个大站，加载的元素多，所以安全起见，要使用ui的加载until功能</p>
+<p>3、遇到大型网站数据抓取，尤其是海外站点，因为延时造成的失败经常发生，遇到这样的情况，则建议用ui的加载until功能，在本测试案例中没有使用，因为测试结果响应较快。</p>
 <p>4、因为要从大量的数据进行排序筛选，所以xpath的路径要尽可能的精确，如果直接用firebug的自带xpath地址，在排序检索，并提交内容时，可能因为路径有一个层级的差别导致失败报错。尽管很多时候，这个差别在图标点击上的效果一样。所以也是坑之一。</p>
 <p>5、由于selenium的加载浏览器比较消耗内存，很可能在此状态下，浏览器的响应延缓较大，因此，需要写好print信息，或者logging信息，以更明确程序执行点。</p>
 <p>6、多选项排序的时候，建议做成gui，这是因为可以减少后续使用的重复输入。</p>
+<p>7、一般来说，热评总是不缺，但是长评对于新电影是可能空缺的，为此，务必要加载try–except方式，来规避这样的情况。</p>
+<p>8、功能实现，为简单，只按照豆瓣电影默认的按照热门—-按热门排序，爬取了前20的电影的名字，网址，热评和长评信息，</p>
+<p>9、代码如下：</p>
+<pre><code># coding:utf-8
+# 改编，精简版
+# python 3.5.2
+# 豆瓣网排名抓取和影评抓取V1.0
 
+import time
+from selenium import webdriver
+import selenium.webdriver.support.ui as ui
+
+url = &quot;https://movie.douban.com/&quot;
+browser = webdriver.Firefox()
+browser1 = webdriver.PhantomJS()
+browser.get(url)
+
+SUMRESOURCES = 0
+
+# 热门
+browser.find_element_by_xpath(&quot;//*[@id=\&quot;gaia_frm\&quot;]/div[1]/div[1]/label[1]&quot;).click()
+
+# 按热度排序
+browser.find_element_by_xpath(&quot;//*[@id=\&quot;gaia_frm\&quot;]/div[3]/div[1]/label[1]&quot;).click()
+
+# 加载更多
+browser.find_element_by_xpath(&quot;//*[@id=\&quot;gaia\&quot;]/div[4]/a&quot;).click()
+time.sleep(2)
+
+def get_title():
+
+    global SUMRESOURCES
+    # 定义抓top 20的电影
+    num = 20
+    # 定义抓长评
+    long = 0
+    for i in range(1, num+1):
+            try:
+                # 抓第i个图的基本信息
+                title_list = browser.find_element_by_xpath(&quot;//*[@id=\&quot;gaia\&quot;]/div[4]/div/a[%d]&quot;%i)
+                print(&apos;------------------NO--&apos;+ &apos;&apos;+str(SUMRESOURCES+1) +&apos;--------------------&apos;)
+                print(&apos;film name:&apos;, title_list.text)
+                film_link = title_list.get_attribute(&apos;href&apos;)
+                print(&apos;film link:&apos;, film_link)
+                SUMRESOURCES += 1
+                get_detail(film_link,long)
+            except:
+                print(&apos;不能抓到影视信息&apos;)
+
+
+def get_detail(url,long=0):
+    browser1.get(url)
+
+    # 简介内容
+    jian_jie = browser1.find_element_by_xpath(&quot;/html/body/div[3]/div[1]/div/div[1]/div[3]/div/span[1]&quot;).text
+    print(&apos;电影简介：&apos;, jian_jie)
+
+    # 热门评论
+    # /html/body/div[3]/div[1]/div/div[1]/div[7]/div[2]/div[1]/a[1]
+    browser1.find_element_by_xpath(&quot;//*[@id=\&quot;hot-comments-tab\&quot;]&quot;).click()
+    for i in range(1, 5):
+        try:
+            # /html/body/div[3]/div[1]/div/div[1]/div[6]/div[2]/div[2]/div[1]/div[3]/div/p
+            re_ping = browser1.find_element_by_xpath(&quot;//*[@id=\&quot;hot-comments\&quot;]/div[%d]/div/p&quot;%i).text
+            print(&apos;-----&apos;+&apos;热评:&apos;+&apos;------&apos;)
+            print(u&apos;最新热评:&apos;+ re_ping)
+        except:
+            print(&apos;抓取热评失败&apos;)
+
+
+
+    if long == 1:
+        try:
+            # 点开下拉三角，展开长评
+            # 使用对应img里自带的class
+            browser1.find_element_by_xpath(&quot;//img[@class=&apos;bn-arrow&apos;]&quot;).click()
+            time.sleep(1)
+            # 修正剧透的bug
+            # 常规路径：/html/body/div[3]/div[1]/div/div[1]/div[8]/div[2]/div[1]/div[2]/div[2]/div[1]
+            # bug后的路径： /html/body/div[3]/div[1]/div/div[1]/div[8]/div[2]/div[1]/div[2]/div[2]/div[2]/div
+            long_get = browser1.find_element_by_xpath(&quot;//div[@class=&apos;review-bd&apos;]/div[2]/div&quot;)
+
+            if long_get.text.encode(&apos;utf-8&apos;)==&apos;提示: 这篇影评可能有剧透&apos;:
+
+                print(&apos;发现恶心的剧透！将跳过！&apos;)
+                long_ping = browser1.find_element_by_xpath(&quot;//div[@class=&apos;review-bd&apos;]/div[2]/div[2]&quot;)
+            else:
+                long_ping = long_get
+            print(&apos;----------------------------------------&apos;+&apos;长评:&apos;+&apos;----------------------------------------&apos;)
+            print(&apos;长评:&apos;, long_ping.text)
+        except:
+            print(&apos;抓取长评失败&apos;)
+
+
+
+if __name__==&quot;__main__&quot;:
+    get_title()
+</code></pre>
           
         
       
