@@ -235,6 +235,149 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/19/163和qq邮箱的自动登录--selenium【python】/" itemprop="url">
+                  关于Xpath地址的分析小结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-19T20:20:28+08:00" content="2016-09-19">
+              2016-09-19
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="简介：-发现有时候遇到xpath的路径报错，然而使用的都是一些插件工具，但不同浏览器和不同插件得到的xpath又有所差别，故做一个测试记录"><a href="#简介：-发现有时候遇到xpath的路径报错，然而使用的都是一些插件工具，但不同浏览器和不同插件得到的xpath又有所差别，故做一个测试记录" class="headerlink" title="简介： 发现有时候遇到xpath的路径报错，然而使用的都是一些插件工具，但不同浏览器和不同插件得到的xpath又有所差别，故做一个测试记录"></a>简介： 发现有时候遇到xpath的路径报错，然而使用的都是一些插件工具，但不同浏览器和不同插件得到的xpath又有所差别，故做一个测试记录</h1><p>1、旁引： 因故装python 3 +2 的双蛇系统，是故再次要把anaconda配置到python 2 去然后搜网址的时候，看到一个评论，喜感，记录如下：</p>
+<p>问：anaconda与python什么关系</p>
+<p>答复：<br>python 是莽蛇，一般是陆上蛇<br>Anaconda 是美洲大水蛇。</p>
+<p>好吧：如果英文不好的，可以用简友0han写的翻译小程序来看下：</p>
+<p>===============================</p>
+<h1 id="有道词典-命令行版v1-1-by-0han"><a href="#有道词典-命令行版v1-1-by-0han" class="headerlink" title="=有道词典 命令行版v1.1 by 0han="></a>=有道词典 命令行版v1.1 by 0han=</h1><p>输入’q’可退出程式</p>
+<p>请输入词语：python</p>
+<p>翻译:n. 巨蟒；大蟒</p>
+<p>请输入词语：anaconda</p>
+<p>翻译:n. 水蟒；蟒蛇</p>
+<p>请输入词语：</p>
+<p><strong><br>是不是可以写一部： 水与火之歌  ：） </strong></p>
+<p>2、以豆瓣网电影板块的“热门”按键为例，如图：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-19/181325132" alt=""></p>
+<p>在chrome里的xpath是：</p>
+<pre><code>//*[@id=&quot;gaia_frm&quot;]/div[1]/div[1]/label[1]
+</code></pre><p>在firefox 的firebug插件：：</p>
+<pre><code>/html/body/div[3]/div[1]/div/div[2]/div[4]/div[2]/div[1]/form/div[1]/div[1]/label[1]
+</code></pre><p>而firexfox的xpath checker插件则是：</p>
+<pre><code>id(&apos;gaia_frm&apos;)/x:div[1]/x:div[1]/x:label[1]
+</code></pre><p>又测试QQ浏览器为：</p>
+<pre><code>//*[@id=&quot;gaia_frm&quot;]/div[1]/div[1]/label[1]
+</code></pre><p>可以发现，谷歌和qq浏览器的格式一致，但firefox的插件，则不尽相同，但最起码，倒过来看，还是基本相同，这其实是路径开头选择差异导致的，而到路径最后基本都一样，这可以理解为绝对路径和相对路径，前者最开始一个斜杠，后者2个斜杠。那即便后面就肯定一样？但还要看“后面”的层级定义，即便到达最后一级的标签，采用的是什么属性定位，比如通过id，通过name等的区别。</p>
+<ul>
+<li><p>其中，firefox的xpath checker插件显示的比较特别，带有X： 字样，估计是该插件自定义的xpath格式，但如果直接复制到python里，是不识别的，因此会报错。所以，如果要采用他的格式，需要把x： 给删掉。测试就通过了。也就是要修改成：</p>
+<p>  driver.find_element_by_xpath(“id(‘gaia_frm’)/div[1]/div[1]/label[1]”)</p>
+</li>
+</ul>
+<ul>
+<li><p>谷歌和qq的一样，只需要测试一个，结论直接通过：</p>
+<p>  driver.find_element_by_xpath(“//*[@id=\”gaia_frm\”]/div[1]/div[1]/label[1]”)</p>
+</li>
+</ul>
+<ul>
+<li><p>firebug的，结论通过：</p>
+<p>  driver.find_element_by_xpath(“/html/body/div[3]/div[1]/div/div[2]/div[4]/div[2]/div[1]/form/div[1]/div[1]/label[1]”</p>
+</li>
+</ul>
+<p>结论：</p>
+<ul>
+<li>谷歌和qq浏览器自带的xpath路径分析，可通过常规需求的测试（由于有隐藏元素的一些网页功能，遇到的话依然可能失败，还有就是动态刷新技术）</li>
+<li>由于我安装的firefox没看到自带的xpath分析功能，所以安装了firebug插件以及xpath checker插件，但xpath checker插件自带的格式却得不到浏览器的支持，需要特别注意。</li>
+<li>xpath checker在反向验证xpath路径的时候还是有用。</li>
+</ul>
+<p>关于最后一点展开下，也是经验总结：</p>
+<p>比如，你看别人的代码分析，因为你不确定他是使用浏览器自带的，还是自己定义的，还是插件的xpath路径，甚至可能对方根本没有任何注释，导致你看到xpath路径的时候，一头的晕，丫到底写的是啥呀？也许聪明的你会说，那可以到网页源代码查找一部分的关键词，确实可以，但也麻烦，举例来说：</p>
+<pre><code>driver_item.find_element_by_xpath(&quot;//div[@class=&apos;list-wp&apos;]/a[@class=&apos;more&apos;]&quot;).click()
+</code></pre><p>虽然可以知道要点击一个含有class=’more’的控件元素，但你会发现直接网页源代码木有！！ 为何？ 因为他的真实是双引号class=”more”<br>原来，因为selenium 的find_element_by_xpath(“XXX”) 命令，如果你把XXX用class=”more”直接代替，绝对的报错，为何，因为双引号冲突， 你可以反斜杠来区分，抑或用单引号，这就是原因所在。可见，即便你到网页源代码查找还是麻烦的很，更不要说，如果万一源代码里有好几个这样的查找单元了。</p>
+<p>而我们用，xpath checker反向验证，可以很快的让你知道，对方分析的是什么元素，如下图：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-19/185937608" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/19/关于Xpath地址的分析小结/" itemprop="url">
                   关于Xpath地址的分析小结
                 </a>
@@ -587,6 +730,115 @@ driver.close()
             
               
                 
+                <a class="post-title-link" href="/2016/09/17/Firefox不能运行selenium的故障排查/" itemprop="url">
+                  Firefox不能运行selenium的故障排查
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-17T11:59:28+08:00" content="2016-09-17">
+              2016-09-17
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明-Firefox中文最新版48不能运行selenium2-53-6的故障排查"><a href="#说明-Firefox中文最新版48不能运行selenium2-53-6的故障排查" class="headerlink" title="说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查"></a>说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查</h1><p>1、错误提示：  </p>
+<pre><code>  File &quot;D:\Anaconda3\lib\site-packages\selenium\webdriver\firefox\firefox_binary.py&quot;, line 103, in _wait_until_connectable
+    raise WebDriverException(&quot;Can&apos;t load the profile. Profile &quot;
+selenium.common.exceptions.WebDriverException: Message: Can&apos;t load the profile. Profile Dir: %s If you specified a log_file in the FirefoxBinary constructor, check it for details.
+</code></pre><p>2、排查版本： selenium已经是最新版2.53.6  firexfox也是最新中文版48</p>
+<p>谷歌： </p>
+<pre><code>http://stackoverflow.com/questions/37693106/selenium-2-53-not-working-on-firefox-47/37693374
+</code></pre><p>上面给了一个在selenium 在2.53.0时代，运行firefox 47版本的方法，感觉麻烦，所以我优选了退回低版本的策略，如下：</p>
+<p>3、评估是否firefox的48最新版还不支持？所以到firefox官网上，直接看到的最后的老版本是47， 测试安装了中文版，结果一样，继续卸载看46版本，使用的以下网址：</p>
+<pre><code>https://ftp.mozilla.org/pub/firefox/releases/
+https://ftp.mozilla.org/pub/firefox/releases/46.0.1/win64/en-US/
+</code></pre><p>一下就成功了。</p>
+<p>4、后来翻阅stackoverflow的帖子，发现有人反馈2.53.6已经支持firefox 48了。 但是我的咋就不行？ 猜测区别就是中文和英文，所以我就把46版本卸载了测试48英文版， </p>
+<pre><code>https://ftp.mozilla.org/pub/firefox/releases/48.0b1/win64/en-US/
+</code></pre><p>结果直接跳出firefox已停止工作。</p>
+<p>5、结论：就2.53.6的selenium版本，测试firefox 46 英文版稳定运行。47和48版本失败。操作系统Win10，所以建议使用46版本的firefox。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/17/基于Selenium一键写CSDN博客并做成exe文件/" itemprop="url">
                   基于Selenium一键写CSDN博客并做成exe文件【python】
                 </a>
@@ -710,115 +962,6 @@ element = driver.find_elements_by_tag_name(&quot;input&quot;)
 element = driver.find_element_by_xpath(&quot;//input[@id=&apos;passwd-id&apos;]&quot;)
 </code></pre><p>而且你在用 xpath 的时候还需要注意的是，如果有多个元素匹配了 xpath，它只会返回第一个匹配的元素。如果没有找到，那么会抛出 NoSuchElementException 的异常。</p>
 <p>7、由于firefox的加载比较慢，所以想通过PhantomJS来测试，但是发现他不识别既定的xpath路径，应该说是部分不识别，开头的还是识别的，中间的报错，坑爹啊。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/17/Firefox不能运行selenium的故障排查/" itemprop="url">
-                  Firefox不能运行selenium的故障排查
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-17T11:59:28+08:00" content="2016-09-17">
-              2016-09-17
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="说明-Firefox中文最新版48不能运行selenium2-53-6的故障排查"><a href="#说明-Firefox中文最新版48不能运行selenium2-53-6的故障排查" class="headerlink" title="说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查"></a>说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查</h1><p>1、错误提示：  </p>
-<pre><code>  File &quot;D:\Anaconda3\lib\site-packages\selenium\webdriver\firefox\firefox_binary.py&quot;, line 103, in _wait_until_connectable
-    raise WebDriverException(&quot;Can&apos;t load the profile. Profile &quot;
-selenium.common.exceptions.WebDriverException: Message: Can&apos;t load the profile. Profile Dir: %s If you specified a log_file in the FirefoxBinary constructor, check it for details.
-</code></pre><p>2、排查版本： selenium已经是最新版2.53.6  firexfox也是最新中文版48</p>
-<p>谷歌： </p>
-<pre><code>http://stackoverflow.com/questions/37693106/selenium-2-53-not-working-on-firefox-47/37693374
-</code></pre><p>上面给了一个在selenium 在2.53.0时代，运行firefox 47版本的方法，感觉麻烦，所以我优选了退回低版本的策略，如下：</p>
-<p>3、评估是否firefox的48最新版还不支持？所以到firefox官网上，直接看到的最后的老版本是47， 测试安装了中文版，结果一样，继续卸载看46版本，使用的以下网址：</p>
-<pre><code>https://ftp.mozilla.org/pub/firefox/releases/
-https://ftp.mozilla.org/pub/firefox/releases/46.0.1/win64/en-US/
-</code></pre><p>一下就成功了。</p>
-<p>4、后来翻阅stackoverflow的帖子，发现有人反馈2.53.6已经支持firefox 48了。 但是我的咋就不行？ 猜测区别就是中文和英文，所以我就把46版本卸载了测试48英文版， </p>
-<pre><code>https://ftp.mozilla.org/pub/firefox/releases/48.0b1/win64/en-US/
-</code></pre><p>结果直接跳出firefox已停止工作。</p>
-<p>5、结论：就2.53.6的selenium版本，测试firefox 46 英文版稳定运行。47和48版本失败。操作系统Win10，所以建议使用46版本的firefox。</p>
 
           
         
@@ -1583,283 +1726,6 @@ if __name__ == &apos;__main__&apos;:
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/14/百度百科1000个页面数据的抓取【python】/" itemprop="url">
-                  百度百科1000个页面数据的抓取【python】
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-14T21:59:28+08:00" content="2016-09-14">
-              2016-09-14
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/563" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、首先要感谢原作者非常细致的讲解，在网页分析的时候还是学到了一些很有用的技巧。后续会总结。</p>
-<p>2、这次是跟着作者，使用了Eclipse + Pydev的软件调试的，相对于Pycharm，他的优点就是可以动态插入需要的类和方法，而同比Pycharm只能动态匹配类，方法就没反应了。不过在界面配色方面明显没有Pyhcarm做的好。总之，目前的配色方案不满意，但将就下吧。</p>
-<p>3、原作者使用的Python 2的版本，我的版本（大部分还是照作者的）已经修改到3的版本了，。虽然感觉作者的代码，有的地方写的有点小啰嗦，不过看他视频现场操作，还是感觉细节有很多值得借鉴的地方。</p>
-<pre><code># -*- coding: utf-8 -*-
-# python 3.5.2
-
-from urllib.request import urlopen
-from bs4 import BeautifulSoup
-from urllib.parse import urlparse
-import re
-import urllib
-
-
-class HtmlOutputer(object):
-    def __init__(self):
-        self.datas = []
-
-    def collect_data(self, data):
-        if data is None:
-            return
-        self.datas.append(data)
-
-    def outputer_html(self):
-        fout = open(&apos;output.html&apos;, &apos;w&apos;)
-        fout.write(&quot;&lt;html&gt;&quot;)
-        fout.write(&quot;&lt;body&gt;&quot;)
-        fout.write(&quot;&lt;table&gt;&quot;)
-
-        # accii
-        for data in self.datas:
-            fout.write(&quot;&lt;tr&gt;&quot;)
-            fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;url&apos;])
-            # 原作者使用了.encode(&apos;utf-8&apos;)的代码，但在python 3 测试报错
-            fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;title&apos;]).encode(&apos;utf-8&apos;)
-            fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;summary&apos;]).encode(&apos;utf-8&apos;)
-
-            fout.write(&quot;&lt;/tr&gt;&quot;)
-
-        fout.write(&quot;&lt;/body&gt;&quot;)
-        fout.write(&quot;&lt;/table&gt;&quot;)
-        fout.write(&quot;&lt;/html&gt;&quot;)
-        fout.close()
-
-
-class HtmlParser(object):
-    def _get_new_urls(self, page_url, soup):
-        new_urls = set()
-        # /view/123.htm
-        links = soup.find_all(&apos;a&apos;, href=re.compile(r&apos;/view/\d+\.htm&apos;))
-        for link in links:
-            new_url = link[&apos;href&apos;]
-
-            new_full_url = urllib.parse.urljoin(page_url, new_url)
-            new_urls.add(new_full_url)
-        return new_urls
-
-    def _get_new_data(self, page_url, soup):
-        # http://baike.baidu.com/view/21087.htm
-        res_data = {}
-        res_data[&apos;url&apos;] = page_url
-        # &lt;dd class=&quot;lemmaWgt-lemmaTitle-title&quot;&gt;&lt;h1&gt;Python&lt;/h1&gt;
-        title_node = soup.find(&apos;dd&apos;, class_=&quot;lemmaWgt-lemmaTitle-title&quot;).find(&quot;h1&quot;)
-        res_data[&apos;title&apos;] = title_node.get_text()
-
-        # &lt;div class=&quot;lemma-summary&quot; label-module=&quot;lemmaSummary&quot;&gt;
-        summery_node = soup.find(&apos;div&apos;, class_=&quot;lemma-summary&quot;)
-        res_data[&apos;summery&apos;] = summery_node.get_text()
-
-        return res_data
-
-    def parse(self, page_url, html_cont):
-        if page_url is None or html_cont is None:
-            return
-        soup = BeautifulSoup(html_cont, &apos;html.parser&apos;, from_encoding=&apos;uft-8&apos;)
-        new_urls = self._get_new_urls(page_url, soup)
-        new_data = self._get_new_data(page_url, soup)
-
-        return new_urls, new_data
-
-
-class HtmlDownloader(object):
-    def download(self, url):
-        if url is None:
-            return None
-
-        response = urlopen(url)
-        if response.getcode() != 200:
-            return None
-        return response.read()
-
-
-class UrlManager(object):
-    def __init__(self):
-        self.new_urls = set()
-        self.old_urls = set()
-
-    def add_new_url(self, url):
-        if url is None:
-            return
-        if url not in self.new_urls and url not in self.old_urls:
-            self.new_urls.add(url)
-
-    def add_new_urls(self, urls):
-        if urls is None or len(urls) == 0:
-            return
-        for url in urls:
-            self.add_new_url(url)
-
-    def has_new_url(self):
-        return len(self.new_urls) != 0
-
-    def get_new_url(self):
-        new_url = self.new_urls.pop()
-        self.old_urls.add(new_url)
-        return new_url
-
-
-
-
-class SpiderMain(object):
-    def __init__(self):
-        # url 管理器
-        self.urls = UrlManager()
-        # 下载器
-        self.downloader = HtmlDownloader()
-
-        # 解析器
-        self.parser = HtmlParser()
-
-        # 输出器
-        self.outputer = HtmlOutputer()
-
-    def craw(self, root_url):
-        count = 1
-        # 入口url添加
-        self.urls.add_new_url(root_url)
-
-        # 如果有新的url
-        while self.urls.has_new_url():
-            try:
-
-                # 获取新的url
-                new_url = self.urls.get_new_url()
-                print(&apos;craw %d : %s&apos; % (count, new_url))
-
-                # 启动下载器下载页面
-                html_cont = self.downloader.download(new_url)
-
-                # 解析器来解析新的地址和数据
-                new_urls, new_data = self.parser.parse(new_url, html_cont)
-
-                # 把新的地址添加到urls
-                self.urls.add_new_urls(new_urls)
-
-                # 输出和收集数据
-                self.outputer.collect_data(new_data)
-
-                if count == 1000:
-                    break
-                count += 1
-            except:
-                print(&apos;craw failed.&apos;)
-
-        # 输出数据
-        self.outputer.outputer_html()
-
-
-if __name__ == &quot;__main__&quot;:
-    root_url = &quot;http://baike.baidu.com/view/21087.htm&quot;
-    # 创建一个爬虫对象
-    obj_spider = SpiderMain()
-    # 运行爬虫函数
-    obj_spider.craw(root_url)
-</code></pre><p>4、原作者是的html_outputer.py 文件包含了3个函数，最后一个是把爬虫数据导出到一个.html文件里，但是按照他的源代码，最后我总是得到错误提示如下，提示整数不能用来encode，也就是爬到的百科名词有的是纯数字的，比如设想是10086 ，另外在python 2 到3 的切换使用中，也确实遇到好几在V2 下ok的代码，到了V3失败，很多是来自解码方面的异常。：</p>
-<p>AttributeError: ‘int’ object has no attribute ‘encode’</p>
-<p>或者当去掉utf-8输出，又遇到gbk编码的问题：<br>UnicodeEncodeError: ‘gbk’ codec can’t encode character ‘\u02c8’ in position 19: illegal multibyte sequence</p>
-<p>5、总结：</p>
-<ul>
-<li><p>首先，原作者在一个工程下，建立一个package，然后把几个主要的类单独列出了py文件，这样的方式更为规范，此文为粘贴代码简便，统一到了一起。实际，应用第一种模式为佳。</p>
-</li>
-<li><p>其次，在分析html的分类入口处，比如python关键词地方的对应html代码，使用右键–&gt;检查（或F12，然后点击上面有“类”的地方，比如此文是关键词python在类lemmaWgt-lemmaTitle-title下的h1标题，然后再右键–&gt;Edit as html，就可以在一个段落里轻松复制这断html代码了。否则在F12模式下不能直接上下复制的）</p>
-</li>
-<li>经过比较python 2， 如果检索的关键词是数字，一样不能使用.encode(‘utf-8’)， 那么原作者的演示视频为何都没有报错？ 这应该是他当时的爬虫没有搜寻到数字关键词，而我的遇到了。 </li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1905,7 +1771,7 @@ if __name__ == &quot;__main__&quot;:
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-count">40</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
