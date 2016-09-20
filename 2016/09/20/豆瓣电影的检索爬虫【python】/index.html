@@ -94,7 +94,7 @@
 <meta property="og:description" content="简介： 豆瓣网的电影分类比较清晰，比较了音乐板块，还是感觉电影板块用来做爬虫比较合适1、在参考他文的基础上，进行了学习分析。本文将记录和探讨细节部分。
 2、url定义为电影板块： https://movie.douban.com/
 3、遇到大型网站数据抓取，尤其是海外站点，因为延时造成的失败经常发生，遇到这样的情况，则建议用ui的加载until功能，在本测试案例中没有使用，因为测试结果响应较快。">
-<meta property="og:updated_time" content="2016-09-20T14:50:11.000Z">
+<meta property="og:updated_time" content="2016-09-20T14:54:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="豆瓣电影的检索爬虫【python】">
 <meta name="twitter:description" content="简介： 豆瓣网的电影分类比较清晰，比较了音乐板块，还是感觉电影板块用来做爬虫比较合适1、在参考他文的基础上，进行了学习分析。本文将记录和探讨细节部分。
@@ -180,7 +180,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -190,7 +190,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -253,7 +253,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-20T14:20:28+08:00" content="2016-09-20">
               2016-09-20
             </time>
@@ -288,7 +288,7 @@
 <p>4、因为要从大量的数据进行排序筛选，所以xpath的路径要尽可能的精确，如果直接用firebug的自带xpath地址，在排序检索，并提交内容时，可能因为路径有一个层级的差别导致失败报错。尽管很多时候，这个差别在图标点击上的效果一样。所以也是坑之一。</p>
 <p>5、由于selenium的加载浏览器比较消耗内存，很可能在此状态下，浏览器的响应延缓较大，因此，需要写好print信息，或者logging信息，以更明确程序执行点。</p>
 <p>6、多选项排序的时候，建议做成gui，这是因为可以减少后续使用的重复输入。</p>
-<p>7、一般来说，热评总是不缺，但是长评对于新电影是可能空缺的，为此，务必要加载try–except方式，来规避这样的情况。</p>
+<p>7、一般来说，热评总是不缺，但是长评对于新电影是可能空缺的，为此，务必要加载try–except方式，来规避这样的情况。在本案例中，第六名的电影，正好没有长评，如果没有try except，则程序会在第六条就跳出终止了。</p>
 <p>8、功能实现，为简单，只按照豆瓣电影默认的按照热门—-按热门排序，爬取了前20的电影的名字，网址，热评和长评信息，</p>
 <p>9、代码如下：</p>
 <pre><code># coding:utf-8
@@ -650,10 +650,10 @@ if __name__==&quot;__main__&quot;:
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -670,7 +670,7 @@ if __name__==&quot;__main__&quot;:
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">41</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -728,7 +728,7 @@ if __name__==&quot;__main__&quot;:
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
