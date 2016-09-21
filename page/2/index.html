@@ -235,6 +235,107 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/15/win10中python3.5.2遇到lxml安装问题的记录/" itemprop="url">
+                  win10中python3.5.2遇到lxml安装问题缺少vcvarsall.bat的解决方案和记录【python】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-15T11:59:28+08:00" content="2016-09-15">
+              2016-09-15
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明-win10中python3-5-2遇到lxml安装问题的记录"><a href="#说明-win10中python3-5-2遇到lxml安装问题的记录" class="headerlink" title="说明:win10中python3.5.2遇到lxml安装问题的记录"></a>说明:win10中python3.5.2遇到lxml安装问题的记录</h1><p>1、错误提示：  error: Unable to find vcvarsall.bat</p>
+<p>2、由于在python 2.7 和win7下遇到过类似的问题，当时用安装wheel文件的方法，不过这次失败， 另外在python2.7时代，是有一个微软的支持版本的： Microsoft Visual C++ Compiler for Python 2.7,只有2.7。</p>
+<p>3、该问题windows环境中，python 的 Setup需要调用一个vcvarsall.bat的文件，该文件需要安装c++编程环境才会有，经查知乎上有人给出了答案，由于python 3.5使用的SDK环境和3.4是不同的，所以需要安装VC++最新版，或者VS2015 添加VC和python相关组件， ，请参考：<a href="http://www.zhihu.com/question/26857761" target="_blank" rel="external">http://www.zhihu.com/question/26857761</a> 里面的“代代树”的回复。但是第一次安装遇到retry的失败，关闭了相关VS的进程，重新装，貌似就可以安装了，但安装完毕后，问题没有解决，依然存在啊，什么鬼？</p>
+<p><img src="https://pic2.zhimg.com/583990ef6536de3763fea804fa5a44fd_b.png" alt=""></p>
+<p>4、然后又发现别人推荐了<a href="https://anaconda.org/或者https://www.continuum.io/downloads的Anaconda安装解决方式，一看官网支持python最新版，这就好感爆棚了。果断下载安装，不过结果依然失败，有点闹腾。又是什么鬼？" target="_blank" rel="external">https://anaconda.org/或者https://www.continuum.io/downloads的Anaconda安装解决方式，一看官网支持python最新版，这就好感爆棚了。果断下载安装，不过结果依然失败，有点闹腾。又是什么鬼？</a><br>   原来，漏看了一句，安装后，还需要通过conda install lxml命令，开始还以为他支持python3.5.2是自带了这些安装包，理解错误，</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/conda%20lxml.png" alt=""></p>
+<p>然后通过λ pip install -U lxml<br>Requirement already up-to-date: lxml in d:\anaconda3\lib\site-packages</p>
+<p>发现是把lxml安装在d:\anaconda3\lib\site-packages<br>所以我尝试把这个lxml文件夹复制到python安装目录对应的site-packages<br>然后测试原本在pycharm提示缺少lxml库的，继续运行，跳出了需要的结果界面。这下终于搞定了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/15/推荐使用requests代替urllib/" itemprop="url">
                   推荐使用requests代替urllib【python】
                 </a>
@@ -1187,117 +1288,6 @@ for url in listUrls:
             
               
                 
-                <a class="post-title-link" href="/2016/09/11/Python操作MySQL数据库/" itemprop="url">
-                  Python操作MySQL数据库
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
-              2016-09-11
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/475" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>简介：本课程讲解Python如何开发MySQL数据库程序。首先介绍Python开发数据库程序的通用接口规范，然后搭建Python开发数据库程序的开发环境，接着了解了通用接口规范中的connection、cursor两大对象之后，介绍如何增删改查数据库，最后以实例代码演示数据库程序的开发流程。</p>
-<p>1、教程说到以下网址<a href="http://sourceforge.net/projects/mysql-python下载mysql-pyhon" target="_blank" rel="external">http://sourceforge.net/projects/mysql-python下载mysql-pyhon</a> 的连接器，针对python2.7的。 一开始安装失败，提示找不到python，原来此台电脑我的python 是64位的，貌似那个连接器是针对32位的，所有我又到以下网址下载了64位的连接器： <a href="http://www.codegood.com/download/11/" target="_blank" rel="external">http://www.codegood.com/download/11/</a><br>这下就能识别到python了， 但是一看版本是1.2.3的，而最新版是1.2.5的，考虑到mysql 5.6默认的msi也是32位的，我就把python 2.7.12换到了32位统一下吧。   安装成功后，在python下输入如下命令会成功，否则报错：</p>
-<pre><code>&gt;&gt;&gt; import MySQLdb
-&gt;&gt;&gt;
-</code></pre><p>2、然后根据教程要使用sqlyog，官网卡机，只好装国内版本，我用的这个连接（Ultimate 版本: （终极是最好的））： <a href="http://www.liangchan.net/soft/download.asp?softid=6633&amp;downid=8&amp;id=6658" target="_blank" rel="external">http://www.liangchan.net/soft/download.asp?softid=6633&amp;downid=8&amp;id=6658</a></p>
-<p>随后在sqlyog新建一个数据库，并设置下utf8编码，如下图：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%201.png" alt=""></p>
-<p>3、编写一个imooc.py 来建立connection连接，<strong>千万注意代码中的密码对应的是passwd，而不是全称的password哦。</strong></p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/db%20api%20connection.png" alt=""></p>
-<p>4、通过connection来创建游标对象cursor： </p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/cursor.png" alt=""></p>
-<p>5、select查询数据</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/select%20%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE.png" alt=""></p>
-<p>6、数据库 I U D 操作：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/%E6%95%B0%E6%8D%AE%E5%BA%93u%20i%20d.png" alt=""></p>
-<p>7、sqlyog的表单操作，要创建2个列就要在新建的表中，增加2个属性，如下图：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%20%E8%A1%A8%E6%A0%BC%E8%AE%BE%E7%BD%AE%E5%88%97.png" alt=""></p>
-<p>8、同时推荐W3C的SQL教程，地址是： <a href="http://www.w3school.com.cn/sql/index.asp" target="_blank" rel="external">http://www.w3school.com.cn/sql/index.asp</a></p>
-<p>9、刚发现<a href="http://www.jianshu.com/p/a014b26ba7ca" target="_blank" rel="external">这个帖子</a>也有写的比较详细，可参考</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/09/11/正则式学习小结/" itemprop="url">
                   正则式学习小结
                 </a>
@@ -1433,8 +1423,8 @@ for url in listurl:
             
               
                 
-                <a class="post-title-link" href="/2016/09/09/CSS基础学习小结/" itemprop="url">
-                  CSS基础学习小结
+                <a class="post-title-link" href="/2016/09/11/Python操作MySQL数据库/" itemprop="url">
+                  Python操作MySQL数据库
                 </a>
               
             
@@ -1447,8 +1437,8 @@ for url in listurl:
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-09T16:59:28+08:00" content="2016-09-09">
-              2016-09-09
+            <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
+              2016-09-11
             </time>
           </span>
 
@@ -1477,51 +1467,24 @@ for url in listurl:
       
         
           
-            <h1 id="说明：以下内容学习自：http-www-w3school-com-cn"><a href="#说明：以下内容学习自：http-www-w3school-com-cn" class="headerlink" title="说明：以下内容学习自：http://www.w3school.com.cn/"></a>说明：以下内容学习自：<a href="http://www.w3school.com.cn/" target="_blank" rel="external">http://www.w3school.com.cn/</a></h1><p>1、简介：由于两种主要的浏览器（Netscape 和 Internet Explorer）不断地将新的 HTML 标签和属性（比如字体标签和颜色属性）添加到 HTML 规范中，创建文档内容清晰地独立于文档表现层的站点变得越来越困难。<br>为了解决这个问题，万维网联盟（W3C），这个非营利的标准化联盟，肩负起了 HTML 标准化的使命，并在 HTML 4.0 之外创造出样式（Style）。</p>
-<p>2、选择器：selector {declaration1; declaration2; … declarationN } 以及分组和继承。</p>
-<p>3、id选择器和类选择器，在Html基础学习的帖子已经接触了。</p>
-<p>4、如何插入样式表：</p>
-<p>A) 外部样式表,浏览器会从文件 mystyle.css 中读到样式声明，并根据它来格式文档。</p>
-<pre><code>&lt;head&gt;
-&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;mystyle.css&quot; /&gt;
-&lt;/head&gt;
-</code></pre><p>B)内部样式表 当单个文档需要特殊的样式时，就应该使用内部样式表。你可以使用 style标签在文档头部定义内部样式表.</p>
-<pre><code>&lt;head&gt;
-&lt;style type=&quot;text/css&quot;&gt;
-  hr {color: sienna;}
-  p {margin-left: 20px;}
-  body {background-image: url(&quot;images/back40.gif&quot;);}
-&lt;/style&gt;
-&lt;/head&gt;
-</code></pre><p>C) 内联样式,慎用<br>D）多重样式</p>
-<p>5、背景，CSS 允许应用纯色作为背景，也允许使用背景图像创建相当复杂的效果。CSS 在这方面的能力远远在 HTML 之上。</p>
-<p>背景色：</p>
-<pre><code>p {background-color: gray;}
-</code></pre><p>背景图，下例的flower定义的一个类被引用到了段落Ｐ：</p>
-<pre><code>p.flower {background-image: url(/i/eg_bg_03.gif);}
-</code></pre><p>６、文本操作：　<br>缩进，注意参数可设置为负数，有“悬挂缩进”的作用：</p>
-<pre><code>p {text-indent: 5em;}
-p {text-indent: -5em; padding-left: 5em;}
-</code></pre><p>水平对齐：</p>
-<pre><code>text-align:center 
-justify
-</code></pre><p>字间隔等，其他略</p>
-<pre><code>p.spread {word-spacing: 30px;}
-</code></pre><p>7、列表，和html的列表类似，但在style先加载了text/css和ul.disc：</p>
-<pre><code>&lt;head&gt;
-&lt;style type=&quot;text/css&quot;&gt;
-ul.disc {list-style-type: disc}
-&lt;/style&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-&lt;ul class=&quot;disc&quot;&gt;
-&lt;li&gt;咖啡&lt;/li&gt;
-&lt;li&gt;茶&lt;/li&gt;
-&lt;li&gt;可口可乐&lt;/li&gt;
-&lt;/ul&gt;
-</code></pre><p>其中，设置表格颜色的部分，感觉要记录下，因为看上去比默认的好看不少，举例如下。<a href="http://www.w3school.com.cn/tiy/t.asp?f=csse_table_fancy" target="_blank" rel="external">代码【点我】</a>：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/css%20table.png" alt=""></p>
+            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/475" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>简介：本课程讲解Python如何开发MySQL数据库程序。首先介绍Python开发数据库程序的通用接口规范，然后搭建Python开发数据库程序的开发环境，接着了解了通用接口规范中的connection、cursor两大对象之后，介绍如何增删改查数据库，最后以实例代码演示数据库程序的开发流程。</p>
+<p>1、教程说到以下网址<a href="http://sourceforge.net/projects/mysql-python下载mysql-pyhon" target="_blank" rel="external">http://sourceforge.net/projects/mysql-python下载mysql-pyhon</a> 的连接器，针对python2.7的。 一开始安装失败，提示找不到python，原来此台电脑我的python 是64位的，貌似那个连接器是针对32位的，所有我又到以下网址下载了64位的连接器： <a href="http://www.codegood.com/download/11/" target="_blank" rel="external">http://www.codegood.com/download/11/</a><br>这下就能识别到python了， 但是一看版本是1.2.3的，而最新版是1.2.5的，考虑到mysql 5.6默认的msi也是32位的，我就把python 2.7.12换到了32位统一下吧。   安装成功后，在python下输入如下命令会成功，否则报错：</p>
+<pre><code>&gt;&gt;&gt; import MySQLdb
+&gt;&gt;&gt;
+</code></pre><p>2、然后根据教程要使用sqlyog，官网卡机，只好装国内版本，我用的这个连接（Ultimate 版本: （终极是最好的））： <a href="http://www.liangchan.net/soft/download.asp?softid=6633&amp;downid=8&amp;id=6658" target="_blank" rel="external">http://www.liangchan.net/soft/download.asp?softid=6633&amp;downid=8&amp;id=6658</a></p>
+<p>随后在sqlyog新建一个数据库，并设置下utf8编码，如下图：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%201.png" alt=""></p>
+<p>3、编写一个imooc.py 来建立connection连接，<strong>千万注意代码中的密码对应的是passwd，而不是全称的password哦。</strong></p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/db%20api%20connection.png" alt=""></p>
+<p>4、通过connection来创建游标对象cursor： </p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/cursor.png" alt=""></p>
+<p>5、select查询数据</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/select%20%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE.png" alt=""></p>
+<p>6、数据库 I U D 操作：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/%E6%95%B0%E6%8D%AE%E5%BA%93u%20i%20d.png" alt=""></p>
+<p>7、sqlyog的表单操作，要创建2个列就要在新建的表中，增加2个属性，如下图：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%20%E8%A1%A8%E6%A0%BC%E8%AE%BE%E7%BD%AE%E5%88%97.png" alt=""></p>
+<p>8、同时推荐W3C的SQL教程，地址是： <a href="http://www.w3school.com.cn/sql/index.asp" target="_blank" rel="external">http://www.w3school.com.cn/sql/index.asp</a></p>
+<p>9、刚发现<a href="http://www.jianshu.com/p/a014b26ba7ca" target="_blank" rel="external">这个帖子</a>也有写的比较详细，可参考</p>
 
           
         
@@ -1695,7 +1658,7 @@ ul.disc {list-style-type: disc}
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-count">42</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
