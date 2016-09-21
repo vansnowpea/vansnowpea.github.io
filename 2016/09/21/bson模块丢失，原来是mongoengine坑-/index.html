@@ -85,21 +85,21 @@
 
 
 <meta name="description" content="简介： 运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块1、原来这个模块是和mongodb相关的，当安装了bson模块，因版本问题，会引起一些文件缺失，
-2、而mongodb官网上，也不建议外装bson
-3、还好最后安装最新的mongoengine，解决了这个问题。">
+2、而mongodb官网上，也不建议外装bson：
+到pymongo官方文档里查，第一句就是：Warning Do not install the “bson” package. PyMongo comes wi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="bson模块丢失，原来是mongoengine坑-">
 <meta property="og:url" content="http://yoursite.com/2016/09/21/bson模块丢失，原来是mongoengine坑-/index.html">
 <meta property="og:site_name" content="蛇 母 陵">
 <meta property="og:description" content="简介： 运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块1、原来这个模块是和mongodb相关的，当安装了bson模块，因版本问题，会引起一些文件缺失，
-2、而mongodb官网上，也不建议外装bson
-3、还好最后安装最新的mongoengine，解决了这个问题。">
-<meta property="og:updated_time" content="2016-09-21T13:50:55.000Z">
+2、而mongodb官网上，也不建议外装bson：
+到pymongo官方文档里查，第一句就是：Warning Do not install the “bson” package. PyMongo comes wi">
+<meta property="og:updated_time" content="2016-09-21T13:51:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bson模块丢失，原来是mongoengine坑-">
 <meta name="twitter:description" content="简介： 运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块1、原来这个模块是和mongodb相关的，当安装了bson模块，因版本问题，会引起一些文件缺失，
-2、而mongodb官网上，也不建议外装bson
-3、还好最后安装最新的mongoengine，解决了这个问题。">
+2、而mongodb官网上，也不建议外装bson：
+到pymongo官方文档里查，第一句就是：Warning Do not install the “bson” package. PyMongo comes wi">
 
 
 
@@ -283,7 +283,8 @@
 
       
         <h1 id="简介：-运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块"><a href="#简介：-运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块" class="headerlink" title="简介： 运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块"></a>简介： 运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块</h1><p>1、原来这个模块是和mongodb相关的，当安装了bson模块，因版本问题，会引起一些文件缺失，</p>
-<p>2、而mongodb官网上，也不建议外装bson</p>
+<p>2、而mongodb官网上，也不建议外装bson：</p>
+<p>到pymongo官方文档里查，第一句就是：<br>Warning Do not install the “bson” package. PyMongo comes with its own bson package; doing “pip install bson” or “easy_install bson” installs a third-party package that is incompatible with PyMongo.<br>PyMongo has no required dependencies.</p>
 <p>3、还好最后安装最新的mongoengine，解决了这个问题。</p>
 
       
