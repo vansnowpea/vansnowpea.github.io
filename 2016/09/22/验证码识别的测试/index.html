@@ -84,22 +84,16 @@
 
 
 
-<meta name="description" content="简介： 运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块1、原来这个模块是和mongodb相关的，当安装了bson模块，因版本问题，会引起一些文件缺失，
-2、而mongodb官网上，也不建议外装bson：
-到pymongo官方文档里查，第一句就是：Warning Do not install the “bson” package. PyMongo comes wi">
+<meta name="description" content="简介： 验证码识别的测试，因故需做一个自动注册的多数量的脚本1、查阅相关博客，建议使用的是Python+Selenium+PIL+Tesseract ，又有人推荐了Pytesser，不过这个Pytesser的安装还挺坑的，直接pip没有的，需要到谷歌翻墙，有一片博客写的相对详细，给出了国内镜像，然后后续的配置也略坑，需要手动放到对应python的site-package目录，并配置环境变量。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="bson模块丢失，原来是mongoengine坑-">
-<meta property="og:url" content="http://yoursite.com/2016/09/21/bson模块丢失，原来是mongoengine坑-/index.html">
+<meta property="og:title" content="验证码识别的测试【python】">
+<meta property="og:url" content="http://yoursite.com/2016/09/22/验证码识别的测试/index.html">
 <meta property="og:site_name" content="蛇 母 陵">
-<meta property="og:description" content="简介： 运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块1、原来这个模块是和mongodb相关的，当安装了bson模块，因版本问题，会引起一些文件缺失，
-2、而mongodb官网上，也不建议外装bson：
-到pymongo官方文档里查，第一句就是：Warning Do not install the “bson” package. PyMongo comes wi">
-<meta property="og:updated_time" content="2016-09-21T13:51:25.000Z">
+<meta property="og:description" content="简介： 验证码识别的测试，因故需做一个自动注册的多数量的脚本1、查阅相关博客，建议使用的是Python+Selenium+PIL+Tesseract ，又有人推荐了Pytesser，不过这个Pytesser的安装还挺坑的，直接pip没有的，需要到谷歌翻墙，有一片博客写的相对详细，给出了国内镜像，然后后续的配置也略坑，需要手动放到对应python的site-package目录，并配置环境变量。">
+<meta property="og:updated_time" content="2016-09-22T07:07:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="bson模块丢失，原来是mongoengine坑-">
-<meta name="twitter:description" content="简介： 运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块1、原来这个模块是和mongodb相关的，当安装了bson模块，因版本问题，会引起一些文件缺失，
-2、而mongodb官网上，也不建议外装bson：
-到pymongo官方文档里查，第一句就是：Warning Do not install the “bson” package. PyMongo comes wi">
+<meta name="twitter:title" content="验证码识别的测试【python】">
+<meta name="twitter:description" content="简介： 验证码识别的测试，因故需做一个自动注册的多数量的脚本1、查阅相关博客，建议使用的是Python+Selenium+PIL+Tesseract ，又有人推荐了Pytesser，不过这个Pytesser的安装还挺坑的，直接pip没有的，需要到谷歌翻墙，有一片博客写的相对详细，给出了国内镜像，然后后续的配置也略坑，需要手动放到对应python的site-package目录，并配置环境变量。">
 
 
 
@@ -120,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/21/bson模块丢失，原来是mongoengine坑-/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/22/验证码识别的测试/"/>
 
-  <title> bson模块丢失，原来是mongoengine坑- | 蛇 母 陵 </title>
+  <title> 验证码识别的测试【python】 | 蛇 母 陵 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -242,7 +236,7 @@
             
             
               
-                bson模块丢失，原来是mongoengine坑-
+                验证码识别的测试【python】
               
             
           </h1>
@@ -254,8 +248,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-21T21:20:28+08:00" content="2016-09-21">
-              2016-09-21
+            <time itemprop="dateCreated" datetime="2016-09-22T14:20:28+08:00" content="2016-09-22">
+              2016-09-22
             </time>
           </span>
 
@@ -282,10 +276,7 @@
       
 
       
-        <h1 id="简介：-运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块"><a href="#简介：-运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块" class="headerlink" title="简介： 运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块"></a>简介： 运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块</h1><p>1、原来这个模块是和mongodb相关的，当安装了bson模块，因版本问题，会引起一些文件缺失，</p>
-<p>2、而mongodb官网上，也不建议外装bson：</p>
-<p>到pymongo官方文档里查，第一句就是：<br>Warning Do not install the “bson” package. PyMongo comes with its own bson package; doing “pip install bson” or “easy_install bson” installs a third-party package that is incompatible with PyMongo.<br>PyMongo has no required dependencies.</p>
-<p>3、还好最后安装最新的mongoengine，解决了这个问题。</p>
+        <h1 id="简介：-验证码识别的测试，因故需做一个自动注册的多数量的脚本"><a href="#简介：-验证码识别的测试，因故需做一个自动注册的多数量的脚本" class="headerlink" title="简介： 验证码识别的测试，因故需做一个自动注册的多数量的脚本"></a>简介： 验证码识别的测试，因故需做一个自动注册的多数量的脚本</h1><p>1、查阅相关博客，建议使用的是Python+Selenium+PIL+Tesseract ，又有人推荐了Pytesser，不过这个Pytesser的安装还挺坑的，直接pip没有的，需要到谷歌翻墙，有一片博客写的相对详细，给出了国内镜像，然后后续的配置也略坑，需要手动放到对应python的site-package目录，并配置环境变量。</p>
 
       
     </div>
@@ -311,17 +302,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/20/豆瓣电影的检索爬虫【python】/" rel="next" title="豆瓣电影的检索爬虫【python】">
-                <i class="fa fa-chevron-left"></i> 豆瓣电影的检索爬虫【python】
+              <a href="/2016/09/21/IP池的建立/" rel="next" title="IP池的建立">
+                <i class="fa fa-chevron-left"></i> IP池的建立
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/21/IP池的建立/" rel="prev" title="IP池的建立">
-                IP池的建立 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -421,7 +408,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介：-运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块"><span class="nav-number">1.</span> <span class="nav-text">简介： 运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介：-验证码识别的测试，因故需做一个自动注册的多数量的脚本"><span class="nav-number">1.</span> <span class="nav-text">简介： 验证码识别的测试，因故需做一个自动注册的多数量的脚本</span></a></li></ol></div>
             
           </div>
         </section>
