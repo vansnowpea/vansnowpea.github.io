@@ -235,6 +235,180 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/16/使用json和mongo进行果壳网异步数据的爬取/" itemprop="url">
+                  使用json和mongo进行果壳网异步数据的爬取【python】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-16T10:59:28+08:00" content="2016-09-16">
+              2016-09-16
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明原文连接【点我】"><a href="#说明原文连接【点我】" class="headerlink" title="说明原文连接【点我】"></a><a href="http://www.jianshu.com/p/6002ef3434fd" target="_blank" rel="external">说明原文连接【点我】</a></h1><p>1、在原文基础上稍作修改，增加了mysql数据库的代码，但是在数据库中的显示结果不理想，主要是其格式不确定怎么设置。</p>
+<p>2、本文亮点使用json分析了异步数据，用的方法比较麻烦，但是起作用，具体为通过firefox的网络+XHR功能，鼠标逐渐往下拉，来得到get请求，查看右侧的结果，以及找到步进规律和对应的json网址，如下图：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/firefox%20%E7%BD%91%E7%BB%9C%20xhr.png" alt=""></p>
+<p>3、配置：需要安装mongodb,并配置,同时建议安装其图形化工具robomongo，会方便不少，， mongo代码：</p>
+<pre><code>#coding:utf-8
+from bs4 import BeautifulSoup
+import requests
+import json
+import pymongo
+
+url = &apos;http://www.guokr.com/scientific/&apos;
+
+def dealData(url):
+    client = pymongo.MongoClient(&apos;localhost&apos;, 27017)
+    guoke = client[&apos;guoke&apos;]
+    guokeData = guoke[&apos;guokeData&apos;]
+    web_data = requests.get(url)
+    datas = json.loads(web_data.text)
+    print(datas.keys())
+    for data in datas[&apos;result&apos;]:
+        guokeData.insert_one(data)
+
+def start():
+    urls = [&apos;http://www.guokr.com/apis/minisite/article.json?retrieve_type=by_subject&amp;limit=20&amp;offset={}&amp;_=1462252453410&apos;.format(str(i)) for i in range(20, 100, 20)]
+    for url in urls:
+        dealData(url)
+
+start()
+</code></pre><p>4、输出结果到robomongo，如图：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/robomongo%20guoke.png" alt=""></p>
+<p>5、使用mysql数据库，由于不确定输出的result应该用什么格式，我就用了varchar，但是这把一个列表都放到varchar中，导致长度非常长，看起来也很不爽，仅做记录。代码：</p>
+<pre><code>#coding:utf-8
+from bs4 import BeautifulSoup
+import requests
+import json
+import pymysql.cursors
+
+url = &apos;http://www.guokr.com/scientific/&apos;
+
+def dealData(url):
+    # client = pymongo.MongoClient(&apos;localhost&apos;, 27017)
+    # guoke = client[&apos;guoke&apos;]
+    # guokeData = guoke[&apos;guokeData&apos;]
+
+    web_data = requests.get(url)
+    datas = json.loads(web_data.text)
+    print(datas.keys())
+    for data in datas[&apos;result&apos;]:
+        #guokeData.insert_one(data)
+        print(data)
+        print (type(data))
+        connection = pymysql.connect(host=&apos;localhost&apos;,
+                                     user=&apos;root&apos;,
+                                     password=&apos;XXXX&apos;,
+                                     db=&apos;guoke&apos;,
+                                     charset=&apos;utf8&apos;
+                                     )
+
+        try:
+            # 创建会话指针
+            with connection.cursor() as cursor:
+                # 创建sql语句
+                sql = &apos;insert into `guoke1` (`result`) values(%s)&apos;
+                # 执行sql语句
+                cursor.execute(sql, (str(data)))
+
+                # 提交
+                connection.commit()
+        finally:
+            connection.close()
+
+def start():
+    urls = [&apos;http://www.guokr.com/apis/minisite/article.json?retrieve_type=by_subject&amp;limit=20&amp;offset={}&amp;_=1462252453410&apos;.format(str(i)) for i in range(20, 100, 20)]
+    for url in urls:
+
+        dealData(url)
+
+start()
+</code></pre><p>6、mysql数据显示，如下图，比较杂乱：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/mysql%20guoke.png" alt=""></p>
+<p>7、总结：异步加载的网页爬取有所麻烦，后续会使用selenium工具来相对方便的操作， 同时，可以感觉到mongodb有其特色，</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/15/爬取瓜子网上海地区二手车的信息/" itemprop="url">
                   爬取瓜子网上海地区二手车的信息【python】
                 </a>
@@ -892,6 +1066,107 @@ if __name__ == &quot;__main__&quot;:
             
               
                 
+                <a class="post-title-link" href="/2016/09/13/Ubuntu下操作Django/" itemprop="url">
+                  Ubuntu下操作Django时的大杂烩【python】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-13T23:59:28+08:00" content="2016-09-13">
+              2016-09-13
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/video/12634" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、首先记录一个遇到的问题，一开始vi编辑模式下按方向键会变成ABCD,ubuntu下 vi输入方向键会变成ABCD，这是ubuntu预装的是vim tiny版本，安装vim full版本即可解决。先卸载vim-tiny：</p>
+<pre><code>$ sudo apt-get remove vim-common
+</code></pre><p>再安装vim full：</p>
+<pre><code>$ sudo apt-get install vim
+</code></pre><p>2、倒腾了半天，总算把vi的命令模式和插入模式搞明白了。搜索是“？+关键词”，下一个是字母：“n”，还有很多命令，可参考这里：<a href="http://www.cnblogs.com/emanlee/archive/2011/11/10/2243930.html" target="_blank" rel="external">http://www.cnblogs.com/emanlee/archive/2011/11/10/2243930.html</a><br>, 一开始因为第一条中记录的问题，导致一直输入错误。</p>
+<p>3、遇到问题：<br>  第一个电脑上，用pip isntall django后运行正常，第二个就报错 找不到django-admin 后来改用sudo apt install python-django才可以，不过貌似版本不是1.10.1的最新版，而是1.8.7的。</p>
+<p>4、Show Intention Actions ： 视频教程快速插入类和函数用的Ctrl+1的快捷键？查了下pycharm是Alt+Enter，但是明显这个设置要比Ctrl+1的模式反人类。 直接在setting–&gt;Keymap 搜索Alt竟然找不到的，原来他是按照左边的名次来搜索的，Show Intention Actions，本来想给他按照视频教程的快捷键修改，但是发现可以用鼠标双击的模式来定义，并且检测没有冲突，这下甚好。但问题又来了，只能自动识别类，不能识别下面的方法，而这一点上，Eclipse+pydev倒是做的很好。</p>
+<p>5、一个意外的发现： pycharm能在console调用ipython，而且带了显示函数的功能，如下图，问题是我忘记怎么把他调用出来了。：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/pycharm%20ipython.png" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/13/pdf的读取【python】/" itemprop="url">
                   pdf的读取【python】
                 </a>
@@ -992,107 +1267,6 @@ for page in doc.get_pages():
 </code></pre><p>4、结果展示，读取了示范pdf的几乎所有文字，不包括一些图，表格公式等复杂的： </p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/pdf%203%20result.png" alt=""></p>
 <p>7、总结：如果需要写论文什么的，感觉还是挺有用的，作者提到了还有一些更高级的功能，不过没有展开，有点可惜，另外pdfminer3k的最后更新时间2012/07/20，貌似作者停止更新了。而一个朋友反馈：pdf解析器和修改器现在最好的应该是一个JAVA库，还有一个就是Adobe和foxit提供的API。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/13/Ubuntu下操作Django/" itemprop="url">
-                  Ubuntu下操作Django时的大杂烩【python】
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-13T23:59:28+08:00" content="2016-09-13">
-              2016-09-13
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/video/12634" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、首先记录一个遇到的问题，一开始vi编辑模式下按方向键会变成ABCD,ubuntu下 vi输入方向键会变成ABCD，这是ubuntu预装的是vim tiny版本，安装vim full版本即可解决。先卸载vim-tiny：</p>
-<pre><code>$ sudo apt-get remove vim-common
-</code></pre><p>再安装vim full：</p>
-<pre><code>$ sudo apt-get install vim
-</code></pre><p>2、倒腾了半天，总算把vi的命令模式和插入模式搞明白了。搜索是“？+关键词”，下一个是字母：“n”，还有很多命令，可参考这里：<a href="http://www.cnblogs.com/emanlee/archive/2011/11/10/2243930.html" target="_blank" rel="external">http://www.cnblogs.com/emanlee/archive/2011/11/10/2243930.html</a><br>, 一开始因为第一条中记录的问题，导致一直输入错误。</p>
-<p>3、遇到问题：<br>  第一个电脑上，用pip isntall django后运行正常，第二个就报错 找不到django-admin 后来改用sudo apt install python-django才可以，不过貌似版本不是1.10.1的最新版，而是1.8.7的。</p>
-<p>4、Show Intention Actions ： 视频教程快速插入类和函数用的Ctrl+1的快捷键？查了下pycharm是Alt+Enter，但是明显这个设置要比Ctrl+1的模式反人类。 直接在setting–&gt;Keymap 搜索Alt竟然找不到的，原来他是按照左边的名次来搜索的，Show Intention Actions，本来想给他按照视频教程的快捷键修改，但是发现可以用鼠标双击的模式来定义，并且检测没有冲突，这下甚好。但问题又来了，只能自动识别类，不能识别下面的方法，而这一点上，Eclipse+pydev倒是做的很好。</p>
-<p>5、一个意外的发现： pycharm能在console调用ipython，而且带了显示函数的功能，如下图，问题是我忘记怎么把他调用出来了。：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/pycharm%20ipython.png" alt=""></p>
 
           
         
@@ -1546,141 +1720,6 @@ for url in listUrls:
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/11/正则式学习小结/" itemprop="url">
-                  正则式学习小结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
-              2016-09-11
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/550" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>由于这个视频教程已经说的比较详细，请参考原视频教程，这里为总结</p>
-<p>1、简介：为何需要正则表达式，为了减少根据不同需求不断编制函数的麻烦，通过制定正则式规则，可以巧妙且有效的进行归纳总结。</p>
-<p>2、Python的RE模块，RE是正则表达式的英文首字母缩写。最常用的就是re.match()函数了，其次是ma.group()，用来查阅匹配结果。</p>
-<p>3、<strong>【重点】RE的语法：</strong></p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/re%201.png" alt=""></p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/re%202.png" alt=""></p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/re%203.png" alt=""></p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/re%204.png" alt=""></p>
-<p>4、 RE其他模块：</p>
-<ul>
-<li>search（pattern, string, flags=0） 用来查找满足pattern的第一个返回值。</li>
-<li>findall（pattern, string, flags=0）用来查找满足pattern的所有返回值。</li>
-<li>sub（pattern, repl, string, count=0, flags=0）将字符串中匹配正则表达式的部分替代为其他值，并允许引入函数模式来进行替代。</li>
-<li>split（pattern, string, maxsplit=0, flags=0）根据匹配分割字符串，返回分割字符串组成的列表。</li>
-</ul>
-<p>5、练习，抓取慕课网的<a href="http://www.imooc.com/course/list的图片。主要流程为：" target="_blank" rel="external">http://www.imooc.com/course/list的图片。主要流程为：</a></p>
-<ol>
-<li>抓取网页，</li>
-<li>获取图片地址，</li>
-<li>抓去图片内容并保存到本地，</li>
-</ol>
-<p>结果如下：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/re-pics%20of%20imooc.png" alt=""></p>
-<p>6、源代码：</p>
-<pre><code>import re
-import urllib2
-
-test_url = &apos;http://www.imooc.com/course/list&apos;
-req = urllib2.urlopen(test_url)
-buf = req.read()
-print buf
-
-listurl = re.findall(r&apos;http:.+\.jpg&apos;, buf)
-print listurl
-
-i = 0
-for url in listurl:
-    f = open(str(i)+&apos;.jpg&apos;, &apos;w&apos;)
-    req = urllib2.urlopen(url)
-    buf = req.read()
-    f.write(buf)
-    i += 1
-</code></pre><p>7、PS，再一次的，发现在Win下的结果出现乱码，而且抓的图片也是，而在Linux下是正常的。得找下原因。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1726,7 +1765,7 @@ for url in listurl:
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>

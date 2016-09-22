@@ -235,8 +235,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/09/查找mysql相关来到慕课网学习/" itemprop="url">
-                  查找mysql相关来到慕课网学习
+                <a class="post-title-link" href="/2016/09/11/正则式学习小结/" itemprop="url">
+                  正则式学习小结
                 </a>
               
             
@@ -249,8 +249,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-09T16:59:28+08:00" content="2016-09-09">
-              2016-09-09
+            <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
+              2016-09-11
             </time>
           </span>
 
@@ -279,13 +279,48 @@
       
         
           
-            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、在研究别人一个关于用“mysql+爬虫”分析一个网站的时候，发现对mysql不熟悉，之前研究Django的时候用的是Postgresql数据库，所以打算学下mysql。然后官网最新版5.7，下载后找网络教程，发现有一个视频教程是5.5版本的，竟然5.7一个系统文件对不上，根本没有啊。 后来发现5.7版本有一些更新，不确定是否此原因导致。随后咨询了那篇文章的作者，他用的是5.6版本，那就装5.6，然后就想卸载5.7吧，结果又发现mysql的安装文件好多，一个个是单独安装的，那么要卸载可以一个个来，感觉麻烦，然后下载了官网的5.6.msi版本，点安装，出来一个界面提示已经装好的相关文件，可以用remove操作，随后有个全选的就可以全部统一卸载5.7的相关文件了，方便些。</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/mysql56%20remove%20mysql57.png" alt=""></p>
-<p>2、突然感觉这自我学习的过程就像在打RPG游戏，跌跌撞撞，一个个关卡，每个小细节都可能带来很多烦恼，白天还在为mysql 5.7的如何配置一些utf8发愁呢。</p>
-<p>3、对慕课网其实早进听说一直没去过，搜到@车神的一篇：<a href="http://www.imooc.com/learn/712" target="_blank" rel="external">《python遇见数据采集》</a>，随后又根据他的介绍，打算再学下要求的3个基础，如下图，然后发现，原来第一个的《Python入门》是廖雪峰在这里的视频教程，以前可一直在他网站看的文字版的，竟然也不在他自己网站介绍下视频教程地址的，真是低调。</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/python%20%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80%E8%A6%81%E6%B1%82.png" alt=""></p>
-<p>4、突然发现电脑超级卡，一看C盘的50G已经满了，这是什么鬼？ 原来是virtualbox 安装的系统全部塞在了C盘，由于ubuntu系统也要不断安装一些库，导致历史占用的空间越来越多。所以，设置virtualbox的安装路径到E盘，重新做了一个虚拟系统，这样C盘的空间就释放了。</p>
-<p>5、然后看了下正则式的知识，总结到下一篇吧。</p>
+            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/550" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>由于这个视频教程已经说的比较详细，请参考原视频教程，这里为总结</p>
+<p>1、简介：为何需要正则表达式，为了减少根据不同需求不断编制函数的麻烦，通过制定正则式规则，可以巧妙且有效的进行归纳总结。</p>
+<p>2、Python的RE模块，RE是正则表达式的英文首字母缩写。最常用的就是re.match()函数了，其次是ma.group()，用来查阅匹配结果。</p>
+<p>3、<strong>【重点】RE的语法：</strong></p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/re%201.png" alt=""></p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/re%202.png" alt=""></p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/re%203.png" alt=""></p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/re%204.png" alt=""></p>
+<p>4、 RE其他模块：</p>
+<ul>
+<li>search（pattern, string, flags=0） 用来查找满足pattern的第一个返回值。</li>
+<li>findall（pattern, string, flags=0）用来查找满足pattern的所有返回值。</li>
+<li>sub（pattern, repl, string, count=0, flags=0）将字符串中匹配正则表达式的部分替代为其他值，并允许引入函数模式来进行替代。</li>
+<li>split（pattern, string, maxsplit=0, flags=0）根据匹配分割字符串，返回分割字符串组成的列表。</li>
+</ul>
+<p>5、练习，抓取慕课网的<a href="http://www.imooc.com/course/list的图片。主要流程为：" target="_blank" rel="external">http://www.imooc.com/course/list的图片。主要流程为：</a></p>
+<ol>
+<li>抓取网页，</li>
+<li>获取图片地址，</li>
+<li>抓去图片内容并保存到本地，</li>
+</ol>
+<p>结果如下：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/re-pics%20of%20imooc.png" alt=""></p>
+<p>6、源代码：</p>
+<pre><code>import re
+import urllib2
+
+test_url = &apos;http://www.imooc.com/course/list&apos;
+req = urllib2.urlopen(test_url)
+buf = req.read()
+print buf
+
+listurl = re.findall(r&apos;http:.+\.jpg&apos;, buf)
+print listurl
+
+i = 0
+for url in listurl:
+    f = open(str(i)+&apos;.jpg&apos;, &apos;w&apos;)
+    req = urllib2.urlopen(url)
+    buf = req.read()
+    f.write(buf)
+    i += 1
+</code></pre><p>7、PS，再一次的，发现在Win下的结果出现乱码，而且抓的图片也是，而在Linux下是正常的。得找下原因。</p>
 
           
         
@@ -424,6 +459,106 @@ ul.disc {list-style-type: disc}
 &lt;/ul&gt;
 </code></pre><p>其中，设置表格颜色的部分，感觉要记录下，因为看上去比默认的好看不少，举例如下。<a href="http://www.w3school.com.cn/tiy/t.asp?f=csse_table_fancy" target="_blank" rel="external">代码【点我】</a>：</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/css%20table.png" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/09/查找mysql相关来到慕课网学习/" itemprop="url">
+                  查找mysql相关来到慕课网学习
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-09T16:59:28+08:00" content="2016-09-09">
+              2016-09-09
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、在研究别人一个关于用“mysql+爬虫”分析一个网站的时候，发现对mysql不熟悉，之前研究Django的时候用的是Postgresql数据库，所以打算学下mysql。然后官网最新版5.7，下载后找网络教程，发现有一个视频教程是5.5版本的，竟然5.7一个系统文件对不上，根本没有啊。 后来发现5.7版本有一些更新，不确定是否此原因导致。随后咨询了那篇文章的作者，他用的是5.6版本，那就装5.6，然后就想卸载5.7吧，结果又发现mysql的安装文件好多，一个个是单独安装的，那么要卸载可以一个个来，感觉麻烦，然后下载了官网的5.6.msi版本，点安装，出来一个界面提示已经装好的相关文件，可以用remove操作，随后有个全选的就可以全部统一卸载5.7的相关文件了，方便些。</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/mysql56%20remove%20mysql57.png" alt=""></p>
+<p>2、突然感觉这自我学习的过程就像在打RPG游戏，跌跌撞撞，一个个关卡，每个小细节都可能带来很多烦恼，白天还在为mysql 5.7的如何配置一些utf8发愁呢。</p>
+<p>3、对慕课网其实早进听说一直没去过，搜到@车神的一篇：<a href="http://www.imooc.com/learn/712" target="_blank" rel="external">《python遇见数据采集》</a>，随后又根据他的介绍，打算再学下要求的3个基础，如下图，然后发现，原来第一个的《Python入门》是廖雪峰在这里的视频教程，以前可一直在他网站看的文字版的，竟然也不在他自己网站介绍下视频教程地址的，真是低调。</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/python%20%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80%E8%A6%81%E6%B1%82.png" alt=""></p>
+<p>4、突然发现电脑超级卡，一看C盘的50G已经满了，这是什么鬼？ 原来是virtualbox 安装的系统全部塞在了C盘，由于ubuntu系统也要不断安装一些库，导致历史占用的空间越来越多。所以，设置virtualbox的安装路径到E盘，重新做了一个虚拟系统，这样C盘的空间就释放了。</p>
+<p>5、然后看了下正则式的知识，总结到下一篇吧。</p>
 
           
         
@@ -1289,164 +1424,6 @@ import tornado.web
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/05/Windows下Python+Django制作网站的方法2/" itemprop="url">
-                  Windows下Python+Django制作网站的方法（2）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-05T00:40:28+08:00" content="2016-09-05">
-              2016-09-05
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>接<a href="https://vansnowpea.github.io/2016/09/05/Windows%E4%B8%8BPython+Django%E5%88%B6%E4%BD%9C%E7%BD%91%E7%AB%99%E7%9A%84%E6%96%B9%E6%B3%951/" target="_blank" rel="external">上一篇【点我】</a></p>
-<h1 id="8、导入到数据库"><a href="#8、导入到数据库" class="headerlink" title="8、导入到数据库"></a>8、导入到数据库</h1><p>在数据没有导入到数据库之前，的数据表是0，如下图：</p>
-<p>所以我们需要把数据导入到数据库：<br>    $ python manage.py migrate</p>
-<p>然后刷新数据库，此时，数据表的数量更新到了10，表示数据导入了。</p>
-<p>但是仔细看，发现这些都是系统自带的，我们自己定义的模型，怎么不显示呢？<br>原来，在导入数据库之前，虽然我们更新了models.py的代码，但是数据库还没记录，为此，还有一个命令，是需要把修改的模型，更新到blog migrations的文件夹里，然后再导入到数据库。</p>
-<p>输入命令：<br>    $ python manage.py makemigrations blog</p>
-<p>其中，blog是定义的app的名字，发现C:\XXXX\django1\blog\migrations路径下，多了一个0001_initial的文件,如下图：</p>
-<p>再次把更新后数据导入到数据库：<br>    $ python manage.py migrate</p>
-<p>再次刷新数据库，发现数据表从10变成了11，多了一个我们自己定义的article，那为何显示的是article，而不是blog呢？这是因为blog是定义的app的名字，而在数据库相关的代码中，在class Meta部分，定义的名字是article，对应的代码是：db_table = ‘article’。</p>
-<p>基于以上经验，以后牵涉数据的操作，可考虑先运行makeigrations命令，再运行migrate命令。xxx表示对应app名字。<br>$ python manage.py makemigrations xxx<br>$ python manage.py migrate</p>
-<h1 id="9、修改首页和页面模版"><a href="#9、修改首页和页面模版" class="headerlink" title="9、修改首页和页面模版"></a>9、修改首页和页面模版</h1><p>之前我们打开本地首页，出现的是It works字样，是系统自带的。既然要做自己的站点如blog，那自然是需要修改的，以下是最简单的举例。<br>首先我们查看Django官网的关于views的说明，地址为：<br><a href="https://docs.djangoproject.com/en/1.10/topics/http/views/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.10/topics/http/views/</a><br>打开 C:\XXXX\django1\blog 路径下的views.py文件，修改代码为：</p>
-<pre><code>from django.shortcuts import render
-from django.http import HttpResponse
-import datetime
-
-# Create your views here.
-def home(request):
-    now = datetime.datetime.now()
-    html = &quot;&lt;html&gt;&lt;body&gt;It is now %s.&lt;/body&gt;&lt;/html&gt;&quot; % now
-    return HttpResponse(html)`
-</code></pre><p>由于打开url的时候，当views的改变也需要在url联动配置修改，故打开C:\XXXX\django1\django1 路径下的urls.py文件，修改代码为：<br>    from django.conf.urls import url<br>    from django.contrib import admin<br>    from blog import views</p>
-<pre><code>urlpatterns = [
-    url(r&apos;^admin/&apos;, admin.site.urls),
-    url(r&apos;^$&apos;, views.home),
-]`
-</code></pre><p>注意到：上述修改的代码里，已经牵涉了HTML语言，当然这里很简单。<br>此时，在浏览器输入：<a href="http://localhost:8000/，如下图显示的是自定义的当前时间：" target="_blank" rel="external">http://localhost:8000/，如下图显示的是自定义的当前时间：</a></p>
-<p>此时问题来了，怎么看都感觉HTML语言写起来比Python的代码要复杂，尤其是如果页面的内容繁多，那不是要写成马了？所以，我们需要用到模版功能。<br>到C:\XXXX\django1\blog 路径下，新建名为：templates的文件夹，注意这个名字是Django默认的，所以不要自定义其他名称。<br>关于模版，一种是引用别人的模版，一些优秀的模版用和看起来都很舒服。<br>这里演示自己创建一个简易模版。方法为：<br>在Sublime Text 的File中新建一个文件，把代码：</p>
-<html><body>It is now, now or not?</body></html>
-
-<p>复制进去，然后保存到C:\XXXX\django1\blog\templates 路径，Sublime Text会识别成后缀为html的文件，这样就是一个html语言的模版了，注意特意增加了：now or not?字样用于和之前的方法比对。<br>接下来，为了方便，我们可以使用render()函数。网址为：<br><a href="https://docs.djangoproject.com/en/1.10/topics/http/shortcuts/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.10/topics/http/shortcuts/</a></p>
-<p>这样，views.py文件的home函数也修改成了：</p>
-<pre><code>def home(request):
-
-    return render(request, &apos;home.html&apos;)
-</code></pre><p>然后我们发现，本地首页跟着改变了：</p>
-<p>Tips：一些调试错误的小技巧<br>    views.py增加的函数，需要在urls.py进行导入和更新操作，模版制定后，为了尝试增加或者修改内容，可能引起意外的404错误，所以，最好单独备份一份正常的模版。</p>
-<h1 id="10、页面模板之Bootstrap"><a href="#10、页面模板之Bootstrap" class="headerlink" title="10、页面模板之Bootstrap"></a>10、页面模板之Bootstrap</h1><p>现在的页面模板其实是一个Python功能模块，里面的各种参数用Python语法加以逻辑处理，就可以做到一个html文件模板呈现出不同的内容。<br>但是和其他漂亮的网站比，虽然我们已经学会让网页上输出一些文字，但很空洞。<br>而且无论如何，即便后续在页面增加了一些文章，图片等，相对于在后端写代码来实现网页功能来说，对于前端的网页美观显示还是要额外花销很多时间，诸如如何排版布局、文字样式、图片增强效果等。好在有像Bootstrap这样的模版工具（推特的工程师制作），可以直接使用就有很好的效果。<br>当下载好Bootstrap之后，发现解压后只有1M大小，里面有3个文件夹，css、fonts和js。</p>
-<p>到了这一步，我们就开始接触到css的概念。那么百科下：</p>
-<p><a href="http://baike.baidu.com/link?url=3MtvIxATwYtq7W77zMM0wEjiXUJ2MSONA38Qws-szl93UFSpmHSSa9r5QFae9Hfg7_0xFjueevoKAdgEAJ_Dvq4Drvs-_M2GRB1WWXgujjm" target="_blank" rel="external">http://baike.baidu.com/link?url=3MtvIxATwYtq7W77zMM0wEjiXUJ2MSONA38Qws-szl93UFSpmHSSa9r5QFae9Hfg7_0xFjueevoKAdgEAJ_Dvq4Drvs-_M2GRB1WWXgujjm</a></p>
-<p>我们暂时有这个印象，网页技术的前端基本基于：html+css<br>在这里，需要强调下Django的setting.py文件的重要性，这相当于是他的系统设置核心，当我们要进行添加功能的时候，基本都要牵涉修改setting.py的代码，比如在第6部分中，我们修改了DATABASES 和INSTALLED_APPS部分的代码。<br>如果我们在setting.py搜索关键词：css，在代码的末尾，写到：</p>
-<pre><code># Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.10/howto/static-files/
-
-STATIC_URL = &apos;/static/&apos;
-</code></pre><p>那么我们就打开他提供的网址，去看看官网的说明：</p>
-<p><a href="https://docs.djangoproject.com/en/1.10/howto/static-files/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.10/howto/static-files/</a></p>
-<p>官网提示，当牵涉urls的时候，需要修改如下图：</p>
-<p>  于是，我们可把2行import的代码添加到urls.py中，同时不要忘记urlpatterns部分的代码也要跟着改进。此时，我们的urls.py的代码为：</p>
-<pre><code>from django.conf.urls import url
-from django.contrib import admin
-from blog import views
-from django.conf import settings
-from django.conf.urls.static import static
-
-urlpatterns = [
-    url(r&apos;^admin/&apos;, admin.site.urls),
-    url(r&apos;^$&apos;, views.home),`
-
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-</code></pre><p>接下来，根据官网要求C:\XXXX\django1\blog\ 路径下，也就是在app的目录下建立static的文件夹，并把我们下载解压的Bootstrap的3个文件夹放到static路径。</p>
-<p>并从网上下载一个Bootstrap的模版范例，把对应的images文件和xxx.html文件一起放到C:\xxxx\django1\blog\templates 路径。<br>首先直接双击打开里面的index.html，可以看到浏览器显示的地址是：file:///C:/xxx/mysite/blog/templates/index.html<br>现在想在localhost：8000下，也显示相同的内容。<br>首先打开views.py，把home改成index，因为我们一开始的主页名字定义为home，而现在模版的首页名字是index。但是当我们回车，发现界面如下：</p>
-<p>并且，根据要求，我们把带有link href 后面的代码，根据上图都修改成形如下面的语句（红色加粗为添加的）：</p>
-<pre><code>&lt;link href=&quot;{% static "css/bootstrap.css" %}&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; media=&quot;all&quot;&gt;
-</code></pre><p>最后，我们就得到了和直接双击index.html一样的效果，如下图（中文是我添加，为庆祝女排奥运夺冠）：</p>
-<p>也许你会说，这网页也不是很漂亮啊，其实这里主要是选了一个简单的网页模版，<br>用来示范操作的，可以谷歌到很多精彩的bootstrap的框架模版，但如果要修改成自己的，<br>也是需要在HTML里修改不少内容，再加上本身我对前端的知识也比较有限。<br>到这里，就完成了Python+Django实现网站的教程了。<br>当然要做一个内容较多的网站还是需要很多后续工作的。 ”——）</p>
-<h1 id="11-参考：-fanhuaxiu-com"><a href="#11-参考：-fanhuaxiu-com" class="headerlink" title="11 参考：  fanhuaxiu.com"></a>11 参考：  fanhuaxiu.com</h1>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1492,7 +1469,7 @@ urlpatterns = [
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
