@@ -94,7 +94,7 @@
 <meta property="og:description" content="简介： 验证码识别的测试，因故需做一个自动的多用户注册的脚本1、查阅相关博客，建议使用的是Python+Selenium+PIL+Tesseract ，又有人推荐了Pytesser，不过这个Pytesser的安装还挺坑的。
 2、总的还是参考这个吧：http://www.th7.cn/Program/Python/201602/768304.shtml
 不同点是，我没有把pytesser_v0.0.">
-<meta property="og:updated_time" content="2016-09-22T14:49:16.000Z">
+<meta property="og:updated_time" content="2016-09-22T15:37:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="验证码识别的测试【python】">
 <meta name="twitter:description" content="简介： 验证码识别的测试，因故需做一个自动的多用户注册的脚本1、查阅相关博客，建议使用的是Python+Selenium+PIL+Tesseract ，又有人推荐了Pytesser，不过这个Pytesser的安装还挺坑的。
@@ -288,6 +288,7 @@
 <p>重要的一步，注意一下pytesser.py中第六行的import Image,改成from PIL import Image(因为我们安装的不是原版的PIL而是pillow所以要把这个也改一下） 另外我安装的是32位的：Pillow-3.3.1-cp27-cp27m-win32.whl</p>
 <p>第一次见到要这么装第三方库，闹心，还好是搞定了。一开始老提示 No module named pytesser </p>
 <p>3、看到有人使用了selenium全屏截图 ，然后通过验证码的上下左右坐标来截取图片，然后保存图片来进一步进行图像识别的，虽然代码比较详细，但想了下有个严重的问题，他不适合批量操作，每个网站都要独自匹配一个对应的坐标。麻烦呢。</p>
+<p>4、如果网页的src，直接能读取其http的src地址，那就简单了，下载后图形处理，但这次遇到的是后缀aspx的，每次刷新都会变化新的验证码</p>
 
       
     </div>
