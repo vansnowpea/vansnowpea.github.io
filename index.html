@@ -284,7 +284,7 @@
 <p>不同点是，我没有把pytesser_v0.0.1 文件夹的名字修改，保留了 ，整个文件夹丢到了//site-packages 文件夹下，并建立了pytesser-v0.0.1.pth 里面写入： “pytesser-v0.0.1”</p>
 <p>重要的一步，注意一下pytesser.py中第六行的import Image,改成from PIL import Image(因为我们安装的不是原版的PIL而是pillow所以要把这个也改一下） 另外我安装的是32位的：Pillow-3.3.1-cp27-cp27m-win32.whl</p>
 <p>第一次见到要这么装第三方库，闹心，还好是搞定了。一开始老提示 No module named pytesser </p>
-<p>3、</p>
+<p>3、看到有人使用了selenium全屏截图 ，然后通过验证码的上下左右坐标来截取图片，然后保存图片来进一步进行图像识别的，虽然代码比较详细，但想了下有个严重的问题，他不适合批量操作，每个网站都要独自匹配一个对应的坐标。麻烦呢。</p>
 
           
         
