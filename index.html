@@ -281,8 +281,9 @@
           
             <h1 id="简介：-验证码识别的测试，因故需做一个自动注册的多数量的脚本"><a href="#简介：-验证码识别的测试，因故需做一个自动注册的多数量的脚本" class="headerlink" title="简介： 验证码识别的测试，因故需做一个自动注册的多数量的脚本"></a>简介： 验证码识别的测试，因故需做一个自动注册的多数量的脚本</h1><p>1、查阅相关博客，建议使用的是Python+Selenium+PIL+Tesseract ，又有人推荐了Pytesser，不过这个Pytesser的安装还挺坑的，直接pip没有的，需要到谷歌翻墙，有一片博客写的相对详细，给出了国内镜像，然后后续的配置也略坑，需要手动放到对应python的site-package目录，并配置环境变量。<br>总的还是参考这个吧：<a href="http://www.th7.cn/Program/Python/201602/768304.shtml" target="_blank" rel="external">http://www.th7.cn/Program/Python/201602/768304.shtml</a></p>
 <p>不同点是，我没有把pytesser_v0.0.1 文件夹的名字修改，保留了 ，整个文件夹丢到了//site-packages 文件夹下，并建立了pytesser-v0.0.1.pth 里面写入： “pytesser-v0.0.1”</p>
-<p>重要的一步，注意一下pytesser.py中第六行的import Image,改成from PIL import Image(因为我们安装的不是原版的PIL而是pillow所以要把这个也改一下）</p>
-<p>悲剧的是，一切对照，当输入第一行命令的时候，还是找不到pytesser模块，这就尴尬了。No module named pytesser </p>
+<p>重要的一步，注意一下pytesser.py中第六行的import Image,改成from PIL import Image(因为我们安装的不是原版的PIL而是pillow所以要把这个也改一下） </p>
+<p>第一次见到要这么装第三方库，闹心，还好是搞定了。一开始老提示 No module named pytesser </p>
+<p>4/</p>
 
           
         
