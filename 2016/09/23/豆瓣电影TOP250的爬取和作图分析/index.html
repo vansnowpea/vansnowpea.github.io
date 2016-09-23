@@ -97,7 +97,7 @@
 # -*- coding: utf-8 -*-
 # !/us">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-23/225057825.png">
-<meta property="og:updated_time" content="2016-09-23T17:41:44.000Z">
+<meta property="og:updated_time" content="2016-09-23T17:50:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="豆瓣电影TOP250的爬取和作图分析【python】">
 <meta name="twitter:description" content="简介： 又回到豆瓣了，这是多适合爬虫的网站 ：）1、这次的对象是top 250 ， 网址：  https://movie.douban.com/top250 目的是对这250部电影的分类做一个统计。
@@ -395,9 +395,9 @@ if __name__ == &apos;__main__&apos;:
 <pre><code>url = &apos;https://movie.douban.com/top250?start={1}&amp;filter=&apos;
 </code></pre><p>同时，观察整个循环输出的格式是一个列表，每个元素是一个字符串，那么第一个电影的电影信息对应的字符串是：</p>
 <pre><code>&apos;\n                            导演: 弗兰克·德拉邦特 Frank Darabont\xa0\xa0\xa0主演: 蒂姆·罗宾斯 Tim Robbins /...&apos;, &apos;\n                            1994\xa0/\xa0美国\xa0/\xa0犯罪 剧情\n                        &apos;
-</code></pre><p>和原始网页的信息对照，实际就是第一部分包含导演主演信息，第二部分是年份国家和剧种， 就本文，我们需要的是第二部分的内容，也就是“1994 / 美国 / 犯罪 剧情”这部分内容。然后呢，因为整个content 包含了25部电影的文本， 这些都保存在列表里，并且我们需要进一步处理的，都在对应坐标1、3、5、、这样的奇数里。因为列表第一个是从0开始的。所以我们得到了循环内的第一句为：</p>
+</code></pre><p>和原始网页的信息对照，实际就是第一部分包含导演主演信息，第二部分是年份国家和剧种， 就本文，我们需要的是第二部分的内容，也就是“1994 / 美国 / 犯罪 剧情”这部分内容。然后呢，因为整个content 包含了25部电影的文本， 这些都保存在列表里，并且我们需要进一步处理的，都在对应坐标1、3、5、、这样的奇数里。因为列表第一个是从0开始的。所以我们查看了循环内的第一句为，注意这只是print，没有运行具体的代码影响原来的字符串：</p>
 <pre><code>print(str(i).strip().replace(&apos;\n\r&apos;, &apos;&apos;))
-</code></pre><p>这句的作用就是得到整个content列表中，下标为1、3、5。。。。的元素，并通过strip（）来进行去掉首尾的多余的空格，,随后使用replace函数，把’\n\r’替换为空字符。我们可以在ipython中验证下：</p>
+</code></pre><p>这句的意思就是得到整个content列表中，下标为1、3、5。。。。的元素，并通过strip（）来进行去掉首尾的多余的空格，,随后使用replace函数，把’\n\r’替换为空字符。我们可以在ipython中验证下：</p>
 <p>记录：conntent[1]：  </p>
 <pre><code>aa =  &apos;\n                            1994\xa0/\xa0美国\xa0/\xa0犯罪 剧情\n                        &apos;
 </code></pre><p>执行：aa.strip()，得到：</p>
@@ -406,7 +406,7 @@ Out[19]: &apos;1994\xa0/\xa0美国\xa0/\xa0犯罪 剧情&apos;
 
 In [20]: aa.strip().replace(&apos;\n\r&apos;, &apos;&apos;)
 Out[20]: &apos;1994\xa0/\xa0美国\xa0/\xa0犯罪 剧情&apos;
-</code></pre><p>发现上述的replace函数似乎没起作用，那是这里正好没有’\n\r’，同时你可以发现，这里怎么有4个地方有\xa0 ？ 这是什么呢？ 原来是：转义字符，”\x”后接数字（两位）代表16进制数</p>
+</code></pre><p>发现上述的replace函数似乎没起作用，那是这里正好没有’\n\r’，同时你可以发现，这里怎么有4个地方有\xa0 ？ 这是什么呢？ 原来是：转义字符，”\x”后接数字（两位）代表16进制数，这玩意牵涉编码的问题，如果是python 2的话，估计还需要额外处理，好在python 3 没什么报错。同时也可以感受到，如果英文较好，可以全英文写程序，可尽可能的避免这些劳什子。</p>
 <p>然后循环里面的内容都是为了去除\n和空格这些没有的东西，i = str(i).split(‘/‘)就是把去除空格和\n的字符串通过‘/’分隔在列表里。</p>
 
       
