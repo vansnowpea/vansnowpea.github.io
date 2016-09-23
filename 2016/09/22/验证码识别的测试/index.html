@@ -93,7 +93,7 @@
 <meta property="og:description" content="简介： 验证码识别的测试，因故需做一个自动的多用户注册的脚本1、查阅相关博客，建议使用的是Python+Selenium+PIL+Tesseract ，又有人推荐了Pytesser，不过这个Pytesser的安装还挺坑的。
 2、总的还是参考这个吧：http://www.th7.cn/Program/Python/201602/768304.shtml以及这个http://blog.csdn.ne">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-23/012758858.jpg">
-<meta property="og:updated_time" content="2016-09-23T06:37:34.000Z">
+<meta property="og:updated_time" content="2016-09-23T06:44:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="验证码识别的测试【python】">
 <meta name="twitter:description" content="简介： 验证码识别的测试，因故需做一个自动的多用户注册的脚本1、查阅相关博客，建议使用的是Python+Selenium+PIL+Tesseract ，又有人推荐了Pytesser，不过这个Pytesser的安装还挺坑的。
@@ -285,7 +285,7 @@
 <h1 id="简介：-验证码识别的测试，因故需做一个自动的多用户注册的脚本"><a href="#简介：-验证码识别的测试，因故需做一个自动的多用户注册的脚本" class="headerlink" title="简介： 验证码识别的测试，因故需做一个自动的多用户注册的脚本"></a>简介： 验证码识别的测试，因故需做一个自动的多用户注册的脚本</h1><p>1、查阅相关博客，建议使用的是Python+Selenium+PIL+Tesseract ，又有人推荐了Pytesser，不过这个Pytesser的安装还挺坑的。</p>
 <p>2、总的还是参考这个吧：<a href="http://www.th7.cn/Program/Python/201602/768304.shtml" target="_blank" rel="external">http://www.th7.cn/Program/Python/201602/768304.shtml</a>以及这个<a href="http://blog.csdn.net/lanfan_11/article/details/45558573" target="_blank" rel="external">http://blog.csdn.net/lanfan_11/article/details/45558573</a></p>
 <p>3、但测试了半天，无论我按照哪个方法，最终我都不能import pytesser ， 一开始以为成功了，原来是我按照他的例子直接在pytesseract-v0.0.1的文件夹测试的脚本，那自然可以了。</p>
-<p>4、好吧，，折腾了一阵，实在不愿麻烦了，毕竟第一次遇到需要这么折腾的第三方库，而且还是好几年前就停止更新了，干脆就直接把需要编写的py文件丢到这个pytesser文件夹算了。 </p>
+<p>4、毕竟第一次遇到需要这么折腾的第三方库，而且还是好几年前就停止更新了，干脆就直接把需要编写的py文件丢到这个pytesser文件夹来规避。 </p>
 <p>5、后来又发现有的博客推荐了pytesseract ，看名字应该是继承了pytesser，但是保持更新的，果然顺利安装，那么就是他了。那么更新下使用的工具组合为：Python+Selenium+PIL+pytesseract+Tesseract </p>
 <p>6、剩下就是如何识别验证码的问题，由于测试的网站使用的.aspx的动态图，导致每次输入url得到不同的验证码。<br>所以一不做二不休，使用了截屏计算其验证码方位后单独识别的方案。(另外一个可操作方案是使用cookie)</p>
 <p>过程：</p>
