@@ -377,8 +377,8 @@ if __name__ == &apos;__main__&apos;:
 <pre><code>content = selector.xpath(&apos;//div[@class=&quot;info&quot;]/div[@class=&quot;bd&quot;]/p/text()&apos;) 
 </code></pre><p>而我用的偷懒模式：直接浏览器找到的： </p>
 <pre><code>selector.xpath(&apos;//*[@id=&quot;content&quot;]/div/div[1]/ol/li[1]/div/div[2]/div[2]/p[1]/text()&apos;)
-</code></pre><p>注意，默认到P｛[1]的路径，因为是需要读取里面的文本部分，所以加入/text()</p>
-<p>4、这样就得到了第一页的影视信息的文本，不过如果用ipthon分布操作查看， 那简直是逆天的格式，如图：</p>
+</code></pre><p>注意，默认到P[1]的路径，因为是需要读取里面的文本部分，所以加入/text()</p>
+<p>4、这样就得到了第一页的影视信息的文本，不过如果用ipthon分步操作查看， 那简直是逆天的格式，如图：</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-23/225057825.png" alt=""><em>**</em></p>
 <p>5、必须进行文字提取处理了。 </p>
 
