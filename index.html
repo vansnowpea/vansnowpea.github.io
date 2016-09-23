@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Accueil
+            Startseite
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -248,7 +248,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posté le</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-23T23:20:28+08:00" content="2016-09-23">
               2016-09-23
             </time>
@@ -381,6 +381,10 @@ if __name__ == &apos;__main__&apos;:
 <p>4、这样就得到了第一页的影视信息的文本，不过如果用ipthon分步操作查看， 那简直是逆天的格式，如图：</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-23/225057825.png" alt=""><em>**</em></p>
 <p>5、必须进行文字提取处理了。 </p>
+<p>首先，这一大坨的，为了简单，我们用单元测试的思想，先调试第一页第一个，也就是《肖申克的救赎》的文字提取结果是：</p>
+<pre><code>[&apos;\n                            导演: 弗兰克·德拉邦特 Frank Darabont\xa0\xa0\xa0主演: 蒂姆·罗宾斯 Tim Robbins /...&apos;, &apos;\n                            1994\xa0/\xa0美国\xa0/\xa0犯罪 剧情\n     
+</code></pre><p>和原始网页的信息对照，实际就是第一部分包含导演主演信息，第二部分是年份国家和剧种， 就本文，最关心的是剧种。</p>
+<p>其次，</p>
 
           
         
@@ -443,7 +447,7 @@ if __name__ == &apos;__main__&apos;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posté le</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-22T14:20:28+08:00" content="2016-09-22">
               2016-09-22
             </time>
@@ -645,7 +649,7 @@ for i in range(2, num+1):
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posté le</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-21T22:20:28+08:00" content="2016-09-21">
               2016-09-21
             </time>
@@ -744,7 +748,7 @@ for i in range(2, num+1):
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posté le</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-21T21:20:28+08:00" content="2016-09-21">
               2016-09-21
             </time>
@@ -841,7 +845,7 @@ for i in range(2, num+1):
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posté le</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-20T14:20:28+08:00" content="2016-09-20">
               2016-09-20
             </time>
@@ -1043,7 +1047,7 @@ if __name__==&quot;__main__&quot;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posté le</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-20T10:20:28+08:00" content="2016-09-20">
               2016-09-20
             </time>
@@ -1185,7 +1189,7 @@ run()
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posté le</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-19T20:20:28+08:00" content="2016-09-19">
               2016-09-19
             </time>
@@ -1328,7 +1332,7 @@ run()
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posté le</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-18T10:59:28+08:00" content="2016-09-18">
               2016-09-18
             </time>
@@ -1537,7 +1541,7 @@ driver.close()
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posté le</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-17T11:59:28+08:00" content="2016-09-17">
               2016-09-17
             </time>
@@ -1709,7 +1713,7 @@ element = driver.find_element_by_xpath(&quot;//input[@id=&apos;passwd-id&apos;]&
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posté le</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-17T11:59:28+08:00" content="2016-09-17">
               2016-09-17
             </time>
@@ -1830,7 +1834,7 @@ https://ftp.mozilla.org/pub/firefox/releases/46.0.1/win64/en-US/
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">45</span>
-              <span class="site-state-item-name">articles</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1877,11 +1881,11 @@ https://ftp.mozilla.org/pub/firefox/releases/46.0.1/win64/en-US/
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  Thème -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>

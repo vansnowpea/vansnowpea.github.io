@@ -97,7 +97,7 @@
 # -*- coding: utf-8 -*-
 # !/us">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-23/225057825.png">
-<meta property="og:updated_time" content="2016-09-23T14:59:25.000Z">
+<meta property="og:updated_time" content="2016-09-23T15:06:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="豆瓣电影TOP250的爬取和作图分析【python】">
 <meta name="twitter:description" content="简介： 又回到豆瓣了，这是多适合爬虫的网站 ：）1、这次的对象是top 250 ， 网址：  https://movie.douban.com/top250 目的是对这250部电影的分类做一个统计。
@@ -185,7 +185,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Accueil
+            Startseite
           </a>
         </li>
       
@@ -195,7 +195,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -258,7 +258,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posté le</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-23T23:20:28+08:00" content="2016-09-23">
               2016-09-23
             </time>
@@ -389,6 +389,10 @@ if __name__ == &apos;__main__&apos;:
 <p>4、这样就得到了第一页的影视信息的文本，不过如果用ipthon分步操作查看， 那简直是逆天的格式，如图：</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-23/225057825.png" alt=""><em>**</em></p>
 <p>5、必须进行文字提取处理了。 </p>
+<p>首先，这一大坨的，为了简单，我们用单元测试的思想，先调试第一页第一个，也就是《肖申克的救赎》的文字提取结果是：</p>
+<pre><code>[&apos;\n                            导演: 弗兰克·德拉邦特 Frank Darabont\xa0\xa0\xa0主演: 蒂姆·罗宾斯 Tim Robbins /...&apos;, &apos;\n                            1994\xa0/\xa0美国\xa0/\xa0犯罪 剧情\n     
+</code></pre><p>和原始网页的信息对照，实际就是第一部分包含导演主演信息，第二部分是年份国家和剧种， 就本文，最关心的是剧种。</p>
+<p>其次，</p>
 
       
     </div>
@@ -469,10 +473,10 @@ if __name__ == &apos;__main__&apos;:
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table Des Matières
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Ensemble
+            Übersicht
           </li>
         </ul>
       
@@ -489,7 +493,7 @@ if __name__ == &apos;__main__&apos;:
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">45</span>
-              <span class="site-state-item-name">articles</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -547,11 +551,11 @@ if __name__ == &apos;__main__&apos;:
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  Thème -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>
