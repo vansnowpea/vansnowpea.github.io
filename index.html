@@ -304,19 +304,19 @@ num = 400
 # 已经人工测试了一个，所以所2个开始
 for i in range(2, num+1):
 
-    name_cn = &apos;范琪凯&apos;
+    name_cn = &apos;aaa&apos;
     i= 5
     browser = webdriver.PhantomJS()
     browser.maximize_window()
-    url = &quot;http://www.626china.org/Sub_tongji.aspx&quot;
+    url = &quot;http://www.wangzhi.com&quot;
     browser.get(url)
     wait = ui.WebDriverWait(browser, 20)
     wait.until(lambda browser:browser.find_element_by_xpath(&quot;//*[@id=\&quot;ussheng\&quot;]&quot;))
-    shs1 = browser.find_element_by_xpath(&quot;//*[@id=\&quot;ussheng\&quot;]&quot;).send_keys(&quot;上海市&quot;)
-    shs2 = browser.find_element_by_xpath(&quot;//*[@id=\&quot;uscity\&quot;]&quot;).send_keys(&quot;上海市&quot;)
-    mhq = browser.find_element_by_xpath(&quot;//*[@id=\&quot;usxian\&quot;]&quot;).send_keys(&quot;闵行区&quot;)
-    nling = browser.find_element_by_xpath(&quot;//*[@id=\&quot;inscage\&quot;]&quot;).send_keys(&quot;35&quot;)
-    dwei = browser.find_element_by_xpath(&quot;//*[@id=\&quot;worker\&quot;]&quot;).send_keys(&quot;浦江镇永建村委会&quot;)
+    shs1 = browser.find_element_by_xpath(&quot;//*[@id=\&quot;ussheng\&quot;]&quot;).send_keys(&quot;shengfen&quot;)
+    shs2 = browser.find_element_by_xpath(&quot;//*[@id=\&quot;uscity\&quot;]&quot;).send_keys(&quot;xxshi&quot;)
+    mhq = browser.find_element_by_xpath(&quot;//*[@id=\&quot;usxian\&quot;]&quot;).send_keys(&quot;yyqu&quot;)
+    nling = browser.find_element_by_xpath(&quot;//*[@id=\&quot;inscage\&quot;]&quot;).send_keys(&quot;nianlimg&quot;)
+    dwei = browser.find_element_by_xpath(&quot;//*[@id=\&quot;worker\&quot;]&quot;).send_keys(&quot;dizhi&quot;)
     name_input = browser.find_element_by_xpath(&quot;//*[@id=\&quot;ustruename\&quot;]&quot;).send_keys(name_cn + &apos;%d&apos;%i)
 
     # 选择性别，下拉框操作
