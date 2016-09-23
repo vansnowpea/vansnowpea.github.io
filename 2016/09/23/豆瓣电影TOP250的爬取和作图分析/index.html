@@ -97,7 +97,7 @@
 # -*- coding: utf-8 -*-
 # !/us">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-23/225057825.png">
-<meta property="og:updated_time" content="2016-09-23T18:21:18.000Z">
+<meta property="og:updated_time" content="2016-09-23T18:22:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="豆瓣电影TOP250的爬取和作图分析【python】">
 <meta name="twitter:description" content="简介： 又回到豆瓣了，这是多适合爬虫的网站 ：）1、这次的对象是top 250 ， 网址：  https://movie.douban.com/top250 目的是对这250部电影的分类做一个统计。
@@ -433,7 +433,12 @@ In [41]: key
 Out[41]: [&apos;犯罪&apos;, &apos;剧情&apos;]
 </code></pre><p>发现，已经把\xa0当作左侧的空格给替换掉了，实际他显示出来就是一个空格的。然后通过中间的空格再劈开，得到了2个元素的字符串的列表。<br>这样就清洗出了所需要的数据。</p>
 <p>下面的代码紧跟了一个针对key的for循环，是用来在数据库中计数用的</p>
-
+<pre><code>for i in key:
+        if i not in douban.keys():
+            douban[i] = 1
+        else:
+            douban[i] += 1
+</code></pre>
       
     </div>
 
