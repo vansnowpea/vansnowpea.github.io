@@ -280,8 +280,100 @@
         
           
             <h1 id="简介：-又回到豆瓣了，这是多适合爬虫的网站-：）"><a href="#简介：-又回到豆瓣了，这是多适合爬虫的网站-：）" class="headerlink" title="简介： 又回到豆瓣了，这是多适合爬虫的网站 ：）"></a>简介： 又回到豆瓣了，这是多适合爬虫的网站 ：）</h1><p>1、这次的对象是top 250 ， 网址：  <a href="https://movie.douban.com/top250" target="_blank" rel="external">https://movie.douban.com/top250</a></p>
-<p>2、实际有其他人做了分析，正好看到，发现其代码很漂亮，所以研读，顺便复习检阅自己学习成果。秉承一贯的作风，做一定的细节分析。</p>
-<p>3、首先是他用了selector = etree.HTML(html)  而我用的比较多的是bs4，应该是殊途同归。他的xpath路径是：</p>
+<p>2、实际有其他人做了分析，正好看到，发现其代码很漂亮，所以研读，顺便复习检阅自己学习成果。秉承一贯的作风，做一定的细节分析。先上原文代码：</p>
+<pre><code># -*- coding: utf-8 -*-
+# !/usr/bin/env python
+
+from lxml import etree
+import requests
+import pymysql
+import matplotlib.pyplot as plt
+from pylab import *
+import numpy as np
+
+# 连接mysql数据库
+conn = pymysql.connect(host = &apos;localhost&apos;, user = &apos;root&apos;, passwd = &apos;fanka111&apos;, db = &apos;douban&apos;, charset = &apos;utf8&apos;)
+cur = conn.cursor()
+cur.execute(&apos;use douban&apos;)
+
+def get_page(i):
+    url = &apos;https://movie.douban.com/top250?start={}&amp;filter=&apos;.format(i)
+
+    html = requests.get(url).content.decode(&apos;utf-8&apos;)
+
+    selector = etree.HTML(html)
+    # //*[@id=&quot;content&quot;]/div/div[1]/ol/li[1]/div/div[2]/div[2]/p[1]
+    content = selector.xpath(&apos;//div[@class=&quot;info&quot;]/div[@class=&quot;bd&quot;]/p/text()&apos;)
+    print(content)
+
+    for i in content[1::2]:
+        print(str(i).strip().replace(&apos;\n\r&apos;, &apos;&apos;))
+        # print(str(i).split(&apos;/&apos;))
+        i = str(i).split(&apos;/&apos;)
+        i = i[len(i) - 1]
+        # print(&apos;zhe&apos; +ｉ)
+        # print(i.strip())
+        # print(i.strip().split(&apos; &apos;))
+        key = i.strip().replace(&apos;\n&apos;, &apos;&apos;).split(&apos; &apos;)
+        print(key)
+        for i in key:
+            if i not in douban.keys():
+                douban[i] = 1
+            else:
+                douban[i] += 1
+
+def save_mysql():
+    print(douban)
+    for key in douban:
+        print(key)
+        print(douban[key])
+        if key != &apos;&apos;:
+            try:
+                sql = &apos;insert douban(类别, 数量) value(&apos; + &quot;\&apos;&quot; + key + &quot;\&apos;,&quot; + &quot;\&apos;&quot; + str(douban[key]) + &quot;\&apos;&quot; + &apos;);&apos;
+                cur.execute(sql)
+                conn.commit()
+            except:
+                print(&apos;插入失败&apos;)
+                conn.rollback()
+
+
+def pylot_show():
+    sql = &apos;select * from douban;&apos;
+    cur.execute(sql)
+    rows = cur.fetchall()
+    count = []
+    category = []
+
+    for row in rows:
+        count.append(int(row[2]))
+        category.append(row[1])
+    print(count)
+    y_pos = np.arange(len(category))
+    print(y_pos)
+    print(category)
+    colors = np.random.rand(len(count))
+    plt.barh()
+    plt.barh(y_pos, count, align=&apos;center&apos;, alpha=0.4)
+    plt.yticks(y_pos, category)
+    for count, y_pos in zip(count, y_pos):
+        plt.text(count, y_pos, count,  horizontalalignment=&apos;center&apos;, verticalalignment=&apos;center&apos;, weight=&apos;bold&apos;)
+    plt.ylim(+28.0, -1.0)
+    plt.title(u&apos;豆瓣电影250&apos;)
+    plt.ylabel(u&apos;电影分类&apos;)
+    plt.subplots_adjust(bottom = 0.15)
+    plt.xlabel(u&apos;分类出现次数&apos;)
+    plt.savefig(&apos;douban.png&apos;)
+
+
+if __name__ == &apos;__main__&apos;:
+    douban = {}
+    for i in range(0, 250, 25):
+        get_page(i)
+    save_mysql()
+    pylot_show()
+    cur.close()
+    conn.close()
+</code></pre><p>3、首先是他用了selector = etree.HTML(html)  而我用的比较多的是bs4，应该是殊途同归。他的xpath路径是：</p>
 <pre><code>content = selector.xpath(&apos;//div[@class=&quot;info&quot;]/div[@class=&quot;bd&quot;]/p/text()&apos;) 
 </code></pre><p>而我用的偷懒模式：直接浏览器找到的： </p>
 <pre><code>selector.xpath(&apos;//*[@id=&quot;content&quot;]/div/div[1]/ol/li[1]/div/div[2]/div[2]/p[1]/text()&apos;)
