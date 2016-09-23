@@ -97,7 +97,7 @@
 # -*- coding: utf-8 -*-
 # !/us">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-23/225057825.png">
-<meta property="og:updated_time" content="2016-09-23T17:50:53.000Z">
+<meta property="og:updated_time" content="2016-09-23T17:53:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="豆瓣电影TOP250的爬取和作图分析【python】">
 <meta name="twitter:description" content="简介： 又回到豆瓣了，这是多适合爬虫的网站 ：）1、这次的对象是top 250 ， 网址：  https://movie.douban.com/top250 目的是对这250部电影的分类做一个统计。
@@ -406,8 +406,8 @@ Out[19]: &apos;1994\xa0/\xa0美国\xa0/\xa0犯罪 剧情&apos;
 
 In [20]: aa.strip().replace(&apos;\n\r&apos;, &apos;&apos;)
 Out[20]: &apos;1994\xa0/\xa0美国\xa0/\xa0犯罪 剧情&apos;
-</code></pre><p>发现上述的replace函数似乎没起作用，那是这里正好没有’\n\r’，同时你可以发现，这里怎么有4个地方有\xa0 ？ 这是什么呢？ 原来是：转义字符，”\x”后接数字（两位）代表16进制数，这玩意牵涉编码的问题，如果是python 2的话，估计还需要额外处理，好在python 3 没什么报错。同时也可以感受到，如果英文较好，可以全英文写程序，可尽可能的避免这些劳什子。</p>
-<p>然后循环里面的内容都是为了去除\n和空格这些没有的东西，i = str(i).split(‘/‘)就是把去除空格和\n的字符串通过‘/’分隔在列表里。</p>
+</code></pre><p>发现上述的replace函数似乎没起作用，那是这里正好没有’\n\r’，同时你可以发现，这里怎么有4个地方有\xa0 ？ 这是什么呢？ 原来是：转义字符，”\x”后接数字（两位）代表16进制数，这玩意牵涉编码的问题，如果是python 2的话，估计还需要额外处理，好在python 3 没什么报错，打印的时候是不显示的。同时也可以感受到，如果英文较好，可以全英文写程序，可尽可能的避免这些劳什子。</p>
+<p>然后循环里面的开始执行的命令都是为了去除\n和空格这些没有的东西，i = str(i).split(‘/‘)就是把去除空格和\n的字符串通过‘/’分隔在列表里。</p>
 
       
     </div>
