@@ -281,7 +281,9 @@
           
             <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-23/012758858.jpg" alt=""></p>
 <h1 id="简介：-验证码识别的测试，因故需做一个自动的多用户注册的脚本"><a href="#简介：-验证码识别的测试，因故需做一个自动的多用户注册的脚本" class="headerlink" title="简介： 验证码识别的测试，因故需做一个自动的多用户注册的脚本"></a>简介： 验证码识别的测试，因故需做一个自动的多用户注册的脚本</h1><p>1、查阅相关博客，建议使用的是Python+Selenium+PIL+Tesseract ，又有人推荐了Pytesser，不过这个Pytesser的安装还挺坑的。</p>
-<p>2、总的还是参考这个吧：<a href="http://www.th7.cn/Program/Python/201602/768304.shtml" target="_blank" rel="external">http://www.th7.cn/Program/Python/201602/768304.shtml</a>以及这个<a href="http://blog.csdn.net/lanfan_11/article/details/45558573" target="_blank" rel="external">http://blog.csdn.net/lanfan_11/article/details/45558573</a></p>
+<p>2、总的还是参考这个吧：<br><a href="http://www.th7.cn/Program/Python/201602/768304.shtml" target="_blank" rel="external">http://www.th7.cn/Program/Python/201602/768304.shtml</a></p>
+<p>以及这个</p>
+<p><a href="http://blog.csdn.net/lanfan_11/article/details/45558573" target="_blank" rel="external">http://blog.csdn.net/lanfan_11/article/details/45558573</a></p>
 <p>3、但测试了半天，无论我按照哪个方法，最终我都不能import pytesser ， 一开始以为成功了，原来是我按照他的例子直接在pytesseract-v0.0.1的文件夹测试的脚本，那自然可以了。</p>
 <p>4、毕竟第一次遇到需要这么折腾的第三方库，而且还是好几年前就停止更新了，干脆就直接把需要编写的py文件丢到这个pytesser文件夹来规避。 </p>
 <p>5、后来又发现有的博客推荐了pytesseract ，看名字应该是继承了pytesser，但是保持更新的，果然顺利安装，那么就是他了。那么更新下使用的工具组合为：Python+Selenium+PIL+pytesseract+Tesseract </p>
@@ -315,7 +317,7 @@ for i in range(2, num+1):
     shs1 = browser.find_element_by_xpath(&quot;//*[@id=\&quot;ussheng\&quot;]&quot;).send_keys(&quot;shengfen&quot;)
     shs2 = browser.find_element_by_xpath(&quot;//*[@id=\&quot;uscity\&quot;]&quot;).send_keys(&quot;xxshi&quot;)
     mhq = browser.find_element_by_xpath(&quot;//*[@id=\&quot;usxian\&quot;]&quot;).send_keys(&quot;yyqu&quot;)
-    nling = browser.find_element_by_xpath(&quot;//*[@id=\&quot;inscage\&quot;]&quot;).send_keys(&quot;nianlimg&quot;)
+    nling = browser.find_element_by_xpath(&quot;//*[@id=\&quot;inscage\&quot;]&quot;).send_keys(&quot;nianling&quot;)
     dwei = browser.find_element_by_xpath(&quot;//*[@id=\&quot;worker\&quot;]&quot;).send_keys(&quot;dizhi&quot;)
     name_input = browser.find_element_by_xpath(&quot;//*[@id=\&quot;ustruename\&quot;]&quot;).send_keys(name_cn + &apos;%d&apos;%i)
 
@@ -393,7 +395,7 @@ for i in range(2, num+1):
 <ul>
 <li>虽然使用的截屏然后识别验证码的方式，也许不是最优雅，不过可可以通过元素的imgelement.location 来获取验证码x,y轴坐标，从而可以得到精确的验证码截图区域，否则人工去调试也不是不行，但需要在画图板用鼠标尽可能准确的定位。</li>
 <li>增加了图片增加识别技术，加大了识别验证码的概率。</li>
-<li>这段代码的不足之处是没有检测验证码识别提交后，是否失败的判断，这主要是测试的网站标的，实在做的太烂了，点了二维码不会立刻提示错误与否，而是卡机，卡机，卡机。。</li>
+<li>这段代码的不足之处是没有检测验证码识别提交后，是否失败的判断，这主要是测试的网站标的，实在做的太烂了，点了二维码不会立刻提示错误与否，而是卡机。</li>
 </ul>
 <p>8、总结：有较多的注释，记录了一些操作思路。学习了验证码的初级识别技术。</p>
 
