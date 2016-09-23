@@ -335,16 +335,7 @@ for i in range(2, num+1):
     # action.perform()
     ###############################################################################
 
-    # 验证码识别，思路，右键保存验证码图片，识别数字或者字母。但是保存不能执行，失败
-    ###############################################################################
-    # # xpath： //*[@id=&quot;ValidImage&quot;]
-    # shi_bie_ma = browser.find_element_by_xpath(&quot;//*[@id=\&quot;ValidImage\&quot;]&quot;)
-    # action = ActionChains(browser).move_to_element(shi_bie_ma)
-    # action.context_click(shi_bie_ma)
-    # action.send_keys(Keys.ARROW_DOWN)
-    # action.send_keys(&apos;v&apos;)
-    # action.perform()
-    ###############################################################################
+
 
     # 通过下载图片后识别，发现是aspx 每次打开url都更新识别码，所以失败。看来只好一开始就截屏啦。
 
