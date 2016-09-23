@@ -381,7 +381,13 @@ if __name__ == &apos;__main__&apos;:
 <p>4、这样就得到了第一页的影视信息的文本，不过如果用ipthon分步操作查看， 那简直是逆天的格式，如图：</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-23/225057825.png" alt=""><em>**</em></p>
 <p>5、必须进行文字提取处理了。 </p>
-<p>首先，这一大坨的，为了简单，我们用单元测试的思想，先调试第一页第一个，也就是《肖申克的救赎》的文字提取结果是：</p>
+<p>首先，这一大坨的，为了简单，我们用单元测试的思想，先调试第一页第一个，这里之前已经设置从：</p>
+<pre><code>url = &apos;https://movie.douban.com/top250?start={}&amp;filter=&apos;.format(i)
+</code></pre><p>修改为：</p>
+<pre><code>url = &apos;https://movie.douban.com/top250?start={1}&amp;filter=&apos;
+</code></pre><p>同时，观察整个循环输出的格式是一个列表，每个元素是一个字符串，那么第一个电影的电影信息对应的字符串是：</p>
+<pre><code>&apos;\n                            导演: 弗兰克·德拉邦特 Frank Darabont\xa0\xa0\xa0主演: 蒂姆·罗宾斯 Tim Robbins /...&apos;, &apos;\n                            1994\xa0/\xa0美国\xa0/\xa0犯罪 剧情\n                        &apos;
+</code></pre><p>，也就是《肖申克的救赎》的文字提取结果是：</p>
 <pre><code>[&apos;\n                            导演: 弗兰克·德拉邦特 Frank Darabont\xa0\xa0\xa0主演: 蒂姆·罗宾斯 Tim Robbins /...&apos;, &apos;\n                            1994\xa0/\xa0美国\xa0/\xa0犯罪 剧情\n     
 </code></pre><p>和原始网页的信息对照，实际就是第一部分包含导演主演信息，第二部分是年份国家和剧种， 就本文，我们需要的是第二部分的内容，也就是“1994 / 美国 / 犯罪 剧情”这部分内容</p>
 <p>然后循环里面的内容都是为了去除\n和空格这些没有的东西，i = str(i).split(‘/‘)就是把去除空格和\n的字符串通过‘/’分隔在列表里。</p>
