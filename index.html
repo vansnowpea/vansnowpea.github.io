@@ -426,10 +426,10 @@ Out[41]: [&apos;犯罪&apos;, &apos;剧情&apos;]
 </code></pre><p>发现，已经把\xa0当作左侧的空格给替换掉了，实际他显示出来就是一个空格的。然后通过中间的空格再劈开，得到了2个元素的字符串的列表。<br>这样就清洗出了所需要的数据。</p>
 <p>下面的代码紧跟了一个针对key的for循环，是用来在数据库中计数用的</p>
 <pre><code>for i in key:
-        if i not in douban.keys():
-            douban[i] = 1
-        else:
-            douban[i] += 1
+    if i not in douban.keys():
+        douban[i] = 1
+    else:
+        douban[i] += 1
 </code></pre>
           
         
