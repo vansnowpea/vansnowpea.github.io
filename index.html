@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -248,7 +248,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-23T23:20:28+08:00" content="2016-09-23">
               2016-09-23
             </time>
@@ -430,7 +430,7 @@ Out[41]: [&apos;犯罪&apos;, &apos;剧情&apos;]
         douban[i] = 1
     else:
         douban[i] += 1
-</code></pre><p>里面的含义是：如果一个电影的分类关键词，在douban字典中（此时数据还没导入到数据库）不存在，那么新建一个对应名字的分类，数值为1.否则如果是已经存在的，那么累加1.</p>
+</code></pre><p>里面的含义是：如果一个电影的分类关键词，在douban字典中（此时数据还没导入到数据库）不存在，那么新建一个对应名字的键值（keys），数值为1.否则如果是已经存在的，那么累加1.</p>
 <p>5、 第二个函数是def save_mysql():作用是把提取的数据加载到数据库中去。<br>其中insert的那一行命令写的有点个性，但因为用到了过多的引号，所以我不是很推荐，一般的写法是： %s + 变量名</p>
 <p>6、最后一个函数是用来画图的， 这块后续要配合nunpy，pandas等一直在加强下学习。</p>
 <p>7、 参考： <a href="http://www.jianshu.com/p/ef242e025cdf" target="_blank" rel="external">爬取豆瓣电影top250提取电影分类进行数据分析</a></p>
@@ -496,7 +496,7 @@ Out[41]: [&apos;犯罪&apos;, &apos;剧情&apos;]
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-22T14:20:28+08:00" content="2016-09-22">
               2016-09-22
             </time>
@@ -698,7 +698,7 @@ for i in range(2, num+1):
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-21T22:20:28+08:00" content="2016-09-21">
               2016-09-21
             </time>
@@ -797,7 +797,7 @@ for i in range(2, num+1):
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-21T21:20:28+08:00" content="2016-09-21">
               2016-09-21
             </time>
@@ -894,7 +894,7 @@ for i in range(2, num+1):
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-20T14:20:28+08:00" content="2016-09-20">
               2016-09-20
             </time>
@@ -1096,7 +1096,7 @@ if __name__==&quot;__main__&quot;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-20T10:20:28+08:00" content="2016-09-20">
               2016-09-20
             </time>
@@ -1238,7 +1238,7 @@ run()
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-19T20:20:28+08:00" content="2016-09-19">
               2016-09-19
             </time>
@@ -1381,7 +1381,7 @@ run()
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-18T10:59:28+08:00" content="2016-09-18">
               2016-09-18
             </time>
@@ -1590,7 +1590,7 @@ driver.close()
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-17T11:59:28+08:00" content="2016-09-17">
               2016-09-17
             </time>
@@ -1762,7 +1762,7 @@ element = driver.find_element_by_xpath(&quot;//input[@id=&apos;passwd-id&apos;]&
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-17T11:59:28+08:00" content="2016-09-17">
               2016-09-17
             </time>
@@ -1883,7 +1883,7 @@ https://ftp.mozilla.org/pub/firefox/releases/46.0.1/win64/en-US/
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">45</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1930,7 +1930,7 @@ https://ftp.mozilla.org/pub/firefox/releases/46.0.1/win64/en-US/
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
