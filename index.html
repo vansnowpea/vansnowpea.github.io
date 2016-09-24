@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -248,7 +248,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-23T23:20:28+08:00" content="2016-09-23">
               2016-09-23
             </time>
@@ -400,7 +400,7 @@ Out[19]: &apos;1994\xa0/\xa0美国\xa0/\xa0犯罪 剧情&apos;
 
 In [20]: aa.strip().replace(&apos;\n\r&apos;, &apos;&apos;)
 Out[20]: &apos;1994\xa0/\xa0美国\xa0/\xa0犯罪 剧情&apos;
-</code></pre><p>发现上述的replace函数似乎没起作用，那是这里正好没有’\n\r’，同时你可以发现，这里怎么有4个地方有\xa0 ？ 这是什么呢？ 原来是：转义字符，”\x”后接数字（两位）代表16进制数，这玩意牵涉编码的问题，打印的时候是一个空格。同时也可以感受到，如果英文较好，可以全英文写程序，可尽可能的避免这些劳什子。</p>
+</code></pre><p>发现上述的replace函数似乎没起作用，那是这里正好没有’\n\r’，同时你可以发现，这里怎么有4个地方有\xa0 ？ 这是什么呢？ 原来是：转义字符，”\x”后接数字（两位）代表16进制数，这玩意牵涉编码的问题，打印的时候是一个空格。</p>
 <p>然后循环里面的开始执行的命令都是为了去除\n和空格这些没有的东西，i = str(i).split(‘/‘)就是把去除空格和\n的字符串通过‘/’分隔在列表里。</p>
 <pre><code>In [35]: aa =  &apos;\n                            1994\xa0/\xa0美国\xa0/\xa0犯罪 剧情\n                        &apos;
 
@@ -492,7 +492,7 @@ Out[41]: [&apos;犯罪&apos;, &apos;剧情&apos;]
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-22T14:20:28+08:00" content="2016-09-22">
               2016-09-22
             </time>
@@ -694,7 +694,7 @@ for i in range(2, num+1):
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-21T22:20:28+08:00" content="2016-09-21">
               2016-09-21
             </time>
@@ -793,7 +793,7 @@ for i in range(2, num+1):
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-21T21:20:28+08:00" content="2016-09-21">
               2016-09-21
             </time>
@@ -890,7 +890,7 @@ for i in range(2, num+1):
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-20T14:20:28+08:00" content="2016-09-20">
               2016-09-20
             </time>
@@ -1092,7 +1092,7 @@ if __name__==&quot;__main__&quot;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-20T10:20:28+08:00" content="2016-09-20">
               2016-09-20
             </time>
@@ -1234,7 +1234,7 @@ run()
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-19T20:20:28+08:00" content="2016-09-19">
               2016-09-19
             </time>
@@ -1377,7 +1377,7 @@ run()
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-18T10:59:28+08:00" content="2016-09-18">
               2016-09-18
             </time>
@@ -1586,7 +1586,7 @@ driver.close()
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-17T11:59:28+08:00" content="2016-09-17">
               2016-09-17
             </time>
@@ -1758,7 +1758,7 @@ element = driver.find_element_by_xpath(&quot;//input[@id=&apos;passwd-id&apos;]&
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-17T11:59:28+08:00" content="2016-09-17">
               2016-09-17
             </time>
@@ -1879,7 +1879,7 @@ https://ftp.mozilla.org/pub/firefox/releases/46.0.1/win64/en-US/
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">45</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1926,7 +1926,7 @@ https://ftp.mozilla.org/pub/firefox/releases/46.0.1/win64/en-US/
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

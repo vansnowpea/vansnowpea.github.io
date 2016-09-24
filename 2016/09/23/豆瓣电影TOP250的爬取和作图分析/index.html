@@ -97,7 +97,7 @@
 # -*- coding: utf-8 -*-
 # !/us">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-23/225057825.png">
-<meta property="og:updated_time" content="2016-09-23T18:22:39.000Z">
+<meta property="og:updated_time" content="2016-09-24T01:12:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="豆瓣电影TOP250的爬取和作图分析【python】">
 <meta name="twitter:description" content="简介： 又回到豆瓣了，这是多适合爬虫的网站 ：）1、这次的对象是top 250 ， 网址：  https://movie.douban.com/top250 目的是对这250部电影的分类做一个统计。
@@ -185,7 +185,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -195,7 +195,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -258,7 +258,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-23T23:20:28+08:00" content="2016-09-23">
               2016-09-23
             </time>
@@ -408,7 +408,7 @@ Out[19]: &apos;1994\xa0/\xa0美国\xa0/\xa0犯罪 剧情&apos;
 
 In [20]: aa.strip().replace(&apos;\n\r&apos;, &apos;&apos;)
 Out[20]: &apos;1994\xa0/\xa0美国\xa0/\xa0犯罪 剧情&apos;
-</code></pre><p>发现上述的replace函数似乎没起作用，那是这里正好没有’\n\r’，同时你可以发现，这里怎么有4个地方有\xa0 ？ 这是什么呢？ 原来是：转义字符，”\x”后接数字（两位）代表16进制数，这玩意牵涉编码的问题，打印的时候是一个空格。同时也可以感受到，如果英文较好，可以全英文写程序，可尽可能的避免这些劳什子。</p>
+</code></pre><p>发现上述的replace函数似乎没起作用，那是这里正好没有’\n\r’，同时你可以发现，这里怎么有4个地方有\xa0 ？ 这是什么呢？ 原来是：转义字符，”\x”后接数字（两位）代表16进制数，这玩意牵涉编码的问题，打印的时候是一个空格。</p>
 <p>然后循环里面的开始执行的命令都是为了去除\n和空格这些没有的东西，i = str(i).split(‘/‘)就是把去除空格和\n的字符串通过‘/’分隔在列表里。</p>
 <pre><code>In [35]: aa =  &apos;\n                            1994\xa0/\xa0美国\xa0/\xa0犯罪 剧情\n                        &apos;
 
@@ -518,10 +518,10 @@ Out[41]: [&apos;犯罪&apos;, &apos;剧情&apos;]
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -538,7 +538,7 @@ Out[41]: [&apos;犯罪&apos;, &apos;剧情&apos;]
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">45</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -596,7 +596,7 @@ Out[41]: [&apos;犯罪&apos;, &apos;剧情&apos;]
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
