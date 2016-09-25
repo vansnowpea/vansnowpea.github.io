@@ -235,6 +235,154 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/05/把基于Python自动脚本转成了批处理/" itemprop="url">
+                  把基于Python自动脚本转成了批处理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-05T00:02:28+08:00" content="2016-09-05">
+              2016-09-05
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在上一个帖子里，已经实现了本地文件同步更新到站点。是通过Python运行了一个.py文件的形式，本来丢在VPS也不用管，但因本身VPS也运行我其他程序，导致手机远程登录的时候，查看那个py程序不方便（屏幕小）</p>
+<p>于是，在Python文件格式的基础上，混编成了批处理文件，这样，各司其职，更好些。 可以把这个bat文件放在任意文件夹了。</p>
+<p>代码：</p>
+<pre><code>&quot;&quot;&quot;
+::==============this is the note
+::batch and Python hybrid coding
+::Van
+
+::Below is code
+@echo off&amp;cls
+echo batch echo
+python.exe %0&amp;pause
+::=====================comments
+&quot;&quot;&quot;
+#below is your Python code
+
+__author__ = &apos;Van&apos;
+
+
+import os
+import time
+import subprocess
+
+file = &apos;C:\\Users\\Administrator\\TestBlog\\vansnowpea.github.io\\source\\_posts\\&apos;
+
+path = &quot;C:\\Users\\Administrator\\TestBlog\\vansnowpea.github.io&quot;
+
+t1 = os.path.getmtime(file)
+
+print (t1)
+
+def update_Hexo():
+    print (&apos;hi&apos;)
+    p = subprocess.Popen(&apos;cmd.exe&apos;, shell=True, stdin=subprocess.PIPE)
+    p.stdin.write(&apos;cd &apos;+ path + &apos;\n&apos;)
+    p.stdin.write(&apos;hexo generate --deploy&apos; + &apos;\n&apos;)
+    p.stdin.close()
+
+
+while 1:
+    time.sleep(1)
+    t2 = os.path.getmtime(file)
+    if t2 == t1:
+        pass
+
+    else:
+        print(&apos;file was modified, will update Hexo!&apos;)
+        update_Hexo()
+        print(&apos; update Hexo done!&apos;)
+    t1 = t2
+
+
+
+if __name__ == &quot;__main__&quot;:
+pass
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/05/Ubuntu中Nginx安装遇到的错误/" itemprop="url">
                   Ubuntu中Nginx安装遇到的错误
                 </a>
@@ -966,7 +1114,7 @@ $ sudo cnpm install hexo-cli -g
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-count">47</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>

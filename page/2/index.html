@@ -235,6 +235,178 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/17/基于Selenium一键写CSDN博客并做成exe文件/" itemprop="url">
+                  基于Selenium一键写CSDN博客并做成exe文件【python】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-17T11:59:28+08:00" content="2016-09-17">
+              2016-09-17
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="参考：原文1和原文2"><a href="#参考：原文1和原文2" class="headerlink" title="参考：原文1和原文2"></a>参考：<a href="http://www.jianshu.com/p/a81800774d91" target="_blank" rel="external">原文1</a>和<a href="http://blog.csdn.net/mrlevo520/article/details/51840217" target="_blank" rel="external">原文2</a></h1><p>1、代码，原文python2，修改成了python 3，作者信息保留，请修改CSDN帐号登录信息：</p>
+<pre><code># -*- coding: utf-8 -*-
+# python 3.5.2
+#Author:哈士奇说喵
+#CSDN--实现一键写博客
+
+from selenium import webdriver
+import time
+
+#shift-tab多行缩进(左)
+print (&apos;Please wait...Firefox loading...&apos;)
+print (&apos;---------------------------------&apos;)
+#reload(sys)
+
+PostUrl = &quot;https://passport.csdn.net/account/login?from=http://my.csdn.net/my/mycsdn&quot;
+driver=webdriver.Firefox()#用浏览器实现访问
+#driver = webdriver.PhantomJS(executable_path=&quot;phantomjs.exe&quot;)#没用浏览器
+driver.get(PostUrl)
+
+
+#账号填充输入
+elem_user = driver.find_element_by_id(&apos;username&apos;)
+elem_psw = driver.find_element_by_id(&apos;password&apos;)
+
+#可以自己修改登录名和账户密码，我自己的隐去了
+elem_user.send_keys(&apos;41111111@qq.com&apos;)
+elem_psw.send_keys(&apos;1111111&apos;)
+
+
+#点击登录
+#click_login = driver.find_element_by_xpath(&quot;//input[@class=&apos;logging&apos;]&quot;)
+click_login = driver.find_element_by_xpath(&quot;//input[@class=&apos;logging&apos;]&quot;)
+click_login.click()
+print( &apos;log in...&apos;)
+print (&apos;---------------------------------&apos;)
+time.sleep(1)
+
+#先点击写博客图标，不然元素隐藏
+
+click_wbic = driver.find_element_by_xpath(&quot;//ul[@class=&apos;btns&apos;]/li[5]&quot;)
+click_wbic.click()
+print (&apos;jumping...&apos;)
+print (&apos;---------------------------------&apos;)
+
+
+click_choice = driver.find_element_by_xpath(&quot;//div[@class=&apos;wrap clearfix&apos;]/dl/dt[4]/a&quot;)
+click_choice.click()#将点击操作放在内部比较好
+#定位新页面元素，将handle重定位即可
+driver.switch_to_window(driver.window_handles[1])#定位弹出的第一个页面，也就是当前页面
+click_markdown = driver.find_element_by_xpath(&quot;//p[@class=&apos;subtit&apos;]/a&quot;)
+click_markdown.click()
+print (&apos;---------------------------------&apos;)
+print (&apos;here we go!&apos;)
+#关闭无关页面，也可以根据自己喜好保留无关页面
+driver.close()#关闭第二个页面，也就是一般编辑器下的CSDN
+driver.switch_to_window(driver.window_handles[0])#关闭第1个页面，也就是登录主页
+driver.close()
+</code></pre><p>2、代码分析：<br>一些按键的定位是使用了xpath的编写方式，以“登录”为例，右键，检查，然后找到最近的一个class，因为这个登录直接在一个class 里，如下代码：</p>
+<pre><code>&lt;input class=&quot;logging&quot; accesskey=&quot;l&quot; value=&quot;登 录&quot; tabindex=&quot;6&quot; type=&quot;button&quot; data-form-sbm=&quot;1474112762583.3015&quot;&gt;
+</code></pre><p>所以根据xpath的路径规则，是 //input[@class=’logging’]，然后，配合selenium的xpath选定语法，写为：</p>
+<pre><code>click_login = driver.find_element_by_xpath(&quot;//input[@class=&apos;logging&apos;]&quot;)
+</code></pre><p>而写博客的按键，有所小复杂，因为检查的时候，不是直接在类里，需要向上寻找一个父类，注意不是平行的类，因此代码相对复杂点，形如：</p>
+<pre><code>click_wbic = driver.find_element_by_xpath(&quot;//ul[@class=&apos;btns&apos;]/li[5]&quot;)
+
+click_choice = driver.find_element_by_xpath(&quot;//div[@class=&apos;wrap clearfix&apos;]/dl/dt[4]/a&quot;)
+
+click_markdown = driver.find_element_by_xpath(&quot;//p[@class=&apos;subtit&apos;]/a&quot;)
+</code></pre><p>3、xpath的路径分析是直接通过检查中的代码换成xpath模式，而不是右键 copy–&gt; copy xpath模式。</p>
+<p>4、做成exe登录更简单些。</p>
+<p>5、全文需要安装firefox，为了保证和selenium兼容，我的是46英文版。</p>
+<p>6、又查阅了其他人的xpath分析方法，发现不一定要通过class来区分，如下：</p>
+<pre><code>&lt;input type=&quot;text&quot; name=&quot;passwd&quot; id=&quot;passwd-id&quot; /&gt;
+</code></pre><p>这段html语言，可以用以下的几种方法来定位。</p>
+<pre><code>element = driver.find_element_by_id(&quot;passwd-id&quot;)
+element = driver.find_element_by_name(&quot;passwd&quot;)
+element = driver.find_elements_by_tag_name(&quot;input&quot;)
+element = driver.find_element_by_xpath(&quot;//input[@id=&apos;passwd-id&apos;]&quot;)
+</code></pre><p>而且你在用 xpath 的时候还需要注意的是，如果有多个元素匹配了 xpath，它只会返回第一个匹配的元素。如果没有找到，那么会抛出 NoSuchElementException 的异常。</p>
+<p>7、由于firefox的加载比较慢，所以想通过PhantomJS来测试，但是发现他不识别既定的xpath路径，应该说是部分不识别，开头的还是识别的，中间的报错，坑爹啊。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/17/Firefox不能运行selenium的故障排查/" itemprop="url">
                   Firefox不能运行selenium的故障排查
                 </a>
@@ -1357,6 +1529,107 @@ if __name__ == &quot;__main__&quot;:
             
               
                 
+                <a class="post-title-link" href="/2016/09/13/Ubuntu下操作Django/" itemprop="url">
+                  Ubuntu下操作Django时的大杂烩【python】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-13T23:59:28+08:00" content="2016-09-13">
+              2016-09-13
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/video/12634" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、首先记录一个遇到的问题，一开始vi编辑模式下按方向键会变成ABCD,ubuntu下 vi输入方向键会变成ABCD，这是ubuntu预装的是vim tiny版本，安装vim full版本即可解决。先卸载vim-tiny：</p>
+<pre><code>$ sudo apt-get remove vim-common
+</code></pre><p>再安装vim full：</p>
+<pre><code>$ sudo apt-get install vim
+</code></pre><p>2、倒腾了半天，总算把vi的命令模式和插入模式搞明白了。搜索是“？+关键词”，下一个是字母：“n”，还有很多命令，可参考这里：<a href="http://www.cnblogs.com/emanlee/archive/2011/11/10/2243930.html" target="_blank" rel="external">http://www.cnblogs.com/emanlee/archive/2011/11/10/2243930.html</a><br>, 一开始因为第一条中记录的问题，导致一直输入错误。</p>
+<p>3、遇到问题：<br>  第一个电脑上，用pip isntall django后运行正常，第二个就报错 找不到django-admin 后来改用sudo apt install python-django才可以，不过貌似版本不是1.10.1的最新版，而是1.8.7的。</p>
+<p>4、Show Intention Actions ： 视频教程快速插入类和函数用的Ctrl+1的快捷键？查了下pycharm是Alt+Enter，但是明显这个设置要比Ctrl+1的模式反人类。 直接在setting–&gt;Keymap 搜索Alt竟然找不到的，原来他是按照左边的名次来搜索的，Show Intention Actions，本来想给他按照视频教程的快捷键修改，但是发现可以用鼠标双击的模式来定义，并且检测没有冲突，这下甚好。但问题又来了，只能自动识别类，不能识别下面的方法，而这一点上，Eclipse+pydev倒是做的很好。</p>
+<p>5、一个意外的发现： pycharm能在console调用ipython，而且带了显示函数的功能，如下图，问题是我忘记怎么把他调用出来了。：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/pycharm%20ipython.png" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/13/pdf的读取【python】/" itemprop="url">
                   pdf的读取【python】
                 </a>
@@ -1485,292 +1758,6 @@ for page in doc.get_pages():
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/13/Ubuntu下操作Django/" itemprop="url">
-                  Ubuntu下操作Django时的大杂烩【python】
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-13T23:59:28+08:00" content="2016-09-13">
-              2016-09-13
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/video/12634" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、首先记录一个遇到的问题，一开始vi编辑模式下按方向键会变成ABCD,ubuntu下 vi输入方向键会变成ABCD，这是ubuntu预装的是vim tiny版本，安装vim full版本即可解决。先卸载vim-tiny：</p>
-<pre><code>$ sudo apt-get remove vim-common
-</code></pre><p>再安装vim full：</p>
-<pre><code>$ sudo apt-get install vim
-</code></pre><p>2、倒腾了半天，总算把vi的命令模式和插入模式搞明白了。搜索是“？+关键词”，下一个是字母：“n”，还有很多命令，可参考这里：<a href="http://www.cnblogs.com/emanlee/archive/2011/11/10/2243930.html" target="_blank" rel="external">http://www.cnblogs.com/emanlee/archive/2011/11/10/2243930.html</a><br>, 一开始因为第一条中记录的问题，导致一直输入错误。</p>
-<p>3、遇到问题：<br>  第一个电脑上，用pip isntall django后运行正常，第二个就报错 找不到django-admin 后来改用sudo apt install python-django才可以，不过貌似版本不是1.10.1的最新版，而是1.8.7的。</p>
-<p>4、Show Intention Actions ： 视频教程快速插入类和函数用的Ctrl+1的快捷键？查了下pycharm是Alt+Enter，但是明显这个设置要比Ctrl+1的模式反人类。 直接在setting–&gt;Keymap 搜索Alt竟然找不到的，原来他是按照左边的名次来搜索的，Show Intention Actions，本来想给他按照视频教程的快捷键修改，但是发现可以用鼠标双击的模式来定义，并且检测没有冲突，这下甚好。但问题又来了，只能自动识别类，不能识别下面的方法，而这一点上，Eclipse+pydev倒是做的很好。</p>
-<p>5、一个意外的发现： pycharm能在console调用ipython，而且带了显示函数的功能，如下图，问题是我忘记怎么把他调用出来了。：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/pycharm%20ipython.png" alt=""></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/13/把维基百科首页词条的数据导入mysql/" itemprop="url">
-                  把维基百科首页词条的数据导入mysql以及读取操作【Python】
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-13T00:59:29+08:00" content="2016-09-13">
-              2016-09-13
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/712" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、<a href="https://vansnowpea.github.io/2016/09/13/%E7%BB%B4%E5%9F%BA%E7%99%BE%E7%A7%91%E9%A6%96%E9%A1%B5%E8%AF%8D%E6%9D%A1%E7%9A%84%E7%88%AC%E5%8F%96/" target="_blank" rel="external">此文是跟着上一篇来写的</a>，之前，已经完成了对维基百科词条的数据采集工作。</p>
-<p>2、本文和作者示范不同的地方是，建立数据库和表格的工具我维持使用了sqlyog软件，作者用的是哪个不确定，因为视频看不清上面的名字。</p>
-<p>3、代码如下，已经有一定说明，原作者可没提供代码哦，请把password对应的密码部分，从xxxx修改成你的真实数据库密码：</p>
-<pre><code>__author__ = &apos;Administrator&apos;
-# coding:utf-8
-# 运行在python 3.5.2
-
-import re
-from urllib.request import urlopen
-from bs4 import BeautifulSoup as bs
-import pymysql.cursors
-
-# 使用urllib的urlopen方法，去打开维基百科的首页，读取，并用utf-8解码
-resp = urlopen(&apos;https://en.wikipedia.org/wiki/Main_Page&apos;).read().decode(&apos;utf-8&apos;)
-
-# 使用BeautifulSoup去解析，其中html.parser是默认的解析器
-soup = bs(resp, &apos;html.parser&apos;)
-# 获取所有的/wiki/开头的a标签的href属性。
-listUrls = soup.find_all(&apos;a&apos;, href=re.compile(r&apos;^/wiki/&apos;))
-print(listUrls)
-
-# 输出所有的词条对应的名称和URL
-for url in listUrls:
-    # 排除.jpg JPG结尾的
-    if not re.search(&apos;\.(jpg|JPG)$&apos;, url[&apos;href&apos;]):
-        # 显示名称和网址的格式
-        # string只能显示一个，而get_text()可显示标签下所有的文字。
-        print(url.get_text(), &apos;&lt;----&gt;&apos;, &apos;https://en.wikipedia.org&apos;+url[&apos;href&apos;])
-        # 得到数据库的连接
-        connection = pymysql.connect(host=&apos;localhost&apos;,
-                               user=&apos;root&apos;,
-                               password=&apos;XXXX&apos;,
-                               db=&apos;wikiurl&apos;,
-                               charset=&apos;utf8&apos;
-                               )
-
-        try:
-            # 创建会话指针
-            with connection.cursor() as cursor:
-                # 创建sql语句
-                sql = &apos;insert into `urls` (`urlname`, `urlhref`) values(%s, %s)&apos;
-                # 执行sql语句
-                cursor.execute(sql, (url.get_text(), &apos;https://en.wikipedia.org&apos; + url[&apos;href&apos;]))
-                # 提交
-                connection.commit()
-
-        finally:
-            connection.close()
-</code></pre><p>4、其中关键的步骤有：</p>
-<p>A）：sqlyog中表格的制作和设置，千万注意，id的int类型，需要添加自增，否则运行程序会报错： “Field ‘id’ doesn’t have a default value</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%20wiki%20setting.png" alt=""></p>
-<p>B）数据库的插入和执行命令，因为不太熟悉，对着视频敲代码都错误了几次，并且要注意以下代码<code>urls</code> (<code>urlname</code>, <code>urlhref</code>)使用的是Tab键上面的那个上点号</p>
-<p>C）当程序没有报错，在sqlyog查看表格要先刷新</p>
-<p>D）<a href="https://vansnowpea.github.io/2016/09/11/Python%E6%93%8D%E4%BD%9CMySQL%E6%95%B0%E6%8D%AE%E5%BA%93/" target="_blank" rel="external">在之前的帖子，是在python2.7下，通过sqlyog的import MySQLdb 来操作mysql的</a>，并且，代码中的密码对应的是passwd，而这个和直接用python 运行pymysql的对应命令password是不同的，要分清楚。 </p>
-<p>5、结果图，有一丝喜悦感：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/wiki%20success.png" alt=""></p>
-<p>6、读取操作: 代码中，需要导入的包，和写入数据库的想同，主要的差别是读取数据需要额外的命令，比如，fetchall，fetchmany(size=n)这样的。相关读取的代码如下：</p>
-<pre><code># 运行在python 3.5.2
-
-
-import pymysql.cursors
-
-connection = pymysql.connect(host=&apos;localhost&apos;,
-                       user=&apos;root&apos;,
-                       password=&apos;XXXX&apos;,
-                       db=&apos;wikiurl&apos;,
-                       charset=&apos;utf8&apos;
-                       )
-
-try:
-    # 创建会话指针
-    with connection.cursor() as cursor:
-        # 创建需要查询数据的sql语句
-        sql = &apos;select `urlname`, `urlhref` from `urls` where `id` is not null&apos;
-        # 执行sql语句，计算数据库的总数量
-        count = cursor.execute(sql)
-        print(count)
-        # 查询数据
-        result = cursor.fetchmany(size=3)
-        #result = cursor.fetchall()
-        print(result)
-
-
-finally:
-    connection.close()
-</code></pre><p>7、总结： 无乱是写入还是读取数据库，总流程基本为：</p>
-<ul>
-<li>导入巡行所需要的包，比如import pymysql.cursors</li>
-<li>连接数据库，填写必要的数据库登录信息，和表格信息，编码信息等。</li>
-<li>定义绘画指针和需要操作的数据库语句</li>
-<li>执行相关操作，比如写入，查询等。其中写入操作还需要执行cursor.commit() 来完成提交。</li>
-<li>最后，无论如何，都要在finnally中执行connection.close()来关闭数据库。</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1816,7 +1803,7 @@ finally:
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-count">47</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
