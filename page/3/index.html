@@ -235,6 +235,107 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/13/Ubuntu下操作Django/" itemprop="url">
+                  Ubuntu下操作Django时的大杂烩【python】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-13T23:59:28+08:00" content="2016-09-13">
+              2016-09-13
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/video/12634" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、首先记录一个遇到的问题，一开始vi编辑模式下按方向键会变成ABCD,ubuntu下 vi输入方向键会变成ABCD，这是ubuntu预装的是vim tiny版本，安装vim full版本即可解决。先卸载vim-tiny：</p>
+<pre><code>$ sudo apt-get remove vim-common
+</code></pre><p>再安装vim full：</p>
+<pre><code>$ sudo apt-get install vim
+</code></pre><p>2、倒腾了半天，总算把vi的命令模式和插入模式搞明白了。搜索是“？+关键词”，下一个是字母：“n”，还有很多命令，可参考这里：<a href="http://www.cnblogs.com/emanlee/archive/2011/11/10/2243930.html" target="_blank" rel="external">http://www.cnblogs.com/emanlee/archive/2011/11/10/2243930.html</a><br>, 一开始因为第一条中记录的问题，导致一直输入错误。</p>
+<p>3、遇到问题：<br>  第一个电脑上，用pip isntall django后运行正常，第二个就报错 找不到django-admin 后来改用sudo apt install python-django才可以，不过貌似版本不是1.10.1的最新版，而是1.8.7的。</p>
+<p>4、Show Intention Actions ： 视频教程快速插入类和函数用的Ctrl+1的快捷键？查了下pycharm是Alt+Enter，但是明显这个设置要比Ctrl+1的模式反人类。 直接在setting–&gt;Keymap 搜索Alt竟然找不到的，原来他是按照左边的名次来搜索的，Show Intention Actions，本来想给他按照视频教程的快捷键修改，但是发现可以用鼠标双击的模式来定义，并且检测没有冲突，这下甚好。但问题又来了，只能自动识别类，不能识别下面的方法，而这一点上，Eclipse+pydev倒是做的很好。</p>
+<p>5、一个意外的发现： pycharm能在console调用ipython，而且带了显示函数的功能，如下图，问题是我忘记怎么把他调用出来了。：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/pycharm%20ipython.png" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/13/把维基百科首页词条的数据导入mysql/" itemprop="url">
                   把维基百科首页词条的数据导入mysql以及读取操作【Python】
                 </a>
@@ -1408,102 +1509,6 @@ for link in links:
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/07/Http权威指南 书籍下载和推荐/" itemprop="url">
-                  《Http权威指南》 完整版 书籍下载和推荐
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-07T10:59:28+08:00" content="2016-09-07">
-              2016-09-07
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="下载地址【点我】："><a href="#下载地址【点我】：" class="headerlink" title="下载地址【点我】："></a><a href="http://ocg7i7pt6.bkt.clouddn.com/HTTP%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%EF%BC%88%E7%9C%9F%E6%AD%A3%E7%9A%84%E5%AE%8C%E6%95%B4%E7%89%88%EF%BC%8C%E9%80%81%E7%BB%99%E7%88%B1%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%BA%BA%EF%BC%89.pdf" target="_blank" rel="external">下载地址【点我】</a>：</h1><p><img src="http://ocg7i7pt6.bkt.clouddn.com/111.png" alt=""></p>
-<p>说明：全文主要目录：</p>
-<p>可参考：<a href="http://baike.baidu.com/link?url=VfzWb4lL-ktk5UE0TNVUE5rjrjZbpGSPdkTPO70NRSc0vVf48GdgehNQGr351UFCtY266E3d6TCQqTb3gg9zBq" target="_blank" rel="external">百科地址【点我】</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1549,7 +1554,7 @@ for link in links:
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
