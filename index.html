@@ -235,8 +235,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/25/matplotlib中文显示乱码的解决办法/" itemprop="url">
-                  如何把kindle的电子书转成word等格式的教程
+                <a class="post-title-link" href="/2016/09/27/matplotlib中文显示乱码的解决办法/" itemprop="url">
+                  matplotlib中文显示乱码的解决办法
                 </a>
               
             
@@ -249,8 +249,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-25T23:20:28+08:00" content="2016-09-25">
-              2016-09-25
+            <time itemprop="dateCreated" datetime="2016-09-27T13:20:28+08:00" content="2016-09-27">
+              2016-09-27
             </time>
           </span>
 
@@ -279,35 +279,12 @@
       
         
           
-            <h1 id="简介：-如何把kindle的电子书转成word等格式的教程-：）"><a href="#简介：-如何把kindle的电子书转成word等格式的教程-：）" class="headerlink" title="简介： 如何把kindle的电子书转成word等格式的教程 ：）"></a>简介： 如何把kindle的电子书转成word等格式的教程 ：）</h1><p>1、参考知乎的步骤， <a href="http://www.zhihu.com/question/38451995" target="_blank" rel="external">http://www.zhihu.com/question/38451995</a></p>
-<p>2、下载去除DRM的破解版本，不然只能破解3本书，参考此网址： <a href="http://www.d9soft.com/soft/102882.htm" target="_blank" rel="external">http://www.d9soft.com/soft/102882.htm</a></p>
-<p>3、使用该网站，进行pdf转换： <a href="http://www.epubconverter.com/azw-to-pdf-converter/" target="_blank" rel="external">http://www.epubconverter.com/azw-to-pdf-converter/</a></p>
-<p>4、成功把《利用Python进行数据分析》转成了pdf，当然我事先花销了巨额的0.1元注册了一个Kindle Unlimited  帐号</p>
-<p>5、为了方便复制书中的代码实例，继续用calibre 软件进行转换成docx格式，不用对着那些网上的扫描版，或者纸质书，坑爹的挨个自己输入命令了有木有， </p>
-<p>6、示范图： </p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-26/001138836.png" alt=""></p>
-<p>7、我已经为偷懒的你，上传了本书，可以直接下载word版本啦。请点击<a href="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-26/001313882.docx" target="_blank" rel="external">【下载点我】</a></p>
-<p>8、记得重命名，方便以后查找。</p>
-<p>9、第八章spx指数的举例，代码我修正到pycharm里：</p>
-<pre><code>import matplotlib.pyplot as plt
-from datetime import datetime
-import pandas as pd
-fig = plt.figure()
-ax = fig.add_subplot(1, 1, 1)
-data = pd.read_csv(&apos;D:\mine\pydata-book-master\ch08/spx.csv&apos;, index_col=0, parse_dates=True)
-spx = data[&apos;SPX&apos;]
-spx.plot(ax=ax, style=&apos;k-&apos;)
-crisis_data = [      (datetime(2007, 10, 11), &apos;Peak of bull market&apos;),      (datetime(2008, 3, 12), &apos;Bear Stearns Fails&apos;),      (datetime(2008, 9, 15), &apos;Lehman Bankruptcy&apos;) ]
-for date, label in crisis_data:
-    ax.annotate(label, xy=(date, spx.asof(date) + 50),                 xytext=(date, spx.asof(date) + 200),                 arrowprops=dict(facecolor=&apos;black&apos;),                 horizontalalignment=&apos;left&apos;, verticalalignment=&apos;top&apos;)
-# 放大到2007-2010
-    ax.set_xlim([&apos;1/1/2007&apos;, &apos;1/1/2011&apos;])
-    ax.set_ylim([600, 1800])
-    ax.set_title(&apos;Important dates in 2008-2009 financial crisis&apos;)
+            <h1 id="简介：-matplotlib中文显示乱码的解决办法-：）"><a href="#简介：-matplotlib中文显示乱码的解决办法-：）" class="headerlink" title="简介： matplotlib中文显示乱码的解决办法 ：）"></a>简介： matplotlib中文显示乱码的解决办法 ：）</h1><p>1、在源代码开头加入以下几行：</p>
+<pre><code>from pylab import *
+mpl.rcParams[&apos;font.sans-serif&apos;] = [&apos;SimHei&apos;] #指定默认字体
 
-plt.show()
-</code></pre><p>结果图，有木有一点专业的味道？<br> <img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-26/105503895.png" alt=""></p>
-
+mpl.rcParams[&apos;axes.unicode_minus&apos;] = False #解决保存图像是负号&apos;-&apos;显示为方块的问题
+</code></pre>
           
         
       
