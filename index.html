@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -235,6 +235,110 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/27/收到《Python for data analysis》作者的邮件回复/" itemprop="url">
+                  matplotlib中文显示乱码的解决办法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-27T13:20:28+08:00" content="2016-09-27">
+              2016-09-27
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="简介：-matplotlib中文显示乱码的解决办法-：）"><a href="#简介：-matplotlib中文显示乱码的解决办法-：）" class="headerlink" title="简介： matplotlib中文显示乱码的解决办法 ：）"></a>简介： matplotlib中文显示乱码的解决办法 ：）</h1><p>1、在源代码开头加入以下几行：</p>
+<pre><code>from pylab import *
+mpl.rcParams[&apos;font.sans-serif&apos;] = [&apos;SimHei&apos;] #指定默认字体
+
+mpl.rcParams[&apos;axes.unicode_minus&apos;] = False #解决保存图像是负号&apos;-&apos;显示为方块的问题
+</code></pre><p>2、上述就针对单个py文件，如果想全部的，可以这么操作：</p>
+<ul>
+<li>\Lib\site-packages\matplotlib\mpl-data\matplotlibrc    用任意文本编辑器打开。（最好先备份一下）<br>找到第129行：#font.family， 将其注释去掉，冒号后面的值改为Microsoft YaHei</li>
+<li>找到第141行：#font.sans-serif， 将其注释去掉，并将Microsoft YaHei添加到冒号后面的最前面，注意还要再加一个英文逗号（,）</li>
+<li>并设置axes.unicode_minus = False #解决保存图像是负号’-‘显示为方块的问题</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/27/matplotlib中文显示乱码的解决办法/" itemprop="url">
                   matplotlib中文显示乱码的解决办法
                 </a>
@@ -248,7 +352,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-27T13:20:28+08:00" content="2016-09-27">
               2016-09-27
             </time>
@@ -352,7 +456,7 @@ mpl.rcParams[&apos;axes.unicode_minus&apos;] = False #解决保存图像是负�
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-25T23:20:28+08:00" content="2016-09-25">
               2016-09-25
             </time>
@@ -473,7 +577,7 @@ plt.show()
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-23T23:20:28+08:00" content="2016-09-23">
               2016-09-23
             </time>
@@ -571,7 +675,7 @@ plt.show()
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-23T23:20:28+08:00" content="2016-09-23">
               2016-09-23
             </time>
@@ -821,7 +925,7 @@ Out[41]: [&apos;犯罪&apos;, &apos;剧情&apos;]
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-22T14:20:28+08:00" content="2016-09-22">
               2016-09-22
             </time>
@@ -1023,7 +1127,7 @@ for i in range(2, num+1):
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-21T22:20:28+08:00" content="2016-09-21">
               2016-09-21
             </time>
@@ -1122,7 +1226,7 @@ for i in range(2, num+1):
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-21T21:20:28+08:00" content="2016-09-21">
               2016-09-21
             </time>
@@ -1219,7 +1323,7 @@ for i in range(2, num+1):
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-20T14:20:28+08:00" content="2016-09-20">
               2016-09-20
             </time>
@@ -1421,7 +1525,7 @@ if __name__==&quot;__main__&quot;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-20T10:20:28+08:00" content="2016-09-20">
               2016-09-20
             </time>
@@ -1529,149 +1633,6 @@ run()
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/19/关于Xpath地址的分析小结/" itemprop="url">
-                  关于Xpath地址的分析小结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-09-19T20:20:28+08:00" content="2016-09-19">
-              2016-09-19
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="简介：-发现有时候遇到xpath的路径报错，然而使用的都是一些插件工具，但不同浏览器和不同插件得到的xpath又有所差别，故做一个测试记录"><a href="#简介：-发现有时候遇到xpath的路径报错，然而使用的都是一些插件工具，但不同浏览器和不同插件得到的xpath又有所差别，故做一个测试记录" class="headerlink" title="简介： 发现有时候遇到xpath的路径报错，然而使用的都是一些插件工具，但不同浏览器和不同插件得到的xpath又有所差别，故做一个测试记录"></a>简介： 发现有时候遇到xpath的路径报错，然而使用的都是一些插件工具，但不同浏览器和不同插件得到的xpath又有所差别，故做一个测试记录</h1><p>1、旁引： 因故装python 3 +2 的双蛇系统，是故再次要把anaconda配置到python 2 去然后搜网址的时候，看到一个评论，喜感，记录如下：</p>
-<p>问：anaconda与python什么关系</p>
-<p>答复：<br>python 是莽蛇，一般是陆上蛇<br>Anaconda 是美洲大水蛇。</p>
-<p>好吧：如果英文不好的，可以用简友0han写的翻译小程序来看下：</p>
-<p>===============================</p>
-<h1 id="有道词典-命令行版v1-1-by-0han"><a href="#有道词典-命令行版v1-1-by-0han" class="headerlink" title="=有道词典 命令行版v1.1 by 0han="></a>=有道词典 命令行版v1.1 by 0han=</h1><p>输入’q’可退出程式</p>
-<p>请输入词语：python</p>
-<p>翻译:n. 巨蟒；大蟒</p>
-<p>请输入词语：anaconda</p>
-<p>翻译:n. 水蟒；蟒蛇</p>
-<p>请输入词语：</p>
-<p><strong><br>是不是可以写一部： 水与火之歌  ：） </strong></p>
-<p>2、以豆瓣网电影板块的“热门”按键为例，如图：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-19/181325132" alt=""></p>
-<p>在chrome里的xpath是：</p>
-<pre><code>//*[@id=&quot;gaia_frm&quot;]/div[1]/div[1]/label[1]
-</code></pre><p>在firefox 的firebug插件：：</p>
-<pre><code>/html/body/div[3]/div[1]/div/div[2]/div[4]/div[2]/div[1]/form/div[1]/div[1]/label[1]
-</code></pre><p>而firexfox的xpath checker插件则是：</p>
-<pre><code>id(&apos;gaia_frm&apos;)/x:div[1]/x:div[1]/x:label[1]
-</code></pre><p>又测试QQ浏览器为：</p>
-<pre><code>//*[@id=&quot;gaia_frm&quot;]/div[1]/div[1]/label[1]
-</code></pre><p>可以发现，谷歌和qq浏览器的格式一致，但firefox的插件，则不尽相同，但最起码，倒过来看，还是基本相同，这其实是路径开头选择差异导致的，而到路径最后基本都一样，这可以理解为绝对路径和相对路径，前者最开始一个斜杠，后者2个斜杠。那即便后面就肯定一样？但还要看“后面”的层级定义，即便到达最后一级的标签，采用的是什么属性定位，比如通过id，通过name等的区别。</p>
-<ul>
-<li><p>其中，firefox的xpath checker插件显示的比较特别，带有X： 字样，估计是该插件自定义的xpath格式，但如果直接复制到python里，是不识别的，因此会报错。所以，如果要采用他的格式，需要把x： 给删掉。测试就通过了。也就是要修改成：</p>
-<p>  driver.find_element_by_xpath(“id(‘gaia_frm’)/div[1]/div[1]/label[1]”)</p>
-</li>
-</ul>
-<ul>
-<li><p>谷歌和qq的一样，只需要测试一个，结论直接通过：</p>
-<p>  driver.find_element_by_xpath(“//*[@id=\”gaia_frm\”]/div[1]/div[1]/label[1]”)</p>
-</li>
-</ul>
-<ul>
-<li><p>firebug的，结论通过：</p>
-<p>  driver.find_element_by_xpath(“/html/body/div[3]/div[1]/div/div[2]/div[4]/div[2]/div[1]/form/div[1]/div[1]/label[1]”</p>
-</li>
-</ul>
-<p>结论：</p>
-<ul>
-<li>谷歌和qq浏览器自带的xpath路径分析，可通过常规需求的测试（由于有隐藏元素的一些网页功能，遇到的话依然可能失败，还有就是动态刷新技术）</li>
-<li>由于我安装的firefox没看到自带的xpath分析功能，所以安装了firebug插件以及xpath checker插件，但xpath checker插件自带的格式却得不到浏览器的支持，需要特别注意。</li>
-<li>xpath checker在反向验证xpath路径的时候还是有用。</li>
-</ul>
-<p>关于最后一点展开下，也是经验总结：</p>
-<p>比如，你看别人的代码分析，因为你不确定他是使用浏览器自带的，还是自己定义的，还是插件的xpath路径，甚至可能对方根本没有任何注释，导致你看到xpath路径的时候，一头的晕，丫到底写的是啥呀？也许聪明的你会说，那可以到网页源代码查找一部分的关键词，确实可以，但也麻烦，举例来说：</p>
-<pre><code>driver_item.find_element_by_xpath(&quot;//div[@class=&apos;list-wp&apos;]/a[@class=&apos;more&apos;]&quot;).click()
-</code></pre><p>虽然可以知道要点击一个含有class=’more’的控件元素，但你会发现直接网页源代码木有！！ 为何？ 因为他的真实是双引号class=”more”<br>原来，因为selenium 的find_element_by_xpath(“XXX”) 命令，如果你把XXX用class=”more”直接代替，绝对的报错，为何，因为双引号冲突， 你可以反斜杠来区分，抑或用单引号，这就是原因所在。可见，即便你到网页源代码查找还是麻烦的很，更不要说，如果万一源代码里有好几个这样的查找单元了。</p>
-<p>而我们用，xpath checker反向验证，可以很快的让你知道，对方分析的是什么元素，如下图：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-19/185937608" alt=""></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1717,8 +1678,8 @@ run()
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">48</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1765,7 +1726,7 @@ run()
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
