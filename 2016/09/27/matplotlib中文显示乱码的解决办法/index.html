@@ -98,7 +98,7 @@ from pylab import *
 mpl.rcParams[&amp;apos;font.sans-serif&amp;apos;] = [&amp;apos;SimHei&amp;apos;] #指定默认字体
 
 mpl.rcParams[&amp;apos;axes.unicode_minus&amp;apos;] = False #解决保存图像是负">
-<meta property="og:updated_time" content="2016-09-27T05:54:10.000Z">
+<meta property="og:updated_time" content="2016-09-27T06:46:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="matplotlib中文显示乱码的解决办法">
 <meta name="twitter:description" content="简介： matplotlib中文显示乱码的解决办法 ：）1、在源代码开头加入以下几行：
@@ -294,6 +294,11 @@ mpl.rcParams[&apos;font.sans-serif&apos;] = [&apos;SimHei&apos;] #指定默认�
 
 mpl.rcParams[&apos;axes.unicode_minus&apos;] = False #解决保存图像是负号&apos;-&apos;显示为方块的问题
 </code></pre><p>2、上述就针对单个py文件，如果想全部的，可以这么操作：</p>
+<ul>
+<li>\Lib\site-packages\matplotlib\mpl-data\matplotlibrc    用任意文本编辑器打开。（最好先备份一下）<br>找到第129行：#font.family， 将其注释去掉，冒号后面的值改为Microsoft YaHei</li>
+<li>找到第141行：#font.sans-serif， 将其注释去掉，并将Microsoft YaHei添加到冒号后面的最前面，注意还要再加一个英文逗号（,）</li>
+<li>并设置axes.unicode_minus’] = False #解决保存图像是负号’-‘显示为方块的问题</li>
+</ul>
 
       
     </div>
