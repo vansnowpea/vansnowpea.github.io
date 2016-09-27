@@ -756,6 +756,8 @@ Out[41]: [&apos;犯罪&apos;, &apos;剧情&apos;]
 </code></pre><p>里面的含义是：如果一个电影的分类关键词，在douban字典中（此时数据还没导入到数据库）不存在，那么新建一个对应名字的键值（keys），数值为1.否则如果是已经存在的，那么累加1.</p>
 <p>5、 第二个函数是def save_mysql():作用是把提取的数据加载到数据库中去。<br>其中insert的那一行命令写的有点个性，但因为用到了过多的引号，所以我不是很推荐，一般的写法是： %s + 变量名</p>
 <p>6、最后一个函数是用来画图的， 这块后续要配合nunpy，pandas等一直在加强下学习。</p>
+<p>统计结果显示，绝大部分的好电影都是通过剧情抓住人心的：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-27/144837956.png" alt=""></p>
 <p>7、 参考： <a href="http://www.jianshu.com/p/ef242e025cdf" target="_blank" rel="external">爬取豆瓣电影top250提取电影分类进行数据分析</a></p>
 
           
