@@ -235,6 +235,148 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/20/163和qq邮箱的自动登录--selenium【python】/" itemprop="url">
+                  163和qq邮箱的自动登录--selenium【python】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-20T10:20:28+08:00" content="2016-09-20">
+              2016-09-20
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="简介：-之前直接测试mail-q63-com-以及-mail-qq-com的selenium登录都受阻，网站采用了较强的反爬技术，如动态id等，故用规避方法登陆"><a href="#简介：-之前直接测试mail-q63-com-以及-mail-qq-com的selenium登录都受阻，网站采用了较强的反爬技术，如动态id等，故用规避方法登陆" class="headerlink" title="简介： 之前直接测试mail.q63.com 以及 mail.qq.com的selenium登录都受阻，网站采用了较强的反爬技术，如动态id等，故用规避方法登陆"></a>简介： 之前直接测试mail.q63.com 以及 mail.qq.com的selenium登录都受阻，网站采用了较强的反爬技术，如动态id等，故用规避方法登陆</h1><p>1、在参考他文的基础上，做了代码重构。QQ邮箱在右上角有“基本版”登录，没有做加强反爬处理，而163的，则是通过www.163.com去找邮箱，发现接口是email.163.com，注意多了一个字母e，是较早的登录接口。</p>
+<p>2、代码(请把你的帐号密码代替xxxx)，增加了自动判断输入是否正确：</p>
+<pre><code># coding:utf-8
+# python 3.5.2
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import selenium.webdriver.support.ui as ui
+import time
+
+# 选择QQ还是163邮箱
+email_type = input(&quot;1-QQ免费邮箱\n2-163免费邮箱\n请输入对应数字：&quot;)
+
+def run():
+    global email_type
+    if email_type != str(1) or email_type != str(2):
+        print (&quot;输入错误，请重新输入 :)&quot;)
+        email_type = input(&quot;1-QQ免费邮箱\n2-163免费邮箱\n请输入对应数字：&quot;)
+
+    if email_type == str(1):
+        url = &quot;https://ui.ptlogin2.qq.com/cgi-bin/login?style=9&amp;appid=522005705&amp;daid=4&amp;s_url=https%3A%2F%2Fw.mail.qq.com%2Fcgi-bin%2Flogin%3Fvt%3Dpassport%26vm%3Dwsk%26delegate_url%3D%26f%3Dxhtml%26target%3D&amp;hln_css=http%3A%2F%2Fmail.qq.com%2Fzh_CN%2Fhtmledition%2Fimages%2Flogo%2Fqqmail%2Fqqmail_logo_default_200h.png&amp;low_login=1&amp;hln_autologin=%E8%AE%B0%E4%BD%8F%E7%99%BB%E5%BD%95%E7%8A%B6%E6%80%81&amp;pt_no_onekey=1&quot;
+        driver = webdriver.Firefox()
+        driver.get(url)
+        time.sleep(2)
+        driver.find_element_by_xpath(&quot;/html/body/div[1]/div[2]/div[4]/ul/li[1]/input&quot;).send_keys(&quot;xxxx&quot;)
+        driver.find_element_by_xpath(&quot;/html/body/div[1]/div[2]/div[4]/ul/li[2]/input&quot;).send_keys(&quot;xxxx&quot;)
+        driver.find_element_by_xpath(&quot;//html/body/div[1]/div[2]/div[4]/div[2]&quot;).click()
+        print(&apos;--------------Log In------------&apos;)
+        time.sleep(1)
+
+
+    elif email_type == str(2):
+        url = &quot;http://email.163.com/&quot;
+
+        driver = webdriver.Firefox()
+        driver.get(url)
+        time.sleep(2)
+        driver.find_element_by_xpath(&quot;/html/body/div[1]/div[1]/div/div[2]/div[2]/div/form/div[1]/label&quot;).send_keys(&quot;xxxx&quot;)
+        driver.find_element_by_xpath(&quot;/html/body/div[1]/div[1]/div/div[2]/div[2]/div/form/div[2]/label&quot;).send_keys(&quot;xxxx&quot;)
+        driver.find_element_by_xpath(&quot;/html/body/div[1]/div[1]/div/div[2]/div[2]/div/form/div[2]/button&quot;).click()
+        print(&apos;--------------Log In------------&apos;)
+        time.sleep(1)
+
+
+run()
+</code></pre><p>3、pycharm输出：</p>
+<p>1-QQ免费邮箱<br>2-163免费邮箱<br>请输入对应数字：4<br>输入错误，请重新输入 :)<br>1-QQ免费邮箱<br>2-163免费邮箱<br>请输入对应数字：2<br>————–Log In————</p>
+<p>Process finished with exit code 0</p>
+<p>4、参考：</p>
+<p>  <a href="http://www.jianshu.com/p/a78b6bb95543" target="_blank" rel="external">【伪】解决动态id元素Selenium无法捕捉自动登录问题</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/19/关于Xpath地址的分析小结/" itemprop="url">
                   关于Xpath地址的分析小结
                 </a>
@@ -1583,283 +1725,6 @@ if __name__ == &apos;__main__&apos;:
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/14/百度百科1000个页面数据的抓取【python】/" itemprop="url">
-                  百度百科1000个页面数据的抓取【python】
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-14T21:59:28+08:00" content="2016-09-14">
-              2016-09-14
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/563" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、首先要感谢原作者非常细致的讲解，在网页分析的时候还是学到了一些很有用的技巧。后续会总结。</p>
-<p>2、这次是跟着作者，使用了Eclipse + Pydev的软件调试的，相对于Pycharm，他的优点就是可以动态插入需要的类和方法，而同比Pycharm只能动态匹配类，方法就没反应了。不过在界面配色方面明显没有Pyhcarm做的好。总之，目前的配色方案不满意，但将就下吧。</p>
-<p>3、原作者使用的Python 2的版本，我的版本（大部分还是照作者的）已经修改到3的版本了，。虽然感觉作者的代码，有的地方写的有点小啰嗦，不过看他视频现场操作，还是感觉细节有很多值得借鉴的地方。</p>
-<pre><code># -*- coding: utf-8 -*-
-# python 3.5.2
-
-from urllib.request import urlopen
-from bs4 import BeautifulSoup
-from urllib.parse import urlparse
-import re
-import urllib
-
-
-class HtmlOutputer(object):
-    def __init__(self):
-        self.datas = []
-
-    def collect_data(self, data):
-        if data is None:
-            return
-        self.datas.append(data)
-
-    def outputer_html(self):
-        fout = open(&apos;output.html&apos;, &apos;w&apos;)
-        fout.write(&quot;&lt;html&gt;&quot;)
-        fout.write(&quot;&lt;body&gt;&quot;)
-        fout.write(&quot;&lt;table&gt;&quot;)
-
-        # accii
-        for data in self.datas:
-            fout.write(&quot;&lt;tr&gt;&quot;)
-            fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;url&apos;])
-            # 原作者使用了.encode(&apos;utf-8&apos;)的代码，但在python 3 测试报错
-            fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;title&apos;]).encode(&apos;utf-8&apos;)
-            fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;summary&apos;]).encode(&apos;utf-8&apos;)
-
-            fout.write(&quot;&lt;/tr&gt;&quot;)
-
-        fout.write(&quot;&lt;/body&gt;&quot;)
-        fout.write(&quot;&lt;/table&gt;&quot;)
-        fout.write(&quot;&lt;/html&gt;&quot;)
-        fout.close()
-
-
-class HtmlParser(object):
-    def _get_new_urls(self, page_url, soup):
-        new_urls = set()
-        # /view/123.htm
-        links = soup.find_all(&apos;a&apos;, href=re.compile(r&apos;/view/\d+\.htm&apos;))
-        for link in links:
-            new_url = link[&apos;href&apos;]
-
-            new_full_url = urllib.parse.urljoin(page_url, new_url)
-            new_urls.add(new_full_url)
-        return new_urls
-
-    def _get_new_data(self, page_url, soup):
-        # http://baike.baidu.com/view/21087.htm
-        res_data = {}
-        res_data[&apos;url&apos;] = page_url
-        # &lt;dd class=&quot;lemmaWgt-lemmaTitle-title&quot;&gt;&lt;h1&gt;Python&lt;/h1&gt;
-        title_node = soup.find(&apos;dd&apos;, class_=&quot;lemmaWgt-lemmaTitle-title&quot;).find(&quot;h1&quot;)
-        res_data[&apos;title&apos;] = title_node.get_text()
-
-        # &lt;div class=&quot;lemma-summary&quot; label-module=&quot;lemmaSummary&quot;&gt;
-        summery_node = soup.find(&apos;div&apos;, class_=&quot;lemma-summary&quot;)
-        res_data[&apos;summery&apos;] = summery_node.get_text()
-
-        return res_data
-
-    def parse(self, page_url, html_cont):
-        if page_url is None or html_cont is None:
-            return
-        soup = BeautifulSoup(html_cont, &apos;html.parser&apos;, from_encoding=&apos;uft-8&apos;)
-        new_urls = self._get_new_urls(page_url, soup)
-        new_data = self._get_new_data(page_url, soup)
-
-        return new_urls, new_data
-
-
-class HtmlDownloader(object):
-    def download(self, url):
-        if url is None:
-            return None
-
-        response = urlopen(url)
-        if response.getcode() != 200:
-            return None
-        return response.read()
-
-
-class UrlManager(object):
-    def __init__(self):
-        self.new_urls = set()
-        self.old_urls = set()
-
-    def add_new_url(self, url):
-        if url is None:
-            return
-        if url not in self.new_urls and url not in self.old_urls:
-            self.new_urls.add(url)
-
-    def add_new_urls(self, urls):
-        if urls is None or len(urls) == 0:
-            return
-        for url in urls:
-            self.add_new_url(url)
-
-    def has_new_url(self):
-        return len(self.new_urls) != 0
-
-    def get_new_url(self):
-        new_url = self.new_urls.pop()
-        self.old_urls.add(new_url)
-        return new_url
-
-
-
-
-class SpiderMain(object):
-    def __init__(self):
-        # url 管理器
-        self.urls = UrlManager()
-        # 下载器
-        self.downloader = HtmlDownloader()
-
-        # 解析器
-        self.parser = HtmlParser()
-
-        # 输出器
-        self.outputer = HtmlOutputer()
-
-    def craw(self, root_url):
-        count = 1
-        # 入口url添加
-        self.urls.add_new_url(root_url)
-
-        # 如果有新的url
-        while self.urls.has_new_url():
-            try:
-
-                # 获取新的url
-                new_url = self.urls.get_new_url()
-                print(&apos;craw %d : %s&apos; % (count, new_url))
-
-                # 启动下载器下载页面
-                html_cont = self.downloader.download(new_url)
-
-                # 解析器来解析新的地址和数据
-                new_urls, new_data = self.parser.parse(new_url, html_cont)
-
-                # 把新的地址添加到urls
-                self.urls.add_new_urls(new_urls)
-
-                # 输出和收集数据
-                self.outputer.collect_data(new_data)
-
-                if count == 1000:
-                    break
-                count += 1
-            except:
-                print(&apos;craw failed.&apos;)
-
-        # 输出数据
-        self.outputer.outputer_html()
-
-
-if __name__ == &quot;__main__&quot;:
-    root_url = &quot;http://baike.baidu.com/view/21087.htm&quot;
-    # 创建一个爬虫对象
-    obj_spider = SpiderMain()
-    # 运行爬虫函数
-    obj_spider.craw(root_url)
-</code></pre><p>4、原作者是的html_outputer.py 文件包含了3个函数，最后一个是把爬虫数据导出到一个.html文件里，但是按照他的源代码，最后我总是得到错误提示如下，提示整数不能用来encode，也就是爬到的百科名词有的是纯数字的，比如设想是10086 ，另外在python 2 到3 的切换使用中，也确实遇到好几在V2 下ok的代码，到了V3失败，很多是来自解码方面的异常。：</p>
-<p>AttributeError: ‘int’ object has no attribute ‘encode’</p>
-<p>或者当去掉utf-8输出，又遇到gbk编码的问题：<br>UnicodeEncodeError: ‘gbk’ codec can’t encode character ‘\u02c8’ in position 19: illegal multibyte sequence</p>
-<p>5、总结：</p>
-<ul>
-<li><p>首先，原作者在一个工程下，建立一个package，然后把几个主要的类单独列出了py文件，这样的方式更为规范，此文为粘贴代码简便，统一到了一起。实际，应用第一种模式为佳。</p>
-</li>
-<li><p>其次，在分析html的分类入口处，比如python关键词地方的对应html代码，使用右键–&gt;检查（或F12，然后点击上面有“类”的地方，比如此文是关键词python在类lemmaWgt-lemmaTitle-title下的h1标题，然后再右键–&gt;Edit as html，就可以在一个段落里轻松复制这断html代码了。否则在F12模式下不能直接上下复制的）</p>
-</li>
-<li>经过比较python 2， 如果检索的关键词是数字，一样不能使用.encode(‘utf-8’)， 那么原作者的演示视频为何都没有报错？ 这应该是他当时的爬虫没有搜寻到数字关键词，而我的遇到了。 </li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1905,7 +1770,7 @@ if __name__ == &quot;__main__&quot;:
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-count">50</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>

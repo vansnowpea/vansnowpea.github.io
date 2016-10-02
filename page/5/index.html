@@ -235,6 +235,106 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/05/ECS 基于Nodejs运行微信公众号的bug调试/" itemprop="url">
+                  ECS 基于Nodejs运行微信公众号的bug调试
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-05T00:03:39+08:00" content="2016-09-05">
+              2016-09-05
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>1、因此方法基于Nodejs，但之前安装了Nginx，占用了80端口，而微信公众号必须80端口，因此要把Nginx停用。</p>
+<p>2、此文是确定80端口被Nginx占用，如不确定，应该用netstat命令查询谁占用了80端口，而查询nginx进程</p>
+<pre><code>ps -ef | grep nginx
+</code></pre><p>3、停止nginx</p>
+<pre><code>kill -QUIT 主进程号
+</code></pre><p>`</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/05/基于神箭手的简易爬虫示范--切糕王子--/" itemprop="url">
                   基于神箭手的简易爬虫示范--切糕王子--
                 </a>
@@ -1342,7 +1442,7 @@ $ sudo cnpm install hexo-cli -g
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-count">50</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
