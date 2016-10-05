@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="Introduction: begin to learn Machine Learning, and find Google’s open source technology: TensorFlow.1、It seems TF only support Linux by official , but I try to install in also on Win 10, so try :： ht">
+<meta name="description" content="Introduction: begin to learn Machine Learning, and find Google’s open source technology: TensorFlow.1、It seems TF only support Linux by official , but I try to install also on Win 10, so try :： http:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="begin to learn TensorFlow">
 <meta property="og:url" content="http://yoursite.com/2016/10/05/tensorflow 初步学习/index.html">
-<meta property="og:site_name" content="A Song of Python and AnaConda">
-<meta property="og:description" content="Introduction: begin to learn Machine Learning, and find Google’s open source technology: TensorFlow.1、It seems TF only support Linux by official , but I try to install in also on Win 10, so try :： ht">
+<meta property="og:site_name" content="A Song of Python and Anaconda">
+<meta property="og:description" content="Introduction: begin to learn Machine Learning, and find Google’s open source technology: TensorFlow.1、It seems TF only support Linux by official , but I try to install also on Win 10, so try :： http:">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-05/163346079.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-05/235616627.png">
-<meta property="og:updated_time" content="2016-10-05T15:59:26.000Z">
+<meta property="og:updated_time" content="2016-10-05T18:14:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="begin to learn TensorFlow">
-<meta name="twitter:description" content="Introduction: begin to learn Machine Learning, and find Google’s open source technology: TensorFlow.1、It seems TF only support Linux by official , but I try to install in also on Win 10, so try :： ht">
+<meta name="twitter:description" content="Introduction: begin to learn Machine Learning, and find Google’s open source technology: TensorFlow.1、It seems TF only support Linux by official , but I try to install also on Win 10, so try :： http:">
 <meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-05/163346079.png">
 
 
@@ -119,7 +119,7 @@
 
   <link rel="canonical" href="http://yoursite.com/2016/10/05/tensorflow 初步学习/"/>
 
-  <title> begin to learn TensorFlow | A Song of Python and AnaConda </title>
+  <title> begin to learn TensorFlow | A Song of Python and Anaconda </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -150,7 +150,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">A Song of Python and AnaConda</span>
+      <span class="site-title">A Song of Python and Anaconda</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -280,7 +280,7 @@
 
       
         <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-05/163346079.png" alt=""></p>
-<h1 id="Introduction-begin-to-learn-Machine-Learning-and-find-Google’s-open-source-technology-TensorFlow"><a href="#Introduction-begin-to-learn-Machine-Learning-and-find-Google’s-open-source-technology-TensorFlow" class="headerlink" title="Introduction: begin to learn Machine Learning, and find Google’s open source technology: TensorFlow."></a>Introduction: begin to learn Machine Learning, and find Google’s open source technology: TensorFlow.</h1><p>1、It seems TF only support Linux by official , but I try to install in also on Win 10, so try :： <a href="http://wiki.jikexueyuan.com/project/tensorflow-zh/" target="_blank" rel="external">http://wiki.jikexueyuan.com/project/tensorflow-zh/</a>：<br>though some guy reported successed on win, but I failed as can not download the big file no matter USA IP, anyway , I record the method.</p>
+<h1 id="Introduction-begin-to-learn-Machine-Learning-and-find-Google’s-open-source-technology-TensorFlow"><a href="#Introduction-begin-to-learn-Machine-Learning-and-find-Google’s-open-source-technology-TensorFlow" class="headerlink" title="Introduction: begin to learn Machine Learning, and find Google’s open source technology: TensorFlow."></a>Introduction: begin to learn Machine Learning, and find Google’s open source technology: TensorFlow.</h1><p>1、It seems TF only support Linux by official , but I try to install also on Win 10, so try :： <a href="http://wiki.jikexueyuan.com/project/tensorflow-zh/" target="_blank" rel="external">http://wiki.jikexueyuan.com/project/tensorflow-zh/</a>：<br>though some guy reported successed on win, but I failed as can not download the big file no matter with USA IP, anyway , I record the method.</p>
 <pre><code>捣鼓好了windows docker安装，参考了楼上的许多信息。
 1. 安装docker
 2. 点开Docker Quickstart Terminal， 打开成功后：
@@ -289,7 +289,7 @@
 4. 运行tensorflow-jupyter: docker run xblaster/tensorflow-jupyter
      会提示running at: http://0.0.0.0:8888，不知道为什么会是这个IP地址，用浏览器打开不了。然后替换成docker打开时的IP，http://192.168.99.100:8888就可以打开了。
 5. 运行example code，mnist参考资料：1, tensorflow官方文档；2，http://blog.csdn.net/yhl_leo/article/details/50614444 及其mnist的github：https://github.com/yhlleo/mnist，github中有input_data.py这个很重要的文件。
-</code></pre><p>2、 I run it in Ubuntu and test an easy exmaple which is :</p>
+</code></pre><p>2、 I run it on Ubuntu and test an easy exmaple which is :</p>
 <pre><code>y =0.1*x +0.3
 </code></pre><p>and after 200 times of calculating , get result :</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-05/235616627.png" alt=""> </p>
