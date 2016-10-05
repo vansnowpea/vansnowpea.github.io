@@ -84,22 +84,12 @@
 
 
 
-<meta name="description" content="说明：正确使用搜索引擎真心是有用和重要，某种程度上，是跨行的自信支撑。这是转帖
-
-原文地址： 编程初学者如何使用搜索引擎【点我】">
-<meta property="og:type" content="article">
-<meta property="og:title" content="编程初学者如何使用搜索引擎">
-<meta property="og:url" content="http://yoursite.com/2016/09/05/编程初学者如何使用搜索引擎/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="蛇 母 陵">
+<meta property="og:url" content="http://yoursite.com/page/6/index.html">
 <meta property="og:site_name" content="蛇 母 陵">
-<meta property="og:description" content="说明：正确使用搜索引擎真心是有用和重要，某种程度上，是跨行的自信支撑。这是转帖
-
-原文地址： 编程初学者如何使用搜索引擎【点我】">
-<meta property="og:updated_time" content="2016-08-31T02:01:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="编程初学者如何使用搜索引擎">
-<meta name="twitter:description" content="说明：正确使用搜索引擎真心是有用和重要，某种程度上，是跨行的自信支撑。这是转帖
-
-原文地址： 编程初学者如何使用搜索引擎【点我】">
+<meta name="twitter:title" content="蛇 母 陵">
 
 
 
@@ -120,9 +110,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/05/编程初学者如何使用搜索引擎/"/>
+  <link rel="canonical" href="http://yoursite.com/page/6/"/>
 
-  <title> 编程初学者如何使用搜索引擎 | 蛇 母 陵 </title>
+  <title> 蛇 母 陵 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -143,7 +133,9 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -220,9 +212,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
   
@@ -242,7 +234,10 @@
             
             
               
-                编程初学者如何使用搜索引擎
+                
+                <a class="post-title-link" href="/2016/08/23/How to build a Blog with Hexo on Github/" itemprop="url">
+                  How to build a Blog with Hexo on Github
+                </a>
               
             
           </h1>
@@ -254,8 +249,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-05T00:02:29+08:00" content="2016-09-05">
-              2016-09-05
+            <time itemprop="dateCreated" datetime="2016-08-23T21:16:05+08:00" content="2016-08-23">
+              2016-08-23
             </time>
           </span>
 
@@ -282,25 +277,57 @@
       
 
       
-        <hr>
-<p>说明：正确使用搜索引擎真心是有用和重要，某种程度上，是跨行的自信支撑。这是转帖</p>
-<hr>
-<p>原文地址： <a href="https://zhuanlan.zhihu.com/p/20683456?refer=crossin" target="_blank" rel="external">编程初学者如何使用搜索引擎【点我】</a></p>
+        
+          
+            <p><img src="http://ocg7i7pt6.bkt.clouddn.com/python.png" alt=""></p>
+<p>##This is the first post of my blog here, and will show how to build it.</p>
+<p>##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js</p>
+<p>##Note : change username into real one, supposed your Github id is xxx, replace username with xxx.</p>
+<p>1/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install node.js</div></pre></td></tr></table></figure>
+<p>2/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt install git-core</div></pre></td></tr></table></figure>
+<p>3/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt install npm</div></pre></td></tr></table></figure>
+<p>4/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo npm install -g hexo-cli</div></pre></td></tr></table></figure>
+<p>5/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> /home/van/downloads/</div></pre></td></tr></table></figure>
+<p>you choose a path.</p>
+<p>6/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mkdir TestB<span class="built_in">log</span></div></pre></td></tr></table></figure>
+<p>7/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> TestB<span class="built_in">log</span></div></pre></td></tr></table></figure>
+<p>8/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/username/username.github.io.git</div></pre></td></tr></table></figure>
+<p>9/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init username.github.io</div></pre></td></tr></table></figure>
+<p>10/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> username.github.io</div><div class="line">$ npm install</div></pre></td></tr></table></figure>
+<p>11/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo s</div></pre></td></tr></table></figure>
+<p>type:<strong>localhost:4000</strong> in brower,<br>it should work now, but the <a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> is still 404 error.</p>
+<p>12/ open _config.yml and modify as follows:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line"><span class="built_in">type</span>: git</div><div class="line">repo: https://github.com/username/username .github.io.git</div><div class="line">branch: master</div></pre></td></tr></table></figure>
+<p>13/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo d</div><div class="line">$ hexo s</div></pre></td></tr></table></figure>
+<p>now the <a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> should work,<br>and plz note:in less case , if the port 4000 is occupied,<br>set <strong>$ hexo server -p 5000</strong> or some big number.</p>
+<p>14/ change a Theme</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> your-hexo-site </div><div class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
+<p>modify in _config.yaml:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Theme: next</div></pre></td></tr></table></figure>
+<p>15/ and now you got it. ^^)</p>
 
+          
+        
       
     </div>
 
     <div>
       
-        
-
-      
     </div>
 
     <div>
-      
-        
-
       
     </div>
 
@@ -308,36 +335,23 @@
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/09/05/把基于Python自动脚本转成了批处理/" rel="next" title="把基于Python自动脚本转成了批处理">
-                <i class="fa fa-chevron-left"></i> 把基于Python自动脚本转成了批处理
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/05/基于神箭手的简易爬虫示范--切糕王子--/" rel="prev" title="基于神箭手的简易爬虫示范--切糕王子--">
-                基于神箭手的简易爬虫示范--切糕王子-- <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
 
       
+      
+        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+  </nav>
+
 
 
           </div>
@@ -345,10 +359,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -368,17 +378,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -414,17 +415,6 @@
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -521,10 +511,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 

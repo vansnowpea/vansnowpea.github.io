@@ -235,6 +235,127 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/05/用Python和SAE开发微信公众号的过程2/" itemprop="url">
+                  用Python和SAE开发微信公众号的方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-05T00:03:39+08:00" content="2016-09-05">
+              2016-09-05
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>说明：此贴是以新浪SAE+git+Python设置微信公众号的方法，注意新浪SAE需要实名认证才能工作。</p>
+<hr>
+<p>1、在SAE新建应用，如van3，则得到<a href="http://van3.applinzi.com/的2级域名一枚，后续会用于微信公众号的URL。" target="_blank" rel="external">http://van3.applinzi.com/的2级域名一枚，后续会用于微信公众号的URL。</a></p>
+<p>2、选择Git部署。同时得到仓库地址：<a href="https://git.sinacloud.com/van3" target="_blank" rel="external">https://git.sinacloud.com/van3</a></p>
+<p>3、在C盘根目录新建一个sae的文件夹（可自选名字和路径），代码:</p>
+<pre><code>cd sae
+
+
+git clone https://git.sinacloud.com/van3
+</code></pre><p>4、 此时，van3里面还是空的，后续是在本地更新文件后再上传到SAE，当然在Github也做一个备份。随后登录微信公众平台，在“基本配置”的地方，找到APP_ID 和SECRET_KEY，并复制到一个文本文档，后面要用到，并点击页面中间的“修改配置”，设置URL为第一步中的2级域名，而Token（自定义），EncodingAESKey则随机生成，选择安全模式，并把token的内容也复制到文本文档。此时不提交（要先配置本地文件，否则Token无法识别的）。并去<a href="http://tuling123.com/" target="_blank" rel="external">图灵网【点我】</a>申请一个key，也复制到文本文档。</p>
+<p>5、 操作本地项目文件，代码：</p>
+<pre><code>cd van3
+
+pip install requests
+
+
+update.py
+</code></pre><p>6、这里是基于在Github上已经有了一个示范程序了。选择1：update config 2：update articles 4: update server<br>界面跳出token，此时把微信公众平台设置的token，APP_ID ，<br>SECRET_KEY和图灵网的key的内容都复制进去。</p>
+<p>7 把本地文件更新到Github服务器，代码：</p>
+<pre><code>git push origin master:1
+</code></pre><p>8、把本地文件更新到SAE：</p>
+<pre><code>git remote add sae https://git.sinacloud.com/van3
+
+git add .
+
+git push sae master:1
+</code></pre><p>9、参考：   <a href="https://github.com/littlecodersh/MyPlatform/wiki/Deploy" target="_blank" rel="external">MyPlatform </a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/05/ECS 基于Nodejs运行微信公众号的bug调试/" itemprop="url">
                   ECS 基于Nodejs运行微信公众号的bug调试
                 </a>
@@ -1266,142 +1387,11 @@ $ sudo cnpm install hexo-cli -g
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/23/How to build a Blog with Hexo on Github/" itemprop="url">
-                  How to build a Blog with Hexo on Github
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-08-23T21:16:05+08:00" content="2016-08-23">
-              2016-08-23
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="http://ocg7i7pt6.bkt.clouddn.com/python.png" alt=""></p>
-<p>##This is the first post of my blog here, and will show how to build it.</p>
-<p>##Enviroment: Ubuntu 16.04 + Hexo + Git + Node.js</p>
-<p>##Note : change username into real one, supposed your Github id is xxx, replace username with xxx.</p>
-<p>1/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install node.js</div></pre></td></tr></table></figure>
-<p>2/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt install git-core</div></pre></td></tr></table></figure>
-<p>3/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt install npm</div></pre></td></tr></table></figure>
-<p>4/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo npm install -g hexo-cli</div></pre></td></tr></table></figure>
-<p>5/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> /home/van/downloads/</div></pre></td></tr></table></figure>
-<p>you choose a path.</p>
-<p>6/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mkdir TestB<span class="built_in">log</span></div></pre></td></tr></table></figure>
-<p>7/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> TestB<span class="built_in">log</span></div></pre></td></tr></table></figure>
-<p>8/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/username/username.github.io.git</div></pre></td></tr></table></figure>
-<p>9/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init username.github.io</div></pre></td></tr></table></figure>
-<p>10/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> username.github.io</div><div class="line">$ npm install</div></pre></td></tr></table></figure>
-<p>11/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo s</div></pre></td></tr></table></figure>
-<p>type:<strong>localhost:4000</strong> in brower,<br>it should work now, but the <a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> is still 404 error.</p>
-<p>12/ open _config.yml and modify as follows:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line"><span class="built_in">type</span>: git</div><div class="line">repo: https://github.com/username/username .github.io.git</div><div class="line">branch: master</div></pre></td></tr></table></figure>
-<p>13/</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo d</div><div class="line">$ hexo s</div></pre></td></tr></table></figure>
-<p>now the <a href="http://username.github.io" target="_blank" rel="external">http://username.github.io</a> should work,<br>and plz note:in less case , if the port 4000 is occupied,<br>set <strong>$ hexo server -p 5000</strong> or some big number.</p>
-<p>14/ change a Theme</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> your-hexo-site </div><div class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
-<p>modify in _config.yaml:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Theme: next</div></pre></td></tr></table></figure>
-<p>15/ and now you got it. ^^)</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1442,7 +1432,7 @@ $ sudo cnpm install hexo-cli -g
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>

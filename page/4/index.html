@@ -235,6 +235,169 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/09/HTML基础学习小结/" itemprop="url">
+                  HTML基础学习小结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-09T14:59:28+08:00" content="2016-09-09">
+              2016-09-09
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明：以下内容学习自：http-www-w3school-com-cn"><a href="#说明：以下内容学习自：http-www-w3school-com-cn" class="headerlink" title="说明：以下内容学习自：http://www.w3school.com.cn/"></a>说明：以下内容学习自：<a href="http://www.w3school.com.cn/" target="_blank" rel="external">http://www.w3school.com.cn/</a></h1><p>1、<br>以下记录了一些常用的html元素，块，类，第一个是html和head，用来申明是html文件，以及head部分的代码：<br></p>
+<p>2、<br>h1 定义标题的开始 <br></p>
+<p>3、<br>body 定义 HTML 文档的主体<br></p>
+<p>4、<br>P表示段落<br></p>
+<p>5、<br>table 定义 HTML 表格<br></p>
+<p>6、<br>a 用来定义链接，如下代码 <br></p>
+<pre><code>&lt;a href=&quot;http://www.w3school.com.cn&quot;&gt;This is a link&lt;/a&gt;
+</code></pre><p>7、</p>
+<p>img 定义图像如下代码 <br> </p>
+<pre><code>&lt;img src=&quot;w3school.jpg&quot; width=&quot;104&quot; height=&quot;142&quot; /&gt;
+</code></pre><p>8、</p>
+<p>无序列表始于 ul 标签。每个列表项始于 li。代码和效果如下：</p>
+<pre><code>&lt;ul&gt;
+  &lt;li&gt;咖啡&lt;/li&gt;
+  &lt;li&gt;茶&lt;/li&gt;
+  &lt;li&gt;牛奶&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre><ul><br>  <li>咖啡</li><br>  <li>茶</li><br>  <li>牛奶</li><br></ul>
+
+
+<p>9、div是块级元素，它是可用于组合其他 HTML 元素的容器，浏览器通常会在 div 元素前后放置一个换行符。另一个常见的用途是文档布局。它取代了使用表格定义布局的老式方法，感觉可以理解成一个函数或集合。举例：</p>
+<pre><code>&lt;div style=&quot;color:#00FF00&quot;&gt;
+&lt;h3&gt;This is a header&lt;/h3&gt;
+&lt;p&gt;This is a paragraph.&lt;/p&gt;
+&lt;/div&gt;
+</code></pre><div style="color:#00FF00"><br>    <h3>This is a header</h3><br>    <p>This is a paragraph.</p><br>    </div>
+
+
+<p>10、 span 元素，然后对这个 span 元素的父元素，即 p 元素应用 class，这样就可以对这个类的子元素 span 应用相应的样式了。</p>
+<pre><code>&lt;p class=&quot;tip&quot;&gt;&lt;span&gt;提示：&lt;/span&gt;... ... ...&lt;/p&gt;
+</code></pre><p>或者CSS：</p>
+<pre><code>p.tip span {
+        font-weight:bold;
+        color:#ff9955;
+}
+</code></pre><p>11、类的概念，以div的一段代码为例，可以发现，在head部分定义了一个cities的类，然后div引用了这个类，作用是把背景设置为黑色，字体为白色，margin和padding都设置为20px，另外类引用到span也是差不多的，形如<span class="xxx">：</span></p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+.cities {
+    background-color:black;
+    color:white;
+    margin:20px;
+    padding:20px;
+}    
+&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;div class=&quot;cities&quot;&gt;
+&lt;h2&gt;London&lt;/h2&gt;
+
+&lt;p&gt;London is the capital city of England. It is the most populous city in the United Kingdom, with a metropolitan area of over 13 million inhabitants.&lt;/p&gt;
+
+&lt;p&gt;Standing on the River Thames, London has been a major settlement for two millennia, its history going back to its founding by the Romans, who named it Londinium.&lt;/p&gt;
+&lt;/div&gt; 
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>12、布局，用一张图来体验下，其实就是一些文字+底色的布局，但是看上去有点大气，用到了#符号，以及<br>div id=”header”这样的形式，也就是css里的id选择器，具体代码<a href="http://www.w3school.com.cn/html/html_layout.asp" target="_blank" rel="external">参考这里【点我】</a></p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/htmlbuju.png" alt=""></p>
+<p>13、响应式设计，明显感觉Bootstrap的模式要好，所以省略。</p>
+<p>14、框架：frameset  可以在同一个浏览器窗口中显示不止一个页面。</p>
+<p>15、内联框架 iframe</p>
+<p>16、背景，一个是背景颜色，形如：body bgcolor=”#000000” 一个是背景图，形如 body background=”<a href="http://www.w3school.com.cn/clouds.gif" target="_blank" rel="external">http://www.w3school.com.cn/clouds.gif</a>“</p>
+<p>17、脚本：JavaScript 使 HTML 页面具有更强的动态和交互性。</p>
+<p>18、实体，关于一些特殊符号在html的格式，<a href="http://www.w3school.com.cn/html/html_entities.asp" target="_blank" rel="external">参考此链接【点我】</a></p>
+<p>19、颜色，列表出了一些常用颜色 ，其列出的一些配色，作为底色感觉不错，<a href="http://www.w3school.com.cn/html/html_colors.asp" target="_blank" rel="external">参考此链接【点我】</a> 以及<a href="http://www.w3school.com.cn/html/html_colornames.asp" target="_blank" rel="external">这个网址【点我】</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/09/Linux的历史和HTML学习的必要/" itemprop="url">
                   Linux的历史和HTML学习的必要
                 </a>
@@ -1279,132 +1442,11 @@ class Meta:
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/05/用Python和SAE开发微信公众号的过程2/" itemprop="url">
-                  用Python和SAE开发微信公众号的方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-05T00:03:39+08:00" content="2016-09-05">
-              2016-09-05
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<p>说明：此贴是以新浪SAE+git+Python设置微信公众号的方法，注意新浪SAE需要实名认证才能工作。</p>
-<hr>
-<p>1、在SAE新建应用，如van3，则得到<a href="http://van3.applinzi.com/的2级域名一枚，后续会用于微信公众号的URL。" target="_blank" rel="external">http://van3.applinzi.com/的2级域名一枚，后续会用于微信公众号的URL。</a></p>
-<p>2、选择Git部署。同时得到仓库地址：<a href="https://git.sinacloud.com/van3" target="_blank" rel="external">https://git.sinacloud.com/van3</a></p>
-<p>3、在C盘根目录新建一个sae的文件夹（可自选名字和路径），代码:</p>
-<pre><code>cd sae
-
-
-git clone https://git.sinacloud.com/van3
-</code></pre><p>4、 此时，van3里面还是空的，后续是在本地更新文件后再上传到SAE，当然在Github也做一个备份。随后登录微信公众平台，在“基本配置”的地方，找到APP_ID 和SECRET_KEY，并复制到一个文本文档，后面要用到，并点击页面中间的“修改配置”，设置URL为第一步中的2级域名，而Token（自定义），EncodingAESKey则随机生成，选择安全模式，并把token的内容也复制到文本文档。此时不提交（要先配置本地文件，否则Token无法识别的）。并去<a href="http://tuling123.com/" target="_blank" rel="external">图灵网【点我】</a>申请一个key，也复制到文本文档。</p>
-<p>5、 操作本地项目文件，代码：</p>
-<pre><code>cd van3
-
-pip install requests
-
-
-update.py
-</code></pre><p>6、这里是基于在Github上已经有了一个示范程序了。选择1：update config 2：update articles 4: update server<br>界面跳出token，此时把微信公众平台设置的token，APP_ID ，<br>SECRET_KEY和图灵网的key的内容都复制进去。</p>
-<p>7 把本地文件更新到Github服务器，代码：</p>
-<pre><code>git push origin master:1
-</code></pre><p>8、把本地文件更新到SAE：</p>
-<pre><code>git remote add sae https://git.sinacloud.com/van3
-
-git add .
-
-git push sae master:1
-</code></pre><p>9、参考：   <a href="https://github.com/littlecodersh/MyPlatform/wiki/Deploy" target="_blank" rel="external">MyPlatform </a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1445,7 +1487,7 @@ git push sae master:1
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
