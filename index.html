@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -248,7 +248,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-07T22:59:28+08:00" content="2016-10-07">
               2016-10-07
             </time>
@@ -299,7 +299,7 @@ print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
 # for txt in html.iterfind(&apos;.//*[@id=&quot;tb&quot;]/tr[3]/td&apos;):
 #     print(txt.text)
 </code></pre><p>3、分析：requests+lxml来分析和提取数据比较简单，可以尽可能的规避使用RE的复杂性以及可能产生的编码问题。要注意的是提取文本内容的时候要在xpath地址后面加上/text()<br>另外，默认的结果因为有很多的空格和\n\r，所以需要做数据清洗，就本例，加一句content1[0].strip().replace(‘\n\r’, ‘’)即可。</p>
-<p>4、为执行的代码，表示读取2016年08月份 “全国”，“城市”，“农村”各自的cpi数据。<br>要注意的是：这属于ElementPath，一共4个种类，分别如下：</p>
+<p>4、没有执行的代码，表示读取2016年08月份 “全国”，“城市”，“农村”各自的cpi数据。<br>要注意的是：这属于ElementPath，一共4个种类，分别如下：</p>
 <ul>
 <li></li>
 </ul>
@@ -309,7 +309,7 @@ print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
 <li>find()</li>
 <li>findtext()</li>
 </ol>
-<p>千万注意的是：ElementPath不能直接使用绝对路径，需要在前面加一个.符号。</p>
+<p>千万注意的是：ElementPath不能直接使用绝对路径，需要在前面加一个.符号。暂时感觉这个使用的不太多。</p>
 
           
         
@@ -372,7 +372,7 @@ print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-05T16:20:28+08:00" content="2016-10-05">
               2016-10-05
             </time>
@@ -480,7 +480,7 @@ print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-02T14:20:28+08:00" content="2016-10-02">
               2016-10-02
             </time>
@@ -624,7 +624,7 @@ These are the 6 must have books, if you are serious about being a data scientist
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-27T14:20:28+08:00" content="2016-09-27">
               2016-09-27
             </time>
@@ -732,7 +732,7 @@ Thanks!
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-27T13:20:28+08:00" content="2016-09-27">
               2016-09-27
             </time>
@@ -836,7 +836,7 @@ mpl.rcParams[&apos;axes.unicode_minus&apos;] = False #解决保存图像是负�
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-25T23:20:28+08:00" content="2016-09-25">
               2016-09-25
             </time>
@@ -957,7 +957,7 @@ plt.show()
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-23T23:20:28+08:00" content="2016-09-23">
               2016-09-23
             </time>
@@ -1207,7 +1207,7 @@ Out[41]: [&apos;犯罪&apos;, &apos;剧情&apos;]
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-23T23:20:28+08:00" content="2016-09-23">
               2016-09-23
             </time>
@@ -1305,7 +1305,7 @@ Out[41]: [&apos;犯罪&apos;, &apos;剧情&apos;]
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-22T14:20:28+08:00" content="2016-09-22">
               2016-09-22
             </time>
@@ -1507,7 +1507,7 @@ for i in range(2, num+1):
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-21T22:20:28+08:00" content="2016-09-21">
               2016-09-21
             </time>
@@ -1618,7 +1618,7 @@ for i in range(2, num+1):
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">52</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1665,7 +1665,7 @@ for i in range(2, num+1):
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
