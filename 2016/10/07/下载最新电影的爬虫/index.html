@@ -95,8 +95,8 @@ import requests
 from lxml import etree
 
 
-url = &amp;apos;http://www.ygdy8.net/html/gndy/dyzz/index.html&amp;apos;  #这是电影天堂最新电影的网站
-# r = reques">
+url = &amp;apos;http://www.ygdy8.net/html/gndy/dyzz/index.html&amp;apos;  #这是电影最新电影的网站
+# r = requests">
 <meta property="og:type" content="article">
 <meta property="og:title" content="下载最新电影的爬虫【Python】">
 <meta property="og:url" content="http://yoursite.com/2016/10/07/下载最新电影的爬虫/index.html">
@@ -112,9 +112,9 @@ import requests
 from lxml import etree
 
 
-url = &amp;apos;http://www.ygdy8.net/html/gndy/dyzz/index.html&amp;apos;  #这是电影天堂最新电影的网站
-# r = reques">
-<meta property="og:updated_time" content="2016-10-07T17:49:25.000Z">
+url = &amp;apos;http://www.ygdy8.net/html/gndy/dyzz/index.html&amp;apos;  #这是电影最新电影的网站
+# r = requests">
+<meta property="og:updated_time" content="2016-10-07T17:50:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="下载最新电影的爬虫【Python】">
 <meta name="twitter:description" content="下载最新电影的爬虫1、使用：
@@ -128,8 +128,8 @@ import requests
 from lxml import etree
 
 
-url = &amp;apos;http://www.ygdy8.net/html/gndy/dyzz/index.html&amp;apos;  #这是电影天堂最新电影的网站
-# r = reques">
+url = &amp;apos;http://www.ygdy8.net/html/gndy/dyzz/index.html&amp;apos;  #这是电影最新电影的网站
+# r = requests">
 
 
 
@@ -210,7 +210,7 @@ url = &amp;apos;http://www.ygdy8.net/html/gndy/dyzz/index.html&amp;apos;  #这�
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -220,7 +220,7 @@ url = &amp;apos;http://www.ygdy8.net/html/gndy/dyzz/index.html&amp;apos;  #这�
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -283,7 +283,7 @@ url = &amp;apos;http://www.ygdy8.net/html/gndy/dyzz/index.html&amp;apos;  #这�
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-07T23:59:28+08:00" content="2016-10-07">
               2016-10-07
             </time>
@@ -323,7 +323,7 @@ import requests
 from lxml import etree
 
 
-url = &apos;http://www.ygdy8.net/html/gndy/dyzz/index.html&apos;  #这是电影天堂最新电影的网站
+url = &apos;http://www.ygdy8.net/html/gndy/dyzz/index.html&apos;  #这是电影最新电影的网站
 # r = requests.get(url).content
 # print(r.encoding）
 # &gt;&gt;&gt; ISO-8859-1
@@ -353,6 +353,7 @@ tree.xpath(&quot;//div[@class=&apos;sec_blk mrg_b_30&apos;]/ul/li[1]/a/@href&quo
 &quot;//div[@class=&apos;venueDetal&apos;]/p/img[@class=&apos;img&apos;]/@src&quot;
 &quot;//div[@class=&apos;detail_info_title&apos;]//a[@class=&apos;hotel_star&apos;]/@title&quot;
 </code></pre><p>4、参考： <a href="http://blog.chinaunix.net/uid-13869856-id-5747494.html" target="_blank" rel="external">python+lxml xpath获取数据 </a></p>
+<p>5、可补充点： 自动提取直接下载链接，看是否能导入到迅雷等工具。</p>
 
       
     </div>
@@ -433,10 +434,10 @@ tree.xpath(&quot;//div[@class=&apos;sec_blk mrg_b_30&apos;]/ul/li[1]/a/@href&quo
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -453,7 +454,7 @@ tree.xpath(&quot;//div[@class=&apos;sec_blk mrg_b_30&apos;]/ul/li[1]/a/@href&quo
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">53</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -511,7 +512,7 @@ tree.xpath(&quot;//div[@class=&apos;sec_blk mrg_b_30&apos;]/ul/li[1]/a/@href&quo
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
