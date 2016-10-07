@@ -114,7 +114,8 @@ from lxml import etree
 
 url = &amp;apos;http://www.ygdy8.net/html/gndy/dyzz/index.html&amp;apos;  #这是电影最新电影的网站
 # r = requests">
-<meta property="og:updated_time" content="2016-10-07T17:51:18.000Z">
+<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-08/015240484.png">
+<meta property="og:updated_time" content="2016-10-07T17:53:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="下载最新电影的爬虫---Xpath读取文本，链接，标题等的操作【Python】">
 <meta name="twitter:description" content="下载最新电影的爬虫1、使用：
@@ -130,6 +131,7 @@ from lxml import etree
 
 url = &amp;apos;http://www.ygdy8.net/html/gndy/dyzz/index.html&amp;apos;  #这是电影最新电影的网站
 # r = requests">
+<meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-08/015240484.png">
 
 
 
@@ -343,7 +345,8 @@ wangzhi = selector.xpath(&apos;//*[@id=&quot;header&quot;]/div/div[3]/div[3]/div
 
 for b,j,k in zip(biaoti,jianjie,wangzhi):
     print(b+&apos;\n&apos;+j+&apos;\n&apos;+&apos;www.ygdy8.net&apos;+k+&apos;\n&apos;)
-</code></pre><p>3、分析：主要和上一篇的接近，但是这一篇还有读取网址等操作，注意格式上和读取内容text有差别的。<br>总结如下：</p>
+</code></pre><p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-08/015240484.png" alt="">    </p>
+<p>3、分析：主要和上一篇的接近，但是这一篇还有读取网址等操作，注意格式上和读取内容text有差别的。<br>总结如下：</p>
 <pre><code>获取到标签后我们可以获取标签中的属性值
 tree.xpath(&quot;//div[@class=&apos;sec_blk mrg_b_30&apos;]/ul/li[1]/a/text()&quot;)     #获取a的文本，li标号是从1开始，而不是从0开始
 tree.xpath(&quot;//div[@class=&apos;sec_blk mrg_b_30&apos;]/ul/li[1]/a/@href&quot;)   #获取a的链接地址
