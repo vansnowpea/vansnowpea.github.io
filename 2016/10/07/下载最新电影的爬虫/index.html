@@ -84,52 +84,52 @@
 
 
 
-<meta name="description" content="东方财富网cpi数据的抓取1、使用：
+<meta name="description" content="下载最新电影的爬虫1、使用：
 
 lxml.etree
 requests
 
 2、代码：
-from lxml import etree
+# -*- coding:utf-8 -*-
 import requests
+from lxml import etree
 
-url = &amp;apos;http://data.eastmoney.com/cjsj/cpi.html&amp;apos;
-content = requests.get(url).content
 
-html = etree.HTML(">
+url = &amp;apos;http://www.ygdy8.net/html/gndy/dyzz/index.html&amp;apos;  #这是电影天堂最新电影的网站
+# r = reques">
 <meta property="og:type" content="article">
-<meta property="og:title" content="东方财富网cpi数据的抓取【Python】">
+<meta property="og:title" content="下载最新电影的爬虫【Python】">
 <meta property="og:url" content="http://yoursite.com/2016/10/07/下载最新电影的爬虫/index.html">
 <meta property="og:site_name" content="A Song of Python and Anaconda">
-<meta property="og:description" content="东方财富网cpi数据的抓取1、使用：
+<meta property="og:description" content="下载最新电影的爬虫1、使用：
 
 lxml.etree
 requests
 
 2、代码：
-from lxml import etree
+# -*- coding:utf-8 -*-
 import requests
+from lxml import etree
 
-url = &amp;apos;http://data.eastmoney.com/cjsj/cpi.html&amp;apos;
-content = requests.get(url).content
 
-html = etree.HTML(">
-<meta property="og:updated_time" content="2016-10-07T15:35:15.000Z">
+url = &amp;apos;http://www.ygdy8.net/html/gndy/dyzz/index.html&amp;apos;  #这是电影天堂最新电影的网站
+# r = reques">
+<meta property="og:updated_time" content="2016-10-07T17:49:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="东方财富网cpi数据的抓取【Python】">
-<meta name="twitter:description" content="东方财富网cpi数据的抓取1、使用：
+<meta name="twitter:title" content="下载最新电影的爬虫【Python】">
+<meta name="twitter:description" content="下载最新电影的爬虫1、使用：
 
 lxml.etree
 requests
 
 2、代码：
-from lxml import etree
+# -*- coding:utf-8 -*-
 import requests
+from lxml import etree
 
-url = &amp;apos;http://data.eastmoney.com/cjsj/cpi.html&amp;apos;
-content = requests.get(url).content
 
-html = etree.HTML(">
+url = &amp;apos;http://www.ygdy8.net/html/gndy/dyzz/index.html&amp;apos;  #这是电影天堂最新电影的网站
+# r = reques">
 
 
 
@@ -152,7 +152,7 @@ html = etree.HTML(">
 
   <link rel="canonical" href="http://yoursite.com/2016/10/07/下载最新电影的爬虫/"/>
 
-  <title> 东方财富网cpi数据的抓取【Python】 | A Song of Python and Anaconda </title>
+  <title> 下载最新电影的爬虫【Python】 | A Song of Python and Anaconda </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -210,7 +210,7 @@ html = etree.HTML(">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -220,7 +220,7 @@ html = etree.HTML(">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -272,7 +272,7 @@ html = etree.HTML(">
             
             
               
-                东方财富网cpi数据的抓取【Python】
+                下载最新电影的爬虫【Python】
               
             
           </h1>
@@ -283,8 +283,8 @@ html = etree.HTML(">
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-10-07T22:59:28+08:00" content="2016-10-07">
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-10-07T23:59:28+08:00" content="2016-10-07">
               2016-10-07
             </time>
           </span>
@@ -312,37 +312,47 @@ html = etree.HTML(">
       
 
       
-        <h1 id="东方财富网cpi数据的抓取"><a href="#东方财富网cpi数据的抓取" class="headerlink" title="东方财富网cpi数据的抓取"></a>东方财富网cpi数据的抓取</h1><p>1、使用：</p>
+        <h1 id="下载最新电影的爬虫"><a href="#下载最新电影的爬虫" class="headerlink" title="下载最新电影的爬虫"></a>下载最新电影的爬虫</h1><p>1、使用：</p>
 <ul>
 <li>lxml.etree</li>
 <li>requests</li>
 </ul>
 <p>2、代码：</p>
-<pre><code>from lxml import etree
+<pre><code># -*- coding:utf-8 -*-
 import requests
+from lxml import etree
 
-url = &apos;http://data.eastmoney.com/cjsj/cpi.html&apos;
-content = requests.get(url).content
 
-html = etree.HTML(content)
-content1 = html.xpath(&apos;//*[@id=&quot;tb&quot;]/tr[3]/td[2]/text()&apos;)
+url = &apos;http://www.ygdy8.net/html/gndy/dyzz/index.html&apos;  #这是电影天堂最新电影的网站
+# r = requests.get(url).content
+# print(r.encoding）
+# &gt;&gt;&gt; ISO-8859-1
+html = requests.get(url).content
+# html = requests.get(url).content.decode(&apos;ISO-8859-1&apos;).encode(&apos;utf-8&apos;)
 
-print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
+selector = etree.HTML(html)
 
-# for txt in html.iterfind(&apos;.//*[@id=&quot;tb&quot;]/tr[3]/td&apos;):
-#     print(txt.text)
-</code></pre><p>3、分析：requests+lxml来分析和提取数据比较简单，可以尽可能的规避使用RE的复杂性以及可能产生的编码问题。要注意的是提取文本内容的时候要在xpath地址后面加上/text()<br>不过这个案例中，需要把xpath的/tbody去掉，这是因为有的浏览器加上去的，否则不能识别需要的文字部分。<br>另外，默认的结果因为有很多的空格和\n\r，所以需要做数据清洗，就本例，加一句content1[0].strip().replace(‘\n\r’, ‘’)即可。</p>
-<p>4、没有执行的代码，表示读取2016年08月份 “全国”，“城市”，“农村”各自的cpi数据。<br>要注意的是：这属于ElementPath，一共4个种类，分别如下：</p>
-<ul>
-<li></li>
-</ul>
-<ol>
-<li>iterfind()</li>
-<li>findall()</li>
-<li>find()</li>
-<li>findtext()</li>
-</ol>
-<p>千万注意的是：ElementPath不能直接使用绝对路径，需要在前面加一个.符号。暂时感觉这个使用的不太多。</p>
+# //*[@id=&quot;content&quot;]/div/div[1]/ol/li[1]/div/div[2]/div[2]/p[1]
+# get rid of the : /tbody
+biaoti = selector.xpath(&apos;//*[@id=&quot;header&quot;]/div/div[3]/div[3]/div[2]/div[2]/div[2]/ul//tr[2]/td[2]/b/a/text()&apos;)
+
+
+# get rid of the : /tbody
+jianjie = selector.xpath(&apos;/html/body/div/div/div[3]/div[3]/div[2]/div[2]/div[2]/ul//tr[4]/td/text()&apos;)
+wangzhi = selector.xpath(&apos;//*[@id=&quot;header&quot;]/div/div[3]/div[3]/div[2]/div[2]/div[2]/ul//tr[2]/td[2]/b/a/@href&apos;)
+
+for b,j,k in zip(biaoti,jianjie,wangzhi):
+    print(b+&apos;\n&apos;+j+&apos;\n&apos;+&apos;www.ygdy8.net&apos;+k+&apos;\n&apos;)
+</code></pre><p>3、分析：主要和上一篇的接近，但是这一篇还有读取网址等操作，注意格式上和读取内容text有差别的。<br>总结如下：</p>
+<pre><code>获取到标签后我们可以获取标签中的属性值
+tree.xpath(&quot;//div[@class=&apos;sec_blk mrg_b_30&apos;]/ul/li[1]/a/text()&quot;)     #获取a的文本，li标号是从1开始，而不是从0开始
+tree.xpath(&quot;//div[@class=&apos;sec_blk mrg_b_30&apos;]/ul/li[1]/a/@href&quot;)   #获取a的链接地址
+
+当然还有其他类似的xpath例子：
+&quot;//input[@id=&apos;city&apos;]/@value&quot;
+&quot;//div[@class=&apos;venueDetal&apos;]/p/img[@class=&apos;img&apos;]/@src&quot;
+&quot;//div[@class=&apos;detail_info_title&apos;]//a[@class=&apos;hotel_star&apos;]/@title&quot;
+</code></pre><p>4、参考： <a href="http://blog.chinaunix.net/uid-13869856-id-5747494.html" target="_blank" rel="external">python+lxml xpath获取数据 </a></p>
 
       
     </div>
@@ -423,10 +433,10 @@ print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -443,7 +453,7 @@ print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">53</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -474,7 +484,7 @@ print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#东方财富网cpi数据的抓取"><span class="nav-number">1.</span> <span class="nav-text">东方财富网cpi数据的抓取</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#下载最新电影的爬虫"><span class="nav-number">1.</span> <span class="nav-text">下载最新电影的爬虫</span></a></li></ol></div>
             
           </div>
         </section>
@@ -501,7 +511,7 @@ print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
