@@ -298,7 +298,7 @@ print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
 
 # for txt in html.iterfind(&apos;.//*[@id=&quot;tb&quot;]/tr[3]/td&apos;):
 #     print(txt.text)
-</code></pre><p>3、分析：requests+lxml来分析和提取数据比较简单，可以尽可能的规避使用RE的复杂性以及可能产生的编码问题。要注意的是提取文本内容的时候要在xpath地址后面加上/text()<br>另外，默认的结果因为有很多的空格和\n\r，所以需要做数据清洗，就本例，加一句content1[0].strip().replace(‘\n\r’, ‘’)即可。</p>
+</code></pre><p>3、分析：requests+lxml来分析和提取数据比较简单，可以尽可能的规避使用RE的复杂性以及可能产生的编码问题。要注意的是提取文本内容的时候要在xpath地址后面加上/text()<br>不过这个案例中，需要把xpath的/tbody去掉，这是因为有的浏览器加上去的，否则不能识别需要的文字部分。<br>另外，默认的结果因为有很多的空格和\n\r，所以需要做数据清洗，就本例，加一句content1[0].strip().replace(‘\n\r’, ‘’)即可。</p>
 <p>4、没有执行的代码，表示读取2016年08月份 “全国”，“城市”，“农村”各自的cpi数据。<br>要注意的是：这属于ElementPath，一共4个种类，分别如下：</p>
 <ul>
 <li></li>
