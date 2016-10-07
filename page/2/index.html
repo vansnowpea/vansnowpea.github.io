@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -235,6 +235,103 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/21/bson模块丢失，原来是mongoengine坑-/" itemprop="url">
+                  bson模块丢失，原来是mongoengine坑-
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-09-21T21:20:28+08:00" content="2016-09-21">
+              2016-09-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="简介：-运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块"><a href="#简介：-运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块" class="headerlink" title="简介： 运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块"></a>简介： 运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块</h1><p>1、原来这个模块是和mongodb相关的，当安装了bson模块，因版本问题，会引起一些文件缺失，</p>
+<p>2、而mongodb官网上，也不建议外装bson：</p>
+<p>到pymongo官方文档里查，第一句就是：<br>Warning Do not install the “bson” package. PyMongo comes with its own bson package; doing “pip install bson” or “easy_install bson” installs a third-party package that is incompatible with PyMongo.<br>PyMongo has no required dependencies.</p>
+<p>3、还好最后安装最新的mongoengine，解决了这个问题。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/20/豆瓣电影的检索爬虫【python】/" itemprop="url">
                   豆瓣电影的检索爬虫【python】
                 </a>
@@ -248,7 +345,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-20T14:20:28+08:00" content="2016-09-20">
               2016-09-20
             </time>
@@ -450,7 +547,7 @@ if __name__==&quot;__main__&quot;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-20T10:20:28+08:00" content="2016-09-20">
               2016-09-20
             </time>
@@ -592,7 +689,7 @@ run()
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-19T20:20:28+08:00" content="2016-09-19">
               2016-09-19
             </time>
@@ -735,7 +832,7 @@ run()
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-18T10:59:28+08:00" content="2016-09-18">
               2016-09-18
             </time>
@@ -931,115 +1028,6 @@ driver.close()
             
               
                 
-                <a class="post-title-link" href="/2016/09/17/Firefox不能运行selenium的故障排查/" itemprop="url">
-                  Firefox不能运行selenium的故障排查
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-17T11:59:28+08:00" content="2016-09-17">
-              2016-09-17
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="说明-Firefox中文最新版48不能运行selenium2-53-6的故障排查"><a href="#说明-Firefox中文最新版48不能运行selenium2-53-6的故障排查" class="headerlink" title="说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查"></a>说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查</h1><p>1、错误提示：  </p>
-<pre><code>  File &quot;D:\Anaconda3\lib\site-packages\selenium\webdriver\firefox\firefox_binary.py&quot;, line 103, in _wait_until_connectable
-    raise WebDriverException(&quot;Can&apos;t load the profile. Profile &quot;
-selenium.common.exceptions.WebDriverException: Message: Can&apos;t load the profile. Profile Dir: %s If you specified a log_file in the FirefoxBinary constructor, check it for details.
-</code></pre><p>2、排查版本： selenium已经是最新版2.53.6  firexfox也是最新中文版48</p>
-<p>谷歌： </p>
-<pre><code>http://stackoverflow.com/questions/37693106/selenium-2-53-not-working-on-firefox-47/37693374
-</code></pre><p>上面给了一个在selenium 在2.53.0时代，运行firefox 47版本的方法，感觉麻烦，所以我优选了退回低版本的策略，如下：</p>
-<p>3、评估是否firefox的48最新版还不支持？所以到firefox官网上，直接看到的最后的老版本是47， 测试安装了中文版，结果一样，继续卸载看46版本，使用的以下网址：</p>
-<pre><code>https://ftp.mozilla.org/pub/firefox/releases/
-https://ftp.mozilla.org/pub/firefox/releases/46.0.1/win64/en-US/
-</code></pre><p>一下就成功了。</p>
-<p>4、后来翻阅stackoverflow的帖子，发现有人反馈2.53.6已经支持firefox 48了。 但是我的咋就不行？ 猜测区别就是中文和英文，所以我就把46版本卸载了测试48英文版， </p>
-<pre><code>https://ftp.mozilla.org/pub/firefox/releases/48.0b1/win64/en-US/
-</code></pre><p>结果直接跳出firefox已停止工作。</p>
-<p>5、结论：就2.53.6的selenium版本，测试firefox 46 英文版稳定运行。47和48版本失败。操作系统Win10，所以建议使用46版本的firefox。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/09/17/基于Selenium一键写CSDN博客并做成exe文件/" itemprop="url">
                   基于Selenium一键写CSDN博客并做成exe文件【python】
                 </a>
@@ -1053,7 +1041,7 @@ https://ftp.mozilla.org/pub/firefox/releases/46.0.1/win64/en-US/
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-17T11:59:28+08:00" content="2016-09-17">
               2016-09-17
             </time>
@@ -1212,6 +1200,115 @@ element = driver.find_element_by_xpath(&quot;//input[@id=&apos;passwd-id&apos;]&
             
               
                 
+                <a class="post-title-link" href="/2016/09/17/Firefox不能运行selenium的故障排查/" itemprop="url">
+                  Firefox不能运行selenium的故障排查
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-09-17T11:59:28+08:00" content="2016-09-17">
+              2016-09-17
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明-Firefox中文最新版48不能运行selenium2-53-6的故障排查"><a href="#说明-Firefox中文最新版48不能运行selenium2-53-6的故障排查" class="headerlink" title="说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查"></a>说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查</h1><p>1、错误提示：  </p>
+<pre><code>  File &quot;D:\Anaconda3\lib\site-packages\selenium\webdriver\firefox\firefox_binary.py&quot;, line 103, in _wait_until_connectable
+    raise WebDriverException(&quot;Can&apos;t load the profile. Profile &quot;
+selenium.common.exceptions.WebDriverException: Message: Can&apos;t load the profile. Profile Dir: %s If you specified a log_file in the FirefoxBinary constructor, check it for details.
+</code></pre><p>2、排查版本： selenium已经是最新版2.53.6  firexfox也是最新中文版48</p>
+<p>谷歌： </p>
+<pre><code>http://stackoverflow.com/questions/37693106/selenium-2-53-not-working-on-firefox-47/37693374
+</code></pre><p>上面给了一个在selenium 在2.53.0时代，运行firefox 47版本的方法，感觉麻烦，所以我优选了退回低版本的策略，如下：</p>
+<p>3、评估是否firefox的48最新版还不支持？所以到firefox官网上，直接看到的最后的老版本是47， 测试安装了中文版，结果一样，继续卸载看46版本，使用的以下网址：</p>
+<pre><code>https://ftp.mozilla.org/pub/firefox/releases/
+https://ftp.mozilla.org/pub/firefox/releases/46.0.1/win64/en-US/
+</code></pre><p>一下就成功了。</p>
+<p>4、后来翻阅stackoverflow的帖子，发现有人反馈2.53.6已经支持firefox 48了。 但是我的咋就不行？ 猜测区别就是中文和英文，所以我就把46版本卸载了测试48英文版， </p>
+<pre><code>https://ftp.mozilla.org/pub/firefox/releases/48.0b1/win64/en-US/
+</code></pre><p>结果直接跳出firefox已停止工作。</p>
+<p>5、结论：就2.53.6的selenium版本，测试firefox 46 英文版稳定运行。47和48版本失败。操作系统Win10，所以建议使用46版本的firefox。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/16/selenium+PhantomJS 抓取斗鱼房间信息/" itemprop="url">
                   selenium+PhantomJS 抓取斗鱼房间信息【python】
                 </a>
@@ -1225,7 +1322,7 @@ element = driver.find_element_by_xpath(&quot;//input[@id=&apos;passwd-id&apos;]&
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-16T12:59:28+08:00" content="2016-09-16">
               2016-09-16
             </time>
@@ -1407,7 +1504,7 @@ soup = BeautifulSoup(driver.page_source, &apos;xml&apos;)
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-16T10:59:28+08:00" content="2016-09-16">
               2016-09-16
             </time>
@@ -1581,7 +1678,7 @@ start()
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-15T18:59:28+08:00" content="2016-09-15">
               2016-09-15
             </time>
@@ -1715,107 +1812,6 @@ if __name__ == &apos;__main__&apos;:
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/15/win10中python3.5.2遇到lxml安装问题的记录/" itemprop="url">
-                  win10中python3.5.2遇到lxml安装问题缺少vcvarsall.bat的解决方案和记录【python】
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-15T11:59:28+08:00" content="2016-09-15">
-              2016-09-15
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="说明-win10中python3-5-2遇到lxml安装问题的记录"><a href="#说明-win10中python3-5-2遇到lxml安装问题的记录" class="headerlink" title="说明:win10中python3.5.2遇到lxml安装问题的记录"></a>说明:win10中python3.5.2遇到lxml安装问题的记录</h1><p>1、错误提示：  error: Unable to find vcvarsall.bat</p>
-<p>2、由于在python 2.7 和win7下遇到过类似的问题，当时用安装wheel文件的方法，不过这次失败， 另外在python2.7时代，是有一个微软的支持版本的： Microsoft Visual C++ Compiler for Python 2.7,只有2.7。</p>
-<p>3、该问题windows环境中，python 的 Setup需要调用一个vcvarsall.bat的文件，该文件需要安装c++编程环境才会有，经查知乎上有人给出了答案，由于python 3.5使用的SDK环境和3.4是不同的，所以需要安装VC++最新版，或者VS2015 添加VC和python相关组件， ，请参考：<a href="http://www.zhihu.com/question/26857761" target="_blank" rel="external">http://www.zhihu.com/question/26857761</a> 里面的“代代树”的回复。但是第一次安装遇到retry的失败，关闭了相关VS的进程，重新装，貌似就可以安装了，但安装完毕后，问题没有解决，依然存在啊，什么鬼？</p>
-<p><img src="https://pic2.zhimg.com/583990ef6536de3763fea804fa5a44fd_b.png" alt=""></p>
-<p>4、然后又发现别人推荐了<a href="https://anaconda.org/或者https://www.continuum.io/downloads的Anaconda安装解决方式，一看官网支持python最新版，这就好感爆棚了。果断下载安装，不过结果依然失败，有点闹腾。又是什么鬼？" target="_blank" rel="external">https://anaconda.org/或者https://www.continuum.io/downloads的Anaconda安装解决方式，一看官网支持python最新版，这就好感爆棚了。果断下载安装，不过结果依然失败，有点闹腾。又是什么鬼？</a><br>   原来，漏看了一句，安装后，还需要通过conda install lxml命令，开始还以为他支持python3.5.2是自带了这些安装包，理解错误，</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/conda%20lxml.png" alt=""></p>
-<p>然后通过λ pip install -U lxml<br>Requirement already up-to-date: lxml in d:\anaconda3\lib\site-packages</p>
-<p>发现是把lxml安装在d:\anaconda3\lib\site-packages<br>所以我尝试把这个lxml文件夹复制到python安装目录对应的site-packages<br>然后测试原本在pycharm提示缺少lxml库的，继续运行，跳出了需要的结果界面。这下终于搞定了。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1862,7 +1858,7 @@ if __name__ == &apos;__main__&apos;:
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">52</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1909,7 +1905,7 @@ if __name__ == &apos;__main__&apos;:
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

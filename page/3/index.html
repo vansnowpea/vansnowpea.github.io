@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -235,6 +235,107 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/15/win10中python3.5.2遇到lxml安装问题的记录/" itemprop="url">
+                  win10中python3.5.2遇到lxml安装问题缺少vcvarsall.bat的解决方案和记录【python】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-09-15T11:59:28+08:00" content="2016-09-15">
+              2016-09-15
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明-win10中python3-5-2遇到lxml安装问题的记录"><a href="#说明-win10中python3-5-2遇到lxml安装问题的记录" class="headerlink" title="说明:win10中python3.5.2遇到lxml安装问题的记录"></a>说明:win10中python3.5.2遇到lxml安装问题的记录</h1><p>1、错误提示：  error: Unable to find vcvarsall.bat</p>
+<p>2、由于在python 2.7 和win7下遇到过类似的问题，当时用安装wheel文件的方法，不过这次失败， 另外在python2.7时代，是有一个微软的支持版本的： Microsoft Visual C++ Compiler for Python 2.7,只有2.7。</p>
+<p>3、该问题windows环境中，python 的 Setup需要调用一个vcvarsall.bat的文件，该文件需要安装c++编程环境才会有，经查知乎上有人给出了答案，由于python 3.5使用的SDK环境和3.4是不同的，所以需要安装VC++最新版，或者VS2015 添加VC和python相关组件， ，请参考：<a href="http://www.zhihu.com/question/26857761" target="_blank" rel="external">http://www.zhihu.com/question/26857761</a> 里面的“代代树”的回复。但是第一次安装遇到retry的失败，关闭了相关VS的进程，重新装，貌似就可以安装了，但安装完毕后，问题没有解决，依然存在啊，什么鬼？</p>
+<p><img src="https://pic2.zhimg.com/583990ef6536de3763fea804fa5a44fd_b.png" alt=""></p>
+<p>4、然后又发现别人推荐了<a href="https://anaconda.org/或者https://www.continuum.io/downloads的Anaconda安装解决方式，一看官网支持python最新版，这就好感爆棚了。果断下载安装，不过结果依然失败，有点闹腾。又是什么鬼？" target="_blank" rel="external">https://anaconda.org/或者https://www.continuum.io/downloads的Anaconda安装解决方式，一看官网支持python最新版，这就好感爆棚了。果断下载安装，不过结果依然失败，有点闹腾。又是什么鬼？</a><br>   原来，漏看了一句，安装后，还需要通过conda install lxml命令，开始还以为他支持python3.5.2是自带了这些安装包，理解错误，</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/conda%20lxml.png" alt=""></p>
+<p>然后通过λ pip install -U lxml<br>Requirement already up-to-date: lxml in d:\anaconda3\lib\site-packages</p>
+<p>发现是把lxml安装在d:\anaconda3\lib\site-packages<br>所以我尝试把这个lxml文件夹复制到python安装目录对应的site-packages<br>然后测试原本在pycharm提示缺少lxml库的，继续运行，跳出了需要的结果界面。这下终于搞定了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/15/推荐使用requests代替urllib/" itemprop="url">
                   推荐使用requests代替urllib【python】
                 </a>
@@ -248,7 +349,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-15T09:59:28+08:00" content="2016-09-15">
               2016-09-15
             </time>
@@ -359,7 +460,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-14T21:59:28+08:00" content="2016-09-14">
               2016-09-14
             </time>
@@ -623,6 +724,107 @@ if __name__ == &quot;__main__&quot;:
             
               
                 
+                <a class="post-title-link" href="/2016/09/13/Ubuntu下操作Django/" itemprop="url">
+                  Ubuntu下操作Django时的大杂烩【python】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-09-13T23:59:28+08:00" content="2016-09-13">
+              2016-09-13
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/video/12634" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、首先记录一个遇到的问题，一开始vi编辑模式下按方向键会变成ABCD,ubuntu下 vi输入方向键会变成ABCD，这是ubuntu预装的是vim tiny版本，安装vim full版本即可解决。先卸载vim-tiny：</p>
+<pre><code>$ sudo apt-get remove vim-common
+</code></pre><p>再安装vim full：</p>
+<pre><code>$ sudo apt-get install vim
+</code></pre><p>2、倒腾了半天，总算把vi的命令模式和插入模式搞明白了。搜索是“？+关键词”，下一个是字母：“n”，还有很多命令，可参考这里：<a href="http://www.cnblogs.com/emanlee/archive/2011/11/10/2243930.html" target="_blank" rel="external">http://www.cnblogs.com/emanlee/archive/2011/11/10/2243930.html</a><br>, 一开始因为第一条中记录的问题，导致一直输入错误。</p>
+<p>3、遇到问题：<br>  第一个电脑上，用pip isntall django后运行正常，第二个就报错 找不到django-admin 后来改用sudo apt install python-django才可以，不过貌似版本不是1.10.1的最新版，而是1.8.7的。</p>
+<p>4、Show Intention Actions ： 视频教程快速插入类和函数用的Ctrl+1的快捷键？查了下pycharm是Alt+Enter，但是明显这个设置要比Ctrl+1的模式反人类。 直接在setting–&gt;Keymap 搜索Alt竟然找不到的，原来他是按照左边的名次来搜索的，Show Intention Actions，本来想给他按照视频教程的快捷键修改，但是发现可以用鼠标双击的模式来定义，并且检测没有冲突，这下甚好。但问题又来了，只能自动识别类，不能识别下面的方法，而这一点上，Eclipse+pydev倒是做的很好。</p>
+<p>5、一个意外的发现： pycharm能在console调用ipython，而且带了显示函数的功能，如下图，问题是我忘记怎么把他调用出来了。：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/pycharm%20ipython.png" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/13/pdf的读取【python】/" itemprop="url">
                   pdf的读取【python】
                 </a>
@@ -636,7 +838,7 @@ if __name__ == &quot;__main__&quot;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-13T23:59:28+08:00" content="2016-09-13">
               2016-09-13
             </time>
@@ -772,107 +974,6 @@ for page in doc.get_pages():
             
               
                 
-                <a class="post-title-link" href="/2016/09/13/Ubuntu下操作Django/" itemprop="url">
-                  Ubuntu下操作Django时的大杂烩【python】
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-13T23:59:28+08:00" content="2016-09-13">
-              2016-09-13
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/video/12634" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、首先记录一个遇到的问题，一开始vi编辑模式下按方向键会变成ABCD,ubuntu下 vi输入方向键会变成ABCD，这是ubuntu预装的是vim tiny版本，安装vim full版本即可解决。先卸载vim-tiny：</p>
-<pre><code>$ sudo apt-get remove vim-common
-</code></pre><p>再安装vim full：</p>
-<pre><code>$ sudo apt-get install vim
-</code></pre><p>2、倒腾了半天，总算把vi的命令模式和插入模式搞明白了。搜索是“？+关键词”，下一个是字母：“n”，还有很多命令，可参考这里：<a href="http://www.cnblogs.com/emanlee/archive/2011/11/10/2243930.html" target="_blank" rel="external">http://www.cnblogs.com/emanlee/archive/2011/11/10/2243930.html</a><br>, 一开始因为第一条中记录的问题，导致一直输入错误。</p>
-<p>3、遇到问题：<br>  第一个电脑上，用pip isntall django后运行正常，第二个就报错 找不到django-admin 后来改用sudo apt install python-django才可以，不过貌似版本不是1.10.1的最新版，而是1.8.7的。</p>
-<p>4、Show Intention Actions ： 视频教程快速插入类和函数用的Ctrl+1的快捷键？查了下pycharm是Alt+Enter，但是明显这个设置要比Ctrl+1的模式反人类。 直接在setting–&gt;Keymap 搜索Alt竟然找不到的，原来他是按照左边的名次来搜索的，Show Intention Actions，本来想给他按照视频教程的快捷键修改，但是发现可以用鼠标双击的模式来定义，并且检测没有冲突，这下甚好。但问题又来了，只能自动识别类，不能识别下面的方法，而这一点上，Eclipse+pydev倒是做的很好。</p>
-<p>5、一个意外的发现： pycharm能在console调用ipython，而且带了显示函数的功能，如下图，问题是我忘记怎么把他调用出来了。：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/pycharm%20ipython.png" alt=""></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/09/13/把维基百科首页词条的数据导入mysql/" itemprop="url">
                   把维基百科首页词条的数据导入mysql以及读取操作【Python】
                 </a>
@@ -886,7 +987,7 @@ for page in doc.get_pages():
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-13T00:59:29+08:00" content="2016-09-13">
               2016-09-13
             </time>
@@ -1058,7 +1159,7 @@ finally:
             
               
                 
-                <a class="post-title-link" href="/2016/09/13/东方财富网cpi数据的抓取/" itemprop="url">
+                <a class="post-title-link" href="/2016/09/13/维基百科首页词条的爬取/" itemprop="url">
                   维基百科首页词条的爬取【Python】
                 </a>
               
@@ -1071,7 +1172,7 @@ finally:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-13T00:59:28+08:00" content="2016-09-13">
               2016-09-13
             </time>
@@ -1187,8 +1288,8 @@ for url in listUrls:
             
               
                 
-                <a class="post-title-link" href="/2016/09/13/维基百科首页词条的爬取/" itemprop="url">
-                  维基百科首页词条的爬取【Python】
+                <a class="post-title-link" href="/2016/09/11/Python操作MySQL数据库/" itemprop="url">
+                  Python操作MySQL数据库
                 </a>
               
             
@@ -1200,9 +1301,9 @@ for url in listUrls:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-13T00:59:28+08:00" content="2016-09-13">
-              2016-09-13
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
+              2016-09-11
             </time>
           </span>
 
@@ -1231,42 +1332,24 @@ for url in listUrls:
       
         
           
-            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/712" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、首先这个教程使用了V3的python，作者也讲到了一些功能函数，在V2不支持，经过测试，比如，urllib在V2就没有.request方法，实际上，网上反馈已经把urllib2合并到urllib中了。考虑到以后v3总会代替掉v2， 咱也升级算了。 顺便把win7也换成了win10, 貌似开机速度比win7还快。</p>
-<p>2、直接上代码吧，加了中文注释，和视频教程大同小异的：之前的代码都是在sublime或者cmder里面操作，可发现换到V3以后，一个print在sublime中断报错提示，可完全一样的代码我用ipython又可以运行，好诧异。<br>所以，最后我干脆跑到pycharm去调试的。</p>
-<pre><code>__author__ = &apos;Administrator&apos;
-# coding:utf-8
-
-import re
-from urllib.request import urlopen
-from bs4 import BeautifulSoup as bs
-
-# 使用urllib的urlopen方法，去打开维基百科的首页，读取，并用utf-8解码
-resp = urlopen(&apos;https://en.wikipedia.org/wiki/Main_Page&apos;).read().decode(&apos;utf-8&apos;)
-
-# 使用BeautifulSoup去解析，其中html.parser是默认的解析器
-soup = bs(resp, &apos;html.parser&apos;)
-# 获取所有的/wiki/开头的a标签的href属性。
-listUrls = soup.find_all(&apos;a&apos;, href=re.compile(r&apos;^/wiki/&apos;))
-print(listUrls)
-
-# 输出所有的词条对应的名称和URL
-for url in listUrls:
-    # 排除.jpg JPG结尾的
-    if not re.search(&apos;\.(jpg|JPG)$&apos;, url[&apos;href&apos;]):
-        # 显示名称和网址的格式
-        # string只能显示一个，而get_text()可显示标签下所有的文字。
-        print(url.get_text(), &apos;&lt;----&gt;&apos;, &apos;https://en.wikipedia.org&apos;+url[&apos;href&apos;])
-</code></pre><p>3、win10遇到的问题：<br>   MP出错，提示awesomium_v1.6.5异常，好在MP能提示到官网提供awesomium_v1.6.6_sdk_win.exe的下载，第一次安装失败，卡机，后重启Win10修复。</p>
-<p>4、方法总结：</p>
-<ul>
-<li>urllib相关函数得到网址和解码；</li>
-<li>bs4进行解析，可使用默认的解析器或者lxml等解析器；</li>
-<li>根据要求和RE规则，找到所有的地址列表</li>
-<li>for循环后加工</li>
-</ul>
-<p>5、结果展示：网址直接可打开对应的wiki信息哦。</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/wiki%20citiao.png" alt=""></p>
-<p>6、PS：作者提到的chrome插件postman通过翻墙下了最新版，看下载量和5星评级应该不错，不过暂时我还没体验到他的威力，以后有感悟的话，再更新。</p>
+            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/475" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>简介：本课程讲解Python如何开发MySQL数据库程序。首先介绍Python开发数据库程序的通用接口规范，然后搭建Python开发数据库程序的开发环境，接着了解了通用接口规范中的connection、cursor两大对象之后，介绍如何增删改查数据库，最后以实例代码演示数据库程序的开发流程。</p>
+<p>1、教程说到以下网址<a href="http://sourceforge.net/projects/mysql-python下载mysql-pyhon" target="_blank" rel="external">http://sourceforge.net/projects/mysql-python下载mysql-pyhon</a> 的连接器，针对python2.7的。 一开始安装失败，提示找不到python，原来此台电脑我的python 是64位的，貌似那个连接器是针对32位的，所有我又到以下网址下载了64位的连接器： <a href="http://www.codegood.com/download/11/" target="_blank" rel="external">http://www.codegood.com/download/11/</a><br>这下就能识别到python了， 但是一看版本是1.2.3的，而最新版是1.2.5的，考虑到mysql 5.6默认的msi也是32位的，我就把python 2.7.12换到了32位统一下吧。   安装成功后，在python下输入如下命令会成功，否则报错：</p>
+<pre><code>&gt;&gt;&gt; import MySQLdb
+&gt;&gt;&gt;
+</code></pre><p>2、然后根据教程要使用sqlyog，官网卡机，只好装国内版本，我用的这个连接（Ultimate 版本: （终极是最好的））： <a href="http://www.liangchan.net/soft/download.asp?softid=6633&amp;downid=8&amp;id=6658" target="_blank" rel="external">http://www.liangchan.net/soft/download.asp?softid=6633&amp;downid=8&amp;id=6658</a></p>
+<p>随后在sqlyog新建一个数据库，并设置下utf8编码，如下图：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%201.png" alt=""></p>
+<p>3、编写一个imooc.py 来建立connection连接，<strong>千万注意代码中的密码对应的是passwd，而不是全称的password哦。</strong></p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/db%20api%20connection.png" alt=""></p>
+<p>4、通过connection来创建游标对象cursor： </p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/cursor.png" alt=""></p>
+<p>5、select查询数据</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/select%20%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE.png" alt=""></p>
+<p>6、数据库 I U D 操作：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/%E6%95%B0%E6%8D%AE%E5%BA%93u%20i%20d.png" alt=""></p>
+<p>7、sqlyog的表单操作，要创建2个列就要在新建的表中，增加2个属性，如下图：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%20%E8%A1%A8%E6%A0%BC%E8%AE%BE%E7%BD%AE%E5%88%97.png" alt=""></p>
+<p>8、同时推荐W3C的SQL教程，地址是： <a href="http://www.w3school.com.cn/sql/index.asp" target="_blank" rel="external">http://www.w3school.com.cn/sql/index.asp</a></p>
+<p>9、刚发现<a href="http://www.jianshu.com/p/a014b26ba7ca" target="_blank" rel="external">这个帖子</a>也有写的比较详细，可参考</p>
 
           
         
@@ -1329,7 +1412,7 @@ for url in listUrls:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
               2016-09-11
             </time>
@@ -1451,117 +1534,6 @@ for url in listurl:
             
               
                 
-                <a class="post-title-link" href="/2016/09/11/Python操作MySQL数据库/" itemprop="url">
-                  Python操作MySQL数据库
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
-              2016-09-11
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/475" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>简介：本课程讲解Python如何开发MySQL数据库程序。首先介绍Python开发数据库程序的通用接口规范，然后搭建Python开发数据库程序的开发环境，接着了解了通用接口规范中的connection、cursor两大对象之后，介绍如何增删改查数据库，最后以实例代码演示数据库程序的开发流程。</p>
-<p>1、教程说到以下网址<a href="http://sourceforge.net/projects/mysql-python下载mysql-pyhon" target="_blank" rel="external">http://sourceforge.net/projects/mysql-python下载mysql-pyhon</a> 的连接器，针对python2.7的。 一开始安装失败，提示找不到python，原来此台电脑我的python 是64位的，貌似那个连接器是针对32位的，所有我又到以下网址下载了64位的连接器： <a href="http://www.codegood.com/download/11/" target="_blank" rel="external">http://www.codegood.com/download/11/</a><br>这下就能识别到python了， 但是一看版本是1.2.3的，而最新版是1.2.5的，考虑到mysql 5.6默认的msi也是32位的，我就把python 2.7.12换到了32位统一下吧。   安装成功后，在python下输入如下命令会成功，否则报错：</p>
-<pre><code>&gt;&gt;&gt; import MySQLdb
-&gt;&gt;&gt;
-</code></pre><p>2、然后根据教程要使用sqlyog，官网卡机，只好装国内版本，我用的这个连接（Ultimate 版本: （终极是最好的））： <a href="http://www.liangchan.net/soft/download.asp?softid=6633&amp;downid=8&amp;id=6658" target="_blank" rel="external">http://www.liangchan.net/soft/download.asp?softid=6633&amp;downid=8&amp;id=6658</a></p>
-<p>随后在sqlyog新建一个数据库，并设置下utf8编码，如下图：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%201.png" alt=""></p>
-<p>3、编写一个imooc.py 来建立connection连接，<strong>千万注意代码中的密码对应的是passwd，而不是全称的password哦。</strong></p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/db%20api%20connection.png" alt=""></p>
-<p>4、通过connection来创建游标对象cursor： </p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/cursor.png" alt=""></p>
-<p>5、select查询数据</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/select%20%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE.png" alt=""></p>
-<p>6、数据库 I U D 操作：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/%E6%95%B0%E6%8D%AE%E5%BA%93u%20i%20d.png" alt=""></p>
-<p>7、sqlyog的表单操作，要创建2个列就要在新建的表中，增加2个属性，如下图：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%20%E8%A1%A8%E6%A0%BC%E8%AE%BE%E7%BD%AE%E5%88%97.png" alt=""></p>
-<p>8、同时推荐W3C的SQL教程，地址是： <a href="http://www.w3school.com.cn/sql/index.asp" target="_blank" rel="external">http://www.w3school.com.cn/sql/index.asp</a></p>
-<p>9、刚发现<a href="http://www.jianshu.com/p/a014b26ba7ca" target="_blank" rel="external">这个帖子</a>也有写的比较详细，可参考</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/09/09/CSS基础学习小结/" itemprop="url">
                   CSS基础学习小结
                 </a>
@@ -1575,7 +1547,7 @@ for url in listurl:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-09T16:59:28+08:00" content="2016-09-09">
               2016-09-09
             </time>
@@ -1725,7 +1697,7 @@ ul.disc {list-style-type: disc}
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">52</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1772,7 +1744,7 @@ ul.disc {list-style-type: disc}
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

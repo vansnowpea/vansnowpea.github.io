@@ -84,21 +84,52 @@
 
 
 
-<meta name="description" content="说明：以下内容学习自：http://www.imooc.com/1、首先这个教程使用了V3的python，作者也讲到了一些功能函数，在V2不支持，经过测试，比如，urllib在V2就没有.request方法，实际上，网上反馈已经把urllib2合并到urllib中了。考虑到以后v3总会代替掉v2， 咱也升级算了。 顺便把win7也换成了win10, 貌似开机速度比win7还快。
-2、直接上代码吧，">
+<meta name="description" content="东方财富网cpi数据的抓取1、使用：
+
+lxml.etree
+requests
+
+2、代码：
+from lxml import etree
+import requests
+
+url = &amp;apos;http://data.eastmoney.com/cjsj/cpi.html&amp;apos;
+content = requests.get(url).content
+
+html = etree.HTML(">
 <meta property="og:type" content="article">
-<meta property="og:title" content="维基百科首页词条的爬取【Python】">
-<meta property="og:url" content="http://yoursite.com/2016/09/13/东方财富网cpi数据的抓取/index.html">
+<meta property="og:title" content="东方财富网cpi数据的抓取【Python】">
+<meta property="og:url" content="http://yoursite.com/2016/10/07/东方财富网cpi数据的抓取/index.html">
 <meta property="og:site_name" content="A Song of Python and Anaconda">
-<meta property="og:description" content="说明：以下内容学习自：http://www.imooc.com/1、首先这个教程使用了V3的python，作者也讲到了一些功能函数，在V2不支持，经过测试，比如，urllib在V2就没有.request方法，实际上，网上反馈已经把urllib2合并到urllib中了。考虑到以后v3总会代替掉v2， 咱也升级算了。 顺便把win7也换成了win10, 貌似开机速度比win7还快。
-2、直接上代码吧，">
-<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/wiki%20citiao.png">
-<meta property="og:updated_time" content="2016-09-12T17:32:32.000Z">
+<meta property="og:description" content="东方财富网cpi数据的抓取1、使用：
+
+lxml.etree
+requests
+
+2、代码：
+from lxml import etree
+import requests
+
+url = &amp;apos;http://data.eastmoney.com/cjsj/cpi.html&amp;apos;
+content = requests.get(url).content
+
+html = etree.HTML(">
+<meta property="og:updated_time" content="2016-10-07T15:07:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="维基百科首页词条的爬取【Python】">
-<meta name="twitter:description" content="说明：以下内容学习自：http://www.imooc.com/1、首先这个教程使用了V3的python，作者也讲到了一些功能函数，在V2不支持，经过测试，比如，urllib在V2就没有.request方法，实际上，网上反馈已经把urllib2合并到urllib中了。考虑到以后v3总会代替掉v2， 咱也升级算了。 顺便把win7也换成了win10, 貌似开机速度比win7还快。
-2、直接上代码吧，">
-<meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com/wiki%20citiao.png">
+<meta name="twitter:title" content="东方财富网cpi数据的抓取【Python】">
+<meta name="twitter:description" content="东方财富网cpi数据的抓取1、使用：
+
+lxml.etree
+requests
+
+2、代码：
+from lxml import etree
+import requests
+
+url = &amp;apos;http://data.eastmoney.com/cjsj/cpi.html&amp;apos;
+content = requests.get(url).content
+
+html = etree.HTML(">
 
 
 
@@ -119,9 +150,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/13/东方财富网cpi数据的抓取/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/07/东方财富网cpi数据的抓取/"/>
 
-  <title> 维基百科首页词条的爬取【Python】 | A Song of Python and Anaconda </title>
+  <title> 东方财富网cpi数据的抓取【Python】 | A Song of Python and Anaconda </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -179,7 +210,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -189,7 +220,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -241,7 +272,7 @@
             
             
               
-                维基百科首页词条的爬取【Python】
+                东方财富网cpi数据的抓取【Python】
               
             
           </h1>
@@ -252,9 +283,9 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-13T00:59:28+08:00" content="2016-09-13">
-              2016-09-13
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-10-07T22:59:28+08:00" content="2016-10-07">
+              2016-10-07
             </time>
           </span>
 
@@ -281,42 +312,37 @@
       
 
       
-        <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/712" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、首先这个教程使用了V3的python，作者也讲到了一些功能函数，在V2不支持，经过测试，比如，urllib在V2就没有.request方法，实际上，网上反馈已经把urllib2合并到urllib中了。考虑到以后v3总会代替掉v2， 咱也升级算了。 顺便把win7也换成了win10, 貌似开机速度比win7还快。</p>
-<p>2、直接上代码吧，加了中文注释，和视频教程大同小异的：之前的代码都是在sublime或者cmder里面操作，可发现换到V3以后，一个print在sublime中断报错提示，可完全一样的代码我用ipython又可以运行，好诧异。<br>所以，最后我干脆跑到pycharm去调试的。</p>
-<pre><code>__author__ = &apos;Administrator&apos;
-# coding:utf-8
-
-import re
-from urllib.request import urlopen
-from bs4 import BeautifulSoup as bs
-
-# 使用urllib的urlopen方法，去打开维基百科的首页，读取，并用utf-8解码
-resp = urlopen(&apos;https://en.wikipedia.org/wiki/Main_Page&apos;).read().decode(&apos;utf-8&apos;)
-
-# 使用BeautifulSoup去解析，其中html.parser是默认的解析器
-soup = bs(resp, &apos;html.parser&apos;)
-# 获取所有的/wiki/开头的a标签的href属性。
-listUrls = soup.find_all(&apos;a&apos;, href=re.compile(r&apos;^/wiki/&apos;))
-print(listUrls)
-
-# 输出所有的词条对应的名称和URL
-for url in listUrls:
-    # 排除.jpg JPG结尾的
-    if not re.search(&apos;\.(jpg|JPG)$&apos;, url[&apos;href&apos;]):
-        # 显示名称和网址的格式
-        # string只能显示一个，而get_text()可显示标签下所有的文字。
-        print(url.get_text(), &apos;&lt;----&gt;&apos;, &apos;https://en.wikipedia.org&apos;+url[&apos;href&apos;])
-</code></pre><p>3、win10遇到的问题：<br>   MP出错，提示awesomium_v1.6.5异常，好在MP能提示到官网提供awesomium_v1.6.6_sdk_win.exe的下载，第一次安装失败，卡机，后重启Win10修复。</p>
-<p>4、方法总结：</p>
+        <h1 id="东方财富网cpi数据的抓取"><a href="#东方财富网cpi数据的抓取" class="headerlink" title="东方财富网cpi数据的抓取"></a>东方财富网cpi数据的抓取</h1><p>1、使用：</p>
 <ul>
-<li>urllib相关函数得到网址和解码；</li>
-<li>bs4进行解析，可使用默认的解析器或者lxml等解析器；</li>
-<li>根据要求和RE规则，找到所有的地址列表</li>
-<li>for循环后加工</li>
+<li>lxml.etree</li>
+<li>requests</li>
 </ul>
-<p>5、结果展示：网址直接可打开对应的wiki信息哦。</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/wiki%20citiao.png" alt=""></p>
-<p>6、PS：作者提到的chrome插件postman通过翻墙下了最新版，看下载量和5星评级应该不错，不过暂时我还没体验到他的威力，以后有感悟的话，再更新。</p>
+<p>2、代码：</p>
+<pre><code>from lxml import etree
+import requests
+
+url = &apos;http://data.eastmoney.com/cjsj/cpi.html&apos;
+content = requests.get(url).content
+
+html = etree.HTML(content)
+content1 = html.xpath(&apos;//*[@id=&quot;tb&quot;]/tr[3]/td[2]/text()&apos;)
+
+print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
+
+# for txt in html.iterfind(&apos;.//*[@id=&quot;tb&quot;]/tr[3]/td&apos;):
+#     print(txt.text)
+</code></pre><p>3、分析：requests+lxml来分析和提取数据比较简单，可以尽可能的规避使用RE的复杂性以及可能产生的编码问题。要注意的是提取文本内容的时候要在xpath地址后面加上/text()<br>另外，默认的结果因为有很多的空格和\n\r，所以需要做数据清洗，就本例，加一句content1[0].strip().replace(‘\n\r’, ‘’)即可。</p>
+<p>4、为执行的代码，表示读取2016年08月份 “全国”，“城市”，“农村”各自的cpi数据。<br>要注意的是：这属于ElementPath，一共4个种类，分别如下：</p>
+<ul>
+<li></li>
+</ul>
+<ol>
+<li>iterfind()</li>
+<li>findall()</li>
+<li>find()</li>
+<li>findtext()</li>
+</ol>
+<p>千万注意的是：ElementPath不能直接使用绝对路径，需要在前面加一个.符号。</p>
 
       
     </div>
@@ -342,17 +368,13 @@ for url in listUrls:
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/13/维基百科首页词条的爬取/" rel="next" title="维基百科首页词条的爬取【Python】">
-                <i class="fa fa-chevron-left"></i> 维基百科首页词条的爬取【Python】
+              <a href="/2016/10/05/tensorflow 初步学习/" rel="next" title="begin to learn TensorFlow">
+                <i class="fa fa-chevron-left"></i> begin to learn TensorFlow
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/13/把维基百科首页词条的数据导入mysql/" rel="prev" title="把维基百科首页词条的数据导入mysql以及读取操作【Python】">
-                把维基百科首页词条的数据导入mysql以及读取操作【Python】 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -401,10 +423,10 @@ for url in listUrls:
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -421,7 +443,7 @@ for url in listUrls:
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">52</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -452,7 +474,7 @@ for url in listUrls:
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明：以下内容学习自：http-www-imooc-com"><span class="nav-number">1.</span> <span class="nav-text">说明：以下内容学习自：http://www.imooc.com/</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#东方财富网cpi数据的抓取"><span class="nav-number">1.</span> <span class="nav-text">东方财富网cpi数据的抓取</span></a></li></ol></div>
             
           </div>
         </section>
@@ -479,7 +501,7 @@ for url in listUrls:
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
