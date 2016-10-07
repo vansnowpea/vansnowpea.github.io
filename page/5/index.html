@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -235,6 +235,135 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/05/Windows下Python+Django制作网站的方法1/" itemprop="url">
+                  Windows下Python+Django制作网站的方法(1)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-09-05T00:20:28+08:00" content="2016-09-05">
+              2016-09-05
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h1><p>Python是很不错的编程语言，Django是基于Python的web框架，Postgresql是数据库, Psycopg用来给Python和Postgresql的一个桥接的工具，Bootstrap是模版工具。全文需要英语基础。</p>
+<h1 id="Django应用是如何工作的？"><a href="#Django应用是如何工作的？" class="headerlink" title="Django应用是如何工作的？"></a>Django应用是如何工作的？</h1><p>用户在浏览器中输入URL后回车, 浏览器会对URL进行检查, 首先判断协议,如果是http就按照 Web 来处理, 然互调用DNS查询, 将域名转换为IP地址, 然后经过网络传输到达对应Web服务器, 服务器对url进行解析后, 调用View中的逻辑(MTV中的V), 其中又涉及到Model(MTV中的M), 与数据库的进行交互, 将数据发到Template(MTV中的T)进行渲染, 然后发送到浏览器中, 浏览器以合适的方式呈现给用户<br>大致工作流程就是这样，从流程可以看出，我们需要做的就是： </p>
+<ul>
+<li>编写相应的 url</li>
+<li>编写数据库（Model</li>
+<li>编写处理 Http 请求的视图函数（View）</li>
+<li>编写需要渲染的模板（Template）</li>
+</ul>
+<h1 id="软件版本和官网："><a href="#软件版本和官网：" class="headerlink" title="软件版本和官网："></a>软件版本和官网：</h1><ul>
+<li>Python V3.5.2        官网：www.python.org</li>
+<li>Django V1.10        官网：www.djangoproject.com</li>
+<li>Postgresql V9.5.4   官网： www.postgresql.org</li>
+<li>Psycopg V2.6.2     官网：<a href="http://initd.org/psycopg/" target="_blank" rel="external">http://initd.org/psycopg/</a></li>
+<li>Bootstrap V3.3.5    官网：<a href="http://www.bootcss.com/" target="_blank" rel="external">http://www.bootcss.com/</a></li>
+</ul>
+<h2 id="说明：-开头的命令是在CMD窗口下，"><a href="#说明：-开头的命令是在CMD窗口下，" class="headerlink" title="说明：$开头的命令是在CMD窗口下，"></a>说明：$开头的命令是在CMD窗口下，</h2><h2 id="gt-gt-gt-的命令表示Python在调试窗口的命令。"><a href="#gt-gt-gt-的命令表示Python在调试窗口的命令。" class="headerlink" title="&gt;&gt;&gt;的命令表示Python在调试窗口的命令。"></a>&gt;&gt;&gt;的命令表示Python在调试窗口的命令。</h2><h2 id="没有的开头符号的表示在-py文件里的代码"><a href="#没有的开头符号的表示在-py文件里的代码" class="headerlink" title="没有的开头符号的表示在.py文件里的代码 ##"></a>没有的开头符号的表示在.py文件里的代码 ##</h2><h1 id="1、-创建虚拟环境"><a href="#1、-创建虚拟环境" class="headerlink" title="1、    创建虚拟环境"></a>1、    创建虚拟环境</h1><p>为了防止后续Django版本升级带来的可能的兼容性问题，首先创建一个新的操作环境，其实就是一个单独的文件夹。打开CMD窗口，使用cd..命令退到C盘根目录，创建一个自定义名字的文件夹，这里以test1命名。可自定义其他名字，那样请在此文后续有test1的地方都替换成你的命名：<br>$ python –m venv test1<br>$ cd test1<br>$ cd Scripts<br>$ activate.bat</p>
+<p>说明：<br>venv是Python V3版本后才有的，如果V2版本不支持。可以看到创建的test1文件夹里面有4个文件，其中一个是Scripts，代表Python的脚本文件。最后你的Dos路径前面会有(test1)的字样，表示虚拟环境创建成功。<br>也可用pip freeze 命令来检测当前路径下安装的库，可以和Python真实安装路径对比，当然这一步可忽略。</p>
+<h1 id="2、安装Django"><a href="#2、安装Django" class="headerlink" title="2、安装Django"></a>2、安装Django</h1><p>$ pip install django</p>
+<h1 id="3、-创建工程"><a href="#3、-创建工程" class="headerlink" title="3、    创建工程"></a>3、    创建工程</h1><p>在test1文件夹路径下，输入：<br>$ django-admin startproject django1<br>这就创建了一个名字为django1的工程，其实就是一个网站，注意可自定义名字替换掉django1，但取名不要和python内置函数冲突。<br>如果在电脑里查看，则在test1文件夹里多了一个django1的文件夹，当打开django1文件夹，里面有一个manager.py和django1的文件夹，包含4个文件。</p>
+<h1 id="4、运行网站"><a href="#4、运行网站" class="headerlink" title="4、运行网站"></a>4、运行网站</h1><p>$ cd django1<br>$ python manage.py runserver<br>到浏览器中输入 ： localhost：8000  或者127.0.0.1：8000,当出现It worked!字样，则成功。从输入网址，到出现界面的这个角度，你已经有一个网站了，虽然里面没什么内容，也许你会说，这也叫网站？别着急，内容会在后续慢慢添加。</p>
+<p>Tips：<br>Django官网的文档给出了详细的说明，英文，网址：<a href="https://docs.djangoproject.com/en/1.10/intro/tutorial01/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.10/intro/tutorial01/</a></p>
+<h1 id="5、创建app"><a href="#5、创建app" class="headerlink" title="5、创建app"></a>5、创建app</h1><p>这里命名为blog，可自定义。<br>  $ python manage.py startapp blog<br>可以看到会多了一个blog的文件夹，里面有一个migrations文件夹和一些py文件。<br>同时，我们应该修改setting.py文件的app部分的代码，放在第6部分讲解。</p>
+<h1 id="6、数据库使用"><a href="#6、数据库使用" class="headerlink" title="6、数据库使用"></a>6、数据库使用</h1><p>本文使用postgresql，同时，装好psycopg。但是要注意的是，由于本文使用的是虚拟环境，所以要把psycopy也装在虚拟路径，方法是形如：<br>(test1) C:> easy_install psycopg2-2.6.2.win-amd64-py3.5-pg9.5.3-release.exe<br>此时，用pip freeze可查看到除了之前唯一的安装的Django，现在多了psycopg，一共2个第三方库了。<br>但因为Django默认使用的数据库是sqlite，在我们的文件目录中也有db.sqlite3的文件。为了使得正常使用postgresql数据库，我们需要在setting.py文件中修改对应的数据库信息。<br>步骤：<br>A：使用Sublime Text打开setting.py，你也可以用Python shell或者类似Pycharm或者notepad++甚至记事本等工具来编辑。快键Ctrl+F: 搜索database，找到对应的代码部分。<br>B:查看关于database的原始代码，然后搜索官网关于setting的设置文档介绍，如地址：<a href="https://docs.djangoproject.com/en/1.10/ref/settings/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.10/ref/settings/</a><br>发现首先要修改成形如下图：</p>
+<p>C：此时，发现我们需要在postgresql中先创建一个数据库，因此在win窗口按键—&gt;“所有程序”中打开pgAdmin III如下图：</p>
+<p>右键选“连接”</p>
+<p>输入密码（如之前选择了保存密码的会跳过此步）<br>然后右键点数据库，选：新建数据库：</p>
+<p>进行简单设置，“名称”根据我们的app名字对应为blog，“所有者”是下拉选项，只有一个postgres，然后确定，如下图：</p>
+<p>D：然后左侧就出现了blog的空的数据库，接下来我们要修改下setting.py中关于database的代码，参考步骤（B）中的官方示范格式。<br>修改代码如下（注意密码我用XXX代替，填写你设置的postgres登录密码）：<br>DATABASES = {<br>    ‘default’: {<br>        ‘ENGINE’: ‘django.db.backends.postgresql’,<br>        ‘NAME’: ‘blog’,<br>        ‘USER’: ‘postgres’,<br>        ‘PASSWORD’: ‘XXX’,<br>        ‘HOST’: ‘127.0.0.1’,<br>        ‘port’: ‘5432’<br>    }<br>接下来还需要把blog的app添加到setting.py中。搜索关键字app，找到对应代码，增加你的app名字blog，而其他的是系统自带的，形如：<br>INSTALLED_APPS = [<br>    ‘blog’,<br>    ‘django.contrib.admin’,<br>    ‘django.contrib.auth’,<br>    ‘django.contrib.contenttypes’,<br>    ‘django.contrib.sessions’,<br>    ‘django.contrib.messages’,<br>    ‘django.contrib.staticfiles’,<br>]<br>以上就完成了Django和数据库的关联。</p>
+<h1 id="7、修改model-py来创建数据模型"><a href="#7、修改model-py来创建数据模型" class="headerlink" title="7、修改model.py来创建数据模型"></a>7、修改model.py来创建数据模型</h1><p>打开blog文件夹下的model.py文件，发现默认的除了一行带有import的代码外，其他是空的。<br>首先参考官网关于model部分的介绍和代码参考，地址：<a href="https://docs.djangoproject.com/en/1.10/topics/db/models/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.10/topics/db/models/</a><br>以及<br><a href="https://docs.djangoproject.com/en/1.10/ref/models/fields/#model-field-types" target="_blank" rel="external">https://docs.djangoproject.com/en/1.10/ref/models/fields/#model-field-types</a></p>
+<p>因为这是一个基于blog的模型，所以，我们可以设置：主题、作者、内容、发贴日期、修改日期等信息。根据规范，我们建立一个Python格式的class。增加代码如：<br>class Article(models.Model):<br>    title = models.CharField(“Title”, max_length = 50)<br>    author = models.CharField(“Author”, max_length = 50)<br>    content = models.TextField()<br>    created_date = models.DateField(“Created Date”, auto_now_add = True)<br>    modified_date = models.DateField(“Modified Date”, auto_now = True)<br>    is_show = models.BooleanField()</p>
+<pre><code>def __str__(self):
+    return self.title
+
+class Meta:
+    db_table = &apos;article&apos;
+</code></pre><p>#<a href="https://vansnowpea.github.io/2016/09/05/Windows%E4%B8%8BPython+Django%E5%88%B6%E4%BD%9C%E7%BD%91%E7%AB%99%E7%9A%84%E6%96%B9%E6%B3%952/https://vansnowpea.github.io/2016/09/05/Windows%E4%B8%8BPython+Django%E5%88%B6%E4%BD%9C%E7%BD%91%E7%AB%99%E7%9A%84%E6%96%B9%E6%B3%952/" target="_blank" rel="external"> 下一篇请看：【点我】</a>#</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/05/大牛pluskid在09年的大作：Scrapy 轻松定制网络爬虫/" itemprop="url">
                   大牛pluskid在09年的大作：Scrapy 轻松定制网络爬虫
                 </a>
@@ -248,7 +377,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:03:39+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -352,7 +481,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:03:39+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -473,7 +602,7 @@ git push sae master:1
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:03:39+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -573,7 +702,7 @@ git push sae master:1
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:03:39+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -704,7 +833,7 @@ crawler.start();
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:02:29+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -801,7 +930,7 @@ crawler.start();
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:02:28+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -949,7 +1078,7 @@ pass
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-05T00:02:28+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -1051,7 +1180,7 @@ sodu apt-get install nginx
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-08-28T10:58:00+08:00" content="2016-08-28">
               2016-08-28
             </time>
@@ -1226,7 +1355,7 @@ if __name__ == &quot;__main__&quot;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-08-27T21:57:00+08:00" content="2016-08-27">
               2016-08-27
             </time>
@@ -1268,107 +1397,6 @@ if __name__ == &quot;__main__&quot;:
 
 $ sudo cnpm install hexo-cli -g
 </code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/27/Ubuntu系统安装遇到的一些坑/" itemprop="url">
-                  Ubuntu系统安装遇到的一些坑
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-08-27T01:44:05+08:00" content="2016-08-27">
-              2016-08-27
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>说明:虽然win10 已经开始支持子系统运行Ubuntu了。 但因为个人倾向win7的精简风格，W+U双系统测试，剧情比较悲催，记录之。</strong></p>
-<p>1、一开始通过本机Win+virtualbox（Ubuntu），预期解决本机数据不能复制到Virtualbox的问题,故尝试装Win+Ubuntu双系统。</p>
-<p>2、由于2个Win的双系统对本机其他盘的文件没影响，一开始惯性思维装Ubuntu也问题不大，但实际问题很大。这是后来才发现，使用Ubuntu不仅要修改硬盘格式，还要修改其他Bios设置。</p>
-<p>3、这导致我一马平川的装好Ubuntu的时候（鼠标点太快），发现Win已经全部没了。很多历史的总结文档，好在大部分有云存储。</p>
-<p>4、发现本机Ubuntu有不少问题，这是因为第一，Linux的熟悉度不够，第二，一些第三方软件的使用，比较麻烦，比如安装命令不确定带来的错误，有的非常难搞定安装和使用，而在Win下超简单。于是想采用本机Ubuntu+virtualbox（Win7）的方案，又发现，在Ubuntu下，运行Virtualbox的窗口比较小（没找到直接调试的地方），这使得Win的体验感很差，而在Win下，使用Virtualbox的窗口可简单调整。第三是，发现一运行Virtualbox就特别卡。</p>
-<p>5、最后决定，本机换回Win，但是从Ubuntu到Win的切换又遇到问题。  首先，修改了Bios，但是硬盘格式没有修改，这是因为搜索别人的经验建议Win7以上保留该格式。最后通过U盘带PE+iso的方案。  可进入PE怎么调试也装不上Win，经过多轮比对测试发现，还是硬盘读取数据异常。  测试修改硬盘格式，终于读取了iso。</p>
-<p>6、单机安装Win，又遇到问题，因为没有任何驱动，主要是网卡。这样我手机的东西不能直接通过数据线连到电脑，  本来想明天到其他电脑通过copy网卡驱动在搞，后来突然想到通过手机下载万能网卡驱动到SD卡，然后手机SD卡+读卡器安装到电脑。这样就一下搞定了。</p>
-<p>7、总结不足的地方，惯性思维导致丢失了硬盘数据，第一次本机换装Linux系统，没查到硬盘格式不同，导致后来很多问题。事后发现，Win+Ubuntu的双系统，应该在Win分区，但很繁琐。或者单独给Ubuntu装，或者继续用Win+Virtualbox的方案，或者装Win10 insider_preview版本。</p>
-
           
         
       
@@ -1441,8 +1469,8 @@ $ sudo cnpm install hexo-cli -g
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">52</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1489,7 +1517,7 @@ $ sudo cnpm install hexo-cli -g
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
