@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -235,6 +235,142 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/07/数据分析的参考书集锦/" itemprop="url">
+                  下载最新电影的爬虫---Xpath读取文本，链接，标题等的操作【Python】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-10-07T23:59:28+08:00" content="2016-10-07">
+              2016-10-07
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="下载最新电影的爬虫"><a href="#下载最新电影的爬虫" class="headerlink" title="下载最新电影的爬虫"></a>下载最新电影的爬虫</h1><p>1、使用：</p>
+<ul>
+<li>lxml.etree</li>
+<li>requests</li>
+</ul>
+<p>2、代码：</p>
+<pre><code># -*- coding:utf-8 -*-
+import requests
+from lxml import etree
+
+
+url = &apos;http://www.ygdy8.net/html/gndy/dyzz/index.html&apos;  #这是电影最新电影的网站
+# r = requests.get(url).content
+# print(r.encoding）
+# &gt;&gt;&gt; ISO-8859-1
+html = requests.get(url).content
+# html = requests.get(url).content.decode(&apos;ISO-8859-1&apos;).encode(&apos;utf-8&apos;)
+
+selector = etree.HTML(html)
+
+# //*[@id=&quot;content&quot;]/div/div[1]/ol/li[1]/div/div[2]/div[2]/p[1]
+# get rid of the : /tbody
+biaoti = selector.xpath(&apos;//*[@id=&quot;header&quot;]/div/div[3]/div[3]/div[2]/div[2]/div[2]/ul//tr[2]/td[2]/b/a/text()&apos;)
+
+
+# get rid of the : /tbody
+jianjie = selector.xpath(&apos;/html/body/div/div/div[3]/div[3]/div[2]/div[2]/div[2]/ul//tr[4]/td/text()&apos;)
+wangzhi = selector.xpath(&apos;//*[@id=&quot;header&quot;]/div/div[3]/div[3]/div[2]/div[2]/div[2]/ul//tr[2]/td[2]/b/a/@href&apos;)
+
+for b,j,k in zip(biaoti,jianjie,wangzhi):
+    print(b+&apos;\n&apos;+j+&apos;\n&apos;+&apos;www.ygdy8.net&apos;+k+&apos;\n&apos;)
+</code></pre><p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-08/015240484.png" alt="">    </p>
+<p>3、分析：主要和上一篇的接近，但是这一篇还有读取网址等操作，注意格式上和读取内容text有差别的。<br>总结如下：</p>
+<pre><code>获取到标签后我们可以获取标签中的属性值
+tree.xpath(&quot;//div[@class=&apos;sec_blk mrg_b_30&apos;]/ul/li[1]/a/text()&quot;)     #获取a的文本，li标号是从1开始，而不是从0开始
+tree.xpath(&quot;//div[@class=&apos;sec_blk mrg_b_30&apos;]/ul/li[1]/a/@href&quot;)   #获取a的链接地址
+
+当然还有其他类似的xpath例子：
+&quot;//input[@id=&apos;city&apos;]/@value&quot;
+&quot;//div[@class=&apos;venueDetal&apos;]/p/img[@class=&apos;img&apos;]/@src&quot;
+&quot;//div[@class=&apos;detail_info_title&apos;]//a[@class=&apos;hotel_star&apos;]/@title&quot;
+</code></pre><p>4、参考： <a href="http://blog.chinaunix.net/uid-13869856-id-5747494.html" target="_blank" rel="external">python+lxml xpath获取数据 </a></p>
+<p>5、可补充点： 自动提取直接下载链接，看是否能导入到迅雷等工具。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/07/下载最新电影的爬虫/" itemprop="url">
                   下载最新电影的爬虫---Xpath读取文本，链接，标题等的操作【Python】
                 </a>
@@ -248,7 +384,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-07T23:59:28+08:00" content="2016-10-07">
               2016-10-07
             </time>
@@ -384,7 +520,7 @@ tree.xpath(&quot;//div[@class=&apos;sec_blk mrg_b_30&apos;]/ul/li[1]/a/@href&quo
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-07T22:59:28+08:00" content="2016-10-07">
               2016-10-07
             </time>
@@ -508,7 +644,7 @@ print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-05T16:20:28+08:00" content="2016-10-05">
               2016-10-05
             </time>
@@ -616,7 +752,7 @@ print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-02T14:20:28+08:00" content="2016-10-02">
               2016-10-02
             </time>
@@ -760,7 +896,7 @@ These are the 6 must have books, if you are serious about being a data scientist
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-27T14:20:28+08:00" content="2016-09-27">
               2016-09-27
             </time>
@@ -868,7 +1004,7 @@ Thanks!
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-27T13:20:28+08:00" content="2016-09-27">
               2016-09-27
             </time>
@@ -972,7 +1108,7 @@ mpl.rcParams[&apos;axes.unicode_minus&apos;] = False #解决保存图像是负�
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-25T23:20:28+08:00" content="2016-09-25">
               2016-09-25
             </time>
@@ -1080,6 +1216,104 @@ plt.show()
             
               
                 
+                <a class="post-title-link" href="/2016/09/23/数值分析和一个bug解决记录/" itemprop="url">
+                  数值分析和一个bug解决记录【python】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-23T23:20:28+08:00" content="2016-09-23">
+              2016-09-23
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="简介：-数值分析和一个bug解决记录-：）"><a href="#简介：-数值分析和一个bug解决记录-：）" class="headerlink" title="简介： 数值分析和一个bug解决记录 ：）"></a>简介： 数值分析和一个bug解决记录 ：）</h1><p>1、这个bug是在使用python3.5.2的时候发生的，由于同时安装anaconda  有时候因为一些测试python2的代码 也安装卸载 最终出现了： Fatal error in launcher: Unable to create process using ‘“‘</p>
+<p>2、解决方案，控制面板卸载后，再到python3 的安装路径把文件夹都删除，此时，保留anaconda版本，在cmder输入ipython就可以正常运行了。</p>
+<p>3、说到数值分析，感觉还是要先阅读下相关书籍，虽然以前matlab接触过一些。首先看的就是评价还不错的《利用python进行数值分析》，但是发现了一个问题，所以马上给作者写了一个email如下图：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-24/235703049.png" alt=""></p>
+<p>4、</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/23/豆瓣电影TOP250的爬取和作图分析/" itemprop="url">
                   《利用Python进行数据分析》豆瓣电影TOP250的爬取和作图分析【python】
                 </a>
@@ -1093,7 +1327,7 @@ plt.show()
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-23T23:20:28+08:00" content="2016-09-23">
               2016-09-23
             </time>
@@ -1309,306 +1543,6 @@ Out[41]: [&apos;犯罪&apos;, &apos;剧情&apos;]
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/23/数值分析和一个bug解决记录/" itemprop="url">
-                  数值分析和一个bug解决记录【python】
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-09-23T23:20:28+08:00" content="2016-09-23">
-              2016-09-23
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="简介：-数值分析和一个bug解决记录-：）"><a href="#简介：-数值分析和一个bug解决记录-：）" class="headerlink" title="简介： 数值分析和一个bug解决记录 ：）"></a>简介： 数值分析和一个bug解决记录 ：）</h1><p>1、这个bug是在使用python3.5.2的时候发生的，由于同时安装anaconda  有时候因为一些测试python2的代码 也安装卸载 最终出现了： Fatal error in launcher: Unable to create process using ‘“‘</p>
-<p>2、解决方案，控制面板卸载后，再到python3 的安装路径把文件夹都删除，此时，保留anaconda版本，在cmder输入ipython就可以正常运行了。</p>
-<p>3、说到数值分析，感觉还是要先阅读下相关书籍，虽然以前matlab接触过一些。首先看的就是评价还不错的《利用python进行数值分析》，但是发现了一个问题，所以马上给作者写了一个email如下图：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-24/235703049.png" alt=""></p>
-<p>4、</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/22/验证码识别的测试/" itemprop="url">
-                  验证码识别的测试【python】
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-09-22T14:20:28+08:00" content="2016-09-22">
-              2016-09-22
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-23/012758858.jpg" alt=""></p>
-<h1 id="简介：-验证码识别的测试，因故需做一个自动的多用户注册的脚本"><a href="#简介：-验证码识别的测试，因故需做一个自动的多用户注册的脚本" class="headerlink" title="简介： 验证码识别的测试，因故需做一个自动的多用户注册的脚本"></a>简介： 验证码识别的测试，因故需做一个自动的多用户注册的脚本</h1><p>1、查阅相关博客，建议使用的是Python+Selenium+PIL+Tesseract ，又有人推荐了Pytesser，不过这个Pytesser的安装还挺坑的。</p>
-<p>2、开始参考的是：<br><a href="http://www.th7.cn/Program/Python/201602/768304.shtml" target="_blank" rel="external">http://www.th7.cn/Program/Python/201602/768304.shtml</a></p>
-<p>以及这个</p>
-<p><a href="http://blog.csdn.net/lanfan_11/article/details/45558573" target="_blank" rel="external">http://blog.csdn.net/lanfan_11/article/details/45558573</a></p>
-<p>3、但测试了半天，无论我按照哪个方法，最终我都不能import pytesser ， 一开始以为成功了，原来是我按照他的例子直接在pytesseract-v0.0.1的文件夹测试的脚本，那自然可以了。</p>
-<p>4、毕竟第一次遇到需要这么折腾的第三方库，而且还是好几年前就停止更新了，干脆就直接把需要编写的py文件丢到这个pytesser文件夹来规避。 </p>
-<p>5、后来又发现有的博客推荐了pytesseract ，看名字应该是继承了pytesser，但是保持更新的，果然顺利安装，那么就是他了。那么更新下使用的工具组合为：Python+Selenium+PIL+pytesseract+Tesseract </p>
-<p>6、剩下就是如何识别验证码的问题，由于测试的网站使用的.aspx的动态图，导致每次输入url得到不同的验证码。<br>所以一不做二不休，使用了截屏计算其验证码方位后单独识别的方案。(另外一个可操作方案是使用cookie)</p>
-<p>过程：</p>
-<pre><code># coding:utf-8
-# python 3.5.2
-
-
-from selenium.webdriver.support import ui as ui
-from selenium.webdriver.common.keys import Keys #需要引入keys 包
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium import webdriver
-import pytesseract
-import time
-from PIL import Image,ImageEnhance
-
-num = 400
-# wait = ui.WebDriverWait(browser, 10)
-# 已经人工测试了一个，所以从第二2个开始
-for i in range(2, num+1):
-
-    name_cn = &apos;aaa&apos;        
-    browser = webdriver.PhantomJS()
-    browser.maximize_window()
-    url = &quot;http://www.wangzhi.com&quot;
-    browser.get(url)
-    wait = ui.WebDriverWait(browser, 20)
-    wait.until(lambda browser:browser.find_element_by_xpath(&quot;//*[@id=\&quot;ussheng\&quot;]&quot;))
-    shs1 = browser.find_element_by_xpath(&quot;//*[@id=\&quot;ussheng\&quot;]&quot;).send_keys(&quot;shengfen&quot;)
-    shs2 = browser.find_element_by_xpath(&quot;//*[@id=\&quot;uscity\&quot;]&quot;).send_keys(&quot;xxshi&quot;)
-    mhq = browser.find_element_by_xpath(&quot;//*[@id=\&quot;usxian\&quot;]&quot;).send_keys(&quot;yyqu&quot;)
-    nling = browser.find_element_by_xpath(&quot;//*[@id=\&quot;inscage\&quot;]&quot;).send_keys(&quot;nianling&quot;)
-    dwei = browser.find_element_by_xpath(&quot;//*[@id=\&quot;worker\&quot;]&quot;).send_keys(&quot;dizhi&quot;)
-    name_input = browser.find_element_by_xpath(&quot;//*[@id=\&quot;ustruename\&quot;]&quot;).send_keys(name_cn + &apos;%d&apos;%i)
-
-    # 选择性别，下拉框操作
-    sex = browser.find_element_by_xpath(&quot;//*[@id=\&quot;DropDownList1\&quot;]&quot;)
-    sex.find_element_by_xpath(&quot;//*[@id=\&quot;DropDownList1\&quot;]/option[2]&quot;).click()
-
-    # 验证码识别，思路，右键保存验证码图片，识别数字或者字母。但是保存不能执行，失败
-    ###############################################################################
-    # # xpath： //*[@id=&quot;ValidImage&quot;]
-    # shi_bie_ma = browser.find_element_by_xpath(&quot;//*[@id=\&quot;ValidImage\&quot;]&quot;)
-    # action = ActionChains(browser).move_to_element(shi_bie_ma)
-    # action.context_click(shi_bie_ma)
-    # action.send_keys(Keys.ARROW_DOWN)
-    # action.send_keys(&apos;v&apos;)
-    # action.perform()
-    ###############################################################################
-
-
-
-    # 通过下载图片后识别，发现是aspx 每次打开url都更新识别码，所以失败。看来只好一开始就截屏啦。
-
-    # 截屏
-    browser.get_screenshot_as_file(&apos;C:\\van\\image1.jpg&apos;)#比较好理解
-
-    # 检测识别码坐标
-    imgelement = browser.find_element_by_xpath(&apos;//*[@id=&quot;ValidImage&quot;]&apos;) #定位验证码
-    location = imgelement.location #获取验证码x,y轴坐标
-
-    size=imgelement.size #获取验证码的长宽
-    range=(int(location[&apos;x&apos;]),int(location[&apos;y&apos;]),int(location[&apos;x&apos;]+size[&apos;width&apos;]),int(location[&apos;y&apos;]+size[&apos;height&apos;])) #写成我们需要截取的位置坐标
-
-    im =Image.open(&apos;C:\\van\\image1.jpg&apos;)
-    # 设置要裁剪的区域
-    region = im.crop(range)     #此时，region是一个新的图像对象。
-    #region.show()#显示的话就会被占用，所以要注释掉
-    region.save(&quot;C:\\van\\image2.jpg&quot;)
-
-
-     #--------------------图片增强+自动识别简单验证码-----------------------------
-    #time.sleep(3)防止由于网速，可能图片还没保存好，就开始识别
-
-    im=Image.open(&quot;C:\\van\\image2.jpg&quot;)
-    imgry = im.convert(&apos;L&apos;)#图像加强，二值化
-    sharpness =ImageEnhance.Contrast(imgry)#对比度增强
-    sharp_img = sharpness.enhance(2.0)
-
-    sharp_img.save(&quot;C:\\van\\image2.jpg&quot;)
-
-    #http://www.cnblogs.com/txw1958/archive/2012/02/21/2361330.html
-
-    #imgry.show()#这是分布测试时候用的，整个程序使用需要注释掉
-    #imgry.save(&quot;E:\\image_code.jpg&quot;)
-    im=Image.open(&quot;C:\\van\\image2.jpg&quot;)
-    code = pytesseract.image_to_string(im)#code即为识别出的图片数字str类型
-    print(code)
-    #打印code观察是否识别正确
-
-    #-------------------------------------------------------------------
-    code_input = browser.find_element_by_xpath(&quot;//*[@id=\&quot;txtCheckCode\&quot;]&quot;).send_keys(code)
-    # login
-    browser.find_element_by_xpath(&quot;//*[@id=\&quot;Button1\&quot;]&quot;).click()
-    print(&quot;fished,%d&quot;%i)
-    browser.quit()
-</code></pre><p>7、程序分析：</p>
-<ul>
-<li>虽然使用的截屏然后识别验证码的方式，也许不是最优雅，不过可可以通过元素的imgelement.location 来获取验证码x,y轴坐标，从而可以得到精确的验证码截图区域，否则人工去调试也不是不行，但需要在画图板用鼠标尽可能准确的定位。</li>
-<li>增加了图片增加识别技术，加大了识别验证码的概率。</li>
-<li>这段代码的不足之处是没有检测验证码识别提交后，是否失败的判断，这主要是测试的网站标的，实在做的太烂了，点了二维码不会立刻提示错误与否，而是卡机。</li>
-</ul>
-<p>8、总结：有较多的注释，记录了一些操作思路。学习了验证码的初级识别技术。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1654,8 +1588,8 @@ for i in range(2, num+1):
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">53</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1702,7 +1636,7 @@ for i in range(2, num+1):
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
