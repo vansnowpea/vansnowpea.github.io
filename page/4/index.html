@@ -235,141 +235,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/11/正则式学习小结/" itemprop="url">
-                  正则式学习小结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
-              2016-09-11
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/550" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>由于这个视频教程已经说的比较详细，请参考原视频教程，这里为总结</p>
-<p>1、简介：为何需要正则表达式，为了减少根据不同需求不断编制函数的麻烦，通过制定正则式规则，可以巧妙且有效的进行归纳总结。</p>
-<p>2、Python的RE模块，RE是正则表达式的英文首字母缩写。最常用的就是re.match()函数了，其次是ma.group()，用来查阅匹配结果。</p>
-<p>3、<strong>【重点】RE的语法：</strong></p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/re%201.png" alt=""></p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/re%202.png" alt=""></p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/re%203.png" alt=""></p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/re%204.png" alt=""></p>
-<p>4、 RE其他模块：</p>
-<ul>
-<li>search（pattern, string, flags=0） 用来查找满足pattern的第一个返回值。</li>
-<li>findall（pattern, string, flags=0）用来查找满足pattern的所有返回值。</li>
-<li>sub（pattern, repl, string, count=0, flags=0）将字符串中匹配正则表达式的部分替代为其他值，并允许引入函数模式来进行替代。</li>
-<li>split（pattern, string, maxsplit=0, flags=0）根据匹配分割字符串，返回分割字符串组成的列表。</li>
-</ul>
-<p>5、练习，抓取慕课网的<a href="http://www.imooc.com/course/list的图片。主要流程为：" target="_blank" rel="external">http://www.imooc.com/course/list的图片。主要流程为：</a></p>
-<ol>
-<li>抓取网页，</li>
-<li>获取图片地址，</li>
-<li>抓去图片内容并保存到本地，</li>
-</ol>
-<p>结果如下：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/re-pics%20of%20imooc.png" alt=""></p>
-<p>6、源代码：</p>
-<pre><code>import re
-import urllib2
-
-test_url = &apos;http://www.imooc.com/course/list&apos;
-req = urllib2.urlopen(test_url)
-buf = req.read()
-print buf
-
-listurl = re.findall(r&apos;http:.+\.jpg&apos;, buf)
-print listurl
-
-i = 0
-for url in listurl:
-    f = open(str(i)+&apos;.jpg&apos;, &apos;w&apos;)
-    req = urllib2.urlopen(url)
-    buf = req.read()
-    f.write(buf)
-    i += 1
-</code></pre><p>7、PS，再一次的，发现在Win下的结果出现乱码，而且抓的图片也是，而在Linux下是正常的。得找下原因。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/09/11/Python操作MySQL数据库/" itemprop="url">
                   Python操作MySQL数据库
                 </a>
@@ -1437,6 +1302,104 @@ import tornado.web
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/05/Hexo模版一个bug的发现和记录/" itemprop="url">
+                  Hexo模版一个bug的发现和记录
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-05T01:59:28+08:00" content="2016-09-05">
+              2016-09-05
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="http://ocg7i7pt6.bkt.clouddn.com/hexo%20load%E6%8A%A5%E9%94%99.png" alt=""></p>
+<p>上图中我在文章中输入的，竟然引发了Hexo的 Hexo g 命令的异常报错：</p>
+<p>FATAL<unknown path=""> [Line xx, Column yy]<br>  unknown block tag:  load </unknown></p>
+<p>在Hexo官网上，现在也没找到到底如何解决，以及具体的原因，只能猜测是引发了内置函数的冲突。</p>
+<p>在数千字的文章中定位找到这个bug ，也是花了点时间。 不过好在定位出来了。 这是第一次遇到在文章中，而非源代码，也能引发bug，一开始没想到会这样，后来想了下其原理应该是在内容更新前，Hexo会扫描发布内容中所含有的代码类，这一次很不幸引发了冲突。 </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1482,7 +1445,7 @@ import tornado.web
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">55</span>
+              <span class="site-state-item-count">54</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>

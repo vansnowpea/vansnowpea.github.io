@@ -235,104 +235,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/23/数值分析和一个bug解决记录/" itemprop="url">
-                  数值分析和一个bug解决记录【python】
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-23T23:20:28+08:00" content="2016-09-23">
-              2016-09-23
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="简介：-数值分析和一个bug解决记录-：）"><a href="#简介：-数值分析和一个bug解决记录-：）" class="headerlink" title="简介： 数值分析和一个bug解决记录 ：）"></a>简介： 数值分析和一个bug解决记录 ：）</h1><p>1、这个bug是在使用python3.5.2的时候发生的，由于同时安装anaconda  有时候因为一些测试python2的代码 也安装卸载 最终出现了： Fatal error in launcher: Unable to create process using ‘“‘</p>
-<p>2、解决方案，控制面板卸载后，再到python3 的安装路径把文件夹都删除，此时，保留anaconda版本，在cmder输入ipython就可以正常运行了。</p>
-<p>3、说到数值分析，感觉还是要先阅读下相关书籍，虽然以前matlab接触过一些。首先看的就是评价还不错的《利用python进行数值分析》，但是发现了一个问题，所以马上给作者写了一个email如下图：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-24/235703049.png" alt=""></p>
-<p>4、</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/09/22/验证码识别的测试/" itemprop="url">
                   验证码识别的测试【python】
                 </a>
@@ -1687,6 +1589,188 @@ element = driver.find_element_by_xpath(&quot;//input[@id=&apos;passwd-id&apos;]&
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/16/selenium+PhantomJS 抓取斗鱼房间信息/" itemprop="url">
+                  selenium+PhantomJS 抓取斗鱼房间信息【python】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-16T12:59:28+08:00" content="2016-09-16">
+              2016-09-16
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明原文连接【点我】"><a href="#说明原文连接【点我】" class="headerlink" title="说明原文连接【点我】"></a><a href="http://www.jianshu.com/p/520749be7377" target="_blank" rel="external">说明原文连接【点我】</a></h1><p>1、环境：selenium+PhantomJS<br>   selenium 可直接安装 ： pip install -U selenium<br>   PhantomJS： 官网下载，设置对应bin的路径为环境变量。</p>
+<p>2、本文对原作的代码进行了改编，去掉了单元测试部分，因为重点是研究selenium+PhantomJS 抓取异步数据，最后把数据通过mysql导出。</p>
+<p>3、代码（）：</p>
+<pre><code>#coding:utf-8
+# python 3.5.2
+
+
+from selenium import webdriver
+from bs4 import BeautifulSoup
+import pymysql.cursors
+
+
+
+class Test(object):
+    def __init__(self):
+        pass
+
+
+
+    def begin_run(self):
+
+        driver = webdriver.PhantomJS()
+        driver.get(&apos;http://www.douyu.com/directory/all&apos;)
+        soup = BeautifulSoup(driver.page_source, &apos;xml&apos;)
+        while True:
+            titles = soup.find_all(&apos;h3&apos;, {&apos;class&apos;: &apos;ellipsis&apos;})
+            # soup.find_all(&apos;h3&apos;, {class_=&apos;ellipsis&apos;})
+            nums = soup.find_all(&apos;span&apos;, {&apos;class&apos;: &apos;dy-num fr&apos;})
+            for title, num in zip(titles, nums):
+                data = {
+                    &apos;房间名&apos;: title.get_text(),
+                    &apos;观看数量&apos;: num.get_text()
+                }
+                connection = pymysql.connect(host=&apos;localhost&apos;,
+                                     user=&apos;root&apos;,
+                                     password=&apos;xxxx&apos;,
+                                     db=&apos;douyu&apos;,
+                                     charset=&apos;utf8&apos;
+                                     )
+
+                try:
+                    # 创建会话指针
+                    with connection.cursor() as cursor:
+                        # 创建sql语句
+                        sql = &apos;insert into `douyu1` (`房间名`,`观看数量`) values(%s, %s)&apos;
+                        # 执行sql语句
+                        cursor.execute(sql, (data[&apos;房间名&apos;], data[&apos;观看数量&apos;]))
+
+                        # 提交
+                        connection.commit()
+                finally:
+                    connection.close()
+            if driver.page_source.find(&apos;shark-pager-disable-next&apos;) != -1:
+                break
+            elem = driver.find_element_by_class_name(&apos;shark-pager-next&apos;)
+            elem.click()
+            soup = BeautifulSoup(driver.page_source, &apos;xml&apos;)
+
+    def start(self):
+        Test().begin_run()
+
+if __name__ == &quot;__main__&quot;:
+    test = Test()
+    test.start()
+</code></pre><p>4、其中的坑：<br>   如果默认使用webdriver的“.”查找功能，比如很可能你突然忘记PhantomJS的拼写了，那么查阅回车后，得到的是PhantomJS，注意不是PhantomJS() ，就会导致报错如下：</p>
+<pre><code>Error
+Traceback (most recent call last):
+  File &quot;C:\Users\Administrator\PycharmProjects\untitled\readpdf.py&quot;, line 13, in testEle
+    driver.get(&apos;http://www.douyu.com/directory/all&apos;)
+TypeError: get() missing 1 required positional argument: &apos;url&apos;
+</code></pre><p>如果我们分别type他们的信息：</p>
+<pre><code>print(type(webdriver.PhantomJS))
+
+print(type(webdriver.PhantomJS()))
+</code></pre><p>得到如下结果：</p>
+<pre><code>&lt;class &apos;type&apos;&gt;
+
+&lt;class &apos;selenium.webdriver.phantomjs.webdriver.WebDriver&apos;&gt;
+</code></pre><p>也就是说，加了括号，表示得到的是selenium.webdriver.phantomjs.webdriver.WebDriver的具体对象。</p>
+<p>5、测试结果：<br>～天天游戏，天天厨房～  观看数量比较威猛，</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/douyu%20selenium.png" alt=""></p>
+<p>6、原作加入了单元测试的写法，如果有兴趣，可以看下<a href="http://blog.csdn.net/hackerain/article/details/24095117" target="_blank" rel="external">另一篇文章【点我】</a>，对unittest做了有点详细的解释说明。</p>
+<p>7、总结：本文学习了 的基本使用方法，另外必须强调的是翻页方面的操作，就斗鱼来说，在总网址下，翻页时在浏览器的地址是不变的，而之前抓取的网站都是跟着翻页变更地址的，形如xxx/1  xxx/2  这样的， 那么必须重点看下源代码的以下几句：</p>
+<pre><code>if driver.page_source.find(&apos;shark-pager-disable-next&apos;) != -1:
+    break
+elem = driver.find_element_by_class_name(&apos;shark-pager-next&apos;)
+elem.click()
+soup = BeautifulSoup(driver.page_source, &apos;xml&apos;)
+</code></pre><p>其中if语句判断 没有下一页了 ，抓取就结束，不然，就通过模拟点击到下一页继续抓取数据。 另外，“下一页”是在名为shark-pager-next的一个类里的，所以那么写，而当到了38页，也就是最后一页后，那个“下一页”的图标就灰色了，通过查看代码，里面是在一个含有shark-pager-disable-next字样的类里</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1732,7 +1816,7 @@ element = driver.find_element_by_xpath(&quot;//input[@id=&apos;passwd-id&apos;]&
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">55</span>
+              <span class="site-state-item-count">54</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
