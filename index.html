@@ -339,7 +339,7 @@ for i in total_books:
         print(&apos;will downloading...&apos;)
         html_new = requests.get(href).content
         selector_new = etree.HTML(html_new)
-        link_new = selector_new.xpath(&apos;//*[@id=&quot;download&quot;]/div[2]/table/tbody/tr[1]/td[2]/a/@href&apos;)
+        link_new = selector_new.xpath(&apos;//*[@id=&quot;download&quot;]/div[2]/table/tbody/tr[1]/td[2]/a/@href&apos;)[0]
         print(&apos;final download link is :&apos;,link_new)
 
 

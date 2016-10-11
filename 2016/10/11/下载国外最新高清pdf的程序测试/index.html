@@ -99,7 +99,7 @@
 一开始人工下载成功， 国内要月底才上线呢。
 3、但是程序">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/022803439.png">
-<meta property="og:updated_time" content="2016-10-11T18:31:39.000Z">
+<meta property="og:updated_time" content="2016-10-11T18:36:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="下载国外最新高清pdf的程序测试【Python】">
 <meta name="twitter:description" content="下载国外最新高清pdf的程序测试1、今天意外发现国外某站，提供非常近期，甚至国内亚马逊还没上市的最新高清pdf，所以测试爬虫，看是否能自动下载。
@@ -350,7 +350,7 @@ for i in total_books:
         print(&apos;will downloading...&apos;)
         html_new = requests.get(href).content
         selector_new = etree.HTML(html_new)
-        link_new = selector_new.xpath(&apos;//*[@id=&quot;download&quot;]/div[2]/table/tbody/tr[1]/td[2]/a/@href&apos;)
+        link_new = selector_new.xpath(&apos;//*[@id=&quot;download&quot;]/div[2]/table/tbody/tr[1]/td[2]/a/@href&apos;)[0]
         print(&apos;final download link is :&apos;,link_new)
 
 
