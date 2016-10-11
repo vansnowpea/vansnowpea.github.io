@@ -235,8 +235,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/11/正则式学习小结/" itemprop="url">
-                  正则式学习小结
+                <a class="post-title-link" href="/2016/09/13/维基百科首页词条的爬取/" itemprop="url">
+                  维基百科首页词条的爬取【Python】
                 </a>
               
             
@@ -249,8 +249,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
-              2016-09-11
+            <time itemprop="dateCreated" datetime="2016-09-13T00:59:28+08:00" content="2016-09-13">
+              2016-09-13
             </time>
           </span>
 
@@ -279,48 +279,42 @@
       
         
           
-            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/550" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>由于这个视频教程已经说的比较详细，请参考原视频教程，这里为总结</p>
-<p>1、简介：为何需要正则表达式，为了减少根据不同需求不断编制函数的麻烦，通过制定正则式规则，可以巧妙且有效的进行归纳总结。</p>
-<p>2、Python的RE模块，RE是正则表达式的英文首字母缩写。最常用的就是re.match()函数了，其次是ma.group()，用来查阅匹配结果。</p>
-<p>3、<strong>【重点】RE的语法：</strong></p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/re%201.png" alt=""></p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/re%202.png" alt=""></p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/re%203.png" alt=""></p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/re%204.png" alt=""></p>
-<p>4、 RE其他模块：</p>
+            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/712" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、首先这个教程使用了V3的python，作者也讲到了一些功能函数，在V2不支持，经过测试，比如，urllib在V2就没有.request方法，实际上，网上反馈已经把urllib2合并到urllib中了。考虑到以后v3总会代替掉v2， 咱也升级算了。 顺便把win7也换成了win10, 貌似开机速度比win7还快。</p>
+<p>2、直接上代码吧，加了中文注释，和视频教程大同小异的：之前的代码都是在sublime或者cmder里面操作，可发现换到V3以后，一个print在sublime中断报错提示，可完全一样的代码我用ipython又可以运行，好诧异。<br>所以，最后我干脆跑到pycharm去调试的。</p>
+<pre><code>__author__ = &apos;Administrator&apos;
+# coding:utf-8
+
+import re
+from urllib.request import urlopen
+from bs4 import BeautifulSoup as bs
+
+# 使用urllib的urlopen方法，去打开维基百科的首页，读取，并用utf-8解码
+resp = urlopen(&apos;https://en.wikipedia.org/wiki/Main_Page&apos;).read().decode(&apos;utf-8&apos;)
+
+# 使用BeautifulSoup去解析，其中html.parser是默认的解析器
+soup = bs(resp, &apos;html.parser&apos;)
+# 获取所有的/wiki/开头的a标签的href属性。
+listUrls = soup.find_all(&apos;a&apos;, href=re.compile(r&apos;^/wiki/&apos;))
+print(listUrls)
+
+# 输出所有的词条对应的名称和URL
+for url in listUrls:
+    # 排除.jpg JPG结尾的
+    if not re.search(&apos;\.(jpg|JPG)$&apos;, url[&apos;href&apos;]):
+        # 显示名称和网址的格式
+        # string只能显示一个，而get_text()可显示标签下所有的文字。
+        print(url.get_text(), &apos;&lt;----&gt;&apos;, &apos;https://en.wikipedia.org&apos;+url[&apos;href&apos;])
+</code></pre><p>3、win10遇到的问题：<br>   MP出错，提示awesomium_v1.6.5异常，好在MP能提示到官网提供awesomium_v1.6.6_sdk_win.exe的下载，第一次安装失败，卡机，后重启Win10修复。</p>
+<p>4、方法总结：</p>
 <ul>
-<li>search（pattern, string, flags=0） 用来查找满足pattern的第一个返回值。</li>
-<li>findall（pattern, string, flags=0）用来查找满足pattern的所有返回值。</li>
-<li>sub（pattern, repl, string, count=0, flags=0）将字符串中匹配正则表达式的部分替代为其他值，并允许引入函数模式来进行替代。</li>
-<li>split（pattern, string, maxsplit=0, flags=0）根据匹配分割字符串，返回分割字符串组成的列表。</li>
+<li>urllib相关函数得到网址和解码；</li>
+<li>bs4进行解析，可使用默认的解析器或者lxml等解析器；</li>
+<li>根据要求和RE规则，找到所有的地址列表</li>
+<li>for循环后加工</li>
 </ul>
-<p>5、练习，抓取慕课网的<a href="http://www.imooc.com/course/list的图片。主要流程为：" target="_blank" rel="external">http://www.imooc.com/course/list的图片。主要流程为：</a></p>
-<ol>
-<li>抓取网页，</li>
-<li>获取图片地址，</li>
-<li>抓去图片内容并保存到本地，</li>
-</ol>
-<p>结果如下：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/re-pics%20of%20imooc.png" alt=""></p>
-<p>6、源代码：</p>
-<pre><code>import re
-import urllib2
-
-test_url = &apos;http://www.imooc.com/course/list&apos;
-req = urllib2.urlopen(test_url)
-buf = req.read()
-print buf
-
-listurl = re.findall(r&apos;http:.+\.jpg&apos;, buf)
-print listurl
-
-i = 0
-for url in listurl:
-    f = open(str(i)+&apos;.jpg&apos;, &apos;w&apos;)
-    req = urllib2.urlopen(url)
-    buf = req.read()
-    f.write(buf)
-    i += 1
-</code></pre><p>7、PS，再一次的，发现在Win下的结果出现乱码，而且抓的图片也是，而在Linux下是正常的。得找下原因。</p>
+<p>5、结果展示：网址直接可打开对应的wiki信息哦。</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/wiki%20citiao.png" alt=""></p>
+<p>6、PS：作者提到的chrome插件postman通过翻墙下了最新版，看下载量和5星评级应该不错，不过暂时我还没体验到他的威力，以后有感悟的话，再更新。</p>
 
           
         
@@ -432,6 +426,141 @@ for url in listurl:
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%20%E8%A1%A8%E6%A0%BC%E8%AE%BE%E7%BD%AE%E5%88%97.png" alt=""></p>
 <p>8、同时推荐W3C的SQL教程，地址是： <a href="http://www.w3school.com.cn/sql/index.asp" target="_blank" rel="external">http://www.w3school.com.cn/sql/index.asp</a></p>
 <p>9、刚发现<a href="http://www.jianshu.com/p/a014b26ba7ca" target="_blank" rel="external">这个帖子</a>也有写的比较详细，可参考</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/11/正则式学习小结/" itemprop="url">
+                  正则式学习小结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
+              2016-09-11
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/550" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>由于这个视频教程已经说的比较详细，请参考原视频教程，这里为总结</p>
+<p>1、简介：为何需要正则表达式，为了减少根据不同需求不断编制函数的麻烦，通过制定正则式规则，可以巧妙且有效的进行归纳总结。</p>
+<p>2、Python的RE模块，RE是正则表达式的英文首字母缩写。最常用的就是re.match()函数了，其次是ma.group()，用来查阅匹配结果。</p>
+<p>3、<strong>【重点】RE的语法：</strong></p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/re%201.png" alt=""></p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/re%202.png" alt=""></p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/re%203.png" alt=""></p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/re%204.png" alt=""></p>
+<p>4、 RE其他模块：</p>
+<ul>
+<li>search（pattern, string, flags=0） 用来查找满足pattern的第一个返回值。</li>
+<li>findall（pattern, string, flags=0）用来查找满足pattern的所有返回值。</li>
+<li>sub（pattern, repl, string, count=0, flags=0）将字符串中匹配正则表达式的部分替代为其他值，并允许引入函数模式来进行替代。</li>
+<li>split（pattern, string, maxsplit=0, flags=0）根据匹配分割字符串，返回分割字符串组成的列表。</li>
+</ul>
+<p>5、练习，抓取慕课网的<a href="http://www.imooc.com/course/list的图片。主要流程为：" target="_blank" rel="external">http://www.imooc.com/course/list的图片。主要流程为：</a></p>
+<ol>
+<li>抓取网页，</li>
+<li>获取图片地址，</li>
+<li>抓去图片内容并保存到本地，</li>
+</ol>
+<p>结果如下：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/re-pics%20of%20imooc.png" alt=""></p>
+<p>6、源代码：</p>
+<pre><code>import re
+import urllib2
+
+test_url = &apos;http://www.imooc.com/course/list&apos;
+req = urllib2.urlopen(test_url)
+buf = req.read()
+print buf
+
+listurl = re.findall(r&apos;http:.+\.jpg&apos;, buf)
+print listurl
+
+i = 0
+for url in listurl:
+    f = open(str(i)+&apos;.jpg&apos;, &apos;w&apos;)
+    req = urllib2.urlopen(url)
+    buf = req.read()
+    f.write(buf)
+    i += 1
+</code></pre><p>7、PS，再一次的，发现在Win下的结果出现乱码，而且抓的图片也是，而在Linux下是正常的。得找下原因。</p>
 
           
         
@@ -1323,120 +1452,6 @@ Successfully installed lxml-3.6.4
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/06/推荐Tornado的中文教程/" itemprop="url">
-                  推荐Tornado的中文教程
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-06T14:59:28+08:00" content="2016-09-06">
-              2016-09-06
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="http://ocg7i7pt6.bkt.clouddn.com/tornado.jpg" alt=""></p>
-<p>查阅<a href="http://docs.pythontab.com/tornado/introduction-to-tornado/" target="_blank" rel="external">地址为：【点我】</a></p>
-<p>这份教程讲解的比较详细，可以看看。</p>
-<p>引入模块</p>
-<pre><code>import tornado.httpserver
-
-import tornado.ioloop
-
-import tornado.options
-
-import tornado.web
-</code></pre><p>这四个都是Tornado的模块。它们四个在一般的网站开发中，都要用到，基本作用分别是：</p>
-<ul>
-<li>tornado.httpserver：这个模块就是用来解决web服务器的http协议问题，它提供了不少属性方法，实现客户端和服务器端的互通。Tornado的非阻塞、单线程的特点在这个模块中体现。</li>
-<li>tornado.ioloop：这个也非常重要，能够实现非阻塞socket循环，不能互通一次就结束。</li>
-<li>tornado.options：这是命令行解析模块，也常用到。</li>
-<li>tornado.web：这是必不可少的模块，它提供了一个简单的Web框架与异步功能，从而使其扩展到大量打开的连接，使其成为理想的长轮询。</li>
-</ul>
-<h1 id="一些知识点："><a href="#一些知识点：" class="headerlink" title="一些知识点："></a>一些知识点：</h1><p>1、class IndexHandler():</p>
-<p>   这个类是请求处理程序类，那么就最好用Handler结尾，这样在名称上很明确，是干什么的。</p>
-<p>2、前端后端的数据连接：通过ajax提交到了后端，后端借助于get_argument()方法得到了所提交的数据（用户名和密码）。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1482,7 +1497,7 @@ import tornado.web
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">55</span>
+              <span class="site-state-item-count">56</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
