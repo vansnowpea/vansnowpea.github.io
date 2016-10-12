@@ -101,7 +101,7 @@
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/022803439.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/093157994.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/203618609.png">
-<meta property="og:updated_time" content="2016-10-12T15:22:17.000Z">
+<meta property="og:updated_time" content="2016-10-12T15:35:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="国外最新高清pdf寻找以及实现迅雷自动下载【Python】">
 <meta name="twitter:description" content="国外最新高清pdf寻找以及实现迅雷自动下载1、今天意外发现国外某站，提供非常近期，甚至国内亚马逊还没上市的最新高清pdf，所以测试爬虫，看是否能自动下载。
@@ -190,7 +190,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -200,7 +200,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -263,7 +263,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-11T20:59:28+08:00" content="2016-10-11">
               2016-10-11
             </time>
@@ -429,7 +429,7 @@ Out[12]: &apos;//www65.zippyshare.com/v/oFSWQWDk/file.html&apos;
 </code></pre><p>6、忘记说明下昨天的代码为何要用re.match （或者re.research）, 这是因为网站的关键词搜索引擎所使用的算法，我们是不知道的，但从搜索结果看，某关键词下，可能有不同的书籍，而我们是需要精确搜索，下图中实际出现了16本书，但针对SciPy and NumPy，我们要找的是第三个图对应的。因此，我们可以把显示的书名做一个match对照的循环，来实现精确匹配。而另外一方面，网站提供的书名还可能多了冒号，后面附加书名，这样的也符合我们的要求。后来发现用关键词 if xxx in yyy的方式更简便。</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/093157994.png" alt=""></p>
 <p>7、昨天的代码一开始没有考虑到国外网盘下载异常失败的问题，并且有的搜索结果可能有多个网盘地址，而我只取了默认的第一个，考虑到下载的失败可能性，最好把所有下载地址都获取。所以代码需要修改。<br>由于：SciPy and NumPy 对应的网盘当机，选用：《Introduction to Machine Learning with Python》为例</p>
-<p>经过对照，在最后的下载界面，是动态的，因为调用selenium+Firefox组合。最后终于得到了完整pdf队中的链接，但速度明显比较慢了，在本例中，是rar后缀的压缩包格式，里面含有pdf。</p>
+<p>经过对照，在最后的下载界面，是动态的，因此调用selenium+Firefox组合。最后终于得到了完整pdf队中的链接，但速度明显比较慢了，在本例中，是rar后缀的压缩包格式，里面含有pdf。</p>
 <pre><code>download link is : [&apos;http://www78.zippyshare.com/v/hBU7JYZp/file.html&apos;, &apos;http://www65.zippyshare.com/v/oFSWQWDk/file.html&apos;]
 
 
@@ -527,10 +527,10 @@ Process finished with exit code 0
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -547,7 +547,7 @@ Process finished with exit code 0
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">56</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -605,7 +605,7 @@ Process finished with exit code 0
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
