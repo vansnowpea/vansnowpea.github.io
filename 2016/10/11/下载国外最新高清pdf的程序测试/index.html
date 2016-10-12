@@ -88,7 +88,7 @@
 2、
 《OReilly.Introduction.to.Machine.Learning.with.Python.A.Guide.for.Data.Scientists.1449369413》  
 一开始人工下载成功， 国内要月底才上线呢。
-3、但是程序">
+3、 随后测">
 <meta property="og:type" content="article">
 <meta property="og:title" content="下载国外最新高清pdf的程序测试【Python】">
 <meta property="og:url" content="http://yoursite.com/2016/10/11/下载国外最新高清pdf的程序测试/index.html">
@@ -97,17 +97,17 @@
 2、
 《OReilly.Introduction.to.Machine.Learning.with.Python.A.Guide.for.Data.Scientists.1449369413》  
 一开始人工下载成功， 国内要月底才上线呢。
-3、但是程序">
+3、 随后测">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/022803439.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/093157994.png">
-<meta property="og:updated_time" content="2016-10-12T08:25:31.000Z">
+<meta property="og:updated_time" content="2016-10-12T12:30:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="下载国外最新高清pdf的程序测试【Python】">
 <meta name="twitter:description" content="下载国外最新高清pdf的程序测试1、今天意外发现国外某站，提供非常近期，甚至国内亚马逊还没上市的最新高清pdf，所以测试爬虫，看是否能自动下载。
 2、
 《OReilly.Introduction.to.Machine.Learning.with.Python.A.Guide.for.Data.Scientists.1449369413》  
 一开始人工下载成功， 国内要月底才上线呢。
-3、但是程序">
+3、 随后测">
 <meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/022803439.png">
 
 
@@ -295,20 +295,27 @@
 <p>2、</p>
 <p>《OReilly.Introduction.to.Machine.Learning.with.Python.A.Guide.for.Data.Scientists.1449369413》  </p>
 <p>一开始人工下载成功， 国内要月底才上线呢。</p>
-<p>3、但是程序测试后发现，在最后真实下载的时候，总提示服务器维护，但更换了ip也这样的结果，所以不确定是否真维护了，总之，当前最后一步下载失败了。不过最起码实现了倒数第二步的链接。</p>
+<p>3、 随后测试程序是否可自动下载，第二本书的下载遇到了问题：总提示服务器维护，但更换了ip也这样的结果，后发现是对应网盘异常了。</p>
 <p>4、代码：</p>
 <pre><code># -*- coding: utf-8 -*-
 # python 3.5.2
-#Author:Van
-#实现自动下载高清最新pdf还没实现，网址跳转的厉害，而且貌似有反侦察机制，
-#提示服务器维护了，不过呢，换了ip也是这样，不排除是真维护。
+# 测试系统，Win10
+# Author:Van
+# 实现自动下载高清最新pdf还没实现
+# V1.0 当前只针对效果还可以的国外zippyshare网盘
+# 其他的网盘还没添加进判断语句，为共享如何迅雷下载等
+# 如果您有经验优化，改进此脚本，请不请指教
+# QQ群： 206241755
+# 简介：因下载最新高清pdf，正好发现www.foxebook.net提供
+# 但是很多的广告，特烦人，所以尝试脚本，最后因下载需求，
+# 加载了迅雷，这功能的实现小牛，不过也是网络别人共享的。
 
 from selenium import webdriver
-import time
 import requests
 from lxml import etree
 import re
-import urllib
+import os
+from win32com.client import Dispatch
 
 # def down_book(i):
 #     href = selector.xpath(&apos;/html/body/div/div/main/div[i+1]/div[2]/h3/a/@href&apos;)
@@ -338,6 +345,7 @@ total_books = selector.xpath(&quot;/html/body/div/div/main//div[2]/h3/a/text()&q
 
 num1 = 0
 link_address = []
+real_address = []
 def find_link():
     global num1
     # find the right book, put all links in a list of : link_address
@@ -359,37 +367,54 @@ def find_link():
             # split the next link
             link_new = &apos;http:&apos;+link_new.split(&apos;:&apos;)[-1]
             link_address.append(link_new)
-            print(&apos;download link is :&apos;, link_address)
-            print(&apos;\n\n&apos;)
+    print(&apos;download link is :&apos;, link_address)
+    print(&apos;\n\n&apos;)
 
-def down_book():
+def real_book_link():
     # print(&apos;link_address is :&apos;, link_address)
     # dynamic on zippyshare
     for j in link_address:
         # 用浏览器实现访问
 
-        driver = webdriver.PhantomJS()
+        driver = webdriver.Firefox()
         driver.maximize_window()
         driver.get(j)
 
 
         try:
 
-            # 抓第i个图的基本信息
+            # find the download button
             title_list = driver.find_element_by_xpath(&apos;//*[@id=&quot;dlbutton&quot;]&apos;)
-
-            print(&apos;content:&apos;, title_list.text)
             film_link = title_list.get_attribute(&apos;href&apos;)
-            print(&apos;book link:&apos;, film_link)
+            real_address.append(film_link)
 
         except:
-
             print(&apos;can not download the book&apos;)
 
+    print(&apos;real_book_link:&apos;, real_address)
+    return real_address
+
+def addTasktoXunlei(down_url,course_infos):
+    flag = False
+    o = Dispatch(&quot;ThunderAgent.Agent.1&quot;)
+    if down_url:
+        course_path = os.getcwd()
+        try:
+            #AddTask(&quot;下载地址&quot;, &quot;另存文件名&quot;, &quot;保存目录&quot;,&quot;任务注释&quot;,&quot;引用地址&quot;,&quot;开始模式&quot;, &quot;只从原始地址下载&quot;,&quot;从原始地址下载线程数&quot;)
+            o.AddTask(down_url, &apos;&apos;, course_path, &quot;&quot;, &quot;&quot;, -1, 0, 5)
+            o.CommitTasks()
+            flag = True
+        except Exception:
+
+            print(Exception.message)
+            print(&quot; AddTask is fail!&quot;)
+    return flag
 
 if __name__ == &apos;__main__&apos;:
     find_link()
-    down_book()
+    real_link = real_book_link()
+    for i in real_link:
+        addTasktoXunlei(i, course_infos=None)
 </code></pre><p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/022803439.png" alt=""></p>
 <p>5、第二天分析：<br>更换下载的书名为：《Introduction to Machine Learning with Python》</p>
 <p>得到了2个有效的书籍目录，对比昨天的书籍名，发现提供的下载源是不同的国外网盘，而昨天的那个到今天一直打不开，而这本书的网址很快就打开了，网盘名字为： zippyshare.com </p>
@@ -402,7 +427,7 @@ Out[11]: &apos;http://sh.st/st/7a45e8ed9f73a6a10e9a22b2d8783c44/http://www65.zip
 
 In [12]: a.split(&apos;:&apos;)[-1]
 Out[12]: &apos;//www65.zippyshare.com/v/oFSWQWDk/file.html&apos;
-</code></pre><p>6、忘记说明下昨天的代码为何要用re.match （或者re.research）, 这是因为网站的关键词搜索引擎所使用的算法，我们是不知道的，但从搜索结果看，某关键词下，可能有不同的书籍，而我们是需要精确搜索，下图中实际出现了16本书，但针对SciPy and NumPy，我们要找的是第三个图对应的。因此，我们可以把显示的书名做一个match对照的循环，来实现精确匹配。而另外一方面，网站提供的书名还可能多了冒号，后面附加书名，这样的也符合我们的要求。</p>
+</code></pre><p>6、忘记说明下昨天的代码为何要用re.match （或者re.research）, 这是因为网站的关键词搜索引擎所使用的算法，我们是不知道的，但从搜索结果看，某关键词下，可能有不同的书籍，而我们是需要精确搜索，下图中实际出现了16本书，但针对SciPy and NumPy，我们要找的是第三个图对应的。因此，我们可以把显示的书名做一个match对照的循环，来实现精确匹配。而另外一方面，网站提供的书名还可能多了冒号，后面附加书名，这样的也符合我们的要求。后来发现用关键词 in xxx的方式更简便。</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/093157994.png" alt=""></p>
 <p>7、昨天的代码一开始没有考虑到国外网盘下载异常失败的问题，并且有的搜索结果可能有多个网盘地址，而我只取了默认的第一个，考虑到下载的失败可能性，最好把所有下载地址都获取。所以代码需要修改。<br>由于：SciPy and NumPy 对应的网盘当机，选用：《Introduction to Machine Learning with Python》为例</p>
 <p>经过对照，在最后的下载界面，是动态的，因为调用selenium+PhantomJS组合。最后终于得到了完整pdf队中的链接，在本例中，是rar后缀的压缩包格式，里面含有pdf。</p>
