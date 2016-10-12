@@ -100,7 +100,7 @@
 3、但是程序">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/022803439.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/093157994.png">
-<meta property="og:updated_time" content="2016-10-12T02:38:36.000Z">
+<meta property="og:updated_time" content="2016-10-12T02:50:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="下载国外最新高清pdf的程序测试【Python】">
 <meta name="twitter:description" content="下载国外最新高清pdf的程序测试1、今天意外发现国外某站，提供非常近期，甚至国内亚马逊还没上市的最新高清pdf，所以测试爬虫，看是否能自动下载。
@@ -387,7 +387,7 @@ Out[11]: &apos;http://sh.st/st/7a45e8ed9f73a6a10e9a22b2d8783c44/http://www65.zip
 
 In [12]: a.split(&apos;:&apos;)[-1]
 Out[12]: &apos;//www65.zippyshare.com/v/oFSWQWDk/file.html&apos;
-</code></pre><p>6、忘记说明下昨天的代码为何要用re.match （或者re.research）, 这是因为网站的关键词搜索引擎所使用的算法，我们是不知道的，但从搜索结果看，某关键词下，可能有不同的书籍，而我们是需要精确搜索，下图中实际出现了16本书，但针对SciPy and NumPy，我们要找的是第三个图对应的。而另外一方面，网站提供的书名还可能多了冒号，后面balabala，又考虑了副标题的影响。</p>
+</code></pre><p>6、忘记说明下昨天的代码为何要用re.match （或者re.research）, 这是因为网站的关键词搜索引擎所使用的算法，我们是不知道的，但从搜索结果看，某关键词下，可能有不同的书籍，而我们是需要精确搜索，下图中实际出现了16本书，但针对SciPy and NumPy，我们要找的是第三个图对应的。因此，我们可以把显示的书名做一个match对照的循环，来实现精确匹配。而另外一方面，网站提供的书名还可能多了冒号，后面附加书名，这样的也符合我们的要求。</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/093157994.png" alt=""></p>
 <p>7、昨天的代码一开始没有考虑到国外网盘下载异常失败的问题，并且有的搜索结果可能有多个网盘地址，而我只取了默认的第一个，考虑到下载的失败可能性，最好把所有下载地址都获取。所以代码需要修改。<br>那么还是以昨天的：SciPy and NumPy 为例：</p>
 
