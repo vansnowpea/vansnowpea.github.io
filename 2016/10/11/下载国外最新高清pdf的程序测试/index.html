@@ -100,7 +100,7 @@
 3、但是程序">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/022803439.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/093157994.png">
-<meta property="og:updated_time" content="2016-10-12T02:38:10.000Z">
+<meta property="og:updated_time" content="2016-10-12T02:38:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="下载国外最新高清pdf的程序测试【Python】">
 <meta name="twitter:description" content="下载国外最新高清pdf的程序测试1、今天意外发现国外某站，提供非常近期，甚至国内亚马逊还没上市的最新高清pdf，所以测试爬虫，看是否能自动下载。
@@ -379,7 +379,7 @@ for i in total_books:
 <p>5、第二天分析：<br>更换下载的书名为：《Introduction to Machine Learning with Python》</p>
 <p>得到了2个有效的书籍目录，对比昨天的书籍名，发现提供的下载源是不同的国外网盘，而昨天的那个到今天一直打不开，而这本书的网址很快就打开了，网盘名字为： zippyshare.com </p>
 <p>然后研究了下，此foxebook.net站点提供的一些网盘下载使用了多家国外网盘，并且各家的广告显示不尽相同，可靠性更是差别较大。</p>
-<p>另外，发现，就SciPy and NumPy一书来说，他最后得到的地址有2个http，这应该是广告模式，而后者的http的内容使我们真实需要的，所以通过http来切分。</p>
+<p>另外，发现，就SciPy and NumPy一书来说，他最后得到的地址有2个http，这应该是广告模式，而后者的http的内容使我们真实需要的，所以通过冒号：来切分a.split(‘:’)[-1]。</p>
 <pre><code>In [10]: a = &apos;http://sh.st/st/7a45e8ed9f73a6a10e9a22b2d8783c44/http://www65.zippyshare.com/v/oFSWQWDk/file.html&apos;
 
 In [11]: a
