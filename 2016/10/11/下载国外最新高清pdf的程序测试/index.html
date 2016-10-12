@@ -100,7 +100,7 @@
 3、但是程序">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/022803439.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/093157994.png">
-<meta property="og:updated_time" content="2016-10-12T01:50:17.000Z">
+<meta property="og:updated_time" content="2016-10-12T01:51:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="下载国外最新高清pdf的程序测试【Python】">
 <meta name="twitter:description" content="下载国外最新高清pdf的程序测试1、今天意外发现国外某站，提供非常近期，甚至国内亚马逊还没上市的最新高清pdf，所以测试爬虫，看是否能自动下载。
@@ -189,7 +189,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -199,7 +199,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -262,7 +262,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-11T20:59:28+08:00" content="2016-10-11">
               2016-10-11
             </time>
@@ -403,7 +403,7 @@ Out[7]:
 [&apos;&apos;,
  &apos;://sh.st/st/7a45e8ed9f73a6a10e9a22b2d8783c44/&apos;,
  &apos;://www65.zippyshare.com/v/oFSWQWDk/file.html&apos;]
-</code></pre><p>6、忘记说明下昨天的代码为何要用re.match （或者re.research）, 这是因为网站的关键词搜索引擎所使用的算法，我们是不知道的，但从搜索结果看，输入的关键词，可能有不同的书籍，而我们是需要精确搜索，下图中实际出现了16本书，但针对SciPy and NumPy，我们要找的是第三个图对应的。而另外一方面，网站提供的书名还可能多了冒号，后面balabala，所以，不建议使用re.match，而是re.search，也就是既包含了书名搜索，又考虑了副标题的影响。而re.match是全匹配。</p>
+</code></pre><p>6、忘记说明下昨天的代码为何要用re.match （或者re.research）, 这是因为网站的关键词搜索引擎所使用的算法，我们是不知道的，但从搜索结果看，某关键词下，可能有不同的书籍，而我们是需要精确搜索，下图中实际出现了16本书，但针对SciPy and NumPy，我们要找的是第三个图对应的。而另外一方面，网站提供的书名还可能多了冒号，后面balabala，又考虑了副标题的影响。</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/093157994.png" alt=""></p>
 <p>7、昨天的代码一开始没有考虑到国外网盘下载异常失败的问题，并且有的搜索结果可能有多个网盘地址，而我只取了默认的第一个，考虑到下载的失败可能性，最好把所有下载地址都获取。所以代码需要修改。<br>那么还是以昨天的：SciPy and NumPy 为例：</p>
 
@@ -486,10 +486,10 @@ Out[7]:
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -506,7 +506,7 @@ Out[7]:
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">56</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -564,7 +564,7 @@ Out[7]:
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

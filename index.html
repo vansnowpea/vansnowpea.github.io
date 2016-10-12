@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -248,7 +248,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-11T20:59:28+08:00" content="2016-10-11">
               2016-10-11
             </time>
@@ -391,7 +391,7 @@ Out[7]:
 [&apos;&apos;,
  &apos;://sh.st/st/7a45e8ed9f73a6a10e9a22b2d8783c44/&apos;,
  &apos;://www65.zippyshare.com/v/oFSWQWDk/file.html&apos;]
-</code></pre><p>6、忘记说明下昨天的代码为何要用re.match （或者re.research）, 这是因为网站的关键词搜索引擎所使用的算法，我们是不知道的，但从搜索结果看，输入的关键词，可能有不同的书籍，而我们是需要精确搜索，下图中实际出现了16本书，但针对SciPy and NumPy，我们要找的是第三个图对应的。而另外一方面，网站提供的书名还可能多了冒号，后面balabala，所以，不建议使用re.match，而是re.search，也就是既包含了书名搜索，又考虑了副标题的影响。而re.match是全匹配。</p>
+</code></pre><p>6、忘记说明下昨天的代码为何要用re.match （或者re.research）, 这是因为网站的关键词搜索引擎所使用的算法，我们是不知道的，但从搜索结果看，某关键词下，可能有不同的书籍，而我们是需要精确搜索，下图中实际出现了16本书，但针对SciPy and NumPy，我们要找的是第三个图对应的。而另外一方面，网站提供的书名还可能多了冒号，后面balabala，又考虑了副标题的影响。</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/093157994.png" alt=""></p>
 <p>7、昨天的代码一开始没有考虑到国外网盘下载异常失败的问题，并且有的搜索结果可能有多个网盘地址，而我只取了默认的第一个，考虑到下载的失败可能性，最好把所有下载地址都获取。所以代码需要修改。<br>那么还是以昨天的：SciPy and NumPy 为例：</p>
 
@@ -456,7 +456,7 @@ Out[7]:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-10T13:59:28+08:00" content="2016-10-10">
               2016-10-10
             </time>
@@ -588,7 +588,7 @@ Out[7]:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-08T20:59:28+08:00" content="2016-10-08">
               2016-10-08
             </time>
@@ -688,7 +688,7 @@ Out[7]:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-07T23:59:28+08:00" content="2016-10-07">
               2016-10-07
             </time>
@@ -824,7 +824,7 @@ tree.xpath(&quot;//div[@class=&apos;sec_blk mrg_b_30&apos;]/ul/li[1]/a/@href&quo
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-07T22:59:28+08:00" content="2016-10-07">
               2016-10-07
             </time>
@@ -948,7 +948,7 @@ print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-05T16:20:28+08:00" content="2016-10-05">
               2016-10-05
             </time>
@@ -1056,7 +1056,7 @@ print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-02T14:20:28+08:00" content="2016-10-02">
               2016-10-02
             </time>
@@ -1200,7 +1200,7 @@ These are the 6 must have books, if you are serious about being a data scientist
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-27T14:20:28+08:00" content="2016-09-27">
               2016-09-27
             </time>
@@ -1308,7 +1308,7 @@ Thanks!
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-27T13:20:28+08:00" content="2016-09-27">
               2016-09-27
             </time>
@@ -1412,7 +1412,7 @@ mpl.rcParams[&apos;axes.unicode_minus&apos;] = False #解决保存图像是负�
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-25T23:20:28+08:00" content="2016-09-25">
               2016-09-25
             </time>
@@ -1545,7 +1545,7 @@ plt.show()
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">56</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1592,7 +1592,7 @@ plt.show()
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
