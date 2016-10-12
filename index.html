@@ -377,8 +377,19 @@ In [12]: a.split(&apos;:&apos;)[-1]
 Out[12]: &apos;//www65.zippyshare.com/v/oFSWQWDk/file.html&apos;
 </code></pre><p>6、忘记说明下昨天的代码为何要用re.match （或者re.research）, 这是因为网站的关键词搜索引擎所使用的算法，我们是不知道的，但从搜索结果看，某关键词下，可能有不同的书籍，而我们是需要精确搜索，下图中实际出现了16本书，但针对SciPy and NumPy，我们要找的是第三个图对应的。因此，我们可以把显示的书名做一个match对照的循环，来实现精确匹配。而另外一方面，网站提供的书名还可能多了冒号，后面附加书名，这样的也符合我们的要求。</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/093157994.png" alt=""></p>
-<p>7、昨天的代码一开始没有考虑到国外网盘下载异常失败的问题，并且有的搜索结果可能有多个网盘地址，而我只取了默认的第一个，考虑到下载的失败可能性，最好把所有下载地址都获取。所以代码需要修改。<br>那么还是以昨天的：SciPy and NumPy 为例：</p>
+<p>7、昨天的代码一开始没有考虑到国外网盘下载异常失败的问题，并且有的搜索结果可能有多个网盘地址，而我只取了默认的第一个，考虑到下载的失败可能性，最好把所有下载地址都获取。所以代码需要修改。<br>由于：SciPy and NumPy 对应的网盘当机，选用：《Introduction to Machine Learning with Python》为例</p>
+<p>经过对照，在最后的下载界面，是动态的，因为调用selenium+PhantomJS组合。最后终于得到了完整pdf队中的链接，在本例中，是rar后缀的压缩包格式，里面含有pdf。</p>
+<pre><code>download link is : [&apos;http://www78.zippyshare.com/v/hBU7JYZp/file.html&apos;, &apos;http://www65.zippyshare.com/v/oFSWQWDk/file.html&apos;]
 
+
+
+content: 
+book link: http://www78.zippyshare.com/d/hBU7JYZp/2248094/OReilly.Introduction.to.Machine.Learning.with.Python.A.Guide.for.Data.Scientists.1449369413.rar
+content: 
+book link: http://www65.zippyshare.com/d/oFSWQWDk/1124867/OReilly.Introduction.to.Machine.Learning.with.Python.1449369413_Early.Release.rar
+
+Process finished with exit code 0
+</code></pre>
           
         
       
