@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -248,7 +248,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-11T20:59:28+08:00" content="2016-10-11">
               2016-10-11
             </time>
@@ -368,29 +368,13 @@ for i in total_books:
 <p>得到了2个有效的书籍目录，对比昨天的书籍名，发现提供的下载源是不同的国外网盘，而昨天的那个到今天一直打不开，而这本书的网址很快就打开了，网盘名字为： zippyshare.com </p>
 <p>然后研究了下，此foxebook.net站点提供的一些网盘下载使用了多家国外网盘，并且各家的广告显示不尽相同，可靠性更是差别较大。</p>
 <p>另外，发现，就SciPy and NumPy一书来说，他最后得到的地址有2个http，这应该是广告模式，而后者的http的内容使我们真实需要的，所以通过http来切分。</p>
-<pre><code>In [1]: a = &apos;http://sh.st/st/7a45e8ed9f73a6a10e9a22b2d8783c44/http://www65.zippyshare.com/v/oFSWQWDk/file.html&apos;
+<pre><code>In [10]: a = &apos;http://sh.st/st/7a45e8ed9f73a6a10e9a22b2d8783c44/http://www65.zippyshare.com/v/oFSWQWDk/file.html&apos;
 
-In [2]: a.split(&apos;http&apos;)
-Out[2]:
-[&apos;&apos;,
- &apos;://sh.st/st/7a45e8ed9f73a6a10e9a22b2d8783c44/&apos;,
- &apos;://www65.zippyshare.com/v/oFSWQWDk/file.html&apos;]
+In [11]: a
+Out[11]: &apos;http://sh.st/st/7a45e8ed9f73a6a10e9a22b2d8783c44/http://www65.zippyshare.com/v/oFSWQWDk/file.html&apos;
 
-In [3]: new_link= &apos;http&apos;+a.split(&apos;http&apos;)[1]
-
-In [4]: new_link
-Out[4]: &apos;http://sh.st/st/7a45e8ed9f73a6a10e9a22b2d8783c44/&apos;
-
-In [5]: new_link= &apos;http&apos;+a.split(&apos;http&apos;)[2]
-
-In [6]: new_link
-Out[6]: &apos;http://www65.zippyshare.com/v/oFSWQWDk/file.html&apos;
-
-In [7]: a.strip().split(&apos;http&apos;)
-Out[7]:
-[&apos;&apos;,
- &apos;://sh.st/st/7a45e8ed9f73a6a10e9a22b2d8783c44/&apos;,
- &apos;://www65.zippyshare.com/v/oFSWQWDk/file.html&apos;]
+In [12]: a.split(&apos;:&apos;)[-1]
+Out[12]: &apos;//www65.zippyshare.com/v/oFSWQWDk/file.html&apos;
 </code></pre><p>6、忘记说明下昨天的代码为何要用re.match （或者re.research）, 这是因为网站的关键词搜索引擎所使用的算法，我们是不知道的，但从搜索结果看，某关键词下，可能有不同的书籍，而我们是需要精确搜索，下图中实际出现了16本书，但针对SciPy and NumPy，我们要找的是第三个图对应的。而另外一方面，网站提供的书名还可能多了冒号，后面balabala，又考虑了副标题的影响。</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/093157994.png" alt=""></p>
 <p>7、昨天的代码一开始没有考虑到国外网盘下载异常失败的问题，并且有的搜索结果可能有多个网盘地址，而我只取了默认的第一个，考虑到下载的失败可能性，最好把所有下载地址都获取。所以代码需要修改。<br>那么还是以昨天的：SciPy and NumPy 为例：</p>
@@ -456,7 +440,7 @@ Out[7]:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-10T13:59:28+08:00" content="2016-10-10">
               2016-10-10
             </time>
@@ -588,7 +572,7 @@ Out[7]:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-08T20:59:28+08:00" content="2016-10-08">
               2016-10-08
             </time>
@@ -688,7 +672,7 @@ Out[7]:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-07T23:59:28+08:00" content="2016-10-07">
               2016-10-07
             </time>
@@ -824,7 +808,7 @@ tree.xpath(&quot;//div[@class=&apos;sec_blk mrg_b_30&apos;]/ul/li[1]/a/@href&quo
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-07T22:59:28+08:00" content="2016-10-07">
               2016-10-07
             </time>
@@ -948,7 +932,7 @@ print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-05T16:20:28+08:00" content="2016-10-05">
               2016-10-05
             </time>
@@ -1056,7 +1040,7 @@ print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-02T14:20:28+08:00" content="2016-10-02">
               2016-10-02
             </time>
@@ -1200,7 +1184,7 @@ These are the 6 must have books, if you are serious about being a data scientist
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-27T14:20:28+08:00" content="2016-09-27">
               2016-09-27
             </time>
@@ -1308,7 +1292,7 @@ Thanks!
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-27T13:20:28+08:00" content="2016-09-27">
               2016-09-27
             </time>
@@ -1412,7 +1396,7 @@ mpl.rcParams[&apos;axes.unicode_minus&apos;] = False #解决保存图像是负�
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-25T23:20:28+08:00" content="2016-09-25">
               2016-09-25
             </time>
@@ -1545,7 +1529,7 @@ plt.show()
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">56</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1592,7 +1576,7 @@ plt.show()
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
