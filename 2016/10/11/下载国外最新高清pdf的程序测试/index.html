@@ -101,7 +101,7 @@
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/022803439.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/093157994.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/203618609.png">
-<meta property="og:updated_time" content="2016-10-12T15:11:25.000Z">
+<meta property="og:updated_time" content="2016-10-12T15:20:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="国外最新高清pdf寻找以及实现迅雷自动下载【Python】">
 <meta name="twitter:description" content="国外最新高清pdf寻找以及实现迅雷自动下载1、今天意外发现国外某站，提供非常近期，甚至国内亚马逊还没上市的最新高清pdf，所以测试爬虫，看是否能自动下载。
@@ -418,7 +418,7 @@ if __name__ == &apos;__main__&apos;:
 <p>5、第二天分析：<br>更换下载的书名为：《Introduction to Machine Learning with Python》</p>
 <p>得到了2个有效的书籍目录，对比昨天的书籍名，发现提供的下载源是不同的国外网盘，而昨天的那个到今天一直打不开，而这本书的网址很快就打开了，网盘名字为： zippyshare.com </p>
 <p>然后研究了下，此foxebook.net站点提供的一些网盘下载使用了多家国外网盘，并且各家的广告显示不尽相同，可靠性更是差别较大。</p>
-<p>另外，发现，就SciPy and NumPy一书来说，他最后得到的地址有2个http，这应该是广告模式，而后者的http的内容使我们真实需要的，所以通过冒号：来切分a.split(‘:’)[-1]。</p>
+<p>另外，发现，就SciPy and NumPy一书来说，他最后得到的地址有2个http，这应该是广告模式，而后者的http的内容是我们真实需要的，所以通过冒号：来切分a.split(‘:’)[-1]。</p>
 <pre><code>In [10]: a = &apos;http://sh.st/st/7a45e8ed9f73a6a10e9a22b2d8783c44/http://www65.zippyshare.com/v/oFSWQWDk/file.html&apos;
 
 In [11]: a
@@ -426,10 +426,10 @@ Out[11]: &apos;http://sh.st/st/7a45e8ed9f73a6a10e9a22b2d8783c44/http://www65.zip
 
 In [12]: a.split(&apos;:&apos;)[-1]
 Out[12]: &apos;//www65.zippyshare.com/v/oFSWQWDk/file.html&apos;
-</code></pre><p>6、忘记说明下昨天的代码为何要用re.match （或者re.research）, 这是因为网站的关键词搜索引擎所使用的算法，我们是不知道的，但从搜索结果看，某关键词下，可能有不同的书籍，而我们是需要精确搜索，下图中实际出现了16本书，但针对SciPy and NumPy，我们要找的是第三个图对应的。因此，我们可以把显示的书名做一个match对照的循环，来实现精确匹配。而另外一方面，网站提供的书名还可能多了冒号，后面附加书名，这样的也符合我们的要求。后来发现用关键词 in xxx的方式更简便。</p>
+</code></pre><p>6、忘记说明下昨天的代码为何要用re.match （或者re.research）, 这是因为网站的关键词搜索引擎所使用的算法，我们是不知道的，但从搜索结果看，某关键词下，可能有不同的书籍，而我们是需要精确搜索，下图中实际出现了16本书，但针对SciPy and NumPy，我们要找的是第三个图对应的。因此，我们可以把显示的书名做一个match对照的循环，来实现精确匹配。而另外一方面，网站提供的书名还可能多了冒号，后面附加书名，这样的也符合我们的要求。后来发现用关键词 if xxx in yyy的方式更简便。</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/093157994.png" alt=""></p>
 <p>7、昨天的代码一开始没有考虑到国外网盘下载异常失败的问题，并且有的搜索结果可能有多个网盘地址，而我只取了默认的第一个，考虑到下载的失败可能性，最好把所有下载地址都获取。所以代码需要修改。<br>由于：SciPy and NumPy 对应的网盘当机，选用：《Introduction to Machine Learning with Python》为例</p>
-<p>经过对照，在最后的下载界面，是动态的，因为调用selenium+PhantomJS组合。最后终于得到了完整pdf队中的链接，在本例中，是rar后缀的压缩包格式，里面含有pdf。</p>
+<p>经过对照，在最后的下载界面，是动态的，因为调用selenium+Firefox组合。最后终于得到了完整pdf队中的链接，在本例中，是rar后缀的压缩包格式，里面含有pdf。</p>
 <pre><code>download link is : [&apos;http://www78.zippyshare.com/v/hBU7JYZp/file.html&apos;, &apos;http://www65.zippyshare.com/v/oFSWQWDk/file.html&apos;]
 
 
