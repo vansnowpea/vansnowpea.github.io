@@ -100,7 +100,7 @@
 3、但是程序">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/022803439.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/093157994.png">
-<meta property="og:updated_time" content="2016-10-12T07:48:44.000Z">
+<meta property="og:updated_time" content="2016-10-12T08:25:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="下载国外最新高清pdf的程序测试【Python】">
 <meta name="twitter:description" content="下载国外最新高清pdf的程序测试1、今天意外发现国外某站，提供非常近期，甚至国内亚马逊还没上市的最新高清pdf，所以测试爬虫，看是否能自动下载。
@@ -308,15 +308,16 @@ import time
 import requests
 from lxml import etree
 import re
+import urllib
 
 # def down_book(i):
 #     href = selector.xpath(&apos;/html/body/div/div/main/div[i+1]/div[2]/h3/a/@href&apos;)
 #     print(href)
 
 #test name of book : SciPy and NumPy
-book_name = input(&apos;Please input the book name in English:&apos;)
-# book_name = &apos;SciPy and NumPy&apos;
-print (&apos;Please wait loading...&apos;)
+# book_name = input(&apos;Please input the book name in English:\n&apos;)
+book_name = &apos;Introduction to Machine Learning with Python&apos;
+print (&apos;begin to search book(s)...&apos;)
 print (&apos;---------------------------------&apos;)
 # search link is :http://www.foxebook.nethttp://www.foxebook.net/search/SciPy%20and%20NumPySciPy%20and%20NumPy
 PostUrl = &quot;http://www.foxebook.net/search/&quot; + book_name
@@ -335,46 +336,60 @@ selector = etree.HTML(html)
 total_books = selector.xpath(&quot;/html/body/div/div/main//div[2]/h3/a/text()&quot;)
 # print(&apos;total books from searching are:&apos;, total_books)
 
+num1 = 0
+link_address = []
+def find_link():
+    global num1
+    # find the right book, put all links in a list of : link_address
 
-# find the right book
-num = 0
-for i in total_books:
-    num += 1
-    #print(i)
-    if re.search(book_name,i):
-        print(&apos;Congrdulations, we find the book(s):\n&apos;)
-        print (&apos;**********************************&apos;)
-        print(i)
-        print (&apos;**********************************\n&apos;)
-        href = &apos;http://www.foxebook.net&apos; + selector.xpath(&apos;//*[@id=&quot;content&quot;]/div/main/div[%d]/div[2]/h3/a/@href&apos;%num)[0]
-        print(&apos;the book link is :&apos;,href)
-        print(&apos;will downloading...&apos;)
-        html_new = requests.get(href).content
-        selector_new = etree.HTML(html_new)
-        link_new = selector_new.xpath(&apos;//*[@id=&quot;download&quot;]/div[2]/table/tbody/tr[1]/td[2]/a/@href&apos;)[0]
-        print(&apos;final download link is :&apos;,link_new)
+    for i in total_books:
+        num1 += 1
+        if re.search(book_name,i):
+
+            print(&apos;Congrdulations, we find the book(s):\n&apos;)
+            print (&apos;**********************************&apos;)
+            print(i)
+            print (&apos;**********************************\n&apos;)
+            href = &apos;http://www.foxebook.net&apos; + selector.xpath(&apos;//*[@id=&quot;content&quot;]/div/main/div[%d]/div[2]/h3/a/@href&apos;%num1)[0]
+            # print(&apos;the book link is :&apos;, href)
+            # print(&apos;will downloading...&apos;)
+            html_new = requests.get(href).content
+            selector_new = etree.HTML(html_new)
+            link_new = selector_new.xpath(&apos;//*[@id=&quot;download&quot;]/div[2]/table/tbody/tr[1]/td[2]/a/@href&apos;)[0]
+            # split the next link
+            link_new = &apos;http:&apos;+link_new.split(&apos;:&apos;)[-1]
+            link_address.append(link_new)
+            print(&apos;download link is :&apos;, link_address)
+            print(&apos;\n\n&apos;)
+
+def down_book():
+    # print(&apos;link_address is :&apos;, link_address)
+    # dynamic on zippyshare
+    for j in link_address:
+        # 用浏览器实现访问
+
+        driver = webdriver.PhantomJS()
+        driver.maximize_window()
+        driver.get(j)
 
 
+        try:
+
+            # 抓第i个图的基本信息
+            title_list = driver.find_element_by_xpath(&apos;//*[@id=&quot;dlbutton&quot;]&apos;)
+
+            print(&apos;content:&apos;, title_list.text)
+            film_link = title_list.get_attribute(&apos;href&apos;)
+            print(&apos;book link:&apos;, film_link)
+
+        except:
+
+            print(&apos;can not download the book&apos;)
 
 
-
-
-# goal_book = re.search(book_name,selector)
-# print(goal_book)
-
-
-
-# driver=webdriver.Firefox()#用浏览器实现访问
-# #driver = webdriver.PhantomJS(executable_path=&quot;phantomjs.exe&quot;)#没用浏览器
-# driver.get(PostUrl)
-
-# # search
-# search = driver.find_element_by_xpath(&quot;//*[@id=\&quot;search\&quot;]&quot;).send_keys(book_name)
-#
-# # search button
-# search_button = driver.find_element_by_xpath(&quot;//*[@id=\&quot;searchform\&quot;]/div/span/button/i&quot;).click()
-
-# there maybe more books , so need checking
+if __name__ == &apos;__main__&apos;:
+    find_link()
+    down_book()
 </code></pre><p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-12/022803439.png" alt=""></p>
 <p>5、第二天分析：<br>更换下载的书名为：《Introduction to Machine Learning with Python》</p>
 <p>得到了2个有效的书籍目录，对比昨天的书籍名，发现提供的下载源是不同的国外网盘，而昨天的那个到今天一直打不开，而这本书的网址很快就打开了，网盘名字为： zippyshare.com </p>
