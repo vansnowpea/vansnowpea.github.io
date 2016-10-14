@@ -107,7 +107,7 @@
 # 实现《西部世界》有更新后自动下载，以及邮件通知
 #">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-14/005536645.jpg">
-<meta property="og:updated_time" content="2016-10-13T16:55:55.000Z">
+<meta property="og:updated_time" content="2016-10-14T00:31:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="西部世界 1080P高清下载和自动提醒后续新出的【Python】">
 <meta name="twitter:description" content="西部世界 1080P高清下载和自动提醒后续新出的
@@ -400,7 +400,7 @@ def send_email(htm):
     msg = MIMEText(htm, &apos;html&apos;, &apos;utf-8&apos;)
     msg[&apos;Subject&apos;] = Header(subject, &apos;UTF-8&apos;)
     msg[&apos;From&apos;] = sender
-    msg[&apos;To&apos;] = receiver
+    msg[&apos;To&apos;] = &apos;,&apos;.join(receiver)
     smtp = smtplib.SMTP()
     smtp.connect(smtpserver)
     smtp.login(username, password)

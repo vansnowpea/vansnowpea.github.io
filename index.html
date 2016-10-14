@@ -377,7 +377,7 @@ def send_email(htm):
     msg = MIMEText(htm, &apos;html&apos;, &apos;utf-8&apos;)
     msg[&apos;Subject&apos;] = Header(subject, &apos;UTF-8&apos;)
     msg[&apos;From&apos;] = sender
-    msg[&apos;To&apos;] = receiver
+    msg[&apos;To&apos;] = &apos;,&apos;.join(receiver)
     smtp = smtplib.SMTP()
     smtp.connect(smtpserver)
     smtp.login(username, password)
