@@ -103,7 +103,7 @@ from bs4 import BeautifulSoup
 
 html = urlopen(&amp;quot;http://en.wikipedia.org/wiki/Comparison">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/115841809.png">
-<meta property="og:updated_time" content="2016-10-15T04:07:42.000Z">
+<meta property="og:updated_time" content="2016-10-15T04:09:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="维基百科某网页表格的csv保存的分析【Python】">
 <meta name="twitter:description" content="维基百科某网页表格的csv保存的分析1、在阅读《Python网络数据采集》第五章的时候看到的案例，记录细节分析。
@@ -323,8 +323,8 @@ finally:
 </code></pre><p>3、上述代码的主要目的，是把对应ulr的表格的文字信息，提取出来，保存到csv。那么他是怎么一步步做到的？</p>
 <p>首先，我们来打开url看下网站内容，如下图是一个色彩鲜艳的表格：</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/115841809.png" alt=""></p>
-<p>其次，我们查看下网页源代码，格式清晰的很，并且代码很长一共7910行的html代码，可这只是维基百科的一页而已！</p>
-<p>此时，对照下本例python代码中，按照class搜索{“class”:”wikitable”}，实际上得到的是搜索class=”wikitable sortable”，如下代码：</p>
+<p>其次，我们查看下网页源代码，格式清晰的很，并且代码很长一共7910行的html，可这只是维基百科的一页而已！</p>
+<p>此时，对照下本例python代码中，按照class搜索{“class”:”wikitable”}，实际上得到的是搜索class=”wikitable sortable”，如下的html代码：</p>
 <table class="wikitable sortable" style="text-align: center; font-size: 85%; width: auto; table-layout: fixed;">
 
 <p>也就是说，bs4的findall是找到了类名带有“wikitable“就自动把”wikitable sortable”也找出来。</p>
