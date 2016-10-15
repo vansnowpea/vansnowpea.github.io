@@ -112,7 +112,7 @@ from bs4 impor">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/121538652.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/125711054.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-16/012705629.png">
-<meta property="og:updated_time" content="2016-10-15T17:29:44.000Z">
+<meta property="og:updated_time" content="2016-10-15T17:33:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="维基百科某网页表格的csv保存的分析【Python】">
 <meta name="twitter:description" content="维基百科某网页表格的csv保存的分析1、在阅读《Python网络数据采集》第五章的时候看到的案例，记录细节分析。
@@ -374,7 +374,7 @@ finally:
 <p>所以要修正下xpath路径，lxml的解析和网页源代码是有出入的，尤其遇到tboday和thead的时候，经过测试，在很多时候，python要把/thead和/tbody才能显示出内容，但这不是绝对的，因为我也遇到保留tbody才能提取成功的案例。</p>
 <p>但还有额外的问题，因为这个表格同时有表头和表内容，而这个案例需要同时提取。而表格还有一个captain = “List of text editors”（表格的标题），也就是说，如果我们要通过直接全部提取整个表格的内容，会多出来captain的内容.</p>
 <p>而如果把表头和表内容分开提取的话，他们的xpath在去掉/thead和/tbody之后的形式是这样的： 这里由于情况复杂，我先分析表头部分：</p>
-<p>A)表头部分：</p>
+<p>A)表头：</p>
 <pre><code>string(//*[@id=&quot;mw-content-text&quot;]/table[2]/tr)
 </code></pre><p>为何要这么写，而不用直接的text()模式呢？我们来看下</p>
 <pre><code>//*[@id=&quot;mw-content-text&quot;]/table[2]/tr//text()
@@ -389,7 +389,13 @@ Programming language
 Cost (US$)
 Software license
 Open source
-</code></pre><p>8、参考：</p>
+</code></pre><p>貌似thead部分的提取还比较顺利，可接下来tbody部分呢？ 我们先看开头的2行对应的xapth地址：</p>
+<pre><code># tbody
+# Acme xpath:  //*[@id=&quot;mw-content-text&quot;]/table[2]/tbody/tr[1]/th/a
+# AkelPad xpath: //*[@id=&quot;mw-content-text&quot;]/table[2]/tbody/tr[2]/th/a
+</code></pre><p>B)表内容： </p>
+<p>如果去掉/tbody后，</p>
+<p>8、参考：</p>
 <p><a href="http://jingyan.baidu.com/article/636f38bb1eb1aad6b8461088.html" target="_blank" rel="external">http://jingyan.baidu.com/article/636f38bb1eb1aad6b8461088.html</a></p>
 
       
