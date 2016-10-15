@@ -369,6 +369,11 @@ Open source
 </code></pre><p>如果去掉/tbody后， 又要把表格内容全部提取，又要去掉tbody，发现只能这么写：</p>
 <pre><code>string(//*[@id=&quot;mw-content-text&quot;]/table[2])
 </code></pre><p>可这样是不行的，因为他不仅把表头的内容也算进去了，还把标题captain的内容也一起搞进去了。此时，你心中定有千万泥马飞奔 ）：</p>
+<p>此时，又根据表内容的序号格式，尝试这么写：</p>
+<pre><code>string(//*[@id=&quot;mw-content-text&quot;]/table[2]//th/a)
+</code></pre><p>期望的是，得到统一的表内容，可实际返回的却是：</p>
+<pre><code>Programming language
+</code></pre><p>这又是什么鬼呢？<br>原来，代码识别的是满足上述格式条件的第一个/a 路径下的文字，而在表头里，从Programming language开始，他有a属性。</p>
 <p>8、参考：</p>
 <p><a href="http://jingyan.baidu.com/article/636f38bb1eb1aad6b8461088.html" target="_blank" rel="external">http://jingyan.baidu.com/article/636f38bb1eb1aad6b8461088.html</a></p>
 
