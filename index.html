@@ -346,7 +346,7 @@ finally:
 <p>所以要修正下xpath路径，lxml的解析和网页源代码是有出入的，尤其遇到tboday和thead的时候，经过测试，在很多时候，python要把/thead和/tbody才能显示出内容，但这不是绝对的，因为我也遇到保留tbody才能提取成功的案例。</p>
 <p>但还有额外的问题，因为这个表格同时有表头和表内容，而这个案例需要同时提取。而表格还有一个captain = “List of text editors”（表格的标题），也就是说，如果我们要通过直接全部提取整个表格的内容，会多出来captain的内容.</p>
 <p>而如果把表头和表内容分开提取的话，他们的xpath在去掉/thead和/tbody之后的形式是这样的：</p>
-<pre><code>//*[@id=&quot;mw-content-text&quot;]/table[2]/tr
+<pre><code>string(//*[@id=&quot;mw-content-text&quot;]/table[2]/tr)
 
 //*[@id=&quot;mw-content-text&quot;]/table[2]/tr[1]/th/a
 </code></pre><p>8、参考：</p>
