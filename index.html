@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -248,7 +248,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-15T12:59:28+08:00" content="2016-10-15">
               2016-10-15
             </time>
@@ -332,11 +332,15 @@ finally:
             for cell in row.findAll([&apos;td&apos;, &apos;th&apos;]):
                 csvRow.append(cell.get_text())
             writer.writerow(csvRow)
-</code></pre><p>相对与上述第二种提取方法，这里详细说下第一中提取方法：</p>
+</code></pre><p>其中 ‘th’ 是表格头，‘td’是表格内容。</p>
+<p>7、相对与上述第二种提取方法，这里详细说下第一中提取方法：</p>
 <p>检测表格中黑体的表格头（以name为例）和表格内容以’acme’为例）：</p>
 <p>//*[@id=”mw-content-text”]/table[2]/thead/tr/th[1]</p>
 <p>//*[@id=”mw-content-text”]/table[2]/tbody/tr[1]/th/a</p>
-<p>分别得到他们的xpath地址，但似乎格式并不统一，出现了thead和tbody。<br>不过好在表格内容的xpath都是有规律的，所以如果我们改用xpath方法来改写代码，只需要把表格头和表格内容分别提取。</p>
+<p>分别得到他们的xpath地址，但似乎格式并不统一，出现了thead和tbody。</p>
+<p>不过好在表格内容的xpath都是有规律的，所以如果我们改用xpath方法来改写代码，只需要把表格头和表格内容分别提取。</p>
+<p>8、参考：</p>
+<p><a href="http://jingyan.baidu.com/article/636f38bb1eb1aad6b8461088.html" target="_blank" rel="external">http://jingyan.baidu.com/article/636f38bb1eb1aad6b8461088.html</a></p>
 
           
         
@@ -399,7 +403,7 @@ finally:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-13T20:59:28+08:00" content="2016-10-13">
               2016-10-13
             </time>
@@ -629,7 +633,7 @@ if __name__ == &apos;__main__&apos;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-11T20:59:28+08:00" content="2016-10-11">
               2016-10-11
             </time>
@@ -877,7 +881,7 @@ Process finished with exit code 0
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-10T13:59:28+08:00" content="2016-10-10">
               2016-10-10
             </time>
@@ -1009,7 +1013,7 @@ Process finished with exit code 0
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-08T20:59:28+08:00" content="2016-10-08">
               2016-10-08
             </time>
@@ -1109,7 +1113,7 @@ Process finished with exit code 0
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-07T23:59:28+08:00" content="2016-10-07">
               2016-10-07
             </time>
@@ -1245,7 +1249,7 @@ tree.xpath(&quot;//div[@class=&apos;sec_blk mrg_b_30&apos;]/ul/li[1]/a/@href&quo
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-07T22:59:28+08:00" content="2016-10-07">
               2016-10-07
             </time>
@@ -1369,7 +1373,7 @@ print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-05T16:20:28+08:00" content="2016-10-05">
               2016-10-05
             </time>
@@ -1477,7 +1481,7 @@ print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-02T14:20:28+08:00" content="2016-10-02">
               2016-10-02
             </time>
@@ -1621,7 +1625,7 @@ These are the 6 must have books, if you are serious about being a data scientist
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-27T14:20:28+08:00" content="2016-09-27">
               2016-09-27
             </time>
@@ -1741,7 +1745,7 @@ Thanks!
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">58</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1788,7 +1792,7 @@ Thanks!
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
