@@ -323,7 +323,7 @@ finally:
 </code></pre><p>也就是说，bs4的findall是找到了类名带有“wikitable“，就自动把”wikitable sortable”也找出来。</p>
 <p>那么为何要在代码的后面加上[0] ? 如果只用下面的代码：</p>
 <pre><code>bsObj.findAll(&quot;table&quot;,{&quot;class&quot;:&quot;wikitable&quot;})
-</code></pre><p>就本例使用bs4分析来说， 其实得到的是bs4.element.ResultSet ，从字面翻译，可理解成bs4的结果集，也应该是一个字典， 而要提取里面的内容，就加上[0]，此时从bs4的角度来说，得到了一个bs4.element.Tag ， 从字典的内容提取来说，得到了字典里第一个元素的内容。</p>
+</code></pre><p>就本例使用bs4分析来说， 其实得到的是bs4.element.ResultSet ，从字面翻译，可理解成bs4的结果集，不过应该是一个列表， 而要提取里面的内容，就加上[0]，此时从bs4的角度来说，得到了一个bs4.element.Tag ， 从字典的内容提取来说，得到了字典里第一个元素的内容。</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/121538652.png" alt=""></p>
 <p>5、接下来分析这一句：</p>
 <pre><code>rows = table.findAll(&quot;tr&quot;)
@@ -342,7 +342,7 @@ finally:
 <p>//*[@id=”mw-content-text”]/table[2]/thead/tr/th[1]</p>
 <p>//*[@id=”mw-content-text”]/table[2]/tbody/tr[1]/th/a</p>
 <p>分别得到他们的xpath地址，但似乎格式并不统一，出现了thead和tbody。</p>
-<p>不过好在表格内容的xpath都是有规律的，所以如果我们改用xpath方法来改写代码，只需要把表格头和表格内容分别提取。</p>
+<p>不过好在表格内容的xpath都是有规律的，所以如果我们改用xpath方法来改写代码，只需要把表格头和表格内容分别提取。<br>不过测试结果，得到的text()返回值为空，所以要修正下xpath路径，</p>
 <p>8、参考：</p>
 <p><a href="http://jingyan.baidu.com/article/636f38bb1eb1aad6b8461088.html" target="_blank" rel="external">http://jingyan.baidu.com/article/636f38bb1eb1aad6b8461088.html</a></p>
 
