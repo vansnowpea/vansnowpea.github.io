@@ -304,9 +304,16 @@ try:
 finally:
     csvFile.close()
 </code></pre><p>3、上述代码的主要目的，是把对应ulr的表格的文字信息，提取出来，保存到csv。那么他是怎么一步步做到的？</p>
-<p>首先，我们来打开url看下网站内容，如下图是一个色彩鲜艳的表格：</p>
+<p>首先，我们来打开url看下网站的目标内容，如下图是一个色彩鲜艳的表格：</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/115841809.png" alt=""></p>
 <p>其次，我们查看下网页源代码，格式清晰的很，并且代码很长一共7910行的html，可这只是维基百科的一页而已！并且从这么多的html代码中快速的提取出我们需要的数据信息，应该怎么做呢？</p>
+<p>一般来说，提取数据有2个比较通用的方法，<br>第一、数据目标很明确，品种也单一，比如下载图片的格式都是xx.1.jpg, xx.2.jpg，可直接找到对应目标，随后右键—检查，可通过浏览器自带的copy xpath配合lxml提取，或者如果你习惯bs4的话，用类似方法。</p>
+<p>第二，当数据很多，源代码非常多，就本例来说想找一个表格的话，如果我们沿用上述方法，结果会怎样呢？</p>
+<p>第一，检测表格中黑体字标签（以name为例）和正文的xpath（以’acme’为例）：</p>
+<p>//*[@id=”mw-content-text”]/table[2]/thead/tr/th[1]</p>
+<p>//*[@id=”mw-content-text”]/table[2]/tbody/tr[1]/th/a</p>
+<p>分别得到他们的xpath地址，但是等等，似乎格式并不统一，出现了thead和tbody。</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/122808452.png" alt=""></p>
 <p>此时，对照下本例python代码中，按照class搜索{“class”:”wikitable”}，实际上得到的是搜索class=”wikitable sortable”，如下的html代码（其中一条）：</p>
 <pre><code>&lt;table class=&quot;wikitable sortable&quot; style=&quot;text-align: center; font-size: 85%; width: auto; table-layout: fixed;&quot;&gt;
 </code></pre><p>也就是说，bs4的findall是找到了类名带有“wikitable“，就自动把”wikitable sortable”也找出来。</p>
