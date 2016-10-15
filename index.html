@@ -312,9 +312,9 @@ finally:
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/115841809.png" alt=""></p>
 <p>其次，我们查看下网页源代码，格式清晰的很，并且代码很长一共7910行的html，可这只是维基百科的一页而已！并且从这么多的html代码中快速的提取出我们需要的数据信息，应该怎么做呢？</p>
 <p>一般来说，提取数据有2个比较通用的方法，<br>第一、无视他的源代码，我就查看目标内容的路径，可通过浏览器自带的copy xpath配合lxml提取，或者如果你习惯bs4的话，用类似方法。</p>
-<p>第二，根据F12找到目标区域，比如一个表格的所在大的路径，然后由大往小的逐步提取。显然本文使用的是这个方法。如下图，当鼠标移动到</p>
+<p>第二，根据F12找到目标区域，比如一个表格的所在大的路径，然后由大往小的逐步提取。显然本文使用的是这个方法。当鼠标移动到</p>
 <pre><code>&lt;table class=&quot;wikitable sortable jquery-tablesorter&quot; style=&quot;text-align: center; font-size: 85%; width: auto; table-layout: fixed;&quot;&gt;
-</code></pre><p>这一行代码的时候，整个目标表格的颜色就变了。</p>
+</code></pre><p>这一行代码的时候，整个目标表格的颜色就变了。如下图，</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/122808452.png" alt=""></p>
 <p>4、现在重点分析下这行代码：</p>
 <p>table = bsObj.findAll(“table”,{“class”:”wikitable”})[0]</p>
@@ -327,7 +327,7 @@ finally:
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/121538652.png" alt=""></p>
 <p>5、接下来分析这一句：</p>
 <pre><code>rows = table.findAll(&quot;tr&quot;)
-</code></pre><p>这一行是得到表格中所有按行的内容，这包含了表格头的黑色字体。如下图：</p>
+</code></pre><p>这一行是得到表格中所有按行的内容，这包含了表格头的黑色字体。如下图： （顺便请翻到此贴底部的参考资料，学习下tr，th，td的区别。）</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/125711054.png" alt=""></p>
 <p>6、接下来，当开始写入csv的时候，是按行写的，包含了表格头的内容，看下代码：</p>
 <pre><code>try:
