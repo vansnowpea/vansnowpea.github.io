@@ -338,7 +338,7 @@ finally:
             writer.writerow(csvRow)
 </code></pre><p>其中 ‘th’ 是表格头，‘td’是表格内容。</p>
 <p>7、相对与上述第二种提取方法，这里详细说下第一种提取方法：</p>
-<p>检测表格中黑体的表格头（以name为例）和表格内容（）以’acme’为例）：</p>
+<p>检测表格中黑体的表格头（以name为例）和表格内容（以’acme’为例）：</p>
 <p>//*[@id=”mw-content-text”]/table[2]/thead/tr/th[1]</p>
 <p>//*[@id=”mw-content-text”]/table[2]/tbody/tr[1]/th/a</p>
 <p>分别得到他们的xpath地址，但格式并不统一，出现了thead和tbody。</p>

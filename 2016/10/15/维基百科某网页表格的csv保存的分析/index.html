@@ -111,7 +111,7 @@ from bs4 impor">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/122808452.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/121538652.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/125711054.png">
-<meta property="og:updated_time" content="2016-10-15T17:13:09.000Z">
+<meta property="og:updated_time" content="2016-10-15T17:13:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="维基百科某网页表格的csv保存的分析【Python】">
 <meta name="twitter:description" content="维基百科某网页表格的csv保存的分析1、在阅读《Python网络数据采集》第五章的时候看到的案例，记录细节分析。
@@ -365,7 +365,7 @@ finally:
             writer.writerow(csvRow)
 </code></pre><p>其中 ‘th’ 是表格头，‘td’是表格内容。</p>
 <p>7、相对与上述第二种提取方法，这里详细说下第一种提取方法：</p>
-<p>检测表格中黑体的表格头（以name为例）和表格内容（）以’acme’为例）：</p>
+<p>检测表格中黑体的表格头（以name为例）和表格内容（以’acme’为例）：</p>
 <p>//*[@id=”mw-content-text”]/table[2]/thead/tr/th[1]</p>
 <p>//*[@id=”mw-content-text”]/table[2]/tbody/tr[1]/th/a</p>
 <p>分别得到他们的xpath地址，但格式并不统一，出现了thead和tbody。</p>
