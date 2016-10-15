@@ -104,7 +104,7 @@ from bs4 import BeautifulSoup
 html = urlopen(&amp;quot;http://en.wikipedia.org/wiki/Comparison">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/115841809.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/121538652.png">
-<meta property="og:updated_time" content="2016-10-15T04:25:05.000Z">
+<meta property="og:updated_time" content="2016-10-15T04:25:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="维基百科某网页表格的csv保存的分析【Python】">
 <meta name="twitter:description" content="维基百科某网页表格的csv保存的分析1、在阅读《Python网络数据采集》第五章的时候看到的案例，记录细节分析。
@@ -326,9 +326,8 @@ finally:
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/115841809.png" alt=""></p>
 <p>其次，我们查看下网页源代码，格式清晰的很，并且代码很长一共7910行的html，可这只是维基百科的一页而已！并且从这么多的html代码中快速的提取出我们需要的数据信息，应该怎么做呢？</p>
 <p>此时，对照下本例python代码中，按照class搜索{“class”:”wikitable”}，实际上得到的是搜索class=”wikitable sortable”，如下的html代码（其中一条）：</p>
-<table class="wikitable sortable" style="text-align: center; font-size: 85%; width: auto; table-layout: fixed;">
-
-<p>也就是说，bs4的findall是找到了类名带有“wikitable“，就自动把”wikitable sortable”也找出来。</p>
+<pre><code>&lt;table class=&quot;wikitable sortable&quot; style=&quot;text-align: center; font-size: 85%; width: auto; table-layout: fixed;&quot;&gt;
+</code></pre><p>也就是说，bs4的findall是找到了类名带有“wikitable“，就自动把”wikitable sortable”也找出来。</p>
 <p>4、现在重点分析下这行代码：</p>
 <p>table = bsObj.findAll(“table”,{“class”:”wikitable”})[0]</p>
 <p>根据第三条中的分析，已经知道把对应表格中所有含有wikitable的class找出来，那么为什么要这么写？ </p>
@@ -337,7 +336,7 @@ finally:
 <p>6、可改进点：<br>邮件的地址内容显示的是一个列表，有待改进。</p>
 <p>7、github对应仓库:</p>
 <p><a href="https://github.com/vansnowpea/WestWorld-auto-download-email-xunlei-" target="_blank" rel="external">https://github.com/vansnowpea/WestWorld-auto-download-email-xunlei-</a></p>
-</table>
+
       
     </div>
 
