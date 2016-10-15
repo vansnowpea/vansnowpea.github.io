@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -248,7 +248,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-15T12:59:28+08:00" content="2016-10-15">
               2016-10-15
             </time>
@@ -307,24 +307,36 @@ finally:
 <p>首先，我们来打开url看下网站的目标内容，如下图是一个色彩鲜艳的表格：</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/115841809.png" alt=""></p>
 <p>其次，我们查看下网页源代码，格式清晰的很，并且代码很长一共7910行的html，可这只是维基百科的一页而已！并且从这么多的html代码中快速的提取出我们需要的数据信息，应该怎么做呢？</p>
-<p>一般来说，提取数据有2个比较通用的方法，<br>第一、数据目标很明确，品种也单一，比如下载图片的格式都是xx.1.jpg, xx.2.jpg，可直接找到对应目标，随后右键—检查，可通过浏览器自带的copy xpath配合lxml提取，或者如果你习惯bs4的话，用类似方法。</p>
-<p>第二，当数据很多，源代码非常多，就本例来说想找一个表格的话，如果我们沿用上述方法，结果会怎样呢？</p>
-<p>第一，检测表格中黑体字标签（以name为例）和正文的xpath（以’acme’为例）：</p>
-<p>//*[@id=”mw-content-text”]/table[2]/thead/tr/th[1]</p>
-<p>//*[@id=”mw-content-text”]/table[2]/tbody/tr[1]/th/a</p>
-<p>分别得到他们的xpath地址，但是等等，似乎格式并不统一，出现了thead和tbody。</p>
+<p>一般来说，提取数据有2个比较通用的方法，<br>第一、无视他的源代码，我就查看目标内容的路径，可通过浏览器自带的copy xpath配合lxml提取，或者如果你习惯bs4的话，用类似方法。</p>
+<p>第二，根据F12找到目标区域，比如一个表格的所在大的路径，然后由大往小的逐步提取。显然本文使用的是这个方法。如下图，当鼠标移动到</p>
+<pre><code>&lt;table class=&quot;wikitable sortable jquery-tablesorter&quot; style=&quot;text-align: center; font-size: 85%; width: auto; table-layout: fixed;&quot;&gt;
+</code></pre><p>这一行代码的时候，整个目标表格的颜色就变了。</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/122808452.png" alt=""></p>
-<p>此时，对照下本例python代码中，按照class搜索{“class”:”wikitable”}，实际上得到的是搜索class=”wikitable sortable”，如下的html代码（其中一条）：</p>
-<pre><code>&lt;table class=&quot;wikitable sortable&quot; style=&quot;text-align: center; font-size: 85%; width: auto; table-layout: fixed;&quot;&gt;
-</code></pre><p>也就是说，bs4的findall是找到了类名带有“wikitable“，就自动把”wikitable sortable”也找出来。</p>
 <p>4、现在重点分析下这行代码：</p>
 <p>table = bsObj.findAll(“table”,{“class”:”wikitable”})[0]</p>
-<p>根据第三条中的分析，已经知道把对应表格中所有含有wikitable的class找出来，那么为什么要这么写？ </p>
+<p>根据第三条中的分析，已经知道把对应表格中所有含有wikitable的class找出来，那么为什么要这么写？<br>此时，对照下本例python代码中，按照class搜索{“class”:”wikitable”}，实际上得到的是搜索class=”wikitable sortable”，如下的html代码（其中一条）：</p>
+<pre><code>&lt;table class=&quot;wikitable sortable&quot; style=&quot;text-align: center; font-size: 85%; width: auto; table-layout: fixed;&quot;&gt;
+</code></pre><p>也就是说，bs4的findall是找到了类名带有“wikitable“，就自动把”wikitable sortable”也找出来。</p>
+<p>那么为何要在代码的后面加上[0] ? 如果只用下面的代码：</p>
+<pre><code>bsObj.findAll(&quot;table&quot;,{&quot;class&quot;:&quot;wikitable&quot;})
+</code></pre><p>就本例使用bs4分析来说， 其实得到的是bs4.element.ResultSet ，从字面翻译，可理解成bs4的结果集，也应该是一个字典， 而要提取里面的内容，就加上[0]，此时从bs4的角度来说，得到了一个bs4.element.Tag ， 从字典的内容提取来说，得到了字典里第一个元素的内容。</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/121538652.png" alt=""></p>
-<p>5、感谢：<br> @陌 提供了163发送email的代码<br> @何方 提供了高清网站源<br> @其他人，交流了细节</p>
-<p>6、可改进点：<br>邮件的地址内容显示的是一个列表，有待改进。</p>
-<p>7、github对应仓库:</p>
-<p><a href="https://github.com/vansnowpea/WestWorld-auto-download-email-xunlei-" target="_blank" rel="external">https://github.com/vansnowpea/WestWorld-auto-download-email-xunlei-</a></p>
+<p>5、接下来分析这一句：</p>
+<pre><code>rows = table.findAll(&quot;tr&quot;)
+</code></pre><p>这一行是得到表格中所有按行的内容，这包含了表格头的黑色字体。如下图：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/125711054.png" alt=""></p>
+<p>6、接下来，当开始写入csv的时候，是按行写的，包含了表格头的内容，看下代码：</p>
+<pre><code>try:
+        for row in rows:
+            csvRow = []
+            for cell in row.findAll([&apos;td&apos;, &apos;th&apos;]):
+                csvRow.append(cell.get_text())
+            writer.writerow(csvRow)
+</code></pre><p>相对与上述第二种提取方法，这里详细说下第一中提取方法：</p>
+<p>检测表格中黑体的表格头（以name为例）和表格内容以’acme’为例）：</p>
+<p>//*[@id=”mw-content-text”]/table[2]/thead/tr/th[1]</p>
+<p>//*[@id=”mw-content-text”]/table[2]/tbody/tr[1]/th/a</p>
+<p>分别得到他们的xpath地址，但似乎格式并不统一，出现了thead和tbody。<br>不过好在表格内容的xpath都是有规律的，所以如果我们改用xpath方法来改写代码，只需要把表格头和表格内容分别提取。</p>
 
           
         
@@ -387,7 +399,7 @@ finally:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-13T20:59:28+08:00" content="2016-10-13">
               2016-10-13
             </time>
@@ -617,7 +629,7 @@ if __name__ == &apos;__main__&apos;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-11T20:59:28+08:00" content="2016-10-11">
               2016-10-11
             </time>
@@ -865,7 +877,7 @@ Process finished with exit code 0
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-10T13:59:28+08:00" content="2016-10-10">
               2016-10-10
             </time>
@@ -997,7 +1009,7 @@ Process finished with exit code 0
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-08T20:59:28+08:00" content="2016-10-08">
               2016-10-08
             </time>
@@ -1097,7 +1109,7 @@ Process finished with exit code 0
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-07T23:59:28+08:00" content="2016-10-07">
               2016-10-07
             </time>
@@ -1233,7 +1245,7 @@ tree.xpath(&quot;//div[@class=&apos;sec_blk mrg_b_30&apos;]/ul/li[1]/a/@href&quo
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-07T22:59:28+08:00" content="2016-10-07">
               2016-10-07
             </time>
@@ -1357,7 +1369,7 @@ print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-05T16:20:28+08:00" content="2016-10-05">
               2016-10-05
             </time>
@@ -1465,7 +1477,7 @@ print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-02T14:20:28+08:00" content="2016-10-02">
               2016-10-02
             </time>
@@ -1609,7 +1621,7 @@ These are the 6 must have books, if you are serious about being a data scientist
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-27T14:20:28+08:00" content="2016-09-27">
               2016-09-27
             </time>
@@ -1729,7 +1741,7 @@ Thanks!
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">58</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1776,7 +1788,7 @@ Thanks!
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
