@@ -84,42 +84,36 @@
 
 
 
-<meta name="description" content="西部世界 1080P高清下载和自动提醒后续新出的
-1、主要思路是，通过高清源头的网站提供的资源，爬取后，通过迅雷实现自动下载，然后后续新出的，比如下周1更新后，脚本会自动捕捉后发邮件通知，并自动下载。
+<meta name="description" content="维基百科某网页表格的csv保存的分析1、在阅读《Python网络数据采集》第五章的时候看到的案例，记录细节分析。
 2、代码：
-# -*- coding: utf-8 -*-
-# python 3.5.2
-# 测试系统，Win10
-# Author:Van
-# 实现《西部世界》有更新后自动下载，以及邮件通知
-#">
+import csv
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
+
+html = urlopen(&amp;quot;http://en.wikipedia.org/wiki/Comparison">
 <meta property="og:type" content="article">
-<meta property="og:title" content="西部世界 1080P高清下载和自动提醒后续新出的【Python】">
-<meta property="og:url" content="http://yoursite.com/2016/10/13/维基百科某网页表格的csv保存的分析/index.html">
+<meta property="og:title" content="维基百科某网页表格的csv保存的分析【Python】">
+<meta property="og:url" content="http://yoursite.com/2016/10/15/维基百科某网页表格的csv保存的分析/index.html">
 <meta property="og:site_name" content="A Song of Python and Anaconda">
-<meta property="og:description" content="西部世界 1080P高清下载和自动提醒后续新出的
-1、主要思路是，通过高清源头的网站提供的资源，爬取后，通过迅雷实现自动下载，然后后续新出的，比如下周1更新后，脚本会自动捕捉后发邮件通知，并自动下载。
+<meta property="og:description" content="维基百科某网页表格的csv保存的分析1、在阅读《Python网络数据采集》第五章的时候看到的案例，记录细节分析。
 2、代码：
-# -*- coding: utf-8 -*-
-# python 3.5.2
-# 测试系统，Win10
-# Author:Van
-# 实现《西部世界》有更新后自动下载，以及邮件通知
-#">
-<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-14/005536645.jpg">
-<meta property="og:updated_time" content="2016-10-15T03:54:27.000Z">
+import csv
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
+
+html = urlopen(&amp;quot;http://en.wikipedia.org/wiki/Comparison">
+<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/115841809.png">
+<meta property="og:updated_time" content="2016-10-15T04:07:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="西部世界 1080P高清下载和自动提醒后续新出的【Python】">
-<meta name="twitter:description" content="西部世界 1080P高清下载和自动提醒后续新出的
-1、主要思路是，通过高清源头的网站提供的资源，爬取后，通过迅雷实现自动下载，然后后续新出的，比如下周1更新后，脚本会自动捕捉后发邮件通知，并自动下载。
+<meta name="twitter:title" content="维基百科某网页表格的csv保存的分析【Python】">
+<meta name="twitter:description" content="维基百科某网页表格的csv保存的分析1、在阅读《Python网络数据采集》第五章的时候看到的案例，记录细节分析。
 2、代码：
-# -*- coding: utf-8 -*-
-# python 3.5.2
-# 测试系统，Win10
-# Author:Van
-# 实现《西部世界》有更新后自动下载，以及邮件通知
-#">
-<meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-14/005536645.jpg">
+import csv
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
+
+html = urlopen(&amp;quot;http://en.wikipedia.org/wiki/Comparison">
+<meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/115841809.png">
 
 
 
@@ -140,9 +134,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/10/13/维基百科某网页表格的csv保存的分析/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/15/维基百科某网页表格的csv保存的分析/"/>
 
-  <title> 西部世界 1080P高清下载和自动提醒后续新出的【Python】 | A Song of Python and Anaconda </title>
+  <title> 维基百科某网页表格的csv保存的分析【Python】 | A Song of Python and Anaconda </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -262,7 +256,7 @@
             
             
               
-                西部世界 1080P高清下载和自动提醒后续新出的【Python】
+                维基百科某网页表格的csv保存的分析【Python】
               
             
           </h1>
@@ -274,8 +268,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-10-13T20:59:28+08:00" content="2016-10-13">
-              2016-10-13
+            <time itemprop="dateCreated" datetime="2016-10-15T12:59:28+08:00" content="2016-10-15">
+              2016-10-15
             </time>
           </span>
 
@@ -302,144 +296,43 @@
       
 
       
-        <h1 id="西部世界-1080P高清下载和自动提醒后续新出的"><a href="#西部世界-1080P高清下载和自动提醒后续新出的" class="headerlink" title="西部世界 1080P高清下载和自动提醒后续新出的"></a>西部世界 1080P高清下载和自动提醒后续新出的</h1><p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-14/005536645.jpg" alt=""></p>
-<p>1、主要思路是，通过高清源头的网站提供的资源，爬取后，通过迅雷实现自动下载，<br>然后后续新出的，比如下周1更新后，脚本会自动捕捉后发邮件通知，并自动下载。</p>
+        <h1 id="维基百科某网页表格的csv保存的分析"><a href="#维基百科某网页表格的csv保存的分析" class="headerlink" title="维基百科某网页表格的csv保存的分析"></a>维基百科某网页表格的csv保存的分析</h1><p>1、在阅读《Python网络数据采集》第五章的时候看到的案例，记录细节分析。</p>
 <p>2、代码：</p>
-<pre><code># -*- coding: utf-8 -*-
-# python 3.5.2
-# 测试系统，Win10
-# Author:Van
-# 实现《西部世界》有更新后自动下载，以及邮件通知
-# V1.0
-# 欢迎各种改进意见
-# 请把对应的帐号密码修改成自己的
+<pre><code>import csv
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
 
+html = urlopen(&quot;http://en.wikipedia.org/wiki/Comparison_of_text_editors&quot;)
+bsObj = BeautifulSoup(html, &quot;html.parser&quot;)
+#The main comparison table is currently the first table on the page
+table = bsObj.findAll(&quot;table&quot;,{&quot;class&quot;:&quot;wikitable&quot;})[0]
+# print(table)
+rows = table.findAll(&quot;tr&quot;)
+# print(rows)
 
-# from selenium import webdriver
-import requests
-from lxml import etree
-import time
-import os
-from win32com.client import Dispatch
-import smtplib
-from email.mime.text import MIMEText
-from email.header import Header
-import copy
+csvFile = open(&quot;c:\\van\\editors.csv&quot;, &apos;wt&apos;, newline=&apos;&apos;, encoding=&apos;utf-8&apos;)
+writer = csv.writer(csvFile)
+try:
+    for row in rows:
+        csvRow = []
+        for cell in row.findAll([&apos;td&apos;, &apos;th&apos;]):
+            csvRow.append(cell.get_text())
+        writer.writerow(csvRow)
+finally:
+    csvFile.close()
+</code></pre><p>3、上述代码的主要目的，是把对应ulr的表格的文字信息，提取出来，保存到csv。那么他是怎么一步步做到的？</p>
+<p>首先，我们来打开url看下网站内容，如下图是一个色彩鲜艳的表格：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/115841809.png" alt=""></p>
+<p>其次，我们查看下网页源代码，格式清晰的很，并且代码很长一共7910行的html代码，可这只是维基百科的一页而已！</p>
+<p>此时，对照下本例python代码中，按照class搜索{“class”:”wikitable”}，实际上得到的是搜索class=”wikitable sortable”，如下代码：</p>
+<table class="wikitable sortable" style="text-align: center; font-size: 85%; width: auto; table-layout: fixed;">
 
-# hints
-print(&apos;请确保电脑安装了迅雷&apos;)
-print(&apos;如果你用的是破解版的迅雷，请先开启再运行程序&apos;)
-print()
-# requests
-url = &apos;http://www.btbtdy.com/btdy/dy7280.html&apos;
-html = requests.get(url).content.decode(&apos;utf-8&apos;)
-
-# lxml
-selector = etree.HTML(html)
-real_link = []
-
-# to be easy, try &apos;starts-with&apos; , very useful in this case :)
-HDTV = selector.xpath(&apos;//a[starts-with(@title, &quot;HDTV-1080P&quot;)]/text()&apos;)
-for each in HDTV:
-    print(each)
-
-
-href = selector.xpath(&apos;//a[starts-with(@title, &quot;HDTV-1080P&quot;)]/@href&apos;)
-print()
-print(&apos;目前有 %d 集西部世界&apos; %len(href))
-print()
-
-for each in href:
-    # split to get the right magnet link
-    each = &apos;magnet&apos; + each.split(&apos;magnet&apos;)[-1]
-    # print(each)
-    real_link.append(each)
-
-print(&apos;他们的磁链接是 :\n&apos;, real_link)
-# define a temp_link in deepcopy to compare for new series
-temp_link = copy.deepcopy(real_link)
-print(&apos;temp_link is :&apos;, temp_link)
-
-
-
-
-def addTasktoXunlei(down_url,course_infos):
-    flag = False
-    o = Dispatch(&quot;ThunderAgent.Agent.1&quot;)
-    if down_url:
-        course_path = os.getcwd()
-        try:
-            #AddTask(&quot;下载地址&quot;, &quot;另存文件名&quot;, &quot;保存目录&quot;,&quot;任务注释&quot;,&quot;引用地址&quot;,&quot;开始模式&quot;, &quot;只从原始地址下载&quot;,&quot;从原始地址下载线程数&quot;)
-            o.AddTask(down_url, &apos;&apos;, course_path, &quot;&quot;, &quot;&quot;, -1, 0, 5)
-            o.CommitTasks()
-            flag = True
-        except Exception:
-
-            print(Exception.message)
-            print(&quot; AddTask is fail!&quot;)
-    return flag
-
-def new_href():
-    # to judge if there is a new series of WestWorld
-    time.sleep(2)
-    if len(real_link) &gt; len(temp_link):
-        print(&apos;西部世界1080P有更新!&apos;)
-        print(&apos;现在一共有 %d 集了。&apos; %len(real_link))
-        return True
-    else:
-        return False
-
-def send_email(htm):
-    # send email to notice new WestWorld is coming
-    sender = &apos;xxxxxxxx@163.com&apos;
-    receiver = &apos;xxxxxxxx@qq.com,xxxxxxxx@163.com&apos;
-    subject = &apos;西部世界 1080P有更新！&apos;
-    smtpserver = &apos;smtp.163.com&apos;
-    username = &apos;xxxxxxxx@163.com&apos;
-    password = &apos;xxxxxxxx&apos;
-    msg = MIMEText(htm, &apos;html&apos;, &apos;utf-8&apos;)
-    msg[&apos;Subject&apos;] = Header(subject, &apos;UTF-8&apos;)
-    msg[&apos;From&apos;] = sender
-    msg[&apos;To&apos;] = receiver
-    smtp = smtplib.SMTP()
-    smtp.connect(smtpserver)
-    smtp.login(username, password)
-    smtp.sendmail(sender, receiver, msg.as_string())
-    smtp.quit()
-
-def new_download():
-    # only download the new WestWorld series
-    if len(real_link) &gt; len(temp_link):
-        # 2个地址数据的差集
-        new_link = list(set(real_link).difference(set(temp_link)))
-        for i in new_link:
-            addTasktoXunlei(i, course_infos=None)
-
-
-
-if __name__ == &apos;__main__&apos;:
-    # download the exiting series of WestWorld
-    # send_email(&apos;最新更新磁链接：&apos;+ str(real_link))
-    for i in real_link:
-        addTasktoXunlei(i, course_infos=None)
-
-    # to get the later WestWorld for each hour
-    while 1:
-        if new_href():
-            send_email(&apos;所有的下载地址（磁链接）：&apos;+ str(real_link))
-            new_download()
-            time.sleep(15)
-            # wait for an hour
-            temp_link = real_link
-            print(temp_link)
-            print(&apos;神剧很好看吧，亲，耐心等下一集！~！&apos;)
-</code></pre><p>3、代码分析，其中用到了deepcopy，这个功能很有用，并配合了2个数组的差集，使得可以规避定时器，而让脚本直接比较temp_link的内容，而扑捉到网站有新的更新了。另外，在地址识别的时候，一开始用.xpath 没显示内容，有点奇怪，后来根据特性，使用了strats_with识别了内容。</p>
-<p>4、邮件的作用是可以利用微信绑定来推送，相对短信，更觉方便。</p>
+<p>也就是说，bs4的findall是找到了类名带有“wikitable“就自动把”wikitable sortable”也找出来。</p>
 <p>5、感谢：<br> @陌 提供了163发送email的代码<br> @何方 提供了高清网站源<br> @其他人，交流了细节</p>
 <p>6、可改进点：<br>邮件的地址内容显示的是一个列表，有待改进。</p>
 <p>7、github对应仓库:</p>
 <p><a href="https://github.com/vansnowpea/WestWorld-auto-download-email-xunlei-" target="_blank" rel="external">https://github.com/vansnowpea/WestWorld-auto-download-email-xunlei-</a></p>
-
+</table>
       
     </div>
 
@@ -570,7 +463,7 @@ if __name__ == &apos;__main__&apos;:
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#西部世界-1080P高清下载和自动提醒后续新出的"><span class="nav-number">1.</span> <span class="nav-text">西部世界 1080P高清下载和自动提醒后续新出的</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#维基百科某网页表格的csv保存的分析"><span class="nav-number">1.</span> <span class="nav-text">维基百科某网页表格的csv保存的分析</span></a></li></ol></div>
             
           </div>
         </section>
