@@ -112,7 +112,7 @@ from bs4 impor">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/121538652.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/125711054.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-16/012705629.png">
-<meta property="og:updated_time" content="2016-10-15T18:47:30.000Z">
+<meta property="og:updated_time" content="2016-10-15T18:54:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="维基百科某网页表格的csv保存的分析【Python】">
 <meta name="twitter:description" content="维基百科某网页表格的csv保存的分析1、在阅读《Python网络数据采集》第五章的时候看到的案例，记录细节分析。
@@ -380,7 +380,7 @@ finally:
 <pre><code>//*[@id=&quot;mw-content-text&quot;]/table[2]/tr//text()
 </code></pre><p>如果这么写，得到的结果是带有空格的，如图：</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-16/012705629.png" alt=""></p>
-<p>可以发现，不仅多出了空格，在Cost(US$)的栏目，还分了3行，而我们需要的连续的，<br>综上，我们只有通过string功能来实现把空格去掉，同时把Cost(US$)合并在一起，得到的结果将是这样的：</p>
+<p>可以发现，不仅多出了空格，在Cost(US$)的栏目，还分了3行，而我们需要连续的，<br>综上，我们只有通过string功能来实现把空格去掉，同时把Cost(US$)合并在一起，得到的结果将是这样的：</p>
 <pre><code>Name
 Creator
 First public release
