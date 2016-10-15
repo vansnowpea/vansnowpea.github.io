@@ -112,7 +112,7 @@ from bs4 impor">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/121538652.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/125711054.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-16/012705629.png">
-<meta property="og:updated_time" content="2016-10-15T17:46:28.000Z">
+<meta property="og:updated_time" content="2016-10-15T18:47:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="维基百科某网页表格的csv保存的分析【Python】">
 <meta name="twitter:description" content="维基百科某网页表格的csv保存的分析1、在阅读《Python网络数据采集》第五章的时候看到的案例，记录细节分析。
@@ -205,7 +205,7 @@ from bs4 impor">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -215,7 +215,7 @@ from bs4 impor">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -278,7 +278,7 @@ from bs4 impor">
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-15T12:59:28+08:00" content="2016-10-15">
               2016-10-15
             </time>
@@ -396,7 +396,7 @@ Open source
 # AkelPad xpath: //*[@id=&quot;mw-content-text&quot;]/table[2]/tbody/tr[2]/th/a
 </code></pre><p>如果去掉/tbody后， 又要把表格内容全部提取，又要去掉tbody，发现只能这么写：</p>
 <pre><code>string(//*[@id=&quot;mw-content-text&quot;]/table[2])
-</code></pre><p>可这样是不行的，因为他不仅把表头的内容也算进去了，还把标题captain的内容也一起搞进去了。此时，你心中定有千万泥马飞奔 ）：</p>
+</code></pre><p>可这样是不行的，因为他不仅把表头的内容也算进去了，还把标题captain的内容也一起搞进去了。</p>
 <p>此时，又根据表内容的序号格式，尝试这么写：</p>
 <pre><code>string(//*[@id=&quot;mw-content-text&quot;]/table[2]//th/a)
 </code></pre><p>期望的是，得到统一的表内容，可实际返回的却是：</p>
@@ -488,10 +488,10 @@ Open source
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -508,7 +508,7 @@ Open source
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">58</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -566,7 +566,7 @@ Open source
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
