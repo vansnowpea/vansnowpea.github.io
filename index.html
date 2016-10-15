@@ -306,13 +306,14 @@ finally:
 </code></pre><p>3、上述代码的主要目的，是把对应ulr的表格的文字信息，提取出来，保存到csv。那么他是怎么一步步做到的？</p>
 <p>首先，我们来打开url看下网站内容，如下图是一个色彩鲜艳的表格：</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/115841809.png" alt=""></p>
-<p>其次，我们查看下网页源代码，格式清晰的很，并且代码很长一共7910行的html，可这只是维基百科的一页而已！</p>
-<p>此时，对照下本例python代码中，按照class搜索{“class”:”wikitable”}，实际上得到的是搜索class=”wikitable sortable”，如下的html代码：</p>
+<p>其次，我们查看下网页源代码，格式清晰的很，并且代码很长一共7910行的html，可这只是维基百科的一页而已！并且从这么多的html代码中快速的提取出我们需要的数据信息，应该怎么做呢？</p>
+<p>此时，对照下本例python代码中，按照class搜索{“class”:”wikitable”}，实际上得到的是搜索class=”wikitable sortable”，如下的html代码（其中一条）：</p>
 <table class="wikitable sortable" style="text-align: center; font-size: 85%; width: auto; table-layout: fixed;">
 
 <p>也就是说，bs4的findall是找到了类名带有“wikitable“，就自动把”wikitable sortable”也找出来。</p>
 <p>4、现在重点分析下这行代码：</p>
 <p>table = bsObj.findAll(“table”,{“class”:”wikitable”})[0]</p>
+<p>根据第三条中的分析，已经知道把对应表格中所有含有wikitable的class找出来，那么为什么要这么写？ </p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/121538652.png" alt=""></p>
 <p>5、感谢：<br> @陌 提供了163发送email的代码<br> @何方 提供了高清网站源<br> @其他人，交流了细节</p>
 <p>6、可改进点：<br>邮件的地址内容显示的是一个列表，有待改进。</p>
