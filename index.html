@@ -320,7 +320,7 @@ finally:
 <p>table = bsObj.findAll(“table”,{“class”:”wikitable”})[0]</p>
 <p>根据第三条中的分析，已经知道把对应表格中所有含有wikitable的class找出来，那么为什么要这么写？<br>此时，对照下本例python代码中，按照class搜索{“class”:”wikitable”}，实际上得到的是搜索class=”wikitable sortable”，如下的html代码（其中一条）：</p>
 <pre><code>&lt;table class=&quot;wikitable sortable&quot; style=&quot;text-align: center; font-size: 85%; width: auto; table-layout: fixed;&quot;&gt;
-</code></pre><p>也就是说，bs4的findall是找到了类名带有“wikitable“，就自动把”wikitable sortable”也找出来。</p>
+</code></pre><p>也就是说，bs4的findall是找到了类名带有”wikitable”，就自动把”wikitable sortable”也找出来，但对照lxml的xpath来说，如果class=”wikitable”，则搜索结果为空，要写完整的class=“wikitable sortable“，另外要注意这里有一个大坑，因为F12下的class是”wikitable sortable jquery-tablesorter”,和源代码是不对应的，这会导致python里用xpath找不到内容！</p>
 <p>那么为何要在代码的后面加上[0] ? 如果只用下面的代码：</p>
 <pre><code>bsObj.findAll(&quot;table&quot;,{&quot;class&quot;:&quot;wikitable&quot;})
 </code></pre><p>就本例使用bs4分析来说， 其实得到的是bs4.element.ResultSet ，从字面翻译，可理解成bs4的结果集，不过应该是一个列表， 而要提取里面的内容，就加上[0]，此时从bs4的角度来说，得到了一个bs4.element.Tag ， 从字典的内容提取来说，得到了字典里第一个元素的内容。</p>
