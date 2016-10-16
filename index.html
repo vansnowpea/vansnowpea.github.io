@@ -384,8 +384,20 @@ Open source
 ∙ findtext() returns the .text content of the first match
 </code></pre><p>不过当用：</p>
 <pre><code>table = selector.findall(&apos;.//*[@id=&quot;mw-content-text&quot;]/table[2]/tr&apos;)
-</code></pre><p>得到的结果显示的都是element的list，不显示里面的文字，提取的命令貌似在官网上也没找到，并且尝试：print(each.text) 完全空结果，这就有点坑了。以后有答案了再补充。</p>
-<p>9、参考：</p>
+</code></pre><p>得到的结果显示的都是element的list，不显示里面的文字，提取的命令貌似在官网上也没找到，并且尝试：print(each.text) 完全空结果，这就有点坑了。<br>以后有答案了再补充。</p>
+<p>9、从第8点的分析来开，使用bs4在提取表格的时候，优势还是较大的，因为其返回的是列表形式的html内容，使得具体的提取方便，而lxml的返回的是一个看不到内容的<element table="" at="" 0x3933fa8="">，并且官网上的案例似乎也不太明了。<br>    import requests<br>    from lxml import etree    </element></p>
+<pre><code>html = urlopen(&quot;http://en.wikipedia.org/wiki/Comparison_of_text_editors&quot;)Comparison_of_text_editors&quot;)
+selector = etree.HTML(html)
+#The main comparison table is currently the first table on the page
+table = selector.findall(&apos;.//*[@id=&quot;mw-content-text&quot;]/table[2]/tr&apos;)
+content = []
+for i in range(len(table)):
+    text = selector.xpath(&apos;string(//*[@id=&quot;mw-content-text&quot;]/table[2]/tr[%d + 1])&apos;%i)
+    print(text)
+    print(len(text))
+    content.append(text)
+print(content)
+</code></pre><p>10、参考：</p>
 <p><a href="http://jingyan.baidu.com/article/636f38bb1eb1aad6b8461088.html" target="_blank" rel="external">http://jingyan.baidu.com/article/636f38bb1eb1aad6b8461088.html</a></p>
 
           
