@@ -112,7 +112,7 @@ from bs4 impor">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/121538652.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/125711054.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-16/012705629.png">
-<meta property="og:updated_time" content="2016-10-16T16:32:24.000Z">
+<meta property="og:updated_time" content="2016-10-16T16:33:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="维基百科某网页表格的csv保存的分析【Python】">
 <meta name="twitter:description" content="维基百科某网页表格的csv保存的分析1、在阅读《Python网络数据采集》第五章的时候看到的案例，记录细节分析。
@@ -447,7 +447,17 @@ Free
 LPL (OSI approved)
 Yes
 </code></pre><p>要想得到bs4的那种csv的表格形式 ，还需要额外增加很多的数据清洗代码，看上去简单，实际很复杂，比如当你想通过len()的时候计算第一项有几个单词，但按照字符串去统计的，返回的每个列表元素的长度肯定不同的。总之最后反而得不偿失，尤其是如果希望使用wt的csv写入格式的话。</p>
-<p>10、参考：</p>
+<pre><code>In [4]: a
+Out[4]: &apos;\nName\nCreator\nFirst public release\nLatest stable version\nProgramming language\nCost (US$)\nSoftware license\nOpen source\n&apos;
+
+In [5]: a.replace(&apos;\n&apos;, &apos;&apos;)
+Out[5]: &apos;NameCreatorFirst public releaseLatest stable versionProgramming languageCost (US$)Software licenseOpen source&apos;
+
+In [6]: length = len(a)
+
+In [7]: length
+Out[7]: 118
+</code></pre><p>10、参考：</p>
 <p><a href="http://jingyan.baidu.com/article/636f38bb1eb1aad6b8461088.html" target="_blank" rel="external">http://jingyan.baidu.com/article/636f38bb1eb1aad6b8461088.html</a></p>
 
       
