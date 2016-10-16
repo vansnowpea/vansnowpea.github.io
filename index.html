@@ -307,7 +307,7 @@ try:
         writer.writerow(csvRow)
 finally:
     csvFile.close()
-</code></pre><p>3、上述代码的主要目的，是把对应ulr的表格的文字信息，提取出来，保存到csv。那么他是怎么一步步做到的？</p>
+</code></pre><p>3、上述代码的主要目的，是把对应url的表格的文字信息，提取出来，保存到csv。那么他是怎么一步步做到的？</p>
 <p>首先，我们来打开url看下网站的目标内容，如下图是一个色彩鲜艳的表格：</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/115841809.png" alt=""></p>
 <p>其次，我们查看下网页源代码，格式清晰的很，并且代码很长一共7910行的html，可这只是维基百科的一页而已！并且从这么多的html代码中快速的提取出我们需要的数据信息，应该怎么做呢？</p>
@@ -323,11 +323,11 @@ finally:
 </code></pre><p>也就是说，bs4的findall是找到了类名带有”wikitable”，就自动把”wikitable sortable”也找出来，但对照lxml的xpath来说，如果class=”wikitable”，则搜索结果为空，要写完整的class=“wikitable sortable“，另外要注意这里有一个大坑，因为F12下的class是”wikitable sortable jquery-tablesorter”,和源代码是不对应的，这会导致python里用xpath找不到内容！</p>
 <p>那么为何要在代码的后面加上[0] ? 如果只用下面的代码：</p>
 <pre><code>bsObj.findAll(&quot;table&quot;,{&quot;class&quot;:&quot;wikitable&quot;})
-</code></pre><p>就本例使用bs4分析来说， 其实得到的是bs4.element.ResultSet ，从字面翻译，可理解成bs4的结果集，不过应该是一个列表， 而要提取里面的内容，就加上[0]，此时从bs4的角度来说，得到了一个bs4.element.Tag ， 从字典的内容提取来说，得到了字典里第一个元素的内容。</p>
+</code></pre><p>就本例使用bs4分析来说， 其实得到的是bs4.element.ResultSet ，从字面翻译，可理解成bs4的结果集，不过应该是一个列表， 而要提取里面的内容，就加上[0]，此时从bs4的角度来说，得到了一个bs4.element.Tag ， 从列表的内容提取来说，得到了列表里第一个元素的内容。</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/121538652.png" alt=""></p>
 <p>5、接下来分析这一句：</p>
 <pre><code>rows = table.findAll(&quot;tr&quot;)
-</code></pre><p>这一行是得到表格中所有按行的内容，这包含了表格头的黑色字体。如下图： （顺便请翻到此贴底部的参考资料，学习下tr，th，td的区别。）</p>
+</code></pre><p>这一行是得到表格中所有按行的内容，这包含了表格头的黑色字体。如下图： （顺便请翻到此贴底部的参考资料，学习下tr，th，td的区别。</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/125711054.png" alt=""></p>
 <p>6、接下来，当开始写入csv的时候，是按行写的，包含了表格头的内容，看下代码：</p>
 <pre><code>try:
