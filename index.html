@@ -397,9 +397,10 @@ for i in range(len(table)):
     print(len(text))
     content.append(text)
 print(content)
-</code></pre><p>虽然想了点办法，通过lxml.etree 的findall 以及 xpath配合得到了表格里的需要的文字，但是，这样的格式，要再插入csv却非常的麻烦，这是因为我们要按行插入，而返回的列表是一个这样的格式：</p>
+</code></pre><p>虽然想了点办法，通过lxml.etree 的findall 以及 xpath配合得到了表格里的需要的文字，但是，这样的格式，要再插入csv却非常的麻烦，这是因为我们要按行插入，而返回的列表是一个这样的格式（下面显示的是列表第一项）：</p>
 <pre><code>[&apos;\nName\nCreator\nFirst public release\nLatest stable version\nProgramming language\nCost (US$)\nSoftware license\nOpen source\n&apos;, 
-</code></pre><p>10、参考：</p>
+</code></pre><p>要想得到bs4的那种表格形式 ，还需要额外增加很多的数据清洗代码。反而得不偿失。</p>
+<p>10、参考：</p>
 <p><a href="http://jingyan.baidu.com/article/636f38bb1eb1aad6b8461088.html" target="_blank" rel="external">http://jingyan.baidu.com/article/636f38bb1eb1aad6b8461088.html</a></p>
 
           
