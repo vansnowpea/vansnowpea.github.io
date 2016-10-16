@@ -112,7 +112,7 @@ from bs4 impor">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/121538652.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/125711054.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-16/012705629.png">
-<meta property="og:updated_time" content="2016-10-16T04:17:59.000Z">
+<meta property="og:updated_time" content="2016-10-16T04:18:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="维基百科某网页表格的csv保存的分析【Python】">
 <meta name="twitter:description" content="维基百科某网页表格的csv保存的分析1、在阅读《Python网络数据采集》第五章的时候看到的案例，记录细节分析。
@@ -407,7 +407,11 @@ Open source
 <pre><code>string(//*[@id=&quot;mw-content-text&quot;]/table[2])
 </code></pre><p>貌似进入了xpath分析的死循环，做下数据清理应该也是一个路子。</p>
 <p>8、上面分析了一大堆，结果不满意，那么lxml的有没有类似bs4的findall功能呢？</p>
-<p>9、参考：</p>
+<pre><code>∙ iterfind() iterates over all Elements that match the path expression
+∙ findall() returns a list of matching Elements
+∙ find() efficiently returns only the first match
+∙ findtext() returns the .text content of the first match
+</code></pre><p>9、参考：</p>
 <p><a href="http://jingyan.baidu.com/article/636f38bb1eb1aad6b8461088.html" target="_blank" rel="external">http://jingyan.baidu.com/article/636f38bb1eb1aad6b8461088.html</a></p>
 
       
