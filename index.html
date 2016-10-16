@@ -374,8 +374,7 @@ Open source
 </code></pre><p>期望的是，得到统一的表内容，可实际返回的却是：</p>
 <pre><code>Programming language
 </code></pre><p>这又是什么鬼呢？<br>原来，代码识别的是满足上述格式条件的<strong>第一个</strong>/a 路径下的文字，而在表头里，从Programming language开始，他有a属性。</p>
-<p>此时，又发现，既然string返回的是第一个满足条件的，那么刚修正过的表头的string表达式，其实也适合表内容的表达式啊。</p>
-<p>看来，我们只好先再提高一个层级，用：</p>
+<p>此时，又发现，既然string返回的是第一个满足条件的，那么刚修正过的表头的string表达式，其实也适合表内容的表达式啊。看来，我们只好先再提高一个层级，用：</p>
 <pre><code>string(//*[@id=&quot;mw-content-text&quot;]/table[2])
 </code></pre><p>貌似进入了xpath分析的死循环，做下数据清理应该也是一个路子。</p>
 <p>8、上面分析了一大堆，结果不满意，那么lxml的有没有类似bs4的findall功能呢？</p>
