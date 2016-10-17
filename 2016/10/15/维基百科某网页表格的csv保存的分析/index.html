@@ -112,7 +112,7 @@ from bs4 impor">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/121538652.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/125711054.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-16/012705629.png">
-<meta property="og:updated_time" content="2016-10-17T00:56:54.000Z">
+<meta property="og:updated_time" content="2016-10-17T00:58:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="维基百科某网页表格的csv保存的分析【Python】">
 <meta name="twitter:description" content="维基百科某网页表格的csv保存的分析1、在阅读《Python网络数据采集》第五章的时候看到的案例，记录细节分析。
@@ -205,7 +205,7 @@ from bs4 impor">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -215,7 +215,7 @@ from bs4 impor">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -278,7 +278,7 @@ from bs4 impor">
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-15T12:59:28+08:00" content="2016-10-15">
               2016-10-15
             </time>
@@ -430,7 +430,7 @@ for i in range(len(table)):
 print(content)
 </code></pre><p>虽然通过lxml.etree 的findall 以及 xpath配合得到了表格里的需要的文字，但是，这样的格式，要再插入csv却非常的麻烦，这是因为我们要按行插入，而返回的列表如下面的格式（下面显示的是列表第一项）：</p>
 <pre><code>[&apos;\nName\nCreator\nFirst public release\nLatest stable version\nProgramming language\nCost (US$)\nSoftware license\nOpen source\n&apos;, 
-</code></pre><p>如果是文字形式，则形如：</p>
+</code></pre><p>如果打印出来则是一行行的文字形式，则形如：</p>
 <pre><code>Name
 Creator
 First public release
@@ -449,7 +449,7 @@ C
 Free
 LPL (OSI approved)
 Yes
-</code></pre><p>要想得到bs4的那种csv的表格形式 ，还需要额外增加很多的数据清洗代码，看上去简单，实际很复杂，比如当你想通过len()的时候计算第一项有几个单词，但按照字符串去统计的，返回的每个列表元素的长度肯定不同的。而如果想把\n都替换掉，则前后所需单词后紧挨在一起了。总之最后反而得不偿失，尤其是如果希望使用wt的csv写入格式的话。希望以后能找到更好的办法来解决lxml这样的表格提取问题。</p>
+</code></pre><p>要想得到bs4的那种csv的表格形式 ，还需要额外增加很多的数据清洗代码，看上去简单，实际很复杂，比如当你想通过len()的时候计算第一项有几个单词，按我们需求是从Name到Open source 的8个单词对应csv的8个列，但python是按照字符串去统计的，返回的每个列表元素的长度肯定不同的。而如果想把\n都替换掉，则前后所需单词后紧挨在一起了。总之最后反而得不偿失，尤其是如果希望使用wt的csv写入格式的话。希望以后能找到更好的办法来解决lxml这样的表格提取问题。</p>
 <pre><code>In [4]: a
 Out[4]: &apos;\nName\nCreator\nFirst public release\nLatest stable version\nProgramming language\nCost (US$)\nSoftware license\nOpen source\n&apos;
 
@@ -542,10 +542,10 @@ Out[7]: 118
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -562,7 +562,7 @@ Out[7]: 118
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">58</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -620,7 +620,7 @@ Out[7]: 118
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
