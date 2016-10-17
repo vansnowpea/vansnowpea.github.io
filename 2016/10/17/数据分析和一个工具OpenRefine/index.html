@@ -84,25 +84,27 @@
 
 
 
-<meta name="description" content="说明：在2台电脑相同版本的Ubuntu系统中，遇到了不同的现象，一台一开始死活出现Nginx启动异常。已经根据Nginx官网提示安装了cong的key，依然失败，以下是解决过程，感谢谷歌。
+<meta name="description" content="数据分析和一个工具OpenRefine1、在阅读《Python网络数据采集》第七章的时候看到的案例，记录细节分析。
 
-1、现象：在尝试了一些方案后，出现的错误现象也有不同，最后的症状是：
-nginx: [emerg] open() “/etc/nginx/nginx.conf” failed (2: No such fil">
+2、此软件关于正则表达式的使用，可参考此网址：
+https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu中Nginx安装遇到的错误">
-<meta property="og:url" content="http://yoursite.com/2016/09/05/Ubuntu中Nginx安装遇到的错误/index.html">
+<meta property="og:title" content="数据分析和一个工具OpenRefine【Python】">
+<meta property="og:url" content="http://yoursite.com/2016/10/17/数据分析和一个工具OpenRefine/index.html">
 <meta property="og:site_name" content="A Song of Python and Anaconda">
-<meta property="og:description" content="说明：在2台电脑相同版本的Ubuntu系统中，遇到了不同的现象，一台一开始死活出现Nginx启动异常。已经根据Nginx官网提示安装了cong的key，依然失败，以下是解决过程，感谢谷歌。
+<meta property="og:description" content="数据分析和一个工具OpenRefine1、在阅读《Python网络数据采集》第七章的时候看到的案例，记录细节分析。
 
-1、现象：在尝试了一些方案后，出现的错误现象也有不同，最后的症状是：
-nginx: [emerg] open() “/etc/nginx/nginx.conf” failed (2: No such fil">
-<meta property="og:updated_time" content="2016-09-01T14:48:49.784Z">
+2、此软件关于正则表达式的使用，可参考此网址：
+https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language">
+<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com//blog/20161017/232231872.png">
+<meta property="og:updated_time" content="2016-10-17T16:10:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ubuntu中Nginx安装遇到的错误">
-<meta name="twitter:description" content="说明：在2台电脑相同版本的Ubuntu系统中，遇到了不同的现象，一台一开始死活出现Nginx启动异常。已经根据Nginx官网提示安装了cong的key，依然失败，以下是解决过程，感谢谷歌。
+<meta name="twitter:title" content="数据分析和一个工具OpenRefine【Python】">
+<meta name="twitter:description" content="数据分析和一个工具OpenRefine1、在阅读《Python网络数据采集》第七章的时候看到的案例，记录细节分析。
 
-1、现象：在尝试了一些方案后，出现的错误现象也有不同，最后的症状是：
-nginx: [emerg] open() “/etc/nginx/nginx.conf” failed (2: No such fil">
+2、此软件关于正则表达式的使用，可参考此网址：
+https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language">
+<meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com//blog/20161017/232231872.png">
 
 
 
@@ -123,9 +125,9 @@ nginx: [emerg] open() “/etc/nginx/nginx.conf” failed (2: No such fil">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/05/Ubuntu中Nginx安装遇到的错误/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/17/数据分析和一个工具OpenRefine/"/>
 
-  <title> Ubuntu中Nginx安装遇到的错误 | A Song of Python and Anaconda </title>
+  <title> 数据分析和一个工具OpenRefine【Python】 | A Song of Python and Anaconda </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -245,7 +247,7 @@ nginx: [emerg] open() “/etc/nginx/nginx.conf” failed (2: No such fil">
             
             
               
-                Ubuntu中Nginx安装遇到的错误
+                数据分析和一个工具OpenRefine【Python】
               
             
           </h1>
@@ -257,8 +259,8 @@ nginx: [emerg] open() “/etc/nginx/nginx.conf” failed (2: No such fil">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-05T00:02:28+08:00" content="2016-09-05">
-              2016-09-05
+            <time itemprop="dateCreated" datetime="2016-10-17T12:59:28+08:00" content="2016-10-17">
+              2016-10-17
             </time>
           </span>
 
@@ -285,15 +287,10 @@ nginx: [emerg] open() “/etc/nginx/nginx.conf” failed (2: No such fil">
       
 
       
-        <hr>
-<p>说明：在2台电脑相同版本的Ubuntu系统中，遇到了不同的现象，一台一开始死活出现Nginx启动异常。已经根据Nginx官网提示安装了cong的key，依然失败，以下是解决过程，感谢谷歌。</p>
-<hr>
-<p>1、现象：在尝试了一些方案后，出现的错误现象也有不同，最后的症状是：</p>
-<p><strong>nginx: [emerg] open() “/etc/nginx/nginx.conf” failed (2: No such file or directory)</strong></p>
-<p>2、 一开始查阅的一些方案也没搞定，<a href="http://serverfault.com/questions/317191/how-to-install-nginx-and-install-the-configuration-files-too" target="_blank" rel="external">以下网址</a>的方案，测试成功，运行命令是：</p>
-<pre><code>sodu apt-get remove --purge nginx nginx-full nginx-common 
-sodu apt-get install nginx 
-</code></pre><p>3、其他的错误现象，以后遇到了再更新进来。</p>
+        <h1 id="数据分析和一个工具OpenRefine"><a href="#数据分析和一个工具OpenRefine" class="headerlink" title="数据分析和一个工具OpenRefine"></a>数据分析和一个工具OpenRefine</h1><p>1、在阅读《Python网络数据采集》第七章的时候看到的案例，记录细节分析。</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com//blog/20161017/232231872.png" alt=""></p>
+<p>2、此软件关于正则表达式的使用，可参考此网址：</p>
+<p><a href="https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language" target="_blank" rel="external">https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language</a></p>
 
       
     </div>
@@ -319,17 +316,13 @@ sodu apt-get install nginx
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/28/如何实现Win下写文章自动更新Github的博客/" rel="next" title="实现Win下本机操作自动更新Hexo到远程Github">
-                <i class="fa fa-chevron-left"></i> 实现Win下本机操作自动更新Hexo到远程Github
+              <a href="/2016/10/15/维基百科某网页表格的csv保存的分析/" rel="next" title="维基百科某网页表格的csv保存的分析【Python】">
+                <i class="fa fa-chevron-left"></i> 维基百科某网页表格的csv保存的分析【Python】
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/05/把基于Python自动脚本转成了批处理/" rel="prev" title="把基于Python自动脚本转成了批处理">
-                把基于Python自动脚本转成了批处理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -429,7 +422,7 @@ sodu apt-get install nginx
               
             
             
-              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据分析和一个工具OpenRefine"><span class="nav-number">1.</span> <span class="nav-text">数据分析和一个工具OpenRefine</span></a></li></ol></div>
             
           </div>
         </section>
