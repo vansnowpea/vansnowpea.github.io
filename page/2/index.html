@@ -235,6 +235,114 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/05/tensorflow 初步学习/" itemprop="url">
+                  begin to learn TensorFlow
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-10-05T16:20:28+08:00" content="2016-10-05">
+              2016-10-05
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-05/163346079.png" alt=""></p>
+<h1 id="Introduction-begin-to-learn-Machine-Learning-and-find-Google’s-open-source-technology-TensorFlow"><a href="#Introduction-begin-to-learn-Machine-Learning-and-find-Google’s-open-source-technology-TensorFlow" class="headerlink" title="Introduction: begin to learn Machine Learning, and find Google’s open source technology: TensorFlow."></a>Introduction: begin to learn Machine Learning, and find Google’s open source technology: TensorFlow.</h1><p>1、It seems TF only support Linux by official , but I try to install also on Win 10, so try :： <a href="http://wiki.jikexueyuan.com/project/tensorflow-zh/" target="_blank" rel="external">http://wiki.jikexueyuan.com/project/tensorflow-zh/</a>：<br>though some guy reported successed on win, but I failed as can not download the big file no matter with USA IP, anyway , I record the method.</p>
+<pre><code>捣鼓好了windows docker安装，参考了楼上的许多信息。
+1. 安装docker
+2. 点开Docker Quickstart Terminal， 打开成功后：
+    docker is configured to use the default machine with IP 192.168.99.100
+3. 安装tensorflow： docker run -d -p 8888:8888 -v /notebook:/notebook xblaster/tensorflow-jupyter
+4. 运行tensorflow-jupyter: docker run xblaster/tensorflow-jupyter
+     会提示running at: http://0.0.0.0:8888，不知道为什么会是这个IP地址，用浏览器打开不了。然后替换成docker打开时的IP，http://192.168.99.100:8888就可以打开了。
+5. 运行example code，mnist参考资料：1, tensorflow官方文档；2，http://blog.csdn.net/yhl_leo/article/details/50614444 及其mnist的github：https://github.com/yhlleo/mnist，github中有input_data.py这个很重要的文件。
+</code></pre><p>2、 I run it on Ubuntu and test an easy exmaple which is :</p>
+<pre><code>y =0.1*x +0.3
+</code></pre><p>and after 200 times of calculating , get result :</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-05/235616627.png" alt=""> </p>
+<p>from the result : after 40 times calculating , the result closes to 0.1*x + 0.3 already , no matter how AlphaGo is so strong.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/02/numpy和pandas的初步学习/" itemprop="url">
                   numpy和pandas的初步学习以及6本数据分析必读书和2份英文教程
                 </a>
@@ -712,6 +820,104 @@ plt.show()
             
               
                 
+                <a class="post-title-link" href="/2016/09/23/数值分析和一个bug解决记录/" itemprop="url">
+                  数值分析和一个bug解决记录【python】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-23T23:20:28+08:00" content="2016-09-23">
+              2016-09-23
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="简介：-数值分析和一个bug解决记录-：）"><a href="#简介：-数值分析和一个bug解决记录-：）" class="headerlink" title="简介： 数值分析和一个bug解决记录 ：）"></a>简介： 数值分析和一个bug解决记录 ：）</h1><p>1、这个bug是在使用python3.5.2的时候发生的，由于同时安装anaconda  有时候因为一些测试python2的代码 也安装卸载 最终出现了： Fatal error in launcher: Unable to create process using ‘“‘</p>
+<p>2、解决方案，控制面板卸载后，再到python3 的安装路径把文件夹都删除，此时，保留anaconda版本，在cmder输入ipython就可以正常运行了。</p>
+<p>3、说到数值分析，感觉还是要先阅读下相关书籍，虽然以前matlab接触过一些。首先看的就是评价还不错的《利用python进行数值分析》，但是发现了一个问题，所以马上给作者写了一个email如下图：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-24/235703049.png" alt=""></p>
+<p>4、</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/23/豆瓣电影TOP250的爬取和作图分析/" itemprop="url">
                   《利用Python进行数据分析》豆瓣电影TOP250的爬取和作图分析【python】
                 </a>
@@ -913,104 +1119,6 @@ Out[41]: [&apos;犯罪&apos;, &apos;剧情&apos;]
 <p>统计结果显示，绝大部分的好电影都是通过剧情抓住人心的：</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-27/144837956.png" alt=""></p>
 <p>7、 参考： <a href="http://www.jianshu.com/p/ef242e025cdf" target="_blank" rel="external">爬取豆瓣电影top250提取电影分类进行数据分析</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/23/数值分析和一个bug解决记录/" itemprop="url">
-                  数值分析和一个bug解决记录【python】
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-23T23:20:28+08:00" content="2016-09-23">
-              2016-09-23
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="简介：-数值分析和一个bug解决记录-：）"><a href="#简介：-数值分析和一个bug解决记录-：）" class="headerlink" title="简介： 数值分析和一个bug解决记录 ：）"></a>简介： 数值分析和一个bug解决记录 ：）</h1><p>1、这个bug是在使用python3.5.2的时候发生的，由于同时安装anaconda  有时候因为一些测试python2的代码 也安装卸载 最终出现了： Fatal error in launcher: Unable to create process using ‘“‘</p>
-<p>2、解决方案，控制面板卸载后，再到python3 的安装路径把文件夹都删除，此时，保留anaconda版本，在cmder输入ipython就可以正常运行了。</p>
-<p>3、说到数值分析，感觉还是要先阅读下相关书籍，虽然以前matlab接触过一些。首先看的就是评价还不错的《利用python进行数值分析》，但是发现了一个问题，所以马上给作者写了一个email如下图：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-24/235703049.png" alt=""></p>
-<p>4、</p>
 
           
         
@@ -1437,213 +1545,11 @@ for i in range(2, num+1):
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/20/豆瓣电影的检索爬虫【python】/" itemprop="url">
-                  豆瓣电影的检索爬虫【python】
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-20T14:20:28+08:00" content="2016-09-20">
-              2016-09-20
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="简介：-豆瓣网的电影分类比较清晰，比较了音乐板块，还是感觉电影板块用来做爬虫比较合适"><a href="#简介：-豆瓣网的电影分类比较清晰，比较了音乐板块，还是感觉电影板块用来做爬虫比较合适" class="headerlink" title="简介： 豆瓣网的电影分类比较清晰，比较了音乐板块，还是感觉电影板块用来做爬虫比较合适"></a>简介： 豆瓣网的电影分类比较清晰，比较了音乐板块，还是感觉电影板块用来做爬虫比较合适</h1><p>1、在参考他文的基础上，进行了学习分析。本文将记录和探讨细节部分。</p>
-<p>2、url定义为电影板块： <a href="https://movie.douban.com/" target="_blank" rel="external">https://movie.douban.com/</a></p>
-<p>3、遇到大型网站数据抓取，尤其是海外站点，因为延时造成的失败经常发生，遇到这样的情况，则建议用ui的加载until功能，在本测试案例中没有使用，因为测试结果响应较快。</p>
-<p>4、因为要从大量的数据进行排序筛选，所以xpath的路径要尽可能的精确，如果直接用firebug的自带xpath地址，在排序检索，并提交内容时，可能因为路径有一个层级的差别导致失败报错。尽管很多时候，这个差别在图标点击上的效果一样。所以也是坑之一。</p>
-<p>5、在运行程序前，看下内存使用率，如果较高就重启后再运行爬虫，否则由于selenium的加载浏览器比较消耗内存，很可能在此状态下，浏览器的响应延缓较大，因此，需要写好print信息，或者logging信息，以更明确程序执行点。</p>
-<p>6、多选项排序的时候，建议做成gui，这是因为可以减少后续使用的重复输入。</p>
-<p>7、一般来说，热评总是不缺，但是长评对于新电影是可能空缺的，为此，务必要加载try–except方式，来规避这样的情况。在本案例中，第六名的电影，正好没有长评，如果没有try except，则程序会在第六条就跳出终止了。</p>
-<p>8、功能实现，为简单，只按照豆瓣电影默认的按照热门—-按热门排序，爬取了前20的电影的名字，网址，热评和长评信息，</p>
-<p>9、代码如下：</p>
-<pre><code># coding:utf-8
-# 改编，精简版
-# python 3.5.2
-# 豆瓣网排名抓取和影评抓取V1.0
-
-import time
-from selenium import webdriver
-import selenium.webdriver.support.ui as ui
-
-url = &quot;https://movie.douban.com/&quot;
-browser = webdriver.Firefox()
-browser1 = webdriver.PhantomJS()
-browser.get(url)
-
-SUMRESOURCES = 0
-
-# 热门
-browser.find_element_by_xpath(&quot;//*[@id=\&quot;gaia_frm\&quot;]/div[1]/div[1]/label[1]&quot;).click()
-
-# 按热度排序
-browser.find_element_by_xpath(&quot;//*[@id=\&quot;gaia_frm\&quot;]/div[3]/div[1]/label[1]&quot;).click()
-
-# 加载更多
-browser.find_element_by_xpath(&quot;//*[@id=\&quot;gaia\&quot;]/div[4]/a&quot;).click()
-time.sleep(2)
-
-def get_title():
-
-    global SUMRESOURCES
-    # 定义抓top 20的电影
-    num = 20
-    # 定义抓长评
-    long = 1
-    for i in range(1, num+1):
-            try:
-                # 抓第i个图的基本信息
-                title_list = browser.find_element_by_xpath(&quot;//*[@id=\&quot;gaia\&quot;]/div[4]/div/a[%d]&quot;%i)
-                print(&apos;------------------NO--&apos;+ &apos;&apos;+str(SUMRESOURCES+1) +&apos;--------------------&apos;)
-                print()
-                print(&apos;电影名字:&apos;, title_list.text)
-                film_link = title_list.get_attribute(&apos;href&apos;)
-                print(&apos;电影链接:&apos;, film_link)
-                SUMRESOURCES += 1
-                get_detail(film_link,long)
-            except:
-                print(&apos;不能抓到影视信息&apos;)
-
-
-def get_detail(url,long=0):
-    browser1.get(url)
-
-    # 简介内容
-    jian_jie = browser1.find_element_by_xpath(&quot;/html/body/div[3]/div[1]/div/div[1]/div[3]/div/span[1]&quot;).text
-    print(&apos;电影简介：&apos;, jian_jie)
-
-    # 热门评论
-    browser1.find_element_by_xpath(&quot;//*[@id=\&quot;hot-comments-tab\&quot;]&quot;).click()
-    for i in range(1, 5):
-        try:
-
-            re_ping = browser1.find_element_by_xpath(&quot;//*[@id=\&quot;hot-comments\&quot;]/div[%d]/div/p&quot;%i).text
-            print(&apos;-----&apos;+&apos;热评:&apos;+&apos;------&apos;)
-            print(u&apos;最新热评:&apos;+ re_ping)
-        except:
-            print(&apos;抓取热评失败&apos;)
-
-
-
-    if long == 1:
-        try:
-            # 点开下拉三角，展开长评
-            # 使用对应img里自带的class
-            browser1.find_element_by_xpath(&quot;//img[@class=&apos;bn-arrow&apos;]&quot;).click()
-            time.sleep(1)
-
-            long_get = browser1.find_element_by_xpath(&quot;//div[@class=&apos;review-bd&apos;]/div[2]/div&quot;)
-
-            if long_get.text.encode(&apos;utf-8&apos;)==&apos;提示: 这篇影评可能有剧透&apos;:
-
-                print(&apos;发现恶心的剧透！将跳过！&apos;)
-                long_ping = browser1.find_element_by_xpath(&quot;//div[@class=&apos;review-bd&apos;]/div[2]/div[2]&quot;)
-            else:
-                long_ping = long_get
-            print(&apos;----------------------------------------&apos;+&apos;长评:&apos;+&apos;----------------------------------------&apos;)
-            print(&apos;长评:&apos;, long_ping.text)
-        except:
-            print(&apos;抓取长评失败&apos;)
-
-
-
-if __name__==&quot;__main__&quot;:
-    get_title()
-</code></pre><p>10、参考： <a href="http://www.jianshu.com/p/bb4f2f7c62ed" target="_blank" rel="external">Python自定义豆瓣电影种类，排行，点评的爬取与存储（进阶上</a></p>
-<p>11、前20个热门影评带长评，看了下很长,只保留了1和6的电影信息，有兴趣的就看看，没兴趣就忽略：</p>
-<p>D:\Anaconda3\python.exe C:/Users/Administrator/PycharmProjects/untitled1/test/blog.py<br>——————NO–1——————–</p>
-<p>电影名字: 釜山行 8.3<br>电影链接: <a href="https://movie.douban.com/subject/25986180/?tag=%E7%83%AD%E9%97%A8&amp;from=gaia" target="_blank" rel="external">https://movie.douban.com/subject/25986180/?tag=%E7%83%AD%E9%97%A8&amp;from=gaia</a><br>电影简介： 证券公司基金管理人石宇（孔侑 饰）光鲜精干，却也是个重利轻义之徒。妻子为此与之决裂，女儿秀安（金秀安 饰）则对如此自私的父亲越来越失望，决定前往釜山和母亲生活。在秀安生日这天，石宇抽出时间陪伴女儿登上开往釜山的特快列车。而与此同时，城市四处出现了极为可疑的暴动事件。政府极力洗白无法掩盖丧尸肆虐的事实，即便懵然无知的列车乘客也因为不速之客的到来而堕入恐慌绝望的地狱中。开车的刹那，一名感染者冲入车厢，而她很快尸变并对目光所及之处的健康人展开血腥屠杀。未过多久，丧尸便呈几何数爆发性地增长。石宇被迫和幸存者的乘客们在逼仄的空间中奋力求生。<br>通往釜山的遥遥旅途布满杀机，危难时刻每个幸存者的人性也承受巨大的考验……<br>—–热评:——<br>最新热评:一切灾难皆人性，唉，最后那一枪要是开了，就是神作了。<br>—–热评:——<br>最新热评:套路很深，煽情很猛！据说这部电影耗资100亿韩元，其中90亿用于几百名群演的霹雳舞教学费用。哦，对了，还要唱好歌，关键时候保命就靠他了。<br>—–热评:——<br>最新热评:僵尸进攻的部分比较过瘾，火车拖着一尾巴僵尸的部分视觉效果很有趣；人文部分十分韩剧，社会讽刺过于直接而显得无趣了，男主那洗衣液CF般的闪回、洗手间哭泣都太cheesy，其实马东锡才是英雄，只是被塑造得不壮烈罢了；镜头感、节奏感so so，演员们演得不够害怕，有的部分特别明显。拜托，是僵尸也！<br>—–热评:——<br>最新热评:比预想的好，《僵尸世界大战》的僵尸模式，虽然不可避免的出现了很多套路与恶意煽情的东西，但是，惊悚的氛围把握还是挺准确的<br>—————————————-长评:—————————————-<br>长评: 我记得好久以前，在我上次回国以前吧，悉尼的电影行业某朋友跟我提过她的老板投了一个韩国僵尸片，我当时就觉得投这个干嘛啦韩国拍的僵尸片必须没什么好看的嘛，毕竟“僵尸片是欧美的类型片”这个印象已经根深蒂固了。<br>后来《釜山行》出来，被各种好评，我挺惊讶。前两天看了个微博Po的推荐终于忍不住，今天约了朋友去看掉了。看完以后到现在三个小时了，我还感觉闷闷的，一面觉得“真好看呀”一面为我们中国电影被韩国电影抛在后面的、越来越遥远的距离感到焦虑。<br>《釜山行》就是一个典型的僵尸片，和我们看过的所有僵尸电影拥有完全一样的套路，有封闭空间，有感染有逃命，有对抗有小聪明，有煽情有生死，这里有的《行尸走肉》呀《僵尸肖恩》啊它们都有过。但是《釜山行》是真正意义上的属于亚洲的僵尸片，它充满了身为亚洲人会各种共鸣而欧美人绝对想不到用的元素与梗：亚洲社会独一份儿的伦理道德、人情世故、因果报应……全都被调进了故事里。<br>看一个僵尸片到最后不止被圆满地吓了一圈，还感动得五体投地，哭得稀里哗啦。我好几次以为自己扛过了哭点，没想到最后还是败给了一段父女的对话。眼泪止也止不住。<br>这个片子在你以为充满希望的时候突然就绝望了，又在你终于绝望以后留了一点希望。<br>剧本是工工整整的好莱坞商业大片的模式，第几分钟出现几个事件几个转折几个主要角色几对人物关系—-全部是教科书的模版，以最快速度发展故事，让每一分钟的情节都饱满生动（用饺子比喻的话就是塞满了肉馅），丝毫不用一点闲话家常来浪费镜头时间。<br>知道如何利用一个满是缺点的主角的成长与改变让观众代入角色（少年漫画的套路），知道怎么运用人气角色的命运来影响观众情绪，知道留一个情节上的“关键道具”（儿歌）并在正确的位置使用了三次……两个小时里十几个人物全部立住了，观众能清晰地分辨他们记住他们并对他们拥有不同的解读—-就人设这一点，多成功啊。从好莱坞学到的，已经完全变成自己的了。</p>
-<p>几年前上学的时候，我的澳洲电影老师专门开了一节课讲韩国电影的崛起与风格，讲朴赞郁讲《老男孩》，当年让我一个对“韩国电影”四个字充满鄙视的无知少女差点跪着出了教室。我那时候觉得中韩两国电影的差距至少有10年那么多吧。<br>如今，这些年过去，我隐约觉得中国电影多少也有了一丢丢进步，结果看完《釜山行》，人家他妈的又一下子甩开了我们十多年。</p>
-<p>怎么追啊。继续追吧。心累累的，哎。</p>
-<p>——————NO–6——————–</p>
-<p>电影名字: 我们这种叛徒 6.3<br>电影链接: <a href="https://movie.douban.com/subject/10461676/?tag=%E7%83%AD%E9%97%A8&amp;from=gaia" target="_blank" rel="external">https://movie.douban.com/subject/10461676/?tag=%E7%83%AD%E9%97%A8&amp;from=gaia</a><br>电影简介： 牛津大学导师佩里和女友嘉儿在怡人的安提瓜岛上享受美妙的假期时，偶然结识了俄国富豪迪马——一场精彩的网球比赛让佩里和迪马的人生轨迹有了交集。谁料，迪马竟是俄国犯罪组织的洗钱专家，组织内部斗争的残酷令迪马萌生去意，于是他希望通过佩里向英国情报部门传达寻求政治庇护的请求……<br>自此，佩里和嘉儿渐渐脱离了正常的生活轨道，一系列政治阴谋、间谍行动扑面而来，就此开启了一场惊心动魄的跨国逃亡之旅：从法国巴黎到瑞士阿尔卑斯山，再到伦敦城里黑暗的走廊，哪里才是安全港湾？谁才是真正的叛徒？<br>—–热评:——<br>最新热评:点解会拣你？因为当时没有其他人啊。没得拣的情况下可以得到的最好结果。伊万最近几年都不行。<br>—–热评:——<br>最新热评:一万同志从角色设定到演技都毫无吸引力啊，四哥她爹演技还是有功底的（里面这女儿真是坑爹没商量），全部注意力都被Brody的fashion show吸引去了，玳瑁镜、围巾、风衣、三件套、居家服简直英国范儿到不行。剧情一般般啦，勒卡雷叔叔的水平应该不是这个level的吧……<br>—–热评:——<br>最新热评:比老婆收入低形象倒是挺符合，但是真的不适合长发。剧情没兴趣看。<br>—–热评:——<br>最新热评:3.5/5 摄影大加分！想金盆洗手奈何身不由己。Dima人物塑造得不错。<br><strong>抓取长评失败</strong></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1684,7 +1590,7 @@ if __name__==&quot;__main__&quot;:
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">60</span>
+              <span class="site-state-item-count">61</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>

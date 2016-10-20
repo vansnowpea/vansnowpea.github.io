@@ -84,22 +84,12 @@
 
 
 
-<meta name="description" content="简介： 运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块1、原来这个模块是和mongodb相关的，当安装了bson模块，因版本问题，会引起一些文件缺失，
-2、而mongodb官网上，也不建议外装bson：
-到pymongo官方文档里查，第一句就是：Warning Do not install the “bson” package. PyMongo comes wi">
-<meta property="og:type" content="article">
-<meta property="og:title" content="bson模块丢失，原来是mongoengine坑-">
-<meta property="og:url" content="http://yoursite.com/2016/09/21/bson模块丢失，原来是mongoengine坑-/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="A Song of Python and Anaconda">
+<meta property="og:url" content="http://yoursite.com/archives/page/7/index.html">
 <meta property="og:site_name" content="A Song of Python and Anaconda">
-<meta property="og:description" content="简介： 运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块1、原来这个模块是和mongodb相关的，当安装了bson模块，因版本问题，会引起一些文件缺失，
-2、而mongodb官网上，也不建议外装bson：
-到pymongo官方文档里查，第一句就是：Warning Do not install the “bson” package. PyMongo comes wi">
-<meta property="og:updated_time" content="2016-09-21T13:51:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="bson模块丢失，原来是mongoengine坑-">
-<meta name="twitter:description" content="简介： 运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块1、原来这个模块是和mongodb相关的，当安装了bson模块，因版本问题，会引起一些文件缺失，
-2、而mongodb官网上，也不建议外装bson：
-到pymongo官方文档里查，第一句就是：Warning Do not install the “bson” package. PyMongo comes wi">
+<meta name="twitter:title" content="A Song of Python and Anaconda">
 
 
 
@@ -120,9 +110,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/21/bson模块丢失，原来是mongoengine坑-/"/>
+  <link rel="canonical" href="http://yoursite.com/archives/page/7/"/>
 
-  <title> bson模块丢失，原来是mongoengine坑- | A Song of Python and Anaconda </title>
+  <title> Archiv | A Song of Python and Anaconda </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -143,7 +133,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  page-archive  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -221,123 +211,69 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-collapse">
+    <span class="archive-move-on"></span>
+
+    <span class="archive-page-counter">
+      
+      
+       
+        
+      Schön! Insgesamt 61 Artikel. Bleib dran.
+    </span>
+
     
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                bson模块丢失，原来是mongoengine坑-
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-21T21:20:28+08:00" content="2016-09-21">
-              2016-09-21
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
-      
-        <h1 id="简介：-运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块"><a href="#简介：-运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块" class="headerlink" title="简介： 运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块"></a>简介： 运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块</h1><p>1、原来这个模块是和mongodb相关的，当安装了bson模块，因版本问题，会引起一些文件缺失，</p>
-<p>2、而mongodb官网上，也不建议外装bson：</p>
-<p>到pymongo官方文档里查，第一句就是：<br>Warning Do not install the “bson” package. PyMongo comes with its own bson package; doing “pip install bson” or “easy_install bson” installs a third-party package that is incompatible with PyMongo.<br>PyMongo has no required dependencies.</p>
-<p>3、还好最后安装最新的mongoengine，解决了这个问题。</p>
-
-      
-    </div>
-
-    <div>
       
         
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/09/20/豆瓣电影的检索爬虫【python】/" rel="next" title="豆瓣电影的检索爬虫【python】">
-                <i class="fa fa-chevron-left"></i> 豆瓣电影的检索爬虫【python】
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/21/IP池的建立/" rel="prev" title="IP池的建立">
-                IP池的建立 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
+        <div class="collection-title">
+          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
         </div>
       
+      
 
       
-      
-    </footer>
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2016/08/23/How to build a Blog with Hexo on Github/" itemprop="url">
+              
+                <span itemprop="name">How to build a Blog with Hexo on Github</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-08-23T21:16:05+08:00"
+              content="2016-08-23" >
+          08-23
+        </time>
+      </div>
+
+    </header>
   </article>
 
 
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+    
+
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/archives/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/6/">6</a><span class="page-number current">7</span>
+  </nav>
+
+
 
 
           </div>
@@ -345,10 +281,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -368,17 +300,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -414,17 +337,6 @@
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介：-运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块"><span class="nav-number">1.</span> <span class="nav-text">简介： 运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块</span></a></li></ol></div>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -521,9 +433,11 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
+  
+    <script type="text/javascript" id="motion.page.archive">
+      $('.archive-year').velocity('transition.slideLeftIn');
+    </script>
+  
 
 
   

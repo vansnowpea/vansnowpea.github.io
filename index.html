@@ -235,6 +235,110 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/20/测试Daocloud/" itemprop="url">
+                  从零开始 Python 微信公众号开发【转帖】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-10-20T14:59:28+08:00" content="2016-10-20">
+              2016-10-20
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="从零开始-Python-微信公众号开发【转帖】"><a href="#从零开始-Python-微信公众号开发【转帖】" class="headerlink" title="从零开始 Python 微信公众号开发【转帖】"></a>从零开始 Python 微信公众号开发【转帖】</h1><p>1、虽然在8月底的时候我也有总结一篇基于SAE的订阅号的实现的日志。不过也就是简单实现而已。</p>
+<p>2、今天偶然看到小段的总结文档，写的比较详细，忍不住转发下，以下是原文地址：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/21354943" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/21354943
+</a></p>
+<p>3、要强调下，如果使用SAE新浪云，是需要实名认证的。</p>
+<p>4、最近也从github或搜索发现了一些不错的微信的sdk，包括但不限于：</p>
+<ul>
+<li><a href="https://github.com/littlecodersh/ItChat" target="_blank" rel="external">https://github.com/littlecodersh/ItChat</a></li>
+<li><a href="http://wechat-python-sdk.com/" target="_blank" rel="external">http://wechat-python-sdk.com/</a></li>
+</ul>
+<p>5、然后今天发生了喜感的一幕，当和little聊起之前曾给他发过email请教过细节等，他回复说，当时正好有人写了email，才想起做一个这样的sdk。  </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/20/从零开始 Python 微信公众号开发【转帖】/" itemprop="url">
                   从零开始 Python 微信公众号开发【转帖】
                 </a>
@@ -1637,119 +1741,11 @@ print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/05/tensorflow 初步学习/" itemprop="url">
-                  begin to learn TensorFlow
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-10-05T16:20:28+08:00" content="2016-10-05">
-              2016-10-05
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-05/163346079.png" alt=""></p>
-<h1 id="Introduction-begin-to-learn-Machine-Learning-and-find-Google’s-open-source-technology-TensorFlow"><a href="#Introduction-begin-to-learn-Machine-Learning-and-find-Google’s-open-source-technology-TensorFlow" class="headerlink" title="Introduction: begin to learn Machine Learning, and find Google’s open source technology: TensorFlow."></a>Introduction: begin to learn Machine Learning, and find Google’s open source technology: TensorFlow.</h1><p>1、It seems TF only support Linux by official , but I try to install also on Win 10, so try :： <a href="http://wiki.jikexueyuan.com/project/tensorflow-zh/" target="_blank" rel="external">http://wiki.jikexueyuan.com/project/tensorflow-zh/</a>：<br>though some guy reported successed on win, but I failed as can not download the big file no matter with USA IP, anyway , I record the method.</p>
-<pre><code>捣鼓好了windows docker安装，参考了楼上的许多信息。
-1. 安装docker
-2. 点开Docker Quickstart Terminal， 打开成功后：
-    docker is configured to use the default machine with IP 192.168.99.100
-3. 安装tensorflow： docker run -d -p 8888:8888 -v /notebook:/notebook xblaster/tensorflow-jupyter
-4. 运行tensorflow-jupyter: docker run xblaster/tensorflow-jupyter
-     会提示running at: http://0.0.0.0:8888，不知道为什么会是这个IP地址，用浏览器打开不了。然后替换成docker打开时的IP，http://192.168.99.100:8888就可以打开了。
-5. 运行example code，mnist参考资料：1, tensorflow官方文档；2，http://blog.csdn.net/yhl_leo/article/details/50614444 及其mnist的github：https://github.com/yhlleo/mnist，github中有input_data.py这个很重要的文件。
-</code></pre><p>2、 I run it on Ubuntu and test an easy exmaple which is :</p>
-<pre><code>y =0.1*x +0.3
-</code></pre><p>and after 200 times of calculating , get result :</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-05/235616627.png" alt=""> </p>
-<p>from the result : after 40 times calculating , the result closes to 0.1*x + 0.3 already , no matter how AlphaGo is so strong.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1790,7 +1786,7 @@ print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">60</span>
+              <span class="site-state-item-count">61</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>

@@ -84,22 +84,31 @@
 
 
 
-<meta name="description" content="简介： 运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块1、原来这个模块是和mongodb相关的，当安装了bson模块，因版本问题，会引起一些文件缺失，
-2、而mongodb官网上，也不建议外装bson：
-到pymongo官方文档里查，第一句就是：Warning Do not install the “bson” package. PyMongo comes wi">
+<meta name="description" content="从零开始 Python 微信公众号开发【转帖】1、虽然在8月底的时候我也有总结一篇基于SAE的订阅号的实现的日志。不过也就是简单实现而已。
+2、今天偶然看到小段的总结文档，写的比较详细，忍不住转发下，以下是原文地址：
+https://zhuanlan.zhihu.com/p/21354943
+
+3、要强调下，如果使用SAE新浪云，是需要实名认证的。
+4、最近也从github或搜索发现了一些不错的微">
 <meta property="og:type" content="article">
-<meta property="og:title" content="bson模块丢失，原来是mongoengine坑-">
-<meta property="og:url" content="http://yoursite.com/2016/09/21/bson模块丢失，原来是mongoengine坑-/index.html">
+<meta property="og:title" content="从零开始 Python 微信公众号开发【转帖】">
+<meta property="og:url" content="http://yoursite.com/2016/10/20/测试Daocloud/index.html">
 <meta property="og:site_name" content="A Song of Python and Anaconda">
-<meta property="og:description" content="简介： 运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块1、原来这个模块是和mongodb相关的，当安装了bson模块，因版本问题，会引起一些文件缺失，
-2、而mongodb官网上，也不建议外装bson：
-到pymongo官方文档里查，第一句就是：Warning Do not install the “bson” package. PyMongo comes wi">
-<meta property="og:updated_time" content="2016-09-21T13:51:25.000Z">
+<meta property="og:description" content="从零开始 Python 微信公众号开发【转帖】1、虽然在8月底的时候我也有总结一篇基于SAE的订阅号的实现的日志。不过也就是简单实现而已。
+2、今天偶然看到小段的总结文档，写的比较详细，忍不住转发下，以下是原文地址：
+https://zhuanlan.zhihu.com/p/21354943
+
+3、要强调下，如果使用SAE新浪云，是需要实名认证的。
+4、最近也从github或搜索发现了一些不错的微">
+<meta property="og:updated_time" content="2016-10-20T05:46:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="bson模块丢失，原来是mongoengine坑-">
-<meta name="twitter:description" content="简介： 运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块1、原来这个模块是和mongodb相关的，当安装了bson模块，因版本问题，会引起一些文件缺失，
-2、而mongodb官网上，也不建议外装bson：
-到pymongo官方文档里查，第一句就是：Warning Do not install the “bson” package. PyMongo comes wi">
+<meta name="twitter:title" content="从零开始 Python 微信公众号开发【转帖】">
+<meta name="twitter:description" content="从零开始 Python 微信公众号开发【转帖】1、虽然在8月底的时候我也有总结一篇基于SAE的订阅号的实现的日志。不过也就是简单实现而已。
+2、今天偶然看到小段的总结文档，写的比较详细，忍不住转发下，以下是原文地址：
+https://zhuanlan.zhihu.com/p/21354943
+
+3、要强调下，如果使用SAE新浪云，是需要实名认证的。
+4、最近也从github或搜索发现了一些不错的微">
 
 
 
@@ -120,9 +129,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/21/bson模块丢失，原来是mongoengine坑-/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/20/测试Daocloud/"/>
 
-  <title> bson模块丢失，原来是mongoengine坑- | A Song of Python and Anaconda </title>
+  <title> 从零开始 Python 微信公众号开发【转帖】 | A Song of Python and Anaconda </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -242,7 +251,7 @@
             
             
               
-                bson模块丢失，原来是mongoengine坑-
+                从零开始 Python 微信公众号开发【转帖】
               
             
           </h1>
@@ -254,8 +263,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-21T21:20:28+08:00" content="2016-09-21">
-              2016-09-21
+            <time itemprop="dateCreated" datetime="2016-10-20T14:59:28+08:00" content="2016-10-20">
+              2016-10-20
             </time>
           </span>
 
@@ -282,10 +291,17 @@
       
 
       
-        <h1 id="简介：-运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块"><a href="#简介：-运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块" class="headerlink" title="简介： 运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块"></a>简介： 运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块</h1><p>1、原来这个模块是和mongodb相关的，当安装了bson模块，因版本问题，会引起一些文件缺失，</p>
-<p>2、而mongodb官网上，也不建议外装bson：</p>
-<p>到pymongo官方文档里查，第一句就是：<br>Warning Do not install the “bson” package. PyMongo comes with its own bson package; doing “pip install bson” or “easy_install bson” installs a third-party package that is incompatible with PyMongo.<br>PyMongo has no required dependencies.</p>
-<p>3、还好最后安装最新的mongoengine，解决了这个问题。</p>
+        <h1 id="从零开始-Python-微信公众号开发【转帖】"><a href="#从零开始-Python-微信公众号开发【转帖】" class="headerlink" title="从零开始 Python 微信公众号开发【转帖】"></a>从零开始 Python 微信公众号开发【转帖】</h1><p>1、虽然在8月底的时候我也有总结一篇基于SAE的订阅号的实现的日志。不过也就是简单实现而已。</p>
+<p>2、今天偶然看到小段的总结文档，写的比较详细，忍不住转发下，以下是原文地址：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/21354943" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/21354943
+</a></p>
+<p>3、要强调下，如果使用SAE新浪云，是需要实名认证的。</p>
+<p>4、最近也从github或搜索发现了一些不错的微信的sdk，包括但不限于：</p>
+<ul>
+<li><a href="https://github.com/littlecodersh/ItChat" target="_blank" rel="external">https://github.com/littlecodersh/ItChat</a></li>
+<li><a href="http://wechat-python-sdk.com/" target="_blank" rel="external">http://wechat-python-sdk.com/</a></li>
+</ul>
+<p>5、然后今天发生了喜感的一幕，当和little聊起之前曾给他发过email请教过细节等，他回复说，当时正好有人写了email，才想起做一个这样的sdk。  </p>
 
       
     </div>
@@ -311,17 +327,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/20/豆瓣电影的检索爬虫【python】/" rel="next" title="豆瓣电影的检索爬虫【python】">
-                <i class="fa fa-chevron-left"></i> 豆瓣电影的检索爬虫【python】
+              <a href="/2016/10/20/从零开始 Python 微信公众号开发【转帖】/" rel="next" title="从零开始 Python 微信公众号开发【转帖】">
+                <i class="fa fa-chevron-left"></i> 从零开始 Python 微信公众号开发【转帖】
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/21/IP池的建立/" rel="prev" title="IP池的建立">
-                IP池的建立 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -421,7 +433,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介：-运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块"><span class="nav-number">1.</span> <span class="nav-text">简介： 运行别人的一个程序，提示缺少Bson模块，自然去安装，却发现没有名下的code模块</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#从零开始-Python-微信公众号开发【转帖】"><span class="nav-number">1.</span> <span class="nav-text">从零开始 Python 微信公众号开发【转帖】</span></a></li></ol></div>
             
           </div>
         </section>
