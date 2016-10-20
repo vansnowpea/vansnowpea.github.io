@@ -235,6 +235,283 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/14/百度百科1000个页面数据的抓取【python】/" itemprop="url">
+                  百度百科1000个页面数据的抓取【python】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-09-14T21:59:28+08:00" content="2016-09-14">
+              2016-09-14
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/563" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、首先要感谢原作者非常细致的讲解，在网页分析的时候还是学到了一些很有用的技巧。后续会总结。</p>
+<p>2、这次是跟着作者，使用了Eclipse + Pydev的软件调试的，相对于Pycharm，他的优点就是可以动态插入需要的类和方法，而同比Pycharm只能动态匹配类，方法就没反应了。不过在界面配色方面明显没有Pyhcarm做的好。总之，目前的配色方案不满意，但将就下吧。</p>
+<p>3、原作者使用的Python 2的版本，我的版本（大部分还是照作者的）已经修改到3的版本了，。虽然感觉作者的代码，有的地方写的有点小啰嗦，不过看他视频现场操作，还是感觉细节有很多值得借鉴的地方。</p>
+<pre><code># -*- coding: utf-8 -*-
+# python 3.5.2
+
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
+from urllib.parse import urlparse
+import re
+import urllib
+
+
+class HtmlOutputer(object):
+    def __init__(self):
+        self.datas = []
+
+    def collect_data(self, data):
+        if data is None:
+            return
+        self.datas.append(data)
+
+    def outputer_html(self):
+        fout = open(&apos;output.html&apos;, &apos;w&apos;)
+        fout.write(&quot;&lt;html&gt;&quot;)
+        fout.write(&quot;&lt;body&gt;&quot;)
+        fout.write(&quot;&lt;table&gt;&quot;)
+
+        # accii
+        for data in self.datas:
+            fout.write(&quot;&lt;tr&gt;&quot;)
+            fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;url&apos;])
+            # 原作者使用了.encode(&apos;utf-8&apos;)的代码，但在python 3 测试报错
+            fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;title&apos;]).encode(&apos;utf-8&apos;)
+            fout.write(&quot;&lt;td&gt;%s&lt;/td&gt;&quot; % data[&apos;summary&apos;]).encode(&apos;utf-8&apos;)
+
+            fout.write(&quot;&lt;/tr&gt;&quot;)
+
+        fout.write(&quot;&lt;/body&gt;&quot;)
+        fout.write(&quot;&lt;/table&gt;&quot;)
+        fout.write(&quot;&lt;/html&gt;&quot;)
+        fout.close()
+
+
+class HtmlParser(object):
+    def _get_new_urls(self, page_url, soup):
+        new_urls = set()
+        # /view/123.htm
+        links = soup.find_all(&apos;a&apos;, href=re.compile(r&apos;/view/\d+\.htm&apos;))
+        for link in links:
+            new_url = link[&apos;href&apos;]
+
+            new_full_url = urllib.parse.urljoin(page_url, new_url)
+            new_urls.add(new_full_url)
+        return new_urls
+
+    def _get_new_data(self, page_url, soup):
+        # http://baike.baidu.com/view/21087.htm
+        res_data = {}
+        res_data[&apos;url&apos;] = page_url
+        # &lt;dd class=&quot;lemmaWgt-lemmaTitle-title&quot;&gt;&lt;h1&gt;Python&lt;/h1&gt;
+        title_node = soup.find(&apos;dd&apos;, class_=&quot;lemmaWgt-lemmaTitle-title&quot;).find(&quot;h1&quot;)
+        res_data[&apos;title&apos;] = title_node.get_text()
+
+        # &lt;div class=&quot;lemma-summary&quot; label-module=&quot;lemmaSummary&quot;&gt;
+        summery_node = soup.find(&apos;div&apos;, class_=&quot;lemma-summary&quot;)
+        res_data[&apos;summery&apos;] = summery_node.get_text()
+
+        return res_data
+
+    def parse(self, page_url, html_cont):
+        if page_url is None or html_cont is None:
+            return
+        soup = BeautifulSoup(html_cont, &apos;html.parser&apos;, from_encoding=&apos;uft-8&apos;)
+        new_urls = self._get_new_urls(page_url, soup)
+        new_data = self._get_new_data(page_url, soup)
+
+        return new_urls, new_data
+
+
+class HtmlDownloader(object):
+    def download(self, url):
+        if url is None:
+            return None
+
+        response = urlopen(url)
+        if response.getcode() != 200:
+            return None
+        return response.read()
+
+
+class UrlManager(object):
+    def __init__(self):
+        self.new_urls = set()
+        self.old_urls = set()
+
+    def add_new_url(self, url):
+        if url is None:
+            return
+        if url not in self.new_urls and url not in self.old_urls:
+            self.new_urls.add(url)
+
+    def add_new_urls(self, urls):
+        if urls is None or len(urls) == 0:
+            return
+        for url in urls:
+            self.add_new_url(url)
+
+    def has_new_url(self):
+        return len(self.new_urls) != 0
+
+    def get_new_url(self):
+        new_url = self.new_urls.pop()
+        self.old_urls.add(new_url)
+        return new_url
+
+
+
+
+class SpiderMain(object):
+    def __init__(self):
+        # url 管理器
+        self.urls = UrlManager()
+        # 下载器
+        self.downloader = HtmlDownloader()
+
+        # 解析器
+        self.parser = HtmlParser()
+
+        # 输出器
+        self.outputer = HtmlOutputer()
+
+    def craw(self, root_url):
+        count = 1
+        # 入口url添加
+        self.urls.add_new_url(root_url)
+
+        # 如果有新的url
+        while self.urls.has_new_url():
+            try:
+
+                # 获取新的url
+                new_url = self.urls.get_new_url()
+                print(&apos;craw %d : %s&apos; % (count, new_url))
+
+                # 启动下载器下载页面
+                html_cont = self.downloader.download(new_url)
+
+                # 解析器来解析新的地址和数据
+                new_urls, new_data = self.parser.parse(new_url, html_cont)
+
+                # 把新的地址添加到urls
+                self.urls.add_new_urls(new_urls)
+
+                # 输出和收集数据
+                self.outputer.collect_data(new_data)
+
+                if count == 1000:
+                    break
+                count += 1
+            except:
+                print(&apos;craw failed.&apos;)
+
+        # 输出数据
+        self.outputer.outputer_html()
+
+
+if __name__ == &quot;__main__&quot;:
+    root_url = &quot;http://baike.baidu.com/view/21087.htm&quot;
+    # 创建一个爬虫对象
+    obj_spider = SpiderMain()
+    # 运行爬虫函数
+    obj_spider.craw(root_url)
+</code></pre><p>4、原作者是的html_outputer.py 文件包含了3个函数，最后一个是把爬虫数据导出到一个.html文件里，但是按照他的源代码，最后我总是得到错误提示如下，提示整数不能用来encode，也就是爬到的百科名词有的是纯数字的，比如设想是10086 ，另外在python 2 到3 的切换使用中，也确实遇到好几在V2 下ok的代码，到了V3失败，很多是来自解码方面的异常。：</p>
+<p>AttributeError: ‘int’ object has no attribute ‘encode’</p>
+<p>或者当去掉utf-8输出，又遇到gbk编码的问题：<br>UnicodeEncodeError: ‘gbk’ codec can’t encode character ‘\u02c8’ in position 19: illegal multibyte sequence</p>
+<p>5、总结：</p>
+<ul>
+<li><p>首先，原作者在一个工程下，建立一个package，然后把几个主要的类单独列出了py文件，这样的方式更为规范，此文为粘贴代码简便，统一到了一起。实际，应用第一种模式为佳。</p>
+</li>
+<li><p>其次，在分析html的分类入口处，比如python关键词地方的对应html代码，使用右键–&gt;检查（或F12，然后点击上面有“类”的地方，比如此文是关键词python在类lemmaWgt-lemmaTitle-title下的h1标题，然后再右键–&gt;Edit as html，就可以在一个段落里轻松复制这断html代码了。否则在F12模式下不能直接上下复制的）</p>
+</li>
+<li>经过比较python 2， 如果检索的关键词是数字，一样不能使用.encode(‘utf-8’)， 那么原作者的演示视频为何都没有报错？ 这应该是他当时的爬虫没有搜寻到数字关键词，而我的遇到了。 </li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/13/Ubuntu下操作Django/" itemprop="url">
                   Ubuntu下操作Django时的大杂烩【python】
                 </a>
@@ -799,6 +1076,117 @@ for url in listUrls:
             
               
                 
+                <a class="post-title-link" href="/2016/09/11/Python操作MySQL数据库/" itemprop="url">
+                  Python操作MySQL数据库
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
+              2016-09-11
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/475" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>简介：本课程讲解Python如何开发MySQL数据库程序。首先介绍Python开发数据库程序的通用接口规范，然后搭建Python开发数据库程序的开发环境，接着了解了通用接口规范中的connection、cursor两大对象之后，介绍如何增删改查数据库，最后以实例代码演示数据库程序的开发流程。</p>
+<p>1、教程说到以下网址<a href="http://sourceforge.net/projects/mysql-python下载mysql-pyhon" target="_blank" rel="external">http://sourceforge.net/projects/mysql-python下载mysql-pyhon</a> 的连接器，针对python2.7的。 一开始安装失败，提示找不到python，原来此台电脑我的python 是64位的，貌似那个连接器是针对32位的，所有我又到以下网址下载了64位的连接器： <a href="http://www.codegood.com/download/11/" target="_blank" rel="external">http://www.codegood.com/download/11/</a><br>这下就能识别到python了， 但是一看版本是1.2.3的，而最新版是1.2.5的，考虑到mysql 5.6默认的msi也是32位的，我就把python 2.7.12换到了32位统一下吧。   安装成功后，在python下输入如下命令会成功，否则报错：</p>
+<pre><code>&gt;&gt;&gt; import MySQLdb
+&gt;&gt;&gt;
+</code></pre><p>2、然后根据教程要使用sqlyog，官网卡机，只好装国内版本，我用的这个连接（Ultimate 版本: （终极是最好的））： <a href="http://www.liangchan.net/soft/download.asp?softid=6633&amp;downid=8&amp;id=6658" target="_blank" rel="external">http://www.liangchan.net/soft/download.asp?softid=6633&amp;downid=8&amp;id=6658</a></p>
+<p>随后在sqlyog新建一个数据库，并设置下utf8编码，如下图：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%201.png" alt=""></p>
+<p>3、编写一个imooc.py 来建立connection连接，<strong>千万注意代码中的密码对应的是passwd，而不是全称的password哦。</strong></p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/db%20api%20connection.png" alt=""></p>
+<p>4、通过connection来创建游标对象cursor： </p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/cursor.png" alt=""></p>
+<p>5、select查询数据</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/select%20%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE.png" alt=""></p>
+<p>6、数据库 I U D 操作：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/%E6%95%B0%E6%8D%AE%E5%BA%93u%20i%20d.png" alt=""></p>
+<p>7、sqlyog的表单操作，要创建2个列就要在新建的表中，增加2个属性，如下图：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%20%E8%A1%A8%E6%A0%BC%E8%AE%BE%E7%BD%AE%E5%88%97.png" alt=""></p>
+<p>8、同时推荐W3C的SQL教程，地址是： <a href="http://www.w3school.com.cn/sql/index.asp" target="_blank" rel="external">http://www.w3school.com.cn/sql/index.asp</a></p>
+<p>9、刚发现<a href="http://www.jianshu.com/p/a014b26ba7ca" target="_blank" rel="external">这个帖子</a>也有写的比较详细，可参考</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/11/正则式学习小结/" itemprop="url">
                   正则式学习小结
                 </a>
@@ -934,8 +1322,8 @@ for url in listurl:
             
               
                 
-                <a class="post-title-link" href="/2016/09/11/Python操作MySQL数据库/" itemprop="url">
-                  Python操作MySQL数据库
+                <a class="post-title-link" href="/2016/09/09/查找mysql相关来到慕课网学习/" itemprop="url">
+                  查找mysql相关来到慕课网学习
                 </a>
               
             
@@ -948,8 +1336,8 @@ for url in listurl:
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
-              2016-09-11
+            <time itemprop="dateCreated" datetime="2016-09-09T16:59:28+08:00" content="2016-09-09">
+              2016-09-09
             </time>
           </span>
 
@@ -978,24 +1366,13 @@ for url in listurl:
       
         
           
-            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/475" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>简介：本课程讲解Python如何开发MySQL数据库程序。首先介绍Python开发数据库程序的通用接口规范，然后搭建Python开发数据库程序的开发环境，接着了解了通用接口规范中的connection、cursor两大对象之后，介绍如何增删改查数据库，最后以实例代码演示数据库程序的开发流程。</p>
-<p>1、教程说到以下网址<a href="http://sourceforge.net/projects/mysql-python下载mysql-pyhon" target="_blank" rel="external">http://sourceforge.net/projects/mysql-python下载mysql-pyhon</a> 的连接器，针对python2.7的。 一开始安装失败，提示找不到python，原来此台电脑我的python 是64位的，貌似那个连接器是针对32位的，所有我又到以下网址下载了64位的连接器： <a href="http://www.codegood.com/download/11/" target="_blank" rel="external">http://www.codegood.com/download/11/</a><br>这下就能识别到python了， 但是一看版本是1.2.3的，而最新版是1.2.5的，考虑到mysql 5.6默认的msi也是32位的，我就把python 2.7.12换到了32位统一下吧。   安装成功后，在python下输入如下命令会成功，否则报错：</p>
-<pre><code>&gt;&gt;&gt; import MySQLdb
-&gt;&gt;&gt;
-</code></pre><p>2、然后根据教程要使用sqlyog，官网卡机，只好装国内版本，我用的这个连接（Ultimate 版本: （终极是最好的））： <a href="http://www.liangchan.net/soft/download.asp?softid=6633&amp;downid=8&amp;id=6658" target="_blank" rel="external">http://www.liangchan.net/soft/download.asp?softid=6633&amp;downid=8&amp;id=6658</a></p>
-<p>随后在sqlyog新建一个数据库，并设置下utf8编码，如下图：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%201.png" alt=""></p>
-<p>3、编写一个imooc.py 来建立connection连接，<strong>千万注意代码中的密码对应的是passwd，而不是全称的password哦。</strong></p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/db%20api%20connection.png" alt=""></p>
-<p>4、通过connection来创建游标对象cursor： </p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/cursor.png" alt=""></p>
-<p>5、select查询数据</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/select%20%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE.png" alt=""></p>
-<p>6、数据库 I U D 操作：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/%E6%95%B0%E6%8D%AE%E5%BA%93u%20i%20d.png" alt=""></p>
-<p>7、sqlyog的表单操作，要创建2个列就要在新建的表中，增加2个属性，如下图：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%20%E8%A1%A8%E6%A0%BC%E8%AE%BE%E7%BD%AE%E5%88%97.png" alt=""></p>
-<p>8、同时推荐W3C的SQL教程，地址是： <a href="http://www.w3school.com.cn/sql/index.asp" target="_blank" rel="external">http://www.w3school.com.cn/sql/index.asp</a></p>
-<p>9、刚发现<a href="http://www.jianshu.com/p/a014b26ba7ca" target="_blank" rel="external">这个帖子</a>也有写的比较详细，可参考</p>
+            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、在研究别人一个关于用“mysql+爬虫”分析一个网站的时候，发现对mysql不熟悉，之前研究Django的时候用的是Postgresql数据库，所以打算学下mysql。然后官网最新版5.7，下载后找网络教程，发现有一个视频教程是5.5版本的，竟然5.7一个系统文件对不上，根本没有啊。 后来发现5.7版本有一些更新，不确定是否此原因导致。随后咨询了那篇文章的作者，他用的是5.6版本，那就装5.6，然后就想卸载5.7吧，结果又发现mysql的安装文件好多，一个个是单独安装的，那么要卸载可以一个个来，感觉麻烦，然后下载了官网的5.6.msi版本，点安装，出来一个界面提示已经装好的相关文件，可以用remove操作，随后有个全选的就可以全部统一卸载5.7的相关文件了，方便些。</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/mysql56%20remove%20mysql57.png" alt=""></p>
+<p>2、突然感觉这自我学习的过程就像在打RPG游戏，跌跌撞撞，一个个关卡，每个小细节都可能带来很多烦恼，白天还在为mysql 5.7的如何配置一些utf8发愁呢。</p>
+<p>3、对慕课网其实早进听说一直没去过，搜到@车神的一篇：<a href="http://www.imooc.com/learn/712" target="_blank" rel="external">《python遇见数据采集》</a>，随后又根据他的介绍，打算再学下要求的3个基础，如下图，然后发现，原来第一个的《Python入门》是廖雪峰在这里的视频教程，以前可一直在他网站看的文字版的，竟然也不在他自己网站介绍下视频教程地址的，真是低调。</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/python%20%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80%E8%A6%81%E6%B1%82.png" alt=""></p>
+<p>4、突然发现电脑超级卡，一看C盘的50G已经满了，这是什么鬼？ 原来是virtualbox 安装的系统全部塞在了C盘，由于ubuntu系统也要不断安装一些库，导致历史占用的空间越来越多。所以，设置virtualbox的安装路径到E盘，重新做了一个虚拟系统，这样C盘的空间就释放了。</p>
+<p>5、然后看了下正则式的知识，总结到下一篇吧。</p>
 
           
         
@@ -1134,106 +1511,6 @@ ul.disc {list-style-type: disc}
 &lt;/ul&gt;
 </code></pre><p>其中，设置表格颜色的部分，感觉要记录下，因为看上去比默认的好看不少，举例如下。<a href="http://www.w3school.com.cn/tiy/t.asp?f=csse_table_fancy" target="_blank" rel="external">代码【点我】</a>：</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/css%20table.png" alt=""></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/09/查找mysql相关来到慕课网学习/" itemprop="url">
-                  查找mysql相关来到慕课网学习
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-09-09T16:59:28+08:00" content="2016-09-09">
-              2016-09-09
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、在研究别人一个关于用“mysql+爬虫”分析一个网站的时候，发现对mysql不熟悉，之前研究Django的时候用的是Postgresql数据库，所以打算学下mysql。然后官网最新版5.7，下载后找网络教程，发现有一个视频教程是5.5版本的，竟然5.7一个系统文件对不上，根本没有啊。 后来发现5.7版本有一些更新，不确定是否此原因导致。随后咨询了那篇文章的作者，他用的是5.6版本，那就装5.6，然后就想卸载5.7吧，结果又发现mysql的安装文件好多，一个个是单独安装的，那么要卸载可以一个个来，感觉麻烦，然后下载了官网的5.6.msi版本，点安装，出来一个界面提示已经装好的相关文件，可以用remove操作，随后有个全选的就可以全部统一卸载5.7的相关文件了，方便些。</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/mysql56%20remove%20mysql57.png" alt=""></p>
-<p>2、突然感觉这自我学习的过程就像在打RPG游戏，跌跌撞撞，一个个关卡，每个小细节都可能带来很多烦恼，白天还在为mysql 5.7的如何配置一些utf8发愁呢。</p>
-<p>3、对慕课网其实早进听说一直没去过，搜到@车神的一篇：<a href="http://www.imooc.com/learn/712" target="_blank" rel="external">《python遇见数据采集》</a>，随后又根据他的介绍，打算再学下要求的3个基础，如下图，然后发现，原来第一个的《Python入门》是廖雪峰在这里的视频教程，以前可一直在他网站看的文字版的，竟然也不在他自己网站介绍下视频教程地址的，真是低调。</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/python%20%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80%E8%A6%81%E6%B1%82.png" alt=""></p>
-<p>4、突然发现电脑超级卡，一看C盘的50G已经满了，这是什么鬼？ 原来是virtualbox 安装的系统全部塞在了C盘，由于ubuntu系统也要不断安装一些库，导致历史占用的空间越来越多。所以，设置virtualbox的安装路径到E盘，重新做了一个虚拟系统，这样C盘的空间就释放了。</p>
-<p>5、然后看了下正则式的知识，总结到下一篇吧。</p>
 
           
         
@@ -1425,104 +1702,6 @@ ul.disc {list-style-type: disc}
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/09/Linux的历史和HTML学习的必要/" itemprop="url">
-                  Linux的历史和HTML学习的必要
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-09-09T01:59:28+08:00" content="2016-09-09">
-              2016-09-09
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="http://ocg7i7pt6.bkt.clouddn.com/Tulips.jpg" alt=""></p>
-<p>本来想看《鸟哥的Linux私房菜》，可一看要1774页，顿时伤感啊有木有。先看看开始部分吧，讲解了Unix系统的来龙去脉以及Linux的诞生历史等。写的还是挺详细的。那时候的系统界面看着真是古董，然后鼠标拖到最后，进入了现在的Linux的Shell界面，竟然有一丝激动。</p>
-<p>这几天看了点爬虫的知识，感觉就是看别人的HTML分析部分很easy的样子，但自己看的总是有点云里雾里的。。。</p>
-<p>所以奔着有问题解决问题先的思路，先暂停Linux书籍，而是先看HTML了。</p>
-<p>那么，推荐下较有人气的<a href="http://www.w3school.com.cn/" target="_blank" rel="external">W3school【点我】</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1568,7 +1747,7 @@ ul.disc {list-style-type: disc}
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">59</span>
+              <span class="site-state-item-count">60</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
