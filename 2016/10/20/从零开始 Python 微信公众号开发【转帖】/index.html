@@ -84,32 +84,22 @@
 
 
 
-<meta name="description" content="数据分析和一个工具OpenRefine1、在阅读《Python网络数据采集》第七章的时候看到的案例，记录细节分析。
-
-2、来简单体会下他的作用，根据书上的例子，我选定了之前程序得到的csv文件，导入后，的界面如下图： 
-
-可以看到Programming language，的栏目，这里要从77行中，筛选出同时有3种语言技能的，先在上面的下拉三角点开，使用text filter，然后配合RE表达式：">
+<meta name="description" content="从零开始 Python 微信公众号开发【转帖】1、虽然在8月底的时候通过有总结一篇日志，基于SAE的订阅号的实现。不过我把自己的订阅号丢在了一边，没去发挥作用。
+2、今天偶然看到小段的总结文档，写的比较详细，忍不住转发下，以下是原文地址：
+https://zhuanlan.zhihu.com/p/21354943">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据分析和一个工具OpenRefine【Python】">
-<meta property="og:url" content="http://yoursite.com/2016/10/17/数据分析和一个工具OpenRefine/index.html">
+<meta property="og:title" content="从零开始 Python 微信公众号开发【转帖】">
+<meta property="og:url" content="http://yoursite.com/2016/10/20/从零开始 Python 微信公众号开发【转帖】/index.html">
 <meta property="og:site_name" content="A Song of Python and Anaconda">
-<meta property="og:description" content="数据分析和一个工具OpenRefine1、在阅读《Python网络数据采集》第七章的时候看到的案例，记录细节分析。
-
-2、来简单体会下他的作用，根据书上的例子，我选定了之前程序得到的csv文件，导入后，的界面如下图： 
-
-可以看到Programming language，的栏目，这里要从77行中，筛选出同时有3种语言技能的，先在上面的下拉三角点开，使用text filter，然后配合RE表达式：">
-<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com//blog/20161017/232231872.png">
-<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com//blog/20161018/001139678.png">
-<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com//blog/20161018/001523164.png">
-<meta property="og:updated_time" content="2016-10-17T16:35:10.000Z">
+<meta property="og:description" content="从零开始 Python 微信公众号开发【转帖】1、虽然在8月底的时候通过有总结一篇日志，基于SAE的订阅号的实现。不过我把自己的订阅号丢在了一边，没去发挥作用。
+2、今天偶然看到小段的总结文档，写的比较详细，忍不住转发下，以下是原文地址：
+https://zhuanlan.zhihu.com/p/21354943">
+<meta property="og:updated_time" content="2016-10-20T05:34:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据分析和一个工具OpenRefine【Python】">
-<meta name="twitter:description" content="数据分析和一个工具OpenRefine1、在阅读《Python网络数据采集》第七章的时候看到的案例，记录细节分析。
-
-2、来简单体会下他的作用，根据书上的例子，我选定了之前程序得到的csv文件，导入后，的界面如下图： 
-
-可以看到Programming language，的栏目，这里要从77行中，筛选出同时有3种语言技能的，先在上面的下拉三角点开，使用text filter，然后配合RE表达式：">
-<meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com//blog/20161017/232231872.png">
+<meta name="twitter:title" content="从零开始 Python 微信公众号开发【转帖】">
+<meta name="twitter:description" content="从零开始 Python 微信公众号开发【转帖】1、虽然在8月底的时候通过有总结一篇日志，基于SAE的订阅号的实现。不过我把自己的订阅号丢在了一边，没去发挥作用。
+2、今天偶然看到小段的总结文档，写的比较详细，忍不住转发下，以下是原文地址：
+https://zhuanlan.zhihu.com/p/21354943">
 
 
 
@@ -130,9 +120,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/10/17/数据分析和一个工具OpenRefine/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/20/从零开始 Python 微信公众号开发【转帖】/"/>
 
-  <title> 数据分析和一个工具OpenRefine【Python】 | A Song of Python and Anaconda </title>
+  <title> 从零开始 Python 微信公众号开发【转帖】 | A Song of Python and Anaconda </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -252,7 +242,7 @@
             
             
               
-                数据分析和一个工具OpenRefine【Python】
+                从零开始 Python 微信公众号开发【转帖】
               
             
           </h1>
@@ -264,8 +254,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-10-17T12:59:28+08:00" content="2016-10-17">
-              2016-10-17
+            <time itemprop="dateCreated" datetime="2016-10-20T14:59:28+08:00" content="2016-10-20">
+              2016-10-20
             </time>
           </span>
 
@@ -292,14 +282,10 @@
       
 
       
-        <h1 id="数据分析和一个工具OpenRefine"><a href="#数据分析和一个工具OpenRefine" class="headerlink" title="数据分析和一个工具OpenRefine"></a>数据分析和一个工具OpenRefine</h1><p>1、在阅读《Python网络数据采集》第七章的时候看到的案例，记录细节分析。</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com//blog/20161017/232231872.png" alt=""></p>
-<p>2、来简单体会下他的作用，根据书上的例子，我选定了之前程序得到的csv文件，导入后，的界面如下图： </p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com//blog/20161018/001139678.png" alt=""></p>
-<p>可以看到Programming language，的栏目，这里要从77行中，筛选出同时有3种语言技能的，先在上面的下拉三角点开，使用text filter，然后配合RE表达式：  .+,.+,.+  输入到左侧，即可：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com//blog/20161018/001523164.png" alt=""></p>
-<p>3、此软件关于正则表达式的使用，可参考此网址：</p>
-<p><a href="https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language" target="_blank" rel="external">https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language</a></p>
+        <h1 id="从零开始-Python-微信公众号开发【转帖】"><a href="#从零开始-Python-微信公众号开发【转帖】" class="headerlink" title="从零开始 Python 微信公众号开发【转帖】"></a>从零开始 Python 微信公众号开发【转帖】</h1><p>1、虽然在8月底的时候通过有总结一篇日志，基于SAE的订阅号的实现。<br>不过我把自己的订阅号丢在了一边，没去发挥作用。</p>
+<p>2、今天偶然看到小段的总结文档，写的比较详细，忍不住转发下，以下是原文地址：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/21354943" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/21354943
+</a></p>
 
       
     </div>
@@ -325,17 +311,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/15/维基百科某网页表格的csv保存的分析/" rel="next" title="维基百科某网页表格的csv保存的分析【Python】">
-                <i class="fa fa-chevron-left"></i> 维基百科某网页表格的csv保存的分析【Python】
+              <a href="/2016/10/17/数据分析和一个工具OpenRefine/" rel="next" title="数据分析和一个工具OpenRefine【Python】">
+                <i class="fa fa-chevron-left"></i> 数据分析和一个工具OpenRefine【Python】
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/20/从零开始 Python 微信公众号开发【转帖】/" rel="prev" title="从零开始 Python 微信公众号开发【转帖】">
-                从零开始 Python 微信公众号开发【转帖】 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -435,7 +417,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据分析和一个工具OpenRefine"><span class="nav-number">1.</span> <span class="nav-text">数据分析和一个工具OpenRefine</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#从零开始-Python-微信公众号开发【转帖】"><span class="nav-number">1.</span> <span class="nav-text">从零开始 Python 微信公众号开发【转帖】</span></a></li></ol></div>
             
           </div>
         </section>
