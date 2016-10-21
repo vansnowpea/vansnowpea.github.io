@@ -235,6 +235,107 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/21/阿里云建立微信公众号的相关资料/" itemprop="url">
+                  阿里云建立微信公众号的相关资料
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-10-21T11:59:28+08:00" content="2016-10-21">
+              2016-10-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="阿里云建立微信公众号的相关资料"><a href="#阿里云建立微信公众号的相关资料" class="headerlink" title="阿里云建立微信公众号的相关资料"></a>阿里云建立微信公众号的相关资料</h1><p>1、由于近期itchat开源项目要升级到itchatmp , 所以考虑下把自己的阿里云ECS利用起来，不然有点浪费了。</p>
+<p>2、</p>
+<p>10、参考资料：</p>
+<ul>
+<li><a href="https://shanguangyu.com/articles/wechat-ECS/" target="_blank" rel="external">阿里云ECS搭建微信公众平台</a></li>
+<li><a href="http://jayveehe.github.io/2015/01/26/nginx-flask/" target="_blank" rel="external">微信公众平台接入初探</a></li>
+<li><a href="http://www.oschina.net/translate/serving-flask-with-nginx-on-ubuntu?cmp" target="_blank" rel="external">在 Ubuntu 上使用 Nginx 部署 Flask 应用</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/20/测试Daocloud/" itemprop="url">
                   测试Daocloud
                 </a>
@@ -1780,130 +1881,6 @@ tree.xpath(&quot;//div[@class=&apos;sec_blk mrg_b_30&apos;]/ul/li[1]/a/@href&quo
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/07/东方财富网cpi数据的抓取/" itemprop="url">
-                  东方财富网cpi数据的抓取【Python】
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-10-07T22:59:28+08:00" content="2016-10-07">
-              2016-10-07
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="东方财富网cpi数据的抓取"><a href="#东方财富网cpi数据的抓取" class="headerlink" title="东方财富网cpi数据的抓取"></a>东方财富网cpi数据的抓取</h1><p>1、使用：</p>
-<ul>
-<li>lxml.etree</li>
-<li>requests</li>
-</ul>
-<p>2、代码：</p>
-<pre><code>from lxml import etree
-import requests
-
-url = &apos;http://data.eastmoney.com/cjsj/cpi.html&apos;
-content = requests.get(url).content
-
-html = etree.HTML(content)
-content1 = html.xpath(&apos;//*[@id=&quot;tb&quot;]/tr[3]/td[2]/text()&apos;)
-
-print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
-
-# for txt in html.iterfind(&apos;.//*[@id=&quot;tb&quot;]/tr[3]/td&apos;):
-#     print(txt.text)
-</code></pre><p>3、分析：requests+lxml来分析和提取数据比较简单，可以尽可能的规避使用RE的复杂性以及可能产生的编码问题。要注意的是提取文本内容的时候要在xpath地址后面加上/text()<br>不过这个案例中，需要把xpath的/tbody去掉，这是因为有的浏览器加上去的，否则不能识别需要的文字部分。<br>另外，默认的结果因为有很多的空格和\n\r，所以需要做数据清洗，就本例，加一句content1[0].strip().replace(‘\n\r’, ‘’)即可。</p>
-<p>4、没有执行的代码，表示读取2016年08月份 “全国”，“城市”，“农村”各自的cpi数据。<br>要注意的是：这属于ElementPath，一共4个种类，分别如下：</p>
-<ul>
-<li></li>
-</ul>
-<ol>
-<li>iterfind()</li>
-<li>findall()</li>
-<li>find()</li>
-<li>findtext()</li>
-</ol>
-<p>千万注意的是：ElementPath不能直接使用绝对路径，需要在前面加一个.符号。暂时感觉这个使用的不太多。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1949,7 +1926,7 @@ print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">62</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
