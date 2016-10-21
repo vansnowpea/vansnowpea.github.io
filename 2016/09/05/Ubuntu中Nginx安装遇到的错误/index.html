@@ -96,7 +96,7 @@ nginx: [emerg] open() “/etc/nginx/nginx.conf” failed (2: No such fil">
 
 1、现象：在尝试了一些方案后，出现的错误现象也有不同，最后的症状是：
 nginx: [emerg] open() “/etc/nginx/nginx.conf” failed (2: No such fil">
-<meta property="og:updated_time" content="2016-09-01T14:48:49.784Z">
+<meta property="og:updated_time" content="2016-10-21T10:57:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu中Nginx安装遇到的错误">
 <meta name="twitter:description" content="说明：在2台电脑相同版本的Ubuntu系统中，遇到了不同的现象，一台一开始死活出现Nginx启动异常。已经根据Nginx官网提示安装了cong的key，依然失败，以下是解决过程，感谢谷歌。
@@ -291,8 +291,8 @@ nginx: [emerg] open() “/etc/nginx/nginx.conf” failed (2: No such fil">
 <p>1、现象：在尝试了一些方案后，出现的错误现象也有不同，最后的症状是：</p>
 <p><strong>nginx: [emerg] open() “/etc/nginx/nginx.conf” failed (2: No such file or directory)</strong></p>
 <p>2、 一开始查阅的一些方案也没搞定，<a href="http://serverfault.com/questions/317191/how-to-install-nginx-and-install-the-configuration-files-too" target="_blank" rel="external">以下网址</a>的方案，测试成功，运行命令是：</p>
-<pre><code>sodu apt-get remove --purge nginx nginx-full nginx-common 
-sodu apt-get install nginx 
+<pre><code>sudo apt-get remove --purge nginx nginx-full nginx-common 
+sudo apt-get install nginx 
 </code></pre><p>3、其他的错误现象，以后遇到了再更新进来。</p>
 
       
