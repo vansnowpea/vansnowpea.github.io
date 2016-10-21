@@ -280,7 +280,21 @@
         
           
             <h1 id="阿里云建立微信公众号的相关资料"><a href="#阿里云建立微信公众号的相关资料" class="headerlink" title="阿里云建立微信公众号的相关资料"></a>阿里云建立微信公众号的相关资料</h1><p>1、由于近期发现itchat开源项目要升级到itchatmp , 所以考虑下把自己的阿里云ECS利用起来，不然有点浪费了。</p>
-<p>2、</p>
+<p>2、首先熟悉下flask的hello world实现：</p>
+<pre><code>#encoding:utf8
+
+from flask import Flask
+
+
+app = Flask(__name__)
+@app.route(&apos;/&apos;)
+def hello_world():
+    return &apos;Hello World!&apos;
+
+if __name__ == &apos;__main__&apos;:
+    app.run(host=&apos;127.0.0.1&apos;, port=9527,debug=True)
+</code></pre><p>其中：@app.route(‘/‘) 是定义的路由，表格对应网址的根目录。<br>要注意的是，这段简单的代码里：app.run(host=’127.0.0.1’, port=9527,debug=True)<br>如果把127.0.0.1 修改成 0.0.0.0  则报错。 原因暂时不确定。</p>
+<p>j</p>
 <p>10、参考资料：</p>
 <ul>
 <li><a href="https://shanguangyu.com/articles/wechat-ECS/" target="_blank" rel="external">阿里云ECS搭建微信公众平台</a></li>
