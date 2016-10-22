@@ -297,7 +297,26 @@ if __name__ == &apos;__main__&apos;:
 <p>flask的 中文文档资料： <a href="http://dormousehole.readthedocs.io/en/latest/" target="_blank" rel="external">http://dormousehole.readthedocs.io/en/latest/</a></p>
 <p> flask的基础视频参考： <a href="http://www.jikexueyuan.com/course/943.html" target="_blank" rel="external">http://www.jikexueyuan.com/course/943.html</a></p>
 <p>4、 以itchatmp为例：</p>
-<p>10、参考资料：</p>
+<p>首先根据itchatmp的github网址： <a href="https://github.com/littlecodersh/itchatmp" target="_blank" rel="external">https://github.com/littlecodersh/itchatmp</a></p>
+<p>下载到本地，然后</p>
+<pre><code>pip install itchatmp
+</code></pre><p>在这个过程中，很可能安装失败，是因为墙的因素，建议开启翻墙工具</p>
+<p>在安装好之后，把对应的示范脚本，根据你的微信订阅号的相关参数进行修改：</p>
+<pre><code>import itchatmp
+
+itchatmp.update_config(itchatmp.WechatConfig(
+    token=&apos;xxxxxxxxxx&apos;,
+    appId = &apos;xxxxxxxxxx&apos;,
+    appSecret = &apos;xxxxxxxxxx&apos;))
+
+@itchatmp.msg_register(itchatmp.content.TEXT)
+def text_reply(msg):
+    return msg[&apos;content&apos;]
+
+itchatmp.run()
+</code></pre><p>然后到微信订阅号的后台，把url部分，修改成你的ECS的ip。一切顺利的话，你的订阅号就工作了，此时，他的默认功能是，当你输入信息后，订阅号自动回复相同内容。</p>
+<p>5、本文案例是在Win10，Win NT 2008下都测试通过，</p>
+<p>6、如果你需要一些Linux相关的参考资料，如下：</p>
 <ul>
 <li><a href="https://shanguangyu.com/articles/wechat-ECS/" target="_blank" rel="external">阿里云ECS搭建微信公众平台</a></li>
 <li><a href="http://jayveehe.github.io/2015/01/26/nginx-flask/" target="_blank" rel="external">微信公众平台接入初探</a></li>
