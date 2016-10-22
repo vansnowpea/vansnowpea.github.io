@@ -100,7 +100,7 @@ app = Flask(__n">
 from flask import Flask, render_template
 
 app = Flask(__n">
-<meta property="og:updated_time" content="2016-10-22T14:32:48.000Z">
+<meta property="og:updated_time" content="2016-10-22T14:45:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="阿里云ECS建立微信公众号----以itchatmp为例【python】">
 <meta name="twitter:description" content="阿里云ECS建立微信公众号—-以itchatmp为例1、由于近期发现itchat开源项目要升级到itchatmp , 所以考虑下把自己的阿里云ECS利用起来，不然有点浪费了。
@@ -189,7 +189,7 @@ app = Flask(__n">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -199,7 +199,7 @@ app = Flask(__n">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -262,7 +262,7 @@ app = Flask(__n">
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-21T11:59:28+08:00" content="2016-10-21">
               2016-10-21
             </time>
@@ -326,9 +326,10 @@ def text_reply(msg):
     return msg[&apos;content&apos;]
 
 itchatmp.run()
-</code></pre><p>然后到微信订阅号的后台，把url部分，修改成你的ECS的ip。一切顺利的话，你的订阅号就工作了，此时，他的默认功能是，当你输入信息后，订阅号自动回复相同内容。</p>
-<p>5、本文案例是在Win10，Win NT 2008下都测试通过，</p>
-<p>6、如果你需要一些Linux相关的参考资料，如下：</p>
+</code></pre><p>5、然后到微信订阅号的后台，把url部分，修改成你的ECS的ip。</p>
+<p>6、运行一个形如weixinchat.py的脚本，把上述代码复制，并运行。一切顺利的话，你的订阅号就工作了，此时，他的默认功能是，当你输入信息后，订阅号自动回复相同内容。</p>
+<p>7、本文案例是在Win10，Win NT 2008下都测试通过，</p>
+<p>8、如果你需要一些Linux相关的参考资料，如下：</p>
 <ul>
 <li><a href="https://shanguangyu.com/articles/wechat-ECS/" target="_blank" rel="external">阿里云ECS搭建微信公众平台</a></li>
 <li><a href="http://jayveehe.github.io/2015/01/26/nginx-flask/" target="_blank" rel="external">微信公众平台接入初探</a></li>
@@ -415,10 +416,10 @@ itchatmp.run()
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -435,7 +436,7 @@ itchatmp.run()
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">62</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -493,7 +494,7 @@ itchatmp.run()
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
