@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -235,8 +235,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/11/Python操作MySQL数据库/" itemprop="url">
-                  Python操作MySQL数据库
+                <a class="post-title-link" href="/2016/09/11/正则式学习小结/" itemprop="url">
+                  正则式学习小结
                 </a>
               
             
@@ -248,7 +248,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-11T10:59:28+08:00" content="2016-09-11">
               2016-09-11
             </time>
@@ -279,24 +279,148 @@
       
         
           
-            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/475" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>简介：本课程讲解Python如何开发MySQL数据库程序。首先介绍Python开发数据库程序的通用接口规范，然后搭建Python开发数据库程序的开发环境，接着了解了通用接口规范中的connection、cursor两大对象之后，介绍如何增删改查数据库，最后以实例代码演示数据库程序的开发流程。</p>
-<p>1、教程说到以下网址<a href="http://sourceforge.net/projects/mysql-python下载mysql-pyhon" target="_blank" rel="external">http://sourceforge.net/projects/mysql-python下载mysql-pyhon</a> 的连接器，针对python2.7的。 一开始安装失败，提示找不到python，原来此台电脑我的python 是64位的，貌似那个连接器是针对32位的，所有我又到以下网址下载了64位的连接器： <a href="http://www.codegood.com/download/11/" target="_blank" rel="external">http://www.codegood.com/download/11/</a><br>这下就能识别到python了， 但是一看版本是1.2.3的，而最新版是1.2.5的，考虑到mysql 5.6默认的msi也是32位的，我就把python 2.7.12换到了32位统一下吧。   安装成功后，在python下输入如下命令会成功，否则报错：</p>
-<pre><code>&gt;&gt;&gt; import MySQLdb
-&gt;&gt;&gt;
-</code></pre><p>2、然后根据教程要使用sqlyog，官网卡机，只好装国内版本，我用的这个连接（Ultimate 版本: （终极是最好的））： <a href="http://www.liangchan.net/soft/download.asp?softid=6633&amp;downid=8&amp;id=6658" target="_blank" rel="external">http://www.liangchan.net/soft/download.asp?softid=6633&amp;downid=8&amp;id=6658</a></p>
-<p>随后在sqlyog新建一个数据库，并设置下utf8编码，如下图：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%201.png" alt=""></p>
-<p>3、编写一个imooc.py 来建立connection连接，<strong>千万注意代码中的密码对应的是passwd，而不是全称的password哦。</strong></p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/db%20api%20connection.png" alt=""></p>
-<p>4、通过connection来创建游标对象cursor： </p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/cursor.png" alt=""></p>
-<p>5、select查询数据</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/select%20%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE.png" alt=""></p>
-<p>6、数据库 I U D 操作：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/%E6%95%B0%E6%8D%AE%E5%BA%93u%20i%20d.png" alt=""></p>
-<p>7、sqlyog的表单操作，要创建2个列就要在新建的表中，增加2个属性，如下图：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%20%E8%A1%A8%E6%A0%BC%E8%AE%BE%E7%BD%AE%E5%88%97.png" alt=""></p>
-<p>8、同时推荐W3C的SQL教程，地址是： <a href="http://www.w3school.com.cn/sql/index.asp" target="_blank" rel="external">http://www.w3school.com.cn/sql/index.asp</a></p>
-<p>9、刚发现<a href="http://www.jianshu.com/p/a014b26ba7ca" target="_blank" rel="external">这个帖子</a>也有写的比较详细，可参考</p>
+            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/550" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>由于这个视频教程已经说的比较详细，请参考原视频教程，这里为总结</p>
+<p>1、简介：为何需要正则表达式，为了减少根据不同需求不断编制函数的麻烦，通过制定正则式规则，可以巧妙且有效的进行归纳总结。</p>
+<p>2、Python的RE模块，RE是正则表达式的英文首字母缩写。最常用的就是re.match()函数了，其次是ma.group()，用来查阅匹配结果。</p>
+<p>3、<strong>【重点】RE的语法：</strong></p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/re%201.png" alt=""></p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/re%202.png" alt=""></p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/re%203.png" alt=""></p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/re%204.png" alt=""></p>
+<p>4、 RE其他模块：</p>
+<ul>
+<li>search（pattern, string, flags=0） 用来查找满足pattern的第一个返回值。</li>
+<li>findall（pattern, string, flags=0）用来查找满足pattern的所有返回值。</li>
+<li>sub（pattern, repl, string, count=0, flags=0）将字符串中匹配正则表达式的部分替代为其他值，并允许引入函数模式来进行替代。</li>
+<li>split（pattern, string, maxsplit=0, flags=0）根据匹配分割字符串，返回分割字符串组成的列表。</li>
+</ul>
+<p>5、练习，抓取慕课网的<a href="http://www.imooc.com/course/list的图片。主要流程为：" target="_blank" rel="external">http://www.imooc.com/course/list的图片。主要流程为：</a></p>
+<ol>
+<li>抓取网页，</li>
+<li>获取图片地址，</li>
+<li>抓去图片内容并保存到本地，</li>
+</ol>
+<p>结果如下：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/re-pics%20of%20imooc.png" alt=""></p>
+<p>6、源代码：</p>
+<pre><code>import re
+import urllib2
+
+test_url = &apos;http://www.imooc.com/course/list&apos;
+req = urllib2.urlopen(test_url)
+buf = req.read()
+print buf
+
+listurl = re.findall(r&apos;http:.+\.jpg&apos;, buf)
+print listurl
+
+i = 0
+for url in listurl:
+    f = open(str(i)+&apos;.jpg&apos;, &apos;w&apos;)
+    req = urllib2.urlopen(url)
+    buf = req.read()
+    f.write(buf)
+    i += 1
+</code></pre><p>7、PS，再一次的，发现在Win下的结果出现乱码，而且抓的图片也是，而在Linux下是正常的。得找下原因。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/09/查找mysql相关来到慕课网学习/" itemprop="url">
+                  查找mysql相关来到慕课网学习
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-09-09T16:59:28+08:00" content="2016-09-09">
+              2016-09-09
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、在研究别人一个关于用“mysql+爬虫”分析一个网站的时候，发现对mysql不熟悉，之前研究Django的时候用的是Postgresql数据库，所以打算学下mysql。然后官网最新版5.7，下载后找网络教程，发现有一个视频教程是5.5版本的，竟然5.7一个系统文件对不上，根本没有啊。 后来发现5.7版本有一些更新，不确定是否此原因导致。随后咨询了那篇文章的作者，他用的是5.6版本，那就装5.6，然后就想卸载5.7吧，结果又发现mysql的安装文件好多，一个个是单独安装的，那么要卸载可以一个个来，感觉麻烦，然后下载了官网的5.6.msi版本，点安装，出来一个界面提示已经装好的相关文件，可以用remove操作，随后有个全选的就可以全部统一卸载5.7的相关文件了，方便些。</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/mysql56%20remove%20mysql57.png" alt=""></p>
+<p>2、突然感觉这自我学习的过程就像在打RPG游戏，跌跌撞撞，一个个关卡，每个小细节都可能带来很多烦恼，白天还在为mysql 5.7的如何配置一些utf8发愁呢。</p>
+<p>3、对慕课网其实早进听说一直没去过，搜到@车神的一篇：<a href="http://www.imooc.com/learn/712" target="_blank" rel="external">《python遇见数据采集》</a>，随后又根据他的介绍，打算再学下要求的3个基础，如下图，然后发现，原来第一个的《Python入门》是廖雪峰在这里的视频教程，以前可一直在他网站看的文字版的，竟然也不在他自己网站介绍下视频教程地址的，真是低调。</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/python%20%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80%E8%A6%81%E6%B1%82.png" alt=""></p>
+<p>4、突然发现电脑超级卡，一看C盘的50G已经满了，这是什么鬼？ 原来是virtualbox 安装的系统全部塞在了C盘，由于ubuntu系统也要不断安装一些库，导致历史占用的空间越来越多。所以，设置virtualbox的安装路径到E盘，重新做了一个虚拟系统，这样C盘的空间就释放了。</p>
+<p>5、然后看了下正则式的知识，总结到下一篇吧。</p>
 
           
         
@@ -359,7 +483,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-09T16:59:28+08:00" content="2016-09-09">
               2016-09-09
             </time>
@@ -484,106 +608,6 @@ ul.disc {list-style-type: disc}
             
               
                 
-                <a class="post-title-link" href="/2016/09/09/查找mysql相关来到慕课网学习/" itemprop="url">
-                  查找mysql相关来到慕课网学习
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-09T16:59:28+08:00" content="2016-09-09">
-              2016-09-09
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、在研究别人一个关于用“mysql+爬虫”分析一个网站的时候，发现对mysql不熟悉，之前研究Django的时候用的是Postgresql数据库，所以打算学下mysql。然后官网最新版5.7，下载后找网络教程，发现有一个视频教程是5.5版本的，竟然5.7一个系统文件对不上，根本没有啊。 后来发现5.7版本有一些更新，不确定是否此原因导致。随后咨询了那篇文章的作者，他用的是5.6版本，那就装5.6，然后就想卸载5.7吧，结果又发现mysql的安装文件好多，一个个是单独安装的，那么要卸载可以一个个来，感觉麻烦，然后下载了官网的5.6.msi版本，点安装，出来一个界面提示已经装好的相关文件，可以用remove操作，随后有个全选的就可以全部统一卸载5.7的相关文件了，方便些。</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/mysql56%20remove%20mysql57.png" alt=""></p>
-<p>2、突然感觉这自我学习的过程就像在打RPG游戏，跌跌撞撞，一个个关卡，每个小细节都可能带来很多烦恼，白天还在为mysql 5.7的如何配置一些utf8发愁呢。</p>
-<p>3、对慕课网其实早进听说一直没去过，搜到@车神的一篇：<a href="http://www.imooc.com/learn/712" target="_blank" rel="external">《python遇见数据采集》</a>，随后又根据他的介绍，打算再学下要求的3个基础，如下图，然后发现，原来第一个的《Python入门》是廖雪峰在这里的视频教程，以前可一直在他网站看的文字版的，竟然也不在他自己网站介绍下视频教程地址的，真是低调。</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/python%20%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80%E8%A6%81%E6%B1%82.png" alt=""></p>
-<p>4、突然发现电脑超级卡，一看C盘的50G已经满了，这是什么鬼？ 原来是virtualbox 安装的系统全部塞在了C盘，由于ubuntu系统也要不断安装一些库，导致历史占用的空间越来越多。所以，设置virtualbox的安装路径到E盘，重新做了一个虚拟系统，这样C盘的空间就释放了。</p>
-<p>5、然后看了下正则式的知识，总结到下一篇吧。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/09/09/HTML基础学习小结/" itemprop="url">
                   HTML基础学习小结
                 </a>
@@ -597,7 +621,7 @@ ul.disc {list-style-type: disc}
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-09T14:59:28+08:00" content="2016-09-09">
               2016-09-09
             </time>
@@ -760,7 +784,7 @@ ul.disc {list-style-type: disc}
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-09T01:59:28+08:00" content="2016-09-09">
               2016-09-09
             </time>
@@ -858,7 +882,7 @@ ul.disc {list-style-type: disc}
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-07T16:59:28+08:00" content="2016-09-07">
               2016-09-07
             </time>
@@ -993,7 +1017,7 @@ for link in links:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-07T10:59:28+08:00" content="2016-09-07">
               2016-09-07
             </time>
@@ -1089,7 +1113,7 @@ for link in links:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-07T01:59:28+08:00" content="2016-09-07">
               2016-09-07
             </time>
@@ -1222,7 +1246,7 @@ Successfully installed lxml-3.6.4
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-06T14:59:28+08:00" content="2016-09-06">
               2016-09-06
             </time>
@@ -1336,7 +1360,7 @@ import tornado.web
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-05T01:59:28+08:00" content="2016-09-05">
               2016-09-05
             </time>
@@ -1446,7 +1470,7 @@ import tornado.web
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">64</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1493,7 +1517,7 @@ import tornado.web
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
