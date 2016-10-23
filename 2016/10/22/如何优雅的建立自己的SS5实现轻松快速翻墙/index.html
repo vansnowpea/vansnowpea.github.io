@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/100017940.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/100305004.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/100635406.png">
-<meta property="og:updated_time" content="2016-10-23T05:35:44.000Z">
+<meta property="og:updated_time" content="2016-10-23T05:36:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙">
 <meta name="twitter:description" content="如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙1、写这个帖子实在是无奈导致，以前都是用的其他翻墙工具，毕竟win下一点EXE就实现了，但是最近速度越来越慢有的失效，导致在安装itchatmp的时候，一开始搞了2个小时都没完全安装上所有的包。每当因为这些墙导致的时间浪费，想想一生中，被ZF莫名消耗了那么多的时间，真的是悲剧,所以总结此贴。
@@ -337,7 +337,7 @@ def send_email(htm):
     # send email to notice new WestWorld is coming
     sender = &apos;xxxxxxxx@163.com&apos;
     receiver = &apos;xxxxxxxx@qq.com,xxxxxxxx@163.com&apos;
-    subject = &apos;西部世界 1080P有更新！&apos;
+    subject = &apos;SS5密码有更新！&apos;
     smtpserver = &apos;smtp.163.com&apos;
     username = &apos;xxxxxxxx@163.com&apos;
     password = &apos;xxxxxxxx&apos;
@@ -354,7 +354,7 @@ def send_email(htm):
 if __name__ == &apos;__main__&apos;:
     password, update = check_update()
     while 1:
-        if update == False:
+        if update == True:
             send_email(password)
         temp_password = password
         time.sleep(time_gap)

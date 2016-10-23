@@ -331,7 +331,7 @@ def send_email(htm):
     # send email to notice new WestWorld is coming
     sender = &apos;xxxxxxxx@163.com&apos;
     receiver = &apos;xxxxxxxx@qq.com,xxxxxxxx@163.com&apos;
-    subject = &apos;西部世界 1080P有更新！&apos;
+    subject = &apos;SS5密码有更新！&apos;
     smtpserver = &apos;smtp.163.com&apos;
     username = &apos;xxxxxxxx@163.com&apos;
     password = &apos;xxxxxxxx&apos;
@@ -348,7 +348,7 @@ def send_email(htm):
 if __name__ == &apos;__main__&apos;:
     password, update = check_update()
     while 1:
-        if update == False:
+        if update == True:
             send_email(password)
         temp_password = password
         time.sleep(time_gap)
