@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -235,6 +235,144 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/21/如何优雅的建立自己的SS5实现轻松快速翻墙/" itemprop="url">
+                  阿里云ECS建立微信公众号----以itchatmp为例【python】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-10-21T11:59:28+08:00" content="2016-10-21">
+              2016-10-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="阿里云ECS建立微信公众号—-以itchatmp为例"><a href="#阿里云ECS建立微信公众号—-以itchatmp为例" class="headerlink" title="阿里云ECS建立微信公众号—-以itchatmp为例"></a>阿里云ECS建立微信公众号—-以itchatmp为例</h1><p>1、由于近期发现itchat开源项目要升级到itchatmp , 所以考虑下把自己的阿里云ECS利用起来，不然有点浪费了。</p>
+<p>2、首先熟悉下flask的hello world实现,把这段代码放到ECS上：</p>
+<pre><code>#encoding:utf8
+from flask import Flask, render_template
+
+app = Flask(__name__)
+@app.route(&apos;/&apos;)
+def hello_world():
+    content = &apos;Hello World!&apos;
+    return render_template(&apos;hello.html&apos;, content = content)
+
+if __name__ == &apos;__main__&apos;:
+    app.run(&apos;0.0.0.0&apos;)
+</code></pre><p>其中：@app.route(‘/‘) 是定义的路由，表示对应网址的根目录。<br>然后在本机输入ECS的ip加上端口5000，应该就能看到hello world了。</p>
+<p>3、 </p>
+<p>flask的 中文文档资料： <a href="http://dormousehole.readthedocs.io/en/latest/" target="_blank" rel="external">http://dormousehole.readthedocs.io/en/latest/</a></p>
+<p> flask的基础视频参考： <a href="http://www.jikexueyuan.com/course/943.html" target="_blank" rel="external">http://www.jikexueyuan.com/course/943.html</a></p>
+<p>4、 以itchatmp为例：</p>
+<p>首先根据itchatmp的github网址： <a href="https://github.com/littlecodersh/itchatmp" target="_blank" rel="external">https://github.com/littlecodersh/itchatmp</a></p>
+<p>下载到本地，然后</p>
+<pre><code>pip install itchatmp
+</code></pre><p>在这个过程中，很可能安装失败，是因为墙的因素，建议开启翻墙工具</p>
+<p>在安装好之后，把对应的示范脚本，根据你的微信订阅号的相关参数进行修改：</p>
+<pre><code>import itchatmp
+
+itchatmp.update_config(itchatmp.WechatConfig(
+    token=&apos;xxxxxxxxxx&apos;,
+    appId = &apos;xxxxxxxxxx&apos;,
+    appSecret = &apos;xxxxxxxxxx&apos;))
+
+@itchatmp.msg_register(itchatmp.content.TEXT)
+def text_reply(msg):
+    return msg[&apos;content&apos;]
+
+itchatmp.run()
+</code></pre><p>5、然后到微信订阅号的后台，把url部分，修改成你的ECS的ip。</p>
+<p>6、运行一个形如weixinchat.py的脚本，把上述代码复制，并运行。一切顺利的话，你的订阅号就工作了，此时，他的默认功能是，当你输入信息后，订阅号自动回复相同内容。</p>
+<p>7、本文案例是在Win10，Win NT 2008下都测试通过，</p>
+<p>8、如果你需要一些Linux相关的参考资料，如下：</p>
+<ul>
+<li><a href="https://shanguangyu.com/articles/wechat-ECS/" target="_blank" rel="external">阿里云ECS搭建微信公众平台</a></li>
+<li><a href="http://jayveehe.github.io/2015/01/26/nginx-flask/" target="_blank" rel="external">微信公众平台接入初探</a></li>
+<li><a href="http://www.oschina.net/translate/serving-flask-with-nginx-on-ubuntu?cmp" target="_blank" rel="external">在 Ubuntu 上使用 Nginx 部署 Flask 应用</a></li>
+<li><a href="http://www.cnblogs.com/weishun/p/weixin-publish-developing.html" target="_blank" rel="external">微信公众平台开发(免费云BAE+高效优雅的Python+网站开放的API)</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/21/阿里云建立微信公众号的相关资料/" itemprop="url">
                   阿里云ECS建立微信公众号----以itchatmp为例【python】
                 </a>
@@ -248,7 +386,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-21T11:59:28+08:00" content="2016-10-21">
               2016-10-21
             </time>
@@ -386,7 +524,7 @@ itchatmp.run()
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-20T16:59:28+08:00" content="2016-10-20">
               2016-10-20
             </time>
@@ -653,7 +791,7 @@ while True:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-20T14:59:28+08:00" content="2016-10-20">
               2016-10-20
             </time>
@@ -757,7 +895,7 @@ while True:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-17T12:59:28+08:00" content="2016-10-17">
               2016-10-17
             </time>
@@ -858,7 +996,7 @@ while True:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-15T12:59:28+08:00" content="2016-10-15">
               2016-10-15
             </time>
@@ -1106,7 +1244,7 @@ Out[7]: 118
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-13T20:59:28+08:00" content="2016-10-13">
               2016-10-13
             </time>
@@ -1336,7 +1474,7 @@ if __name__ == &apos;__main__&apos;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-11T20:59:28+08:00" content="2016-10-11">
               2016-10-11
             </time>
@@ -1584,7 +1722,7 @@ Process finished with exit code 0
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-10T13:59:28+08:00" content="2016-10-10">
               2016-10-10
             </time>
@@ -1716,7 +1854,7 @@ Process finished with exit code 0
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-08T20:59:28+08:00" content="2016-10-08">
               2016-10-08
             </time>
@@ -1754,142 +1892,6 @@ Process finished with exit code 0
 <h1 id="适合入门的教程："><a href="#适合入门的教程：" class="headerlink" title="适合入门的教程："></a>适合入门的教程：</h1><p>集体智慧编程 学习数据分析、数据挖掘、机器学习人员应该仔细阅读的第一本书。作者通过实际例子介绍了机器学习和数据挖掘中的算法，浅显易懂，还有可执行的 Python 代码。难易程度：中。<br>Machine Learning in Action 用人话把复杂难懂的机器学习算法解释清楚了，其中有零星的数学公式，但是是以解释清楚为目的的。而且有 Python 代码，大赞！目前中科院的王斌老师（微博： 王斌_ICTIR）已经翻译这本书了 机器学习实战 。这本书本身质量就很高，王老师的翻译质量也很高。难易程度：中。我带的研究生入门必看数目之一！<br>Building Machine Learning Systems with Python 虽然是英文的，但是由于写得很简单，比较理解，又有 Python 代码跟着，辅助理解。<br>数据挖掘导论 最近几年数据挖掘教材中比较好的一本书，被美国诸多大学的数据挖掘课作为教材，没有推荐 Jiawei Han 老师的那本书，因为个人觉得那本书对于初学者来说不太容易读懂。难易程度：中上。<br>Machine Learning for Hackers 也是通过实例讲解机器学习算法，用 R 实现的，可以一边学习机器学习一边学习 R。<br>       下载地址：集体智慧编程+源代码、Machine Learning in Action、Building Machine Learning Systems with Python、                            数据挖掘导论、Machine Learning for Hackers</p>
 <h1 id="稍微专业些的："><a href="#稍微专业些的：" class="headerlink" title="稍微专业些的："></a>稍微专业些的：</h1><p>Introduction to Semi-Supervised Learning 半监督学习必读必看的书。<br>Learning to Rank for Information Retrieval 微软亚院刘铁岩老师关于 LTR 的著作，啥都不说了，推荐！<br>Learning to Rank for Information Retrieval and Natural Language Processing 李航老师关于 LTR 的书，也是当时他在微软亚院时候的书，可见微软亚院对 LTR 的研究之深，贡献之大。<br>推荐系统实践 这本书不用说了，研究推荐系统必须要读的书，而且是第一本要读的书。<br>Graphical Models, Exponential Families, and Variational Inference 这个是 Jordan 老爷子和他的得意门徒 Martin J Wainwright 在 Foundation of Machine Learning Research 上的创刊号，可以免费下载，比较难懂，但是一旦读通了，graphical model 的相关内容就可以踏平了。<br>Natural Language Processing with Python NLP 经典，其实主要是讲 NLTK 这个包，但是啊，NLTK 这个包几乎涵盖了 NLP 的很多内容了啊！<br>   下载地址：Introduction to Semi-Supervised Learning、Learning to Rank for Information Retrieval、                           Learning to Rank for Information Retrieval and Natural Language Proces、推荐系统实践</p>
 <p>机器学习教材：<br>The Elements of Statistical Learning 这本书有对应的中文版：统计学习基础 。书中配有 R 包，非常赞！可以参照着代码学习算法。<br>统计学习方法 李航老师的扛鼎之作，强烈推荐。难易程度：难。<br>Machine Learning 去年出版的新书，作者 Kevin Murrphy 教授是机器学习领域中年少有为的代表。这书是他的集大成之作，写完之后，就去 Google 了，产学研结合，没有比这个更好的了。<br>Machine Learning 这书和上面的书不是一本！这书叫：Machine Learning: An Algorithmic Perspective 之前做过我带的研究生教材，由于配有代码，所以理解起来比较容易。<br>Pattern Recognition And Machine Learning 经典中的经典。<br>Bayesian Reasoning and Machine Learning 看名字就知道了，彻彻底底的 Bayesian 学派的书，里面的内容非常多，有一张图将机器学习中设计算法的关系总结了一下，很棒。<br>Probabilistic Graphical Models 鸿篇巨制，这书谁要是读完了告诉我一声。<br>Convex Optimization 凸优化中最好的教材，没有之一了。课程也非常棒，Stephen 老师拿着纸一步一步推到，图一点一点画，太棒了。<br>下载地址：The Elements of Statistical Learning、统计学习方法、Machine Learning: An Algorithmic Perspective、<br>                            Pattern Recognition and Machine Learning+答案、Bayesian Reasoning and Machine Learning、                                                   Probabilistic Graphical Models、Convexity and Optimization</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/07/下载最新电影的爬虫/" itemprop="url">
-                  下载最新电影的爬虫---Xpath读取文本，链接，标题等的操作【Python】
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-10-07T23:59:28+08:00" content="2016-10-07">
-              2016-10-07
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="下载最新电影的爬虫"><a href="#下载最新电影的爬虫" class="headerlink" title="下载最新电影的爬虫"></a>下载最新电影的爬虫</h1><p>1、使用：</p>
-<ul>
-<li>lxml.etree</li>
-<li>requests</li>
-</ul>
-<p>2、代码：</p>
-<pre><code># -*- coding:utf-8 -*-
-import requests
-from lxml import etree
-
-
-url = &apos;http://www.ygdy8.net/html/gndy/dyzz/index.html&apos;  #这是电影最新电影的网站
-# r = requests.get(url).content
-# print(r.encoding）
-# &gt;&gt;&gt; ISO-8859-1
-html = requests.get(url).content
-# html = requests.get(url).content.decode(&apos;ISO-8859-1&apos;).encode(&apos;utf-8&apos;)
-
-selector = etree.HTML(html)
-
-# //*[@id=&quot;content&quot;]/div/div[1]/ol/li[1]/div/div[2]/div[2]/p[1]
-# get rid of the : /tbody
-biaoti = selector.xpath(&apos;//*[@id=&quot;header&quot;]/div/div[3]/div[3]/div[2]/div[2]/div[2]/ul//tr[2]/td[2]/b/a/text()&apos;)
-
-
-# get rid of the : /tbody
-jianjie = selector.xpath(&apos;/html/body/div/div/div[3]/div[3]/div[2]/div[2]/div[2]/ul//tr[4]/td/text()&apos;)
-wangzhi = selector.xpath(&apos;//*[@id=&quot;header&quot;]/div/div[3]/div[3]/div[2]/div[2]/div[2]/ul//tr[2]/td[2]/b/a/@href&apos;)
-
-for b,j,k in zip(biaoti,jianjie,wangzhi):
-    print(b+&apos;\n&apos;+j+&apos;\n&apos;+&apos;www.ygdy8.net&apos;+k+&apos;\n&apos;)
-</code></pre><p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-08/015240484.png" alt="">    </p>
-<p>3、分析：主要和上一篇的接近，但是这一篇还有读取网址等操作，注意格式上和读取内容text有差别的。<br>总结如下：</p>
-<pre><code>获取到标签后我们可以获取标签中的属性值
-tree.xpath(&quot;//div[@class=&apos;sec_blk mrg_b_30&apos;]/ul/li[1]/a/text()&quot;)     #获取a的文本，li标号是从1开始，而不是从0开始
-tree.xpath(&quot;//div[@class=&apos;sec_blk mrg_b_30&apos;]/ul/li[1]/a/@href&quot;)   #获取a的链接地址
-
-当然还有其他类似的xpath例子：
-&quot;//input[@id=&apos;city&apos;]/@value&quot;
-&quot;//div[@class=&apos;venueDetal&apos;]/p/img[@class=&apos;img&apos;]/@src&quot;
-&quot;//div[@class=&apos;detail_info_title&apos;]//a[@class=&apos;hotel_star&apos;]/@title&quot;
-</code></pre><p>4、参考： <a href="http://blog.chinaunix.net/uid-13869856-id-5747494.html" target="_blank" rel="external">python+lxml xpath获取数据 </a></p>
-<p>5、可补充点： 自动提取直接下载链接，看是否能导入到迅雷等工具。</p>
 
           
         
@@ -1963,8 +1965,8 @@ tree.xpath(&quot;//div[@class=&apos;sec_blk mrg_b_30&apos;]/ul/li[1]/a/@href&quo
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">62</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-count">63</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -2011,7 +2013,7 @@ tree.xpath(&quot;//div[@class=&apos;sec_blk mrg_b_30&apos;]/ul/li[1]/a/@href&quo
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
