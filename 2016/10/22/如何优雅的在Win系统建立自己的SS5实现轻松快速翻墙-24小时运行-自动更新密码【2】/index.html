@@ -84,26 +84,28 @@
 
 
 
-<meta name="description" content="如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【1】1、写这个帖子实在是无奈导致，以前都是用的其他翻墙工具，毕竟win下一点EXE就实现了，但是最近速度越来越慢有的失效，导致在安装itchatmp的时候，一开始搞了2个小时都没完全安装上所有的包。每当因为这些墙导致的时间浪费，想想一生中，被ZF莫名消耗了那么多的时间，真的是悲剧,所以总结此贴。
-2、首先方案是： ss+ chrome+ s">
+<meta name="description" content="必须用女神的力量战胜叹息之墙1、首先，请参考我的上一个帖子，实现了Win下的SS【快速】翻墙，如果没有SS，要翻墙都要忍受蜗牛速度。为SS的原版牛逼作者十万个赞，也要为翻版作者以及iss网站一万个赞。但是有个小问题，因为源头的SS账号每隔6小时变更，因此总是需要人工更新密码，那么如何把他做成自动更新？
+2、方案，爬虫捕捉新密码+重写json加载。
+3、细节分析：
+谷歌已经有人写了相关代码，可能是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【1】">
-<meta property="og:url" content="http://yoursite.com/2016/10/22/如何优雅的建立自己的SS5实现轻松快速翻墙/index.html">
+<meta property="og:title" content="如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【2】-24小时运行-自动更新密码">
+<meta property="og:url" content="http://yoursite.com/2016/10/22/如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙-24小时运行-自动更新密码【2】/index.html">
 <meta property="og:site_name" content="A Song of Python and Anaconda">
-<meta property="og:description" content="如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【1】1、写这个帖子实在是无奈导致，以前都是用的其他翻墙工具，毕竟win下一点EXE就实现了，但是最近速度越来越慢有的失效，导致在安装itchatmp的时候，一开始搞了2个小时都没完全安装上所有的包。每当因为这些墙导致的时间浪费，想想一生中，被ZF莫名消耗了那么多的时间，真的是悲剧,所以总结此贴。
-2、首先方案是： ss+ chrome+ s">
-<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/191114998.png">
-<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/095626690.png">
-<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/095906759.png">
-<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/100017940.png">
-<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/100305004.png">
-<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/100635406.png">
-<meta property="og:updated_time" content="2016-10-23T14:44:40.000Z">
+<meta property="og:description" content="必须用女神的力量战胜叹息之墙1、首先，请参考我的上一个帖子，实现了Win下的SS【快速】翻墙，如果没有SS，要翻墙都要忍受蜗牛速度。为SS的原版牛逼作者十万个赞，也要为翻版作者以及iss网站一万个赞。但是有个小问题，因为源头的SS账号每隔6小时变更，因此总是需要人工更新密码，那么如何把他做成自动更新？
+2、方案，爬虫捕捉新密码+重写json加载。
+3、细节分析：
+谷歌已经有人写了相关代码，可能是">
+<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/224709467.png">
+<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/230709584.png">
+<meta property="og:updated_time" content="2016-10-23T18:06:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【1】">
-<meta name="twitter:description" content="如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【1】1、写这个帖子实在是无奈导致，以前都是用的其他翻墙工具，毕竟win下一点EXE就实现了，但是最近速度越来越慢有的失效，导致在安装itchatmp的时候，一开始搞了2个小时都没完全安装上所有的包。每当因为这些墙导致的时间浪费，想想一生中，被ZF莫名消耗了那么多的时间，真的是悲剧,所以总结此贴。
-2、首先方案是： ss+ chrome+ s">
-<meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/191114998.png">
+<meta name="twitter:title" content="如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【2】-24小时运行-自动更新密码">
+<meta name="twitter:description" content="必须用女神的力量战胜叹息之墙1、首先，请参考我的上一个帖子，实现了Win下的SS【快速】翻墙，如果没有SS，要翻墙都要忍受蜗牛速度。为SS的原版牛逼作者十万个赞，也要为翻版作者以及iss网站一万个赞。但是有个小问题，因为源头的SS账号每隔6小时变更，因此总是需要人工更新密码，那么如何把他做成自动更新？
+2、方案，爬虫捕捉新密码+重写json加载。
+3、细节分析：
+谷歌已经有人写了相关代码，可能是">
+<meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/224709467.png">
 
 
 
@@ -124,9 +126,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/10/22/如何优雅的建立自己的SS5实现轻松快速翻墙/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/22/如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙-24小时运行-自动更新密码【2】/"/>
 
-  <title> 如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【1】 | A Song of Python and Anaconda </title>
+  <title> 如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【2】-24小时运行-自动更新密码 | A Song of Python and Anaconda </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -246,7 +248,7 @@
             
             
               
-                如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【1】
+                如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【2】-24小时运行-自动更新密码
               
             
           </h1>
@@ -258,7 +260,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-10-22T11:59:28+08:00" content="2016-10-22">
+            <time itemprop="dateCreated" datetime="2016-10-22T20:59:28+08:00" content="2016-10-22">
               2016-10-22
             </time>
           </span>
@@ -286,29 +288,28 @@
       
 
       
-        <p><img src="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/191114998.png" alt=""></p>
-<h1 id="如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【1】"><a href="#如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【1】" class="headerlink" title="如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【1】"></a>如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【1】</h1><p>1、写这个帖子实在是无奈导致，以前都是用的其他翻墙工具，毕竟win下一点EXE就实现了，但是最近速度越来越慢有的失效，导致在安装itchatmp的时候，一开始搞了2个小时都没完全安装上所有的包。每当因为这些墙导致的时间浪费，想想一生中，被ZF莫名消耗了那么多的时间，真的是悲剧,所以总结此贴。</p>
-<p>2、首先方案是： ss+ chrome+ switchyomega </p>
-<p>3、什么是ss？ shadowsock,中文名影梭,SS有多牛，相对市面绝大多数vpn，速度快，github的star数量超过一万！由于太流弊，最近几天原始代码，作者被迫删除，至于为何，你懂的。</p>
-<p>4、switchyomega 是开源的一个代理切换工具。可以在谷歌的扩展商店搜索得到，也可以通过其github的官方连接得到。</p>
-<p>5、总体教程，由于原始SS代码已经删除，此文引用另一版本：</p>
-<p>电脑端下载 shadowscoks(<a href="https://github.com/breakwa11/shadowsocks-csharp/releases" target="_blank" rel="external">最新版下载链接</a>)，打开后开始配置，第一步选择 “编辑服务器”</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/095626690.png" alt=""></p>
-<p>6、使用以下网址的免费SS，右上角免费ss，注意，帐号信息6小时更新：如果你有其他更好的SS资源，欢迎分享。</p>
-<p><a href="http://www.ishadowsocks.org/" target="_blank" rel="external">http://www.ishadowsocks.org/</a></p>
-<p>7、把服务器信息对应填写：<br><img src="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/095906759.png" alt=""></p>
-<p>8、选择PAC，点击更新本地PAC为GFWList，如下图：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/100017940.png" alt=""></p>
-<p>9、此时应该能访问谷歌应用商店了，搜索：switchyomega，第一个就是，作者 FelisCatus，此作品github的star数量5K+，同时给出其地址： <a href="https://github.com/FelisCatus/SwitchyOmega/releases" target="_blank" rel="external">https://github.com/FelisCatus/SwitchyOmega/releases</a>。</p>
-<p>10、配置switchyomega,代理协议Sock5，代理服务器：127.0.0.1，代理端口1080:</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/100305004.png" alt=""></p>
-<p>11、测试，打开youtube，ok！星爷的《逃学威龙》，加载的时候略有卡，但总体速度不错哦。</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/100635406.png" alt=""></p>
-<p>12、Linux下的配置可参考老高的博客：</p>
-<p><a href="https://blog.phpgao.com/shadowsocks_on_linux.html" target="_blank" rel="external">https://blog.phpgao.com/shadowsocks_on_linux.html</a></p>
-<p>13、本文方案同样可延伸到QQ浏览器，但如果你使用的是Firexfox，则插件可用AutoProxy，亲测可用。</p>
-<p>14、可实现定时ss5密码邮件提醒的脚本，默认一小时间隔，实际他的作用并不大，这是因为当你能正常使用youtube的时候，表示ss5正常着，但如果打不开了，八成是密码更新了， 去对应网站手动更新下即可。但既然写了就记录下来，也许对谁有用。</p>
-<pre><code>import requests
+        <p><img src="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/224709467.png" alt=""></p>
+<h1 id="必须用女神的力量战胜叹息之墙"><a href="#必须用女神的力量战胜叹息之墙" class="headerlink" title="必须用女神的力量战胜叹息之墙"></a><strong>必须用女神的力量战胜叹息之墙</strong></h1><p>1、首先，请参考我的上一个帖子，实现了Win下的SS【快速】翻墙，如果没有SS，要翻墙都要忍受蜗牛速度。为SS的原版牛逼作者十万个赞，也要为翻版作者以及iss网站一万个赞。但是有个小问题，因为源头的SS账号每隔6小时变更，因此总是需要人工更新密码，那么如何把他做成自动更新？</p>
+<p>2、方案，爬虫捕捉新密码+重写json加载。</p>
+<p>3、细节分析：</p>
+<p>谷歌已经有人写了相关代码，可能是对照原版SS写的，如今我是用的是替代版本，因此需要做一定修改，【必须要谷歌*3】</p>
+<p>另外，我是用lxml代替了bs4，个人喜好。数据部分也变更修改，可能原作者写的时候网站数据模式和如今的不同。</p>
+<p>如下图，因为iss变更的是密码，因此爬虫也抓密码就好，比较简单</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/230709584.png" alt=""></p>
+<p>4、代码,关于json部分请看参考资料部分：</p>
+<pre><code># -*- coding: utf-8 -*-
+# python 3.5.2
+# 测试系统，Win10
+# Author:Van
+# 实现SS5本机自动更新密码，争取24小时保持连接
+# 实际做不到24小时，因为iss网站的密码的变更有一定时间的延迟
+# 所以最好能有其他的SS源头网站
+# V1.0
+# 欢迎各种改进意见
+# 请把对应的帐号密码修改成自己的
+
+
+import requests, json, os
 from lxml import etree
 import smtplib
 from email.mime.text import MIMEText
@@ -319,30 +320,59 @@ import time
 # define the time gap for checking in seconds
 # 3600 equals to 1 hour
 time_gap = 3600
-url = &apos;http://www.ishadowsocks.org/&apos;
+url = &apos;http://www.ishadowsocks.org&apos;
 html = requests.get(url).content.decode(&apos;utf-8&apos;)
 selector = etree.HTML(html)
-password = selector.xpath(&apos;//*[@id=&quot;free&quot;]/div/div[2]/div[3]/h4[3]/text()&apos;)[0]
-password = password.split(&apos;:&apos;)[-1]
-print(&apos;password is :&apos;, password)
+password = selector.xpath(&apos;//*[@id=&quot;free&quot;]/div/div[2]//h4[3]/text()&apos;)
+
+print(&apos;实时密码是：&apos;, password)
 temp_password = copy.deepcopy(password)
+print(&apos;临时密码是：&apos;, temp_password)
+a_pass = password[0].split(&apos;:&apos;)[-1]
+b_pass = password[1].split(&apos;:&apos;)[-1]
+c_pass = password[2].split(&apos;:&apos;)[-1]
+
+# 打开配置json文件
+# indent参数是缩进的意思
+class JSONObject:
+    def __init__(self,d):
+        self.__dict__=d
+    def to_JSON(self):
+        return json.dumps(self, default=lambda o: o.__dict__,
+            sort_keys=True, indent=4)
+
+def modify_json():
+    with open(&apos;E:\\迅雷下载\\ShadowsocksR-win-3.7.4.1\\gui-config.json&apos;,&apos;r&apos;) as f:
+        data = json.load(f,object_hook=JSONObject)
+        data.configs[0].password=a_pass
+        data.configs[1].password=b_pass
+        data.configs[2].password=c_pass
+        data=data.to_JSON()
+    with open(&apos;E:\\迅雷下载\\ShadowsocksR-win-3.7.4.1\\gui-config.json&apos;,&apos;w&apos;) as of:
+        of.write(data)
+    #打开程序
+    # os.system(&apos;E:\\迅雷下载\\ShadowsocksR-win-3.7.4.1\\ShadowsocksR-dotnet4.0.exe&apos;)
 
 def check_update():
+    global password
+    password = selector.xpath(&apos;//*[@id=&quot;free&quot;]/div/div[2]//h4[3]/text()&apos;)
 
     if temp_password == password:
         return password,False
     elif temp_password != password:
+        print(&apos;password changed, will update!&apos;)
         return password,True
+
 
 
 def send_email(htm):
     # send email to notice new WestWorld is coming
-    sender = &apos;xxxxxxxx@163.com&apos;
-    receiver = &apos;xxxxxxxx@qq.com,xxxxxxxx@163.com&apos;
+    sender = &apos;xxxxxx@163.com&apos;
+    receiver = &apos;xxxxxx@qq.com,xxxxxx@163.com&apos;
     subject = &apos;SS5密码有更新！&apos;
     smtpserver = &apos;smtp.163.com&apos;
-    username = &apos;xxxxxxxx@163.com&apos;
-    password = &apos;xxxxxxxx&apos;
+    username = &apos;xxxxxx@163.com&apos;
+    password = &apos;xxxxxx&apos;
     msg = MIMEText(htm, &apos;html&apos;, &apos;utf-8&apos;)
     msg[&apos;Subject&apos;] = Header(subject, &apos;UTF-8&apos;)
     msg[&apos;From&apos;] = sender
@@ -356,12 +386,20 @@ def send_email(htm):
 if __name__ == &apos;__main__&apos;:
     password, update = check_update()
     while 1:
-        if update == True:
-            send_email(password)
+        if update :
+            modify_json()
+            try:
+                send_email(str(password))
+            except Exception as e:
+                print(&quot;email failed:&quot;, e)
         temp_password = password
         time.sleep(time_gap)
-</code></pre><p>15、免责申明：</p>
-<p>此方法请用于个人科学查阅资料和个人娱乐所用，请遵相关法律，本文不承担任何因此造成的事故影响。</p>
+</code></pre><p>5、参考资料：</p>
+<ul>
+<li><a href="http://www.gaococ.com/2016/03/06/%E7%94%A8python%E5%AE%9E%E7%8E%B0shadowsocks%E5%AF%86%E7%A0%81%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0/" target="_blank" rel="external">用python实现shadowsocks密码自动更新</a></li>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c06/p02_read-write_json_data.html" target="_blank" rel="external">python3 cookbook</a></li>
+<li><a href="http://www.cnblogs.com/coser/archive/2011/12/14/2287739.html" target="_blank" rel="external">JSON概述以及PYTHON对JSON的相关操作</a></li>
+</ul>
 
       
     </div>
@@ -387,17 +425,13 @@ if __name__ == &apos;__main__&apos;:
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/21/阿里云建立微信公众号的相关资料/" rel="next" title="阿里云ECS建立微信公众号----以itchatmp为例【python】">
-                <i class="fa fa-chevron-left"></i> 阿里云ECS建立微信公众号----以itchatmp为例【python】
+              <a href="/2016/10/22/如何优雅的建立自己的SS5实现轻松快速翻墙/" rel="next" title="如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【1】">
+                <i class="fa fa-chevron-left"></i> 如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【1】
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/22/如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙-24小时运行-自动更新密码【2】/" rel="prev" title="如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【2】-24小时运行-自动更新密码">
-                如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【2】-24小时运行-自动更新密码 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -497,7 +531,7 @@ if __name__ == &apos;__main__&apos;:
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【1】"><span class="nav-number">1.</span> <span class="nav-text">如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【1】</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#必须用女神的力量战胜叹息之墙"><span class="nav-number">1.</span> <span class="nav-text">必须用女神的力量战胜叹息之墙</span></a></li></ol></div>
             
           </div>
         </section>

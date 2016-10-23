@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -235,8 +235,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/22/如何优雅的建立自己的SS5实现轻松快速翻墙/" itemprop="url">
-                  如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙
+                <a class="post-title-link" href="/2016/10/22/如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙-24小时运行-自动更新密码【2】/" itemprop="url">
+                  如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【2】-24小时运行-自动更新密码
                 </a>
               
             
@@ -248,7 +248,212 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-10-22T20:59:28+08:00" content="2016-10-22">
+              2016-10-22
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/224709467.png" alt=""></p>
+<h1 id="必须用女神的力量战胜叹息之墙"><a href="#必须用女神的力量战胜叹息之墙" class="headerlink" title="必须用女神的力量战胜叹息之墙"></a><strong>必须用女神的力量战胜叹息之墙</strong></h1><p>1、首先，请参考我的上一个帖子，实现了Win下的SS【快速】翻墙，如果没有SS，要翻墙都要忍受蜗牛速度。为SS的原版牛逼作者十万个赞，也要为翻版作者以及iss网站一万个赞。但是有个小问题，因为源头的SS账号每隔6小时变更，因此总是需要人工更新密码，那么如何把他做成自动更新？</p>
+<p>2、方案，爬虫捕捉新密码+重写json加载。</p>
+<p>3、细节分析：</p>
+<p>谷歌已经有人写了相关代码，可能是对照原版SS写的，如今我是用的是替代版本，因此需要做一定修改，【必须要谷歌*3】</p>
+<p>另外，我是用lxml代替了bs4，个人喜好。数据部分也变更修改，可能原作者写的时候网站数据模式和如今的不同。</p>
+<p>如下图，因为iss变更的是密码，因此爬虫也抓密码就好，比较简单</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/230709584.png" alt=""></p>
+<p>4、代码,关于json部分请看参考资料部分：</p>
+<pre><code># -*- coding: utf-8 -*-
+# python 3.5.2
+# 测试系统，Win10
+# Author:Van
+# 实现SS5本机自动更新密码，争取24小时保持连接
+# 实际做不到24小时，因为iss网站的密码的变更有一定时间的延迟
+# 所以最好能有其他的SS源头网站
+# V1.0
+# 欢迎各种改进意见
+# 请把对应的帐号密码修改成自己的
+
+
+import requests, json, os
+from lxml import etree
+import smtplib
+from email.mime.text import MIMEText
+from email.header import Header
+import copy
+import time
+
+# define the time gap for checking in seconds
+# 3600 equals to 1 hour
+time_gap = 3600
+url = &apos;http://www.ishadowsocks.org&apos;
+html = requests.get(url).content.decode(&apos;utf-8&apos;)
+selector = etree.HTML(html)
+password = selector.xpath(&apos;//*[@id=&quot;free&quot;]/div/div[2]//h4[3]/text()&apos;)
+
+print(&apos;实时密码是：&apos;, password)
+temp_password = copy.deepcopy(password)
+print(&apos;临时密码是：&apos;, temp_password)
+a_pass = password[0].split(&apos;:&apos;)[-1]
+b_pass = password[1].split(&apos;:&apos;)[-1]
+c_pass = password[2].split(&apos;:&apos;)[-1]
+
+# 打开配置json文件
+# indent参数是缩进的意思
+class JSONObject:
+    def __init__(self,d):
+        self.__dict__=d
+    def to_JSON(self):
+        return json.dumps(self, default=lambda o: o.__dict__,
+            sort_keys=True, indent=4)
+
+def modify_json():
+    with open(&apos;E:\\迅雷下载\\ShadowsocksR-win-3.7.4.1\\gui-config.json&apos;,&apos;r&apos;) as f:
+        data = json.load(f,object_hook=JSONObject)
+        data.configs[0].password=a_pass
+        data.configs[1].password=b_pass
+        data.configs[2].password=c_pass
+        data=data.to_JSON()
+    with open(&apos;E:\\迅雷下载\\ShadowsocksR-win-3.7.4.1\\gui-config.json&apos;,&apos;w&apos;) as of:
+        of.write(data)
+    #打开程序
+    # os.system(&apos;E:\\迅雷下载\\ShadowsocksR-win-3.7.4.1\\ShadowsocksR-dotnet4.0.exe&apos;)
+
+def check_update():
+    global password
+    password = selector.xpath(&apos;//*[@id=&quot;free&quot;]/div/div[2]//h4[3]/text()&apos;)
+
+    if temp_password == password:
+        return password,False
+    elif temp_password != password:
+        print(&apos;password changed, will update!&apos;)
+        return password,True
+
+
+
+def send_email(htm):
+    # send email to notice new WestWorld is coming
+    sender = &apos;xxxxxx@163.com&apos;
+    receiver = &apos;xxxxxx@qq.com,xxxxxx@163.com&apos;
+    subject = &apos;SS5密码有更新！&apos;
+    smtpserver = &apos;smtp.163.com&apos;
+    username = &apos;xxxxxx@163.com&apos;
+    password = &apos;xxxxxx&apos;
+    msg = MIMEText(htm, &apos;html&apos;, &apos;utf-8&apos;)
+    msg[&apos;Subject&apos;] = Header(subject, &apos;UTF-8&apos;)
+    msg[&apos;From&apos;] = sender
+    msg[&apos;To&apos;] = &apos;,&apos;.join(receiver)
+    smtp = smtplib.SMTP()
+    smtp.connect(smtpserver)
+    smtp.login(username, password)
+    smtp.sendmail(sender, receiver, msg.as_string())
+    smtp.quit()
+
+if __name__ == &apos;__main__&apos;:
+    password, update = check_update()
+    while 1:
+        if update :
+            modify_json()
+            try:
+                send_email(str(password))
+            except Exception as e:
+                print(&quot;email failed:&quot;, e)
+        temp_password = password
+        time.sleep(time_gap)
+</code></pre><p>5、参考资料：</p>
+<ul>
+<li><a href="http://www.gaococ.com/2016/03/06/%E7%94%A8python%E5%AE%9E%E7%8E%B0shadowsocks%E5%AF%86%E7%A0%81%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0/" target="_blank" rel="external">用python实现shadowsocks密码自动更新</a></li>
+<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c06/p02_read-write_json_data.html" target="_blank" rel="external">python3 cookbook</a></li>
+<li><a href="http://www.cnblogs.com/coser/archive/2011/12/14/2287739.html" target="_blank" rel="external">JSON概述以及PYTHON对JSON的相关操作</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/22/如何优雅的建立自己的SS5实现轻松快速翻墙/" itemprop="url">
+                  如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【1】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-22T11:59:28+08:00" content="2016-10-22">
               2016-10-22
             </time>
@@ -280,7 +485,7 @@
         
           
             <p><img src="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/191114998.png" alt=""></p>
-<h1 id="如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙"><a href="#如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙" class="headerlink" title="如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙"></a>如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙</h1><p>1、写这个帖子实在是无奈导致，以前都是用的其他翻墙工具，毕竟win下一点EXE就实现了，但是最近速度越来越慢有的失效，导致在安装itchatmp的时候，一开始搞了2个小时都没完全安装上所有的包。每当因为这些墙导致的时间浪费，想想一生中，被ZF莫名消耗了那么多的时间，真的是悲剧,所以总结此贴。</p>
+<h1 id="如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【1】"><a href="#如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【1】" class="headerlink" title="如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【1】"></a>如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【1】</h1><p>1、写这个帖子实在是无奈导致，以前都是用的其他翻墙工具，毕竟win下一点EXE就实现了，但是最近速度越来越慢有的失效，导致在安装itchatmp的时候，一开始搞了2个小时都没完全安装上所有的包。每当因为这些墙导致的时间浪费，想想一生中，被ZF莫名消耗了那么多的时间，真的是悲剧,所以总结此贴。</p>
 <p>2、首先方案是： ss+ chrome+ switchyomega </p>
 <p>3、什么是ss？ shadowsock,中文名影梭,SS有多牛，相对市面绝大多数vpn，速度快，github的star数量超过一万！由于太流弊，最近几天原始代码，作者被迫删除，至于为何，你懂的。</p>
 <p>4、switchyomega 是开源的一个代理切换工具。可以在谷歌的扩展商店搜索得到，也可以通过其github的官方连接得到。</p>
@@ -417,7 +622,7 @@ if __name__ == &apos;__main__&apos;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-21T11:59:28+08:00" content="2016-10-21">
               2016-10-21
             </time>
@@ -555,7 +760,7 @@ itchatmp.run()
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-20T16:59:28+08:00" content="2016-10-20">
               2016-10-20
             </time>
@@ -822,7 +1027,7 @@ while True:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-20T14:59:28+08:00" content="2016-10-20">
               2016-10-20
             </time>
@@ -926,7 +1131,7 @@ while True:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-17T12:59:28+08:00" content="2016-10-17">
               2016-10-17
             </time>
@@ -1027,7 +1232,7 @@ while True:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-15T12:59:28+08:00" content="2016-10-15">
               2016-10-15
             </time>
@@ -1275,7 +1480,7 @@ Out[7]: 118
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-13T20:59:28+08:00" content="2016-10-13">
               2016-10-13
             </time>
@@ -1505,7 +1710,7 @@ if __name__ == &apos;__main__&apos;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-11T20:59:28+08:00" content="2016-10-11">
               2016-10-11
             </time>
@@ -1753,7 +1958,7 @@ Process finished with exit code 0
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-10T13:59:28+08:00" content="2016-10-10">
               2016-10-10
             </time>
@@ -1851,106 +2056,6 @@ Process finished with exit code 0
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/08/数据分析的参考书集锦/" itemprop="url">
-                  数据分析的参考书集锦【Python】+【R】
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-10-08T20:59:28+08:00" content="2016-10-08">
-              2016-10-08
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="数据分析的参考书集锦，先保存过来再说。"><a href="#数据分析的参考书集锦，先保存过来再说。" class="headerlink" title="数据分析的参考书集锦，先保存过来再说。"></a>数据分析的参考书集锦，先保存过来再说。</h1><p>原文： <a href="http://bbs.pinggu.org/thread-3116701-1-1.html" target="_blank" rel="external">http://bbs.pinggu.org/thread-3116701-1-1.html</a></p>
-<h1 id="入门读物："><a href="#入门读物：" class="headerlink" title="入门读物："></a>入门读物：</h1><p>深入浅出数据分析 这书挺简单的，基本的内容都涉及了，说得也比较清楚，最后谈到了 R 是大加分。难易程度：非常易。<br>啤酒与尿布 通过案例来说事情，而且是最经典的例子。难易程度：非常易。<br>数据之美 一本介绍性的书籍，每章都解决一个具体的问题，甚至还有代码，对理解数据分析的应用领域和做法非常有帮助。难易程度：易。<br>数学之美 这本书非常棒啦，入门读起来很不错！<br>      下载地址：深入浅出数据分析、啤酒与尿布、数据之美、数学之美。</p>
-<p>数据分析：</p>
-<p>SciPy and NumPy 这本书可以归类为数据分析书吧，因为 numpy 和 scipy 真的是非常强大啊。<br>Python for Data Analysis 作者是 Pandas 包的作者，看过他在 Scipy 会议上的演讲，实例非常强！<br>Bad Data Handbook 很好玩的书，作者的角度很不同。<br>       下载地址：SciPy and NumPy、Python for Data Analysis、Bad Data Handbook</p>
-<h1 id="适合入门的教程："><a href="#适合入门的教程：" class="headerlink" title="适合入门的教程："></a>适合入门的教程：</h1><p>集体智慧编程 学习数据分析、数据挖掘、机器学习人员应该仔细阅读的第一本书。作者通过实际例子介绍了机器学习和数据挖掘中的算法，浅显易懂，还有可执行的 Python 代码。难易程度：中。<br>Machine Learning in Action 用人话把复杂难懂的机器学习算法解释清楚了，其中有零星的数学公式，但是是以解释清楚为目的的。而且有 Python 代码，大赞！目前中科院的王斌老师（微博： 王斌_ICTIR）已经翻译这本书了 机器学习实战 。这本书本身质量就很高，王老师的翻译质量也很高。难易程度：中。我带的研究生入门必看数目之一！<br>Building Machine Learning Systems with Python 虽然是英文的，但是由于写得很简单，比较理解，又有 Python 代码跟着，辅助理解。<br>数据挖掘导论 最近几年数据挖掘教材中比较好的一本书，被美国诸多大学的数据挖掘课作为教材，没有推荐 Jiawei Han 老师的那本书，因为个人觉得那本书对于初学者来说不太容易读懂。难易程度：中上。<br>Machine Learning for Hackers 也是通过实例讲解机器学习算法，用 R 实现的，可以一边学习机器学习一边学习 R。<br>       下载地址：集体智慧编程+源代码、Machine Learning in Action、Building Machine Learning Systems with Python、                            数据挖掘导论、Machine Learning for Hackers</p>
-<h1 id="稍微专业些的："><a href="#稍微专业些的：" class="headerlink" title="稍微专业些的："></a>稍微专业些的：</h1><p>Introduction to Semi-Supervised Learning 半监督学习必读必看的书。<br>Learning to Rank for Information Retrieval 微软亚院刘铁岩老师关于 LTR 的著作，啥都不说了，推荐！<br>Learning to Rank for Information Retrieval and Natural Language Processing 李航老师关于 LTR 的书，也是当时他在微软亚院时候的书，可见微软亚院对 LTR 的研究之深，贡献之大。<br>推荐系统实践 这本书不用说了，研究推荐系统必须要读的书，而且是第一本要读的书。<br>Graphical Models, Exponential Families, and Variational Inference 这个是 Jordan 老爷子和他的得意门徒 Martin J Wainwright 在 Foundation of Machine Learning Research 上的创刊号，可以免费下载，比较难懂，但是一旦读通了，graphical model 的相关内容就可以踏平了。<br>Natural Language Processing with Python NLP 经典，其实主要是讲 NLTK 这个包，但是啊，NLTK 这个包几乎涵盖了 NLP 的很多内容了啊！<br>   下载地址：Introduction to Semi-Supervised Learning、Learning to Rank for Information Retrieval、                           Learning to Rank for Information Retrieval and Natural Language Proces、推荐系统实践</p>
-<p>机器学习教材：<br>The Elements of Statistical Learning 这本书有对应的中文版：统计学习基础 。书中配有 R 包，非常赞！可以参照着代码学习算法。<br>统计学习方法 李航老师的扛鼎之作，强烈推荐。难易程度：难。<br>Machine Learning 去年出版的新书，作者 Kevin Murrphy 教授是机器学习领域中年少有为的代表。这书是他的集大成之作，写完之后，就去 Google 了，产学研结合，没有比这个更好的了。<br>Machine Learning 这书和上面的书不是一本！这书叫：Machine Learning: An Algorithmic Perspective 之前做过我带的研究生教材，由于配有代码，所以理解起来比较容易。<br>Pattern Recognition And Machine Learning 经典中的经典。<br>Bayesian Reasoning and Machine Learning 看名字就知道了，彻彻底底的 Bayesian 学派的书，里面的内容非常多，有一张图将机器学习中设计算法的关系总结了一下，很棒。<br>Probabilistic Graphical Models 鸿篇巨制，这书谁要是读完了告诉我一声。<br>Convex Optimization 凸优化中最好的教材，没有之一了。课程也非常棒，Stephen 老师拿着纸一步一步推到，图一点一点画，太棒了。<br>下载地址：The Elements of Statistical Learning、统计学习方法、Machine Learning: An Algorithmic Perspective、<br>                            Pattern Recognition and Machine Learning+答案、Bayesian Reasoning and Machine Learning、                                                   Probabilistic Graphical Models、Convexity and Optimization</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1996,8 +2101,8 @@ Process finished with exit code 0
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">63</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-count">64</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -2044,7 +2149,7 @@ Process finished with exit code 0
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
