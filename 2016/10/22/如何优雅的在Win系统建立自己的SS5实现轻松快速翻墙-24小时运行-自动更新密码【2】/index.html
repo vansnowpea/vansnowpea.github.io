@@ -98,7 +98,7 @@
 谷歌已经有人写了相关代码，可能是对照原版">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/224709467.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/230709584.png">
-<meta property="og:updated_time" content="2016-10-24T03:52:46.000Z">
+<meta property="og:updated_time" content="2016-10-24T04:04:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【2】-24小时运行-自动更新密码">
 <meta name="twitter:description" content="神之力量击穿叹息之墙1、首先，请参考我的上一个帖子，实现了Win下的SS【快速】翻墙，如果没有SS，要翻墙都要忍受蜗牛速度。为SS的原版牛逼作者十万个赞，也要为翻版作者以及iss网站一万个赞。但是有个小问题，因为源头的SS账号每隔6小时变更，因此总是需要人工更新密码，那么如何把他做成自动更新？
@@ -358,7 +358,7 @@ def modify_json():
 
 def check_update():
     # global password
-    # password = selector.xpath(&apos;//*[@id=&quot;free&quot;]/div/div[2]//h4[3]/text()&apos;)
+    password = selector.xpath(&apos;//*[@id=&quot;free&quot;]/div/div[2]//h4[3]/text()&apos;)
     # print(password)
     if temp_password == password:
         return password,False
