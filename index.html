@@ -351,12 +351,12 @@ def check_update():
 
 def send_email(htm):
     # send email to notice new WestWorld is coming
-    sender = &apos;fanqikai@163.com&apos;
-    receiver = &apos;409085788@qq.com,fanqikai@163.com&apos;
+    sender = &apos;xxxxx@163.com&apos;
+    receiver = &apos;xxxxx@qq.com,xxxxx@163.com&apos;
     subject = &apos;SS5密码有更新！&apos;
     smtpserver = &apos;smtp.163.com&apos;
-    username = &apos;fanqikai@163.com&apos;
-    password = &apos;fanka111&apos;
+    username = &apos;xxxxx@163.com&apos;
+    password = &apos;xxxxx&apos;
     msg = MIMEText(htm, &apos;html&apos;, &apos;utf-8&apos;)
     msg[&apos;Subject&apos;] = Header(subject, &apos;UTF-8&apos;)
     msg[&apos;From&apos;] = sender
