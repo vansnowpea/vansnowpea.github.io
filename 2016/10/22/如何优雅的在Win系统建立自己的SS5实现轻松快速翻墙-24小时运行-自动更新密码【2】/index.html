@@ -98,7 +98,7 @@
 谷歌已经有人写了相关代码，可能是对照原版">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/224709467.png">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/230709584.png">
-<meta property="og:updated_time" content="2016-10-24T03:17:41.000Z">
+<meta property="og:updated_time" content="2016-10-24T03:18:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【2】-24小时运行-自动更新密码">
 <meta name="twitter:description" content="神之力量击穿叹息之墙1、首先，请参考我的上一个帖子，实现了Win下的SS【快速】翻墙，如果没有SS，要翻墙都要忍受蜗牛速度。为SS的原版牛逼作者十万个赞，也要为翻版作者以及iss网站一万个赞。但是有个小问题，因为源头的SS账号每隔6小时变更，因此总是需要人工更新密码，那么如何把他做成自动更新？
@@ -293,7 +293,7 @@
 <p>2、方案，爬虫捕捉新密码+重写json加载。</p>
 <p>3、细节分析：</p>
 <p>谷歌已经有人写了相关代码，可能是对照原版SS写的，如今我是用的是替代版本，因此需要做一定修改，【必须要谷歌*3】</p>
-<p>另外，我是用lxml代替了bs4，个人喜好。数据部分也变更修改，可能原作者写的时候网站数据模式和如今的不同。另增加了一些函数。</p>
+<p>另外，我是用lxml代替了bs4，个人喜好。数据部分也变更修改，可能原作者写的时候网站数据模式和如今的不同，另增加了一些函数，而json部分的代码保留，只需根据自己的文件路径修改即可。</p>
 <p>如下图，因为iss变更的是密码，因此爬虫也抓密码就好，比较简单</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/230709584.png" alt=""></p>
 <p>4、代码,关于json部分请看参考资料部分：</p>
