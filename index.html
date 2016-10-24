@@ -298,6 +298,7 @@
 # V1.0
 # 欢迎各种改进意见
 # 请把对应的帐号密码修改成自己的
+# 请把SS软件的路径改成自己的
 
 
 import requests, json, os
@@ -309,15 +310,17 @@ import copy
 import time
 
 # define the time gap for checking in seconds
+# 60 equals to 1 minute
 # 3600 equals to 1 hour
-time_gap = 3600
+time_gap = 300
 url = &apos;http://www.ishadowsocks.org&apos;
 html = requests.get(url).content.decode(&apos;utf-8&apos;)
 selector = etree.HTML(html)
 password = selector.xpath(&apos;//*[@id=&quot;free&quot;]/div/div[2]//h4[3]/text()&apos;)
 
 print(&apos;实时密码是：&apos;, password)
-temp_password = copy.deepcopy(password)
+# temp_password = copy.deepcopy(password)
+temp_password = []
 print(&apos;临时密码是：&apos;, temp_password)
 a_pass = password[0].split(&apos;:&apos;)[-1]
 b_pass = password[1].split(&apos;:&apos;)[-1]
@@ -345,9 +348,9 @@ def modify_json():
     # os.system(&apos;E:\\迅雷下载\\ShadowsocksR-win-3.7.4.1\\ShadowsocksR-dotnet4.0.exe&apos;)
 
 def check_update():
-    global password
-    password = selector.xpath(&apos;//*[@id=&quot;free&quot;]/div/div[2]//h4[3]/text()&apos;)
-
+    # global password
+    # password = selector.xpath(&apos;//*[@id=&quot;free&quot;]/div/div[2]//h4[3]/text()&apos;)
+    # print(password)
     if temp_password == password:
         return password,False
     elif temp_password != password:
@@ -358,12 +361,12 @@ def check_update():
 
 def send_email(htm):
     # send email to notice new WestWorld is coming
-    sender = &apos;xxxxxx@163.com&apos;
-    receiver = &apos;xxxxxx@qq.com,xxxxxx@163.com&apos;
+    sender = &apos;fanqikai@163.com&apos;
+    receiver = &apos;409085788@qq.com,fanqikai@163.com&apos;
     subject = &apos;SS5密码有更新！&apos;
     smtpserver = &apos;smtp.163.com&apos;
-    username = &apos;xxxxxx@163.com&apos;
-    password = &apos;xxxxxx&apos;
+    username = &apos;fanqikai@163.com&apos;
+    password = &apos;fanka111&apos;
     msg = MIMEText(htm, &apos;html&apos;, &apos;utf-8&apos;)
     msg[&apos;Subject&apos;] = Header(subject, &apos;UTF-8&apos;)
     msg[&apos;From&apos;] = sender
@@ -383,7 +386,8 @@ if __name__ == &apos;__main__&apos;:
                 send_email(str(password))
             except Exception as e:
                 print(&quot;email failed:&quot;, e)
-        temp_password = password
+        temp_password = copy.deepcopy(password)
+        print(&apos;新的临时密码是：&apos;, temp_password)
         time.sleep(time_gap)
 </code></pre><p>5、参考资料：</p>
 <ul>
