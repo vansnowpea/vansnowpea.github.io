@@ -364,7 +364,7 @@ if __name__ == &apos;__main__&apos;:
                 print(&quot;email failed:&quot;, e)
         pwd, update = check_update()
         time.sleep(TIME_GAP)
-</code></pre><p>5、测试结果：<br>   通过5分钟一次取密码，重点挂差iss站在更换密码的时候，有以下特点：</p>
+</code></pre><p>5、测试结果：<br>   通过5分钟一次取密码，重点观察iss站在更换密码的时候，有以下特点：</p>
 <ul>
 <li>比如18点换密码，老密码回马上失效，但新密码不是马上更新到网站，导致有一段时间的真空期</li>
 <li>同时，这段时间，读取的密码出现了波动，不过总体影响不算太大。</li>
