@@ -235,8 +235,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/22/Atom 一款编辑神器/" itemprop="url">
-                  如何优雅的在Win系统建立自己的SS5实现轻松快速翻墙【2】-24小时运行-自动更新密码
+                <a class="post-title-link" href="/2016/10/25/Atom 一款编辑神器/" itemprop="url">
+                  Atom 一款编辑神器
                 </a>
               
             
@@ -249,8 +249,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-10-22T20:59:28+08:00" content="2016-10-22">
-              2016-10-22
+            <time itemprop="dateCreated" datetime="2016-10-25T10:59:28+08:00" content="2016-10-25">
+              2016-10-25
             </time>
           </span>
 
@@ -279,113 +279,7 @@
       
         
           
-            <p><img src="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/224709467.png" alt=""></p>
-<h1 id="神之力量击穿叹息之墙"><a href="#神之力量击穿叹息之墙" class="headerlink" title="神之力量击穿叹息之墙"></a><strong>神之力量击穿叹息之墙</strong></h1><p>1、首先，<a href="https://vansnowpea.github.io/2016/10/22/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84SS5%E5%AE%9E%E7%8E%B0%E8%BD%BB%E6%9D%BE%E5%BF%AB%E9%80%9F%E7%BF%BB%E5%A2%99/" target="_blank" rel="external">请参考我的上一个帖子</a>，实现了Win下的SS【快速】翻墙，如果没有SS，要翻墙都要忍受蜗牛速度。为SS的原版牛逼作者十万个赞，也要为翻版作者以及iss网站一万个赞。但是有个小问题，因为源头的SS账号每隔6小时变更，因此总是需要人工更新密码，那么如何把他做成自动更新？</p>
-<p>2、方案，爬虫捕捉新密码+重写json加载。</p>
-<p>3、细节分析：</p>
-<p>用lxml代替了bs4，数据部分也变更修改，可能原作者写的时候网站数据模式和如今的不同，另增加了一些函数。</p>
-<p>如下图，因为iss变更的是密码，因此爬虫也抓密码就好，比较简单</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com//blog/20161023/230709584.png" alt=""></p>
-<p>4、代码,关于json部分请看参考资料部分：</p>
-<pre><code># -*- coding: utf-8 -*-
-# python 3.5.2
-# 测试系统，Win10
-# Author:Van
-# 实现SS5本机自动更新密码，争取24小时保持连接
-# 实际做不到24小时，因为iss网站的密码的变更有一定时间的延迟
-# 所以最好能有其他的SS源头网站
-# V1.0
-# 欢迎各种改进意见
-# 请把对应的帐号密码修改成自己的
-# 请把SS软件的路径改成自己的
-
-
-import requests, json, os, copy, time
-from lxml import etree
-import smtplib
-from email.mime.text import MIMEText
-from email.header import Header
-
-TIME_GAP = 300
-CONFIG_DIR = &apos;E:\\迅雷下载\\ShadowsocksR-win-3.7.4.1\\gui-config.json&apos;
-
-oldPwdList = []
-
-def modify_json(pwd):
-    with open(CONFIG_DIR,&apos;r&apos;) as f:
-        data = json.loads(f.read())
-        for index, rawPwd in enumerate(pwd):
-            data[&apos;configs&apos;][index][&apos;password&apos;] = rawPwd.split(&apos;:&apos;)[-1]
-    data = json.dumps(data)
-    print(data)
-    with open(CONFIG_DIR,&apos;w&apos;) as f:
-        f.write(data)
-
-def check_update():
-    url = &apos;http://www.ishadowsocks.org&apos;
-    html = requests.get(url).content.decode(&apos;utf-8&apos;, &apos;replace&apos;)
-    pwd = etree.HTML(html).xpath(&apos;//*[@id=&quot;free&quot;]/div/div[2]//h4[3]/text()&apos;)
-    print(&apos;实时密码是：&apos;, pwd)
-
-    if not pwd or oldPwdList == pwd:
-        return pwd, False
-    else:
-        return pwd, True
-
-def send_email(htm):
-    # send email to notice new WestWorld is coming
-    sender = &apos;xxxxxx@163.com&apos;
-    receiver = &apos;xxxxxx@qq.com,xxxxxx@163.com&apos;
-    subject = &apos;SS5密码有更新！&apos;
-    smtpserver = &apos;smtp.163.com&apos;
-    username = &apos;xxxxxx@163.com&apos;
-    password = &apos;xxxxxx&apos;
-    msg = MIMEText(htm, &apos;html&apos;, &apos;utf-8&apos;)
-    msg[&apos;Subject&apos;] = Header(subject, &apos;UTF-8&apos;)
-    msg[&apos;From&apos;] = sender
-    msg[&apos;To&apos;] = &apos;,&apos;.join(receiver)
-    smtp = smtplib.SMTP()
-    smtp.connect(smtpserver)
-    smtp.login(username, password)
-    smtp.sendmail(sender, receiver, msg.as_string())
-    smtp.quit()
-
-if __name__ == &apos;__main__&apos;:
-    pwd, update = check_update()
-    while 1:
-        if update:
-            print(&apos;password changed, will update!&apos;)
-            modify_json(pwd)
-            oldPwdList = pwd
-            print(&apos;新的临时密码是：&apos;, oldPwdList)
-            try:
-                send_email(str(pwd))
-            except Exception as e:
-                print(&quot;email failed:&quot;, e)
-        pwd, update = check_update()
-        time.sleep(TIME_GAP)
-</code></pre><p>5、测试结果：<br>   通过5分钟一次取密码，重点观察iss站在更换密码的时候，有以下特点：</p>
-<ul>
-<li>比如18点换密码，老密码回马上失效，但新密码不是马上更新到网站，导致有一段时间的真空期</li>
-<li>同时，这段时间，读取的密码出现了波动，不过总体影响不算太大。</li>
-</ul>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com//blog/20161024/190737721.png" alt=""></p>
-<p>6、SS 资源站点列表：</p>
-<ul>
-<li><a href="http://www.ishadowsocks.org/" target="_blank" rel="external">http://www.ishadowsocks.org/</a></li>
-<li><a href="http://freevpnss.cc/" target="_blank" rel="external">http://freevpnss.cc/</a></li>
-</ul>
-<p>7、参考资料：</p>
-<ul>
-<li><a href="http://www.gaococ.com/2016/03/06/%E7%94%A8python%E5%AE%9E%E7%8E%B0shadowsocks%E5%AF%86%E7%A0%81%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0/" target="_blank" rel="external">用python实现shadowsocks密码自动更新</a></li>
-<li><a href="http://python3-cookbook.readthedocs.io/zh_CN/latest/c06/p02_read-write_json_data.html" target="_blank" rel="external">python3 cookbook</a></li>
-<li><a href="http://www.cnblogs.com/coser/archive/2011/12/14/2287739.html" target="_blank" rel="external">JSON概述以及PYTHON对JSON的相关操作</a></li>
-</ul>
-<p>8、安卓手机测试了类似方案，也是通过的，其实更简单，都不需要设置浏览器。</p>
-<p>9、特别感谢</p>
-<p>LittleCoder 帮忙修正了bug，美化了代码。</p>
-<p>10、github库：</p>
-<p><a href="https://github.com/vansnowpea/shadowsocks-24hr-atuo-by-python" target="_blank" rel="external">https://github.com/vansnowpea/shadowsocks-24hr-atuo-by-python</a></p>
+            <h1 id="Atom-一款编辑神器"><a href="#Atom-一款编辑神器" class="headerlink" title="Atom 一款编辑神器"></a>Atom 一款编辑神器</h1><p>1、今天偶然看到一个atom的动图打字效果，好流弊，所以研究了下。</p>
 
           
         
