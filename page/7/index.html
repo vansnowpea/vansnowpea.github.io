@@ -235,6 +235,181 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/28/如何实现Win下写文章自动更新Github的博客/" itemprop="url">
+                  实现Win下本机操作自动更新Hexo到远程Github
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-08-28T10:58:00+08:00" content="2016-08-28">
+              2016-08-28
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1472363506&di=21636bfaef96b03ef9601482dd79b3ef&src=http://img.taopic.com/uploads/allimg/110819/1717-110Q921405795.jpg" rel="gallery_ciunega1z0013xkue91fccsfo"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1472363506&di=21636bfaef96b03ef9601482dd79b3ef&src=http://img.taopic.com/uploads/allimg/110819/1717-110Q921405795.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        
+          
+            <p>在实现了VPS上Win系统中Github博客布置之后，虽可实现多机远程操作，而无需每个机器pull，push的烦恼了。但是每次更新博客的时候，有一些命令是不断重复的，比如：hexo g, hexo d, hexo s。而VPS到本机，即便是国内网络也是有一定延迟，如果VPS在国外延迟就更大了。 当你在VPS输入上述命令的时候，也会因为文件数量的增多而延长响应时间，这导致体验感不是很好。</p>
+<p>所以，一个新的需求产生了，如何能在本地+MP编辑好文章后，让VPS自动更新发布呢？</p>
+<hr>
+<p>华丽的分割线</p>
+<hr>
+<p>1、网上有的人推荐Dropbox实现文件同步，但需要翻墙，为简单，这里测试安装坚果云，<a href="https://www.jianguoyun.com" target="_blank" rel="external">官网【点我】</a></p>
+<p>2、把VPS上的_posts文件夹通过坚果云进行同步，同时本地电脑登录坚果云，这样就实现了两头的文件自动同步。</p>
+<hr>
+<p>3、剩下的问题就是如何在VPS自动即时更新，去找找资料，继续分割线</p>
+<p>the most important thing here is to build a tool to update the articles automatically.</p>
+<hr>
+<p>4、国内外的都没直接的案例，只有零星的讲解Python的subprocess函数，最后，我通过自己编写的Python程序实现了VPS上的博客自动更新，也算原创，对Python顿感深爱，代码在第6部分。</p>
+<p>5、下面是考虑问题过程中的一些思路，仅作为记录，可忽略之。</p>
+<p>目前，搜索到的基于Hexo的自动更新博客的2个帖子都基于Linux系统，但因我的VPS是基于Win的，所以一开始的思路是搜索网络是否有Win的类似的解决方案，但是找了半天没发现。后来想到：</p>
+<p>思路1:</p>
+<p>看看针对Linux系统方案的工具软件，是否得到Win系统的下载和支持，但是，监测文件系统变化这样的工作与操作系统是紧密相关的，在不同平台下需要有不同的实现。Linux下内核的INotify接口目前是实现这一功能的通用方法，文件发生变化是内核会通知user space的程序哪个文件发生了什么变化。在KDE等GUI下都是使用基于INotify的User Space Library来实现检测文件变化的。Windows下可以通过ctypes库调用Win32的API来实现。 </p>
+<p>思路2：</p>
+<p>是否可以用Python来实现？赶紧搜了下，比如<a href="http://blog.csdn.net/cracker_zhou/article/details/50704640" target="_blank" rel="external">这个网址【点我】</a>发现一些信息:</p>
+<p>首先，pyinotify是Python基于Linux的inotify模块的。</p>
+<p>其次：watchdog不同平台的的事件都进行了封装。主要有三个角色：observer，event_handler，被监控的文件夹。三者原本是独立的，主要通过observer.schedule函数将三者串起来，意思为observer不断检测调用平台依赖代码对监控文件夹进行变动检测，当发现改变时，通知event_handler处理。</p>
+<p>再次：然而，突然想到只要有文件更新，文件夹的最后修改时间就会变更，从这个角度来说，核心命令就是：</p>
+<pre><code>`os.path.getmtime(file)`  
+</code></pre><p>6、程序代码(请根据自己路径修改 file和path,转载请注明出处)：</p>
+<pre><code>__author__ = &apos;Van&apos;
+
+#-*- coding:utf-8 -*-
+
+import os
+import time
+import subprocess
+
+file = &apos;C:\\Users\\Administrator\\TestBlog\\vansnowpea.github.io\\source\\_posts\\&apos;
+path = &quot;C:\\Users\\Administrator\\TestBlog\\vansnowpea.github.io&quot;
+t1 = os.path.getmtime(file)
+print (t1)
+
+def update_Hexo():
+    print (&apos;hi&apos;)
+    p = subprocess.Popen(&apos;cmd.exe&apos;, shell=True, stdin=subprocess.PIPE)
+    p.stdin.write(&apos;cd &apos;+ path + &apos;\n&apos;)
+    p.stdin.write(&apos;hexo generate --deploy&apos; + &apos;\n&apos;)
+    p.stdin.close()
+    #p.wait()
+    #print sys.stdout.readline()
+
+
+while 1:
+    time.sleep(1)
+    t2 = os.path.getmtime(file)
+    if t2 == t1:
+        pass
+
+    else:
+        print(&apos;file was modified, will update Hexo!&apos;)
+        update_Hexo()
+
+
+    print(&apos; update Hexo done!&apos;)
+    t1 = t2
+
+
+
+if __name__ == &quot;__main__&quot;:
+    pass
+</code></pre><p>7、更新：<br>   把自动程序升级到了批处理文件，具体见下一个帖子。：）</p>
+<p>8、参考： 基于Linux系统的： <a href="http://www.geekcat.xyz/hexo/vps_dropbox_hexo.html" target="_blank" rel="external">VPS+Dropbox+markeditor打造Hexo完美体验</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/27/如何在Win系统实现Github博客的管理/" itemprop="url">
                   如何在Win系统实现Github博客的管理
                 </a>
@@ -689,7 +864,7 @@ $ sudo cnpm install hexo-cli -g
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">64</span>
+              <span class="site-state-item-count">65</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
