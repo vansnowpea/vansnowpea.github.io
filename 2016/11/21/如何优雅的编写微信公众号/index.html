@@ -99,7 +99,7 @@
 
 从A公众号的编辑模式，全文复制到B公众号编辑模式，出现了图片的说明文字不按照">
 <meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-11-21/135937343.gif">
-<meta property="og:updated_time" content="2016-11-21T06:48:36.000Z">
+<meta property="og:updated_time" content="2016-11-21T06:58:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何优雅的编写微信公众号">
 <meta name="twitter:description" content="微信富文本的硬伤在微信公众号的编辑发布过程中，有一些很不方便的地方，如：
@@ -305,7 +305,7 @@
 </ul>
 <p>以上种种因素，使得最初在我申请了微信公众号之后，从喜到忧的感受大致可以用这个图形容：</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-11-21/135937343.gif" alt=""></p>
-<h1 id="思路：从markdown过度到富文本"><a href="#思路：从markdown过度到富文本" class="headerlink" title="思路：从markdown过度到富文本"></a>思路：从markdown过度到富文本</h1><p>从上面的分析看出，编辑采用markdown模式，而公众号的发布只能是富文本模式，那么剩下就是如何优雅的解决从markdown到富文本的过度？</p>
+<h1 id="思路：从markdown过渡到富文本"><a href="#思路：从markdown过渡到富文本" class="headerlink" title="思路：从markdown过渡到富文本"></a>思路：从markdown过渡到富文本</h1><p>从上面的分析看出，编辑采用markdown模式，而公众号的发布只能是富文本模式，那么剩下就是如何优雅的解决从markdown到富文本的过渡？</p>
 <h2 id="方案1："><a href="#方案1：" class="headerlink" title="方案1："></a>方案1：</h2><p>采用浏览器插件 【<strong>markdown here</strong>】？？ 这是一些网友得到的解决方案，但我实测有一个明显的问题，那就针对超链接图片，在微信公众号预览是有的，但发送到手机就没有了。额外测试了下，如果要让图片显示，你要在编辑模式把全文复制，再全文删除，然后重新粘贴一次，再保存，再预览（或发布）才显示图片，但这你能忍？这个坑爹的问题，是微信公众号必须要把外部的超链接经过css渲染之后才能发挥作用。</p>
 <h2 id="方案2："><a href="#方案2：" class="headerlink" title="方案2："></a>方案2：</h2><p>利用脚本程序来调整CSS，但这牵涉代码修改，比如说，有一个方案提到：【花 1 天时间，学会如何写一个简单包含 replacements 函数的 Python 脚本】。以个人经验，如果对从没接触python语言的朋友真想一天内解决，是相当有难度的，故不展开。</p>
 <h2 id="方案3："><a href="#方案3：" class="headerlink" title="方案3："></a>方案3：</h2><p>你想，无非是要让微信后台识别CSS渲染，而很多markdown编辑器自带了HTML预览功能，里面就有CSS渲染，这样，就实现了超链接图片的加载，然后全部复制后粘贴到微信公众号正文编辑区域，就ok了。 以MarkdownPad 2 为例，F6自动HTML预览到本地。</p>
@@ -462,7 +462,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#微信富文本的硬伤"><span class="nav-number">1.</span> <span class="nav-text">微信富文本的硬伤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思路：从markdown过度到富文本"><span class="nav-number">2.</span> <span class="nav-text">思路：从markdown过度到富文本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方案1："><span class="nav-number">2.1.</span> <span class="nav-text">方案1：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方案2："><span class="nav-number">2.2.</span> <span class="nav-text">方案2：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方案3："><span class="nav-number">2.3.</span> <span class="nav-text">方案3：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工具列表-，基于Win系统"><span class="nav-number">4.</span> <span class="nav-text">工具列表 ，基于Win系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-number">6.</span> <span class="nav-text">其他</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#微信富文本的硬伤"><span class="nav-number">1.</span> <span class="nav-text">微信富文本的硬伤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思路：从markdown过渡到富文本"><span class="nav-number">2.</span> <span class="nav-text">思路：从markdown过渡到富文本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方案1："><span class="nav-number">2.1.</span> <span class="nav-text">方案1：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方案2："><span class="nav-number">2.2.</span> <span class="nav-text">方案2：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方案3："><span class="nav-number">2.3.</span> <span class="nav-text">方案3：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工具列表-，基于Win系统"><span class="nav-number">4.</span> <span class="nav-text">工具列表 ，基于Win系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-number">6.</span> <span class="nav-text">其他</span></a></li></ol></div>
             
           </div>
         </section>
