@@ -235,6 +235,236 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/13/西部世界 1080P高清下载和自动提醒后续新出的/" itemprop="url">
+                  西部世界 1080P高清下载和自动提醒后续新出的【Python】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-10-13T20:59:28+08:00" content="2016-10-13">
+              2016-10-13
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="西部世界-1080P高清下载和自动提醒后续新出的"><a href="#西部世界-1080P高清下载和自动提醒后续新出的" class="headerlink" title="西部世界 1080P高清下载和自动提醒后续新出的"></a>西部世界 1080P高清下载和自动提醒后续新出的</h1><p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-14/005536645.jpg" alt=""></p>
+<p>1、主要思路是，通过高清源头的网站提供的资源，爬取后，通过迅雷实现自动下载，<br>然后后续新出的，比如下周1更新后，脚本会自动捕捉后发邮件通知，并自动下载。</p>
+<p>2、代码：</p>
+<pre><code># -*- coding: utf-8 -*-
+# python 3.5.2
+# 测试系统，Win10
+# Author:Van
+# 实现《西部世界》有更新后自动下载，以及邮件通知
+# V1.0
+# 欢迎各种改进意见
+# 请把对应的帐号密码修改成自己的
+
+
+# from selenium import webdriver
+import requests
+from lxml import etree
+import time
+import os
+from win32com.client import Dispatch
+import smtplib
+from email.mime.text import MIMEText
+from email.header import Header
+import copy
+
+# hints
+print(&apos;请确保电脑安装了迅雷&apos;)
+print(&apos;如果你用的是破解版的迅雷，请先开启再运行程序&apos;)
+print()
+# requests
+url = &apos;http://www.btbtdy.com/btdy/dy7280.html&apos;
+html = requests.get(url).content.decode(&apos;utf-8&apos;)
+
+# lxml
+selector = etree.HTML(html)
+real_link = []
+
+# to be easy, try &apos;starts-with&apos; , very useful in this case :)
+HDTV = selector.xpath(&apos;//a[starts-with(@title, &quot;HDTV-1080P&quot;)]/text()&apos;)
+for each in HDTV:
+    print(each)
+
+
+href = selector.xpath(&apos;//a[starts-with(@title, &quot;HDTV-1080P&quot;)]/@href&apos;)
+print()
+print(&apos;目前有 %d 集西部世界&apos; %len(href))
+print()
+
+for each in href:
+    # split to get the right magnet link
+    each = &apos;magnet&apos; + each.split(&apos;magnet&apos;)[-1]
+    # print(each)
+    real_link.append(each)
+
+print(&apos;他们的磁链接是 :\n&apos;, real_link)
+# define a temp_link in deepcopy to compare for new series
+temp_link = copy.deepcopy(real_link)
+print(&apos;temp_link is :&apos;, temp_link)
+
+
+
+
+def addTasktoXunlei(down_url,course_infos):
+    flag = False
+    o = Dispatch(&quot;ThunderAgent.Agent.1&quot;)
+    if down_url:
+        course_path = os.getcwd()
+        try:
+            #AddTask(&quot;下载地址&quot;, &quot;另存文件名&quot;, &quot;保存目录&quot;,&quot;任务注释&quot;,&quot;引用地址&quot;,&quot;开始模式&quot;, &quot;只从原始地址下载&quot;,&quot;从原始地址下载线程数&quot;)
+            o.AddTask(down_url, &apos;&apos;, course_path, &quot;&quot;, &quot;&quot;, -1, 0, 5)
+            o.CommitTasks()
+            flag = True
+        except Exception:
+
+            print(Exception.message)
+            print(&quot; AddTask is fail!&quot;)
+    return flag
+
+def new_href():
+    # to judge if there is a new series of WestWorld
+    time.sleep(2)
+    if len(real_link) &gt; len(temp_link):
+        print(&apos;西部世界1080P有更新!&apos;)
+        print(&apos;现在一共有 %d 集了。&apos; %len(real_link))
+        return True
+    else:
+        return False
+
+def send_email(htm):
+    # send email to notice new WestWorld is coming
+    sender = &apos;xxxxxxxx@163.com&apos;
+    receiver = &apos;xxxxxxxx@qq.com,xxxxxxxx@163.com&apos;
+    subject = &apos;西部世界 1080P有更新！&apos;
+    smtpserver = &apos;smtp.163.com&apos;
+    username = &apos;xxxxxxxx@163.com&apos;
+    password = &apos;xxxxxxxx&apos;
+    msg = MIMEText(htm, &apos;html&apos;, &apos;utf-8&apos;)
+    msg[&apos;Subject&apos;] = Header(subject, &apos;UTF-8&apos;)
+    msg[&apos;From&apos;] = sender
+    msg[&apos;To&apos;] = &apos;,&apos;.join(receiver)
+    smtp = smtplib.SMTP()
+    smtp.connect(smtpserver)
+    smtp.login(username, password)
+    smtp.sendmail(sender, receiver, msg.as_string())
+    smtp.quit()
+
+def new_download():
+    # only download the new WestWorld series
+    if len(real_link) &gt; len(temp_link):
+        # 2个地址数据的差集
+        new_link = list(set(real_link).difference(set(temp_link)))
+        for i in new_link:
+            addTasktoXunlei(i, course_infos=None)
+
+
+
+if __name__ == &apos;__main__&apos;:
+    # download the exiting series of WestWorld
+    # send_email(&apos;最新更新磁链接：&apos;+ str(real_link))
+    for i in real_link:
+        addTasktoXunlei(i, course_infos=None)
+
+    # to get the later WestWorld for each hour
+    while 1:
+        if new_href():
+            send_email(&apos;所有的下载地址（磁链接）：&apos;+ str(real_link))
+            new_download()
+            time.sleep(15)
+            # wait for an hour
+            temp_link = real_link
+            print(temp_link)
+            print(&apos;神剧很好看吧，亲，耐心等下一集！~！&apos;)
+</code></pre><p>3、代码分析，其中用到了deepcopy，这个功能很有用，并配合了2个数组的差集，使得可以规避定时器，而让脚本直接比较temp_link的内容，而扑捉到网站有新的更新了。另外，在地址识别的时候，一开始用.xpath 没显示内容，有点奇怪，后来根据特性，使用了strats_with识别了内容。另外，原始的邮件发送函数，是一个接收人，如果要多发，则receiver的格式为list，并修改 msg[‘To’] = ‘,’.join(receiver)</p>
+<p>4、邮件的作用是可以利用微信绑定来推送，相对短信，更觉方便。</p>
+<p>5、感谢：<br> @陌 提供了163发送email的代码<br> @何方 提供了高清网站源<br> @其他人，交流了细节</p>
+<p>6、可改进点：<br>邮件的地址内容显示的是一个列表，有待改进。</p>
+<p>7、github对应仓库:</p>
+<p><a href="https://github.com/vansnowpea/WestWorld-auto-download-email-xunlei-" target="_blank" rel="external">https://github.com/vansnowpea/WestWorld-auto-download-email-xunlei-</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/11/下载国外最新高清pdf的程序测试/" itemprop="url">
                   国外最新高清pdf寻找以及实现迅雷自动下载【Python】
                 </a>
@@ -1418,127 +1648,6 @@ mpl.rcParams[&apos;axes.unicode_minus&apos;] = False #解决保存图像是负�
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/25/《利用Python进行数据分析》如何把kindle的电子书转成pdf的教程/" itemprop="url">
-                  如何把kindle的电子书转成word等格式的教程
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-25T23:20:28+08:00" content="2016-09-25">
-              2016-09-25
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="简介：-如何把kindle的电子书转成word等格式的教程-：）"><a href="#简介：-如何把kindle的电子书转成word等格式的教程-：）" class="headerlink" title="简介： 如何把kindle的电子书转成word等格式的教程 ：）"></a>简介： 如何把kindle的电子书转成word等格式的教程 ：）</h1><p>1、参考知乎的步骤， <a href="http://www.zhihu.com/question/38451995" target="_blank" rel="external">http://www.zhihu.com/question/38451995</a></p>
-<p>2、下载去除DRM的破解版本，不然只能破解3本书，参考此网址： <a href="http://www.d9soft.com/soft/102882.htm" target="_blank" rel="external">http://www.d9soft.com/soft/102882.htm</a></p>
-<p>3、使用该网站，进行pdf转换： <a href="http://www.epubconverter.com/azw-to-pdf-converter/" target="_blank" rel="external">http://www.epubconverter.com/azw-to-pdf-converter/</a></p>
-<p>4、成功把《利用Python进行数据分析》转成了pdf，当然我事先花销了巨额的0.1元注册了一个Kindle Unlimited  帐号</p>
-<p>5、为了方便复制书中的代码实例，继续用calibre 软件进行转换成docx格式，不用对着那些网上的扫描版，或者纸质书，坑爹的挨个自己输入命令了有木有， </p>
-<p>6、示范图： </p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-26/001138836.png" alt=""></p>
-<p>7、我已经为偷懒的你，上传了本书，可以直接下载word版本啦。请点击<a href="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-26/001313882.docx" target="_blank" rel="external">【下载点我】</a></p>
-<p>8、记得重命名，方便以后查找。</p>
-<p>9、第八章spx指数的举例，代码我修正到pycharm里：</p>
-<pre><code>import matplotlib.pyplot as plt
-from datetime import datetime
-import pandas as pd
-fig = plt.figure()
-ax = fig.add_subplot(1, 1, 1)
-data = pd.read_csv(&apos;D:\mine\pydata-book-master\ch08/spx.csv&apos;, index_col=0, parse_dates=True)
-spx = data[&apos;SPX&apos;]
-spx.plot(ax=ax, style=&apos;k-&apos;)
-crisis_data = [      (datetime(2007, 10, 11), &apos;Peak of bull market&apos;),      (datetime(2008, 3, 12), &apos;Bear Stearns Fails&apos;),      (datetime(2008, 9, 15), &apos;Lehman Bankruptcy&apos;) ]
-for date, label in crisis_data:
-    ax.annotate(label, xy=(date, spx.asof(date) + 50),                 xytext=(date, spx.asof(date) + 200),                 arrowprops=dict(facecolor=&apos;black&apos;),                 horizontalalignment=&apos;left&apos;, verticalalignment=&apos;top&apos;)
-# 放大到2007-2010
-    ax.set_xlim([&apos;1/1/2007&apos;, &apos;1/1/2011&apos;])
-    ax.set_ylim([600, 1800])
-    ax.set_title(&apos;Important dates in 2008-2009 financial crisis&apos;)
-
-plt.show()
-</code></pre><p>结果图，有木有一点专业的味道？<br> <img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-26/105503895.png" alt=""></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1584,7 +1693,7 @@ plt.show()
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-count">67</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>

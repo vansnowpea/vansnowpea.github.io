@@ -235,6 +235,191 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/13/把维基百科首页词条的数据导入mysql/" itemprop="url">
+                  把维基百科首页词条的数据导入mysql以及读取操作【Python】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-13T00:59:29+08:00" content="2016-09-13">
+              2016-09-13
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/learn/712" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、<a href="https://vansnowpea.github.io/2016/09/13/%E7%BB%B4%E5%9F%BA%E7%99%BE%E7%A7%91%E9%A6%96%E9%A1%B5%E8%AF%8D%E6%9D%A1%E7%9A%84%E7%88%AC%E5%8F%96/" target="_blank" rel="external">此文是跟着上一篇来写的</a>，之前，已经完成了对维基百科词条的数据采集工作。</p>
+<p>2、本文和作者示范不同的地方是，建立数据库和表格的工具我维持使用了sqlyog软件，作者用的是哪个不确定，因为视频看不清上面的名字。</p>
+<p>3、代码如下，已经有一定说明，原作者可没提供代码哦，请把password对应的密码部分，从xxxx修改成你的真实数据库密码：</p>
+<pre><code>__author__ = &apos;Administrator&apos;
+# coding:utf-8
+# 运行在python 3.5.2
+
+import re
+from urllib.request import urlopen
+from bs4 import BeautifulSoup as bs
+import pymysql.cursors
+
+# 使用urllib的urlopen方法，去打开维基百科的首页，读取，并用utf-8解码
+resp = urlopen(&apos;https://en.wikipedia.org/wiki/Main_Page&apos;).read().decode(&apos;utf-8&apos;)
+
+# 使用BeautifulSoup去解析，其中html.parser是默认的解析器
+soup = bs(resp, &apos;html.parser&apos;)
+# 获取所有的/wiki/开头的a标签的href属性。
+listUrls = soup.find_all(&apos;a&apos;, href=re.compile(r&apos;^/wiki/&apos;))
+print(listUrls)
+
+# 输出所有的词条对应的名称和URL
+for url in listUrls:
+    # 排除.jpg JPG结尾的
+    if not re.search(&apos;\.(jpg|JPG)$&apos;, url[&apos;href&apos;]):
+        # 显示名称和网址的格式
+        # string只能显示一个，而get_text()可显示标签下所有的文字。
+        print(url.get_text(), &apos;&lt;----&gt;&apos;, &apos;https://en.wikipedia.org&apos;+url[&apos;href&apos;])
+        # 得到数据库的连接
+        connection = pymysql.connect(host=&apos;localhost&apos;,
+                               user=&apos;root&apos;,
+                               password=&apos;XXXX&apos;,
+                               db=&apos;wikiurl&apos;,
+                               charset=&apos;utf8&apos;
+                               )
+
+        try:
+            # 创建会话指针
+            with connection.cursor() as cursor:
+                # 创建sql语句
+                sql = &apos;insert into `urls` (`urlname`, `urlhref`) values(%s, %s)&apos;
+                # 执行sql语句
+                cursor.execute(sql, (url.get_text(), &apos;https://en.wikipedia.org&apos; + url[&apos;href&apos;]))
+                # 提交
+                connection.commit()
+
+        finally:
+            connection.close()
+</code></pre><p>4、其中关键的步骤有：</p>
+<p>A）：sqlyog中表格的制作和设置，千万注意，id的int类型，需要添加自增，否则运行程序会报错： “Field ‘id’ doesn’t have a default value</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/sqlyog%20wiki%20setting.png" alt=""></p>
+<p>B）数据库的插入和执行命令，因为不太熟悉，对着视频敲代码都错误了几次，并且要注意以下代码<code>urls</code> (<code>urlname</code>, <code>urlhref</code>)使用的是Tab键上面的那个上点号</p>
+<p>C）当程序没有报错，在sqlyog查看表格要先刷新</p>
+<p>D）<a href="https://vansnowpea.github.io/2016/09/11/Python%E6%93%8D%E4%BD%9CMySQL%E6%95%B0%E6%8D%AE%E5%BA%93/" target="_blank" rel="external">在之前的帖子，是在python2.7下，通过sqlyog的import MySQLdb 来操作mysql的</a>，并且，代码中的密码对应的是passwd，而这个和直接用python 运行pymysql的对应命令password是不同的，要分清楚。 </p>
+<p>5、结果图，有一丝喜悦感：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/wiki%20success.png" alt=""></p>
+<p>6、读取操作: 代码中，需要导入的包，和写入数据库的想同，主要的差别是读取数据需要额外的命令，比如，fetchall，fetchmany(size=n)这样的。相关读取的代码如下：</p>
+<pre><code># 运行在python 3.5.2
+
+
+import pymysql.cursors
+
+connection = pymysql.connect(host=&apos;localhost&apos;,
+                       user=&apos;root&apos;,
+                       password=&apos;XXXX&apos;,
+                       db=&apos;wikiurl&apos;,
+                       charset=&apos;utf8&apos;
+                       )
+
+try:
+    # 创建会话指针
+    with connection.cursor() as cursor:
+        # 创建需要查询数据的sql语句
+        sql = &apos;select `urlname`, `urlhref` from `urls` where `id` is not null&apos;
+        # 执行sql语句，计算数据库的总数量
+        count = cursor.execute(sql)
+        print(count)
+        # 查询数据
+        result = cursor.fetchmany(size=3)
+        #result = cursor.fetchall()
+        print(result)
+
+
+finally:
+    connection.close()
+</code></pre><p>7、总结： 无乱是写入还是读取数据库，总流程基本为：</p>
+<ul>
+<li>导入巡行所需要的包，比如import pymysql.cursors</li>
+<li>连接数据库，填写必要的数据库登录信息，和表格信息，编码信息等。</li>
+<li>定义绘画指针和需要操作的数据库语句</li>
+<li>执行相关操作，比如写入，查询等。其中写入操作还需要执行cursor.commit() 来完成提交。</li>
+<li>最后，无论如何，都要在finnally中执行connection.close()来关闭数据库。</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/13/维基百科首页词条的爬取/" itemprop="url">
                   维基百科首页词条的爬取【Python】
                 </a>
@@ -610,6 +795,106 @@ for url in listurl:
             
               
                 
+                <a class="post-title-link" href="/2016/09/09/查找mysql相关来到慕课网学习/" itemprop="url">
+                  查找mysql相关来到慕课网学习
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-09T16:59:28+08:00" content="2016-09-09">
+              2016-09-09
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、在研究别人一个关于用“mysql+爬虫”分析一个网站的时候，发现对mysql不熟悉，之前研究Django的时候用的是Postgresql数据库，所以打算学下mysql。然后官网最新版5.7，下载后找网络教程，发现有一个视频教程是5.5版本的，竟然5.7一个系统文件对不上，根本没有啊。 后来发现5.7版本有一些更新，不确定是否此原因导致。随后咨询了那篇文章的作者，他用的是5.6版本，那就装5.6，然后就想卸载5.7吧，结果又发现mysql的安装文件好多，一个个是单独安装的，那么要卸载可以一个个来，感觉麻烦，然后下载了官网的5.6.msi版本，点安装，出来一个界面提示已经装好的相关文件，可以用remove操作，随后有个全选的就可以全部统一卸载5.7的相关文件了，方便些。</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/mysql56%20remove%20mysql57.png" alt=""></p>
+<p>2、突然感觉这自我学习的过程就像在打RPG游戏，跌跌撞撞，一个个关卡，每个小细节都可能带来很多烦恼，白天还在为mysql 5.7的如何配置一些utf8发愁呢。</p>
+<p>3、对慕课网其实早进听说一直没去过，搜到@车神的一篇：<a href="http://www.imooc.com/learn/712" target="_blank" rel="external">《python遇见数据采集》</a>，随后又根据他的介绍，打算再学下要求的3个基础，如下图，然后发现，原来第一个的《Python入门》是廖雪峰在这里的视频教程，以前可一直在他网站看的文字版的，竟然也不在他自己网站介绍下视频教程地址的，真是低调。</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/python%20%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80%E8%A6%81%E6%B1%82.png" alt=""></p>
+<p>4、突然发现电脑超级卡，一看C盘的50G已经满了，这是什么鬼？ 原来是virtualbox 安装的系统全部塞在了C盘，由于ubuntu系统也要不断安装一些库，导致历史占用的空间越来越多。所以，设置virtualbox的安装路径到E盘，重新做了一个虚拟系统，这样C盘的空间就释放了。</p>
+<p>5、然后看了下正则式的知识，总结到下一篇吧。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/09/CSS基础学习小结/" itemprop="url">
                   CSS基础学习小结
                 </a>
@@ -699,106 +984,6 @@ ul.disc {list-style-type: disc}
 &lt;/ul&gt;
 </code></pre><p>其中，设置表格颜色的部分，感觉要记录下，因为看上去比默认的好看不少，举例如下。<a href="http://www.w3school.com.cn/tiy/t.asp?f=csse_table_fancy" target="_blank" rel="external">代码【点我】</a>：</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/css%20table.png" alt=""></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/09/查找mysql相关来到慕课网学习/" itemprop="url">
-                  查找mysql相关来到慕课网学习
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-09T16:59:28+08:00" content="2016-09-09">
-              2016-09-09
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、在研究别人一个关于用“mysql+爬虫”分析一个网站的时候，发现对mysql不熟悉，之前研究Django的时候用的是Postgresql数据库，所以打算学下mysql。然后官网最新版5.7，下载后找网络教程，发现有一个视频教程是5.5版本的，竟然5.7一个系统文件对不上，根本没有啊。 后来发现5.7版本有一些更新，不确定是否此原因导致。随后咨询了那篇文章的作者，他用的是5.6版本，那就装5.6，然后就想卸载5.7吧，结果又发现mysql的安装文件好多，一个个是单独安装的，那么要卸载可以一个个来，感觉麻烦，然后下载了官网的5.6.msi版本，点安装，出来一个界面提示已经装好的相关文件，可以用remove操作，随后有个全选的就可以全部统一卸载5.7的相关文件了，方便些。</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/mysql56%20remove%20mysql57.png" alt=""></p>
-<p>2、突然感觉这自我学习的过程就像在打RPG游戏，跌跌撞撞，一个个关卡，每个小细节都可能带来很多烦恼，白天还在为mysql 5.7的如何配置一些utf8发愁呢。</p>
-<p>3、对慕课网其实早进听说一直没去过，搜到@车神的一篇：<a href="http://www.imooc.com/learn/712" target="_blank" rel="external">《python遇见数据采集》</a>，随后又根据他的介绍，打算再学下要求的3个基础，如下图，然后发现，原来第一个的《Python入门》是廖雪峰在这里的视频教程，以前可一直在他网站看的文字版的，竟然也不在他自己网站介绍下视频教程地址的，真是低调。</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/python%20%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80%E8%A6%81%E6%B1%82.png" alt=""></p>
-<p>4、突然发现电脑超级卡，一看C盘的50G已经满了，这是什么鬼？ 原来是virtualbox 安装的系统全部塞在了C盘，由于ubuntu系统也要不断安装一些库，导致历史占用的空间越来越多。所以，设置virtualbox的安装路径到E盘，重新做了一个虚拟系统，这样C盘的空间就释放了。</p>
-<p>5、然后看了下正则式的知识，总结到下一篇吧。</p>
 
           
         
@@ -1319,139 +1504,6 @@ for link in links:
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/07/Win7安装Scrapy的一些坑/" itemprop="url">
-                  Win7安装Scrapy的一些坑
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-07T01:59:28+08:00" content="2016-09-07">
-              2016-09-07
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>症状：无论Win 7 还是Ubuntu，一开始安装都出错了。</p>
-<p>提示一些安装包，需要安装VC++ 9.0 。 </p>
-<p>error: Microsoft Visual C++ 9.0 is required. Get it from <a href="http://aka.ms/vcpython27" target="_blank" rel="external">http://aka.ms/vcpython27</a>  </p>
-<p>意思是：Micorsoft Visual C++ Compiler for Python 2.7  到了微软官网，点了下载按钮，就进入界面死循环了。。。 想想微软也不至于这么坑，然后换了一个电脑可以下载了，似乎是第一个电脑的火狐浏览器没有对下载地址进行响应。</p>
-<p>安装之后，又跳出了以下界面的错误：</p>
-<p> <strong> make sure the development packages of libxml2 and libxslt are installed </strong></p>
-<pre><code>*********************************************************************************
-Could not find function xmlCheckVersion in library libxml2. Is libxml2 installed?
-*********************************************************************************
-error: command &apos;C:\\Users\\Administrator.USER-20160103QG\\AppData\\Local\\Programs\\Common\\Microsoft\\Visual C++ for Python\\9.0\\VC\\Bin\\cl.exe&apos; failed with exit status 2
-
-----------------------------------------
-</code></pre><p>Command “c:\python27\python.exe -u -c “import setuptools, tokenize;<strong>file</strong>=’c:\users\admini~1.use\appdata\local\temp\pip-build-u4tij9\lxml\setup.py’;exec(compile(getattr(tokenize, ‘open’, open)(<strong>file</strong>).read().replace(‘\r\n’, ‘\n’), <strong>file</strong>, ‘exec’))” install –record c:\users\admini~1.use\appdata\local\temp\pip-ywtnot-record\install-record.txt –single-version-externally-managed –compile” failed with error code 1 in c:\users\admini~1.use\appdata\local\temp\pip-build-u4tij9\lxml\</p>
-<p>从上面的信息看：基于lxml的libxml2 and libxslt这两个包需要安装，但pip install lxml 也是错误提示，依然有需要安装VC++的提示，可刚不是装过了吗？。。。。 想了下 之前有装另外一个版本，所以刚是repair的方式，干脆卸载了重新装一次看看？结果一样错误。</p>
-<p>到知乎上：<br>深海鱼<br>77 人赞同<br>刚从这个大坑里爬出来：</p>
-<ol>
-<li>安装wheel，命令行运行：<br>pip install wheel<br>2.在这里下载对应的.whl文件，注意别改文件名！ <a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml" target="_blank" rel="external">http://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml</a></li>
-<li>进入.whl所在的文件夹，执行命令即可完成安装<br>pip install 带后缀的完整文件名</li>
-</ol>
-<p>对应操作，结果也失败了，如下：</p>
-<pre><code>attempt to call a nil value
-C:\Python27\Scripts&gt;pip install lxml-3.6.4-cp27-cp27m-win_amd64.whl
-Processing lxml-3.6.4-cp27-cp27m-win_amd64.whl
-error: Couldn&apos;t find a setup script in C:\Python27\Scripts\lxml-3.6.4-cp27-cp27m-win_amd64.whl
-</code></pre><p>这错误提示需要一个安装脚本，可下载的是一个单独的ｗｈｌ文件，这。。。</p>
-<p>后来我换了一个路径，把whl文件放到了C盘根目录，测试：</p>
-<pre><code>attempt to call a nil value
-C:\&gt;pip install lxml-3.6.4-cp27-cp27m-win_amd64.whl
-lxml-3.6.4-cp27-cp27m-win_amd64.whl is not a supported wheel on this platform.
-</code></pre><p>此时的提示是：此平台不支持这个whl文件。</p>
-<p>那么思考：下载的是64位的whl，系统也是Win7 64位的，<strong>但是等等，Python是32位的？</strong>  果然经过核对，原来这个Python版本是老早刚学的时候一直用的32位的，于是，马上更换下载 lxml-3.6.4-cp27-cp27m-win32.whl，然后继续安装，得到ok的结果，如下：</p>
-<pre><code>attempt to call a nil value
-C:\&gt;pip install lxml-3.6.4-cp27-cp27m-win32.whl
-Processing c:\lxml-3.6.4-cp27-cp27m-win32.whl
-Installing collected packages: lxml
-Successfully installed lxml-3.6.4
-</code></pre><p>然后继续运行安装scrapy 搞定！</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/scrapy.png" alt=""></p>
-<p>总结：<br>1、后来查了lxml的官网，<a href="http://lxml.de/installation.html" target="_blank" rel="external">http://lxml.de/installation.html</a>  上面也有说道win系统的安装错误的非官方方案，其实就是知乎上的那个方案，不过官网上没写whl文件怎么安装，但可以搜索到。</p>
-<p>2、64位还是32位？<br>  因为系统是64位的，所以一般情况下载都已经习惯找64位的下，本篇开头就是。但是针对python安装的第三方库，需要根据python是32位还是64位来，而本篇恰巧是32位的python，以后注意。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1497,7 +1549,7 @@ Successfully installed lxml-3.6.4
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-count">67</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>

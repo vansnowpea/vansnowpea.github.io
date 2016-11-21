@@ -1,0 +1,596 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="微信富文本的硬伤在微信公众号的编辑发布过程中，有一些很不方便的地方，如：
+
+个人倾向用七牛云上传图片，并用一键操作工具mpic，而不想额外单独一张张上传到微信后台。另假设同时想把图文发到个人博客和微信公众号，就要博客端和公众号端分别各自上传图片，而对比用mpic得到超链接，让博客和公众号引用即可。显然，后者要方便的多。
+
+从A公众号的编辑模式，全文复制到B公众号编辑模式，出现了图片的说明文字不按照">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何优雅的编写微信公众号">
+<meta property="og:url" content="http://yoursite.com/2016/11/21/如何优雅的编写微信公众号/index.html">
+<meta property="og:site_name" content="A Song of Python and Anaconda">
+<meta property="og:description" content="微信富文本的硬伤在微信公众号的编辑发布过程中，有一些很不方便的地方，如：
+
+个人倾向用七牛云上传图片，并用一键操作工具mpic，而不想额外单独一张张上传到微信后台。另假设同时想把图文发到个人博客和微信公众号，就要博客端和公众号端分别各自上传图片，而对比用mpic得到超链接，让博客和公众号引用即可。显然，后者要方便的多。
+
+从A公众号的编辑模式，全文复制到B公众号编辑模式，出现了图片的说明文字不按照">
+<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-11-21/135937343.gif">
+<meta property="og:updated_time" content="2016-11-21T06:48:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何优雅的编写微信公众号">
+<meta name="twitter:description" content="微信富文本的硬伤在微信公众号的编辑发布过程中，有一些很不方便的地方，如：
+
+个人倾向用七牛云上传图片，并用一键操作工具mpic，而不想额外单独一张张上传到微信后台。另假设同时想把图文发到个人博客和微信公众号，就要博客端和公众号端分别各自上传图片，而对比用mpic得到超链接，让博客和公众号引用即可。显然，后者要方便的多。
+
+从A公众号的编辑模式，全文复制到B公众号编辑模式，出现了图片的说明文字不按照">
+<meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-11-21/135937343.gif">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/11/21/如何优雅的编写微信公众号/"/>
+
+  <title> 如何优雅的编写微信公众号 | A Song of Python and Anaconda </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">A Song of Python and Anaconda</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                如何优雅的编写微信公众号
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-11-21T10:59:28+08:00" content="2016-11-21">
+              2016-11-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="微信富文本的硬伤"><a href="#微信富文本的硬伤" class="headerlink" title="微信富文本的硬伤"></a>微信富文本的硬伤</h1><p>在微信公众号的编辑发布过程中，有一些很不方便的地方，如：</p>
+<ul>
+<li><p>个人倾向用七牛云上传图片，并用一键操作工具mpic，而不想额外单独一张张上传到微信后台。另假设同时想把图文发到个人博客和微信公众号，就要博客端和公众号端分别各自上传图片，而对比用mpic得到超链接，让博客和公众号引用即可。显然，后者要方便的多。</p>
+</li>
+<li><p>从A公众号的编辑模式，全文复制到B公众号编辑模式，出现了图片的说明文字不按照预期格式排列的问题，用哪种对齐方式都不符合预期。后来干脆重新编辑全文。</p>
+</li>
+<li><p>微信使用富文本编辑模式，而现在国际流行的markdown编辑模式，后者在编辑方面，要方便的多的多。</p>
+</li>
+<li><p>网络流行的一些微信公众号编辑器，比如135等，这个算口碑好的，但个人体验感一般，为何呢? 他们是一个标题、一个段落、一个引言这样的用样式模板插入内容，不仅如此还有排版问题。总之，对比markdown风格，体验感就不甚好。也许你说135编辑器有vip的“一键排版”功能，但是还是有排版问题的，因为它没那么智能。</p>
+</li>
+<li><p>还有一些细节上，比如微信后台的右键选粘贴，明明有这个选项，点了之后它非要弹窗让你用热键ctrl+V来操作等等。这对于那些鼠标党情何以堪。</p>
+</li>
+</ul>
+<p>以上种种因素，使得最初在我申请了微信公众号之后，从喜到忧的感受大致可以用这个图形容：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-11-21/135937343.gif" alt=""></p>
+<h1 id="思路：从markdown过度到富文本"><a href="#思路：从markdown过度到富文本" class="headerlink" title="思路：从markdown过度到富文本"></a>思路：从markdown过度到富文本</h1><p>从上面的分析看出，编辑采用markdown模式，而公众号的发布只能是富文本模式，那么剩下就是如何优雅的解决从markdown到富文本的过度？</p>
+<h2 id="方案1："><a href="#方案1：" class="headerlink" title="方案1："></a>方案1：</h2><p>采用浏览器插件 【<strong>markdown here</strong>】？？ 这是一些网友得到的解决方案，但我实测有一个明显的问题，那就针对超链接图片，在微信公众号预览是有的，但发送到手机就没有了。额外测试了下，如果要让图片显示，你要在编辑模式把全文复制，再全文删除，然后重新粘贴一次，再保存，再预览（或发布）才显示图片，但这你能忍？这个坑爹的问题，是微信公众号必须要把外部的超链接经过css渲染之后才能发挥作用。</p>
+<h2 id="方案2："><a href="#方案2：" class="headerlink" title="方案2："></a>方案2：</h2><p>利用脚本程序来调整CSS，但这牵涉代码修改，比如说，有一个方案提到：【花 1 天时间，学会如何写一个简单包含 replacements 函数的 Python 脚本】。以个人经验，如果对从没接触python语言的朋友真想一天内解决，是相当有难度的，故不展开。</p>
+<h2 id="方案3："><a href="#方案3：" class="headerlink" title="方案3："></a>方案3：</h2><p>你想，无非是要让微信后台识别CSS渲染，而很多markdown编辑器自带了HTML预览功能，里面就有CSS渲染，这样，就实现了超链接图片的加载，然后全部复制后粘贴到微信公众号正文编辑区域，就ok了。 以MarkdownPad 2 为例，F6自动HTML预览到本地。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本文讨论了用markdown来编辑微信公众号的方法。就网上搜集的方案进行了分析，并建议使用方案3，简洁有效。<br>如果只是简单的文字+图的方式，可轻松实现。当然，并不能指望靠这个就制作很精美的公众号，只是就方便性和实用性上做一些讨论。总体的逻辑顺序为：</p>
+<p>A）用MarkdownPad编辑</p>
+<p>B）编辑完毕后使用F6功能实现HTML的CSS渲染</p>
+<p>C）复制到微信公众号编辑区</p>
+<p>D）此时，如果还需要增加一些东西，可再结合135编辑器等锦上添花（因为可能MarkdownPad没有那些功能）</p>
+<p>E）预览或者发布</p>
+<h1 id="工具列表-，基于Win系统"><a href="#工具列表-，基于Win系统" class="headerlink" title="工具列表 ，基于Win系统"></a>工具列表 ，基于Win系统</h1><ol>
+<li><p>MarkdownPad ： <a href="http://markdownpad.com/" target="_blank" rel="external">http://markdownpad.com/</a></p>
+</li>
+<li><p>图片上传Mpic：     <a href="http://files.lzhaofu.cn/MPic%202.1.2.rar" target="_blank" rel="external">http://files.lzhaofu.cn/MPic%202.1.2.rar</a></p>
+</li>
+<li><p>七牛云图床： <a href="http://www.qiniu.com/" target="_blank" rel="external">http://www.qiniu.com/</a></p>
+</li>
+</ol>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
+<li><a href="https://mba811.gitbooks.io/writing/content/MarkDown/06.html" target="_blank" rel="external">在微信公众平台上用 Markdown 写作</a></li>
+<li><a href="http://www.jianshu.com/p/b09125018c04" target="_blank" rel="external">Markdown懒办法排版微信公众号文章</a></li>
+</ol>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>另如果有专职做公众号的朋友，也欢迎分享你的制作心得。 ：）</p>
+<ul>
+<li></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/26/Ubuntu Kylin 16.10 试用评价/" rel="next" title="Ubuntu Kylin 16.10 下使用Keras和DDPG玩赛车游戏的学习">
+                <i class="fa fa-chevron-left"></i> Ubuntu Kylin 16.10 下使用Keras和DDPG玩赛车游戏的学习
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Van" />
+          <p class="site-author-name" itemprop="name">Van</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">67</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#微信富文本的硬伤"><span class="nav-number">1.</span> <span class="nav-text">微信富文本的硬伤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思路：从markdown过度到富文本"><span class="nav-number">2.</span> <span class="nav-text">思路：从markdown过度到富文本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方案1："><span class="nav-number">2.1.</span> <span class="nav-text">方案1：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方案2："><span class="nav-number">2.2.</span> <span class="nav-text">方案2：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方案3："><span class="nav-number">2.3.</span> <span class="nav-text">方案3：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工具列表-，基于Win系统"><span class="nav-number">4.</span> <span class="nav-text">工具列表 ，基于Win系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-number">6.</span> <span class="nav-text">其他</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Van</span>
+</div>
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
