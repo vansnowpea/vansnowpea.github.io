@@ -1,0 +1,596 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Beautiful Soup 是 python 的一个库，最主要的功能是从网页抓取数据,BS4是Beautiful Soup V4.x的简称。为什么选用BS4呢？ 可以尽可能的规避复杂的正则表达式RE。 而功能上，配合requests也是相当好的。
+官方的中文教程可参考此链接【点我】
+而另一篇博客写的更细致，可参考【转载请注明：静觅 » Python爬虫利器二之Beautiful Soup的用法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="beautiful soup+ Xpath的基础操作">
+<meta property="og:url" content="http://yoursite.com/2016/09/07/beautiful soup+ Xpath的基础操作/index.html">
+<meta property="og:site_name" content="A Song of Python and Anaconda">
+<meta property="og:description" content="Beautiful Soup 是 python 的一个库，最主要的功能是从网页抓取数据,BS4是Beautiful Soup V4.x的简称。为什么选用BS4呢？ 可以尽可能的规避复杂的正则表达式RE。 而功能上，配合requests也是相当好的。
+官方的中文教程可参考此链接【点我】
+而另一篇博客写的更细致，可参考【转载请注明：静觅 » Python爬虫利器二之Beautiful Soup的用法">
+<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/fdafd.gif">
+<meta property="og:image" content="http://ocg7i7pt6.bkt.clouddn.com/22.png">
+<meta property="og:updated_time" content="2016-09-08T08:33:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="beautiful soup+ Xpath的基础操作">
+<meta name="twitter:description" content="Beautiful Soup 是 python 的一个库，最主要的功能是从网页抓取数据,BS4是Beautiful Soup V4.x的简称。为什么选用BS4呢？ 可以尽可能的规避复杂的正则表达式RE。 而功能上，配合requests也是相当好的。
+官方的中文教程可参考此链接【点我】
+而另一篇博客写的更细致，可参考【转载请注明：静觅 » Python爬虫利器二之Beautiful Soup的用法">
+<meta name="twitter:image" content="http://ocg7i7pt6.bkt.clouddn.com/fdafd.gif">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/09/07/beautiful soup+ Xpath的基础操作/"/>
+
+  <title> beautiful soup+ Xpath的基础操作 | A Song of Python and Anaconda </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">A Song of Python and Anaconda</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Accueil
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                beautiful soup+ Xpath的基础操作
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posté le</span>
+            <time itemprop="dateCreated" datetime="2016-09-07T16:59:28+08:00" content="2016-09-07">
+              2016-09-07
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Beautiful Soup 是 python 的一个库，最主要的功能是从网页抓取数据,BS4是Beautiful Soup V4.x的简称。<br>为什么选用BS4呢？ 可以尽可能的规避复杂的正则表达式RE。 而功能上，配合requests也是相当好的。</p>
+<p>官方的中文教程可参考<a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc.zh/" target="_blank" rel="external">此链接【点我】</a></p>
+<p>而另一篇博客写的更细致，可参考<a href="http://cuiqingcai.com/1319.html" target="_blank" rel="external">【转载请注明：静觅 » Python爬虫利器二之Beautiful Soup的用法</a></p>
+<p>以下是分别通过BS4和Xpath方式得到的简书网的首页“热门”的20偏文章的标题</p>
+<p>完整的代码如下：</p>
+<pre><code>#coding:utf-8
+
+import re
+import urllib
+from bs4 import BeautifulSoup
+import time
+from lxml import etree
+
+def getHtml(url):
+    page = urllib.urlopen(url)
+    html = page.read()
+    return html
+
+html = getHtml(&quot;http://www.jianshu.com&quot;)
+
+#html 是爬取的网页源代码, 将一段文档传入BeautifulSoup 的构造方法,就能得到一个文档的对象
+soup = BeautifulSoup(html,&apos;html.parser&apos;,from_encoding=&apos;utf-8&apos;)
+#查找所有的h4标签 
+links = soup.find_all(&quot;h4&quot;)
+
+for link in links:
+    print link
+
+
+time.sleep(5)
+
+
+
+selector = etree.HTML(html)
+links = selector.xpath(&apos;//h4/a/text()&apos;)
+for link in links:
+    print link
+</code></pre><p>说明：其中需要会查阅HTML的基础技巧，用一个图动图(来自本文末尾的文章)来概括：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/fdafd.gif" alt=""></p>
+<p>不过第一个方法，显示的是乱码，但是一开始就规定了UTF8格式，原因待定。如图：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/22.png" alt=""></p>
+<p>参考：<a href="http://www.jianshu.com/p/ea007d71ce2a" target="_blank" rel="external">向右奔跑的文章【点我】</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/07/Http权威指南 书籍下载和推荐/" rel="next" title="《Http权威指南》 完整版 书籍下载和推荐">
+                <i class="fa fa-chevron-left"></i> 《Http权威指南》 完整版 书籍下载和推荐
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/09/Linux的历史和HTML学习的必要/" rel="prev" title="Linux的历史和HTML学习的必要">
+                Linux的历史和HTML学习的必要 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Van" />
+          <p class="site-author-name" itemprop="name">Van</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">67</span>
+              <span class="site-state-item-name">articles</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Van</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Thème -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
