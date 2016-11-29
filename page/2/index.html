@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Accueil
+            Startseite
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -248,7 +248,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posté le</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-13T20:59:28+08:00" content="2016-10-13">
               2016-10-13
             </time>
@@ -287,8 +287,8 @@
 # 测试系统，Win10
 # Author:Van
 # 实现《西部世界》有更新后自动下载，以及邮件通知
-# V1.0
-# 欢迎各种改进意见
+# V1.01
+# 修改@href提取方法，因源头网站变更
 # 请把对应的帐号密码修改成自己的
 
 
@@ -321,7 +321,9 @@ for each in HDTV:
     print(each)
 
 
-href = selector.xpath(&apos;//a[starts-with(@title, &quot;HDTV-1080P&quot;)]/@href&apos;)
+# the site modified the magnet link position with adding the span
+# we should use: following-sibling function to catch it :)
+href = selector.xpath(&apos;//a[starts-with(@title, &quot;HDTV-1080P&quot;)]/following-sibling::span/a/@href&apos;)
 print()
 print(&apos;目前有 %d 集西部世界&apos; %len(href))
 print()
@@ -416,6 +418,8 @@ if __name__ == &apos;__main__&apos;:
 <p>6、可改进点：<br>邮件的地址内容显示的是一个列表，有待改进。</p>
 <p>7、github对应仓库:</p>
 <p><a href="https://github.com/vansnowpea/WestWorld-auto-download-email-xunlei-" target="_blank" rel="external">https://github.com/vansnowpea/WestWorld-auto-download-email-xunlei-</a></p>
+<p>8、推荐 xpath学习教程：</p>
+<p><a href="http://zvon.org/xxl/XPathTutorial/General_chi/examples.html" target="_blank" rel="external">http://zvon.org/xxl/XPathTutorial/General_chi/examples.html</a></p>
 
           
         
@@ -478,7 +482,7 @@ if __name__ == &apos;__main__&apos;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posté le</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-11T20:59:28+08:00" content="2016-10-11">
               2016-10-11
             </time>
@@ -726,7 +730,7 @@ Process finished with exit code 0
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posté le</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-10T13:59:28+08:00" content="2016-10-10">
               2016-10-10
             </time>
@@ -858,7 +862,7 @@ Process finished with exit code 0
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posté le</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-08T20:59:28+08:00" content="2016-10-08">
               2016-10-08
             </time>
@@ -958,7 +962,7 @@ Process finished with exit code 0
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posté le</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-07T23:59:28+08:00" content="2016-10-07">
               2016-10-07
             </time>
@@ -1094,7 +1098,7 @@ tree.xpath(&quot;//div[@class=&apos;sec_blk mrg_b_30&apos;]/ul/li[1]/a/@href&quo
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posté le</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-07T22:59:28+08:00" content="2016-10-07">
               2016-10-07
             </time>
@@ -1218,7 +1222,7 @@ print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posté le</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-05T16:20:28+08:00" content="2016-10-05">
               2016-10-05
             </time>
@@ -1326,7 +1330,7 @@ print(content1[0].strip().replace(&apos;\n\r&apos;, &apos;&apos;))
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posté le</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-02T14:20:28+08:00" content="2016-10-02">
               2016-10-02
             </time>
@@ -1470,7 +1474,7 @@ These are the 6 must have books, if you are serious about being a data scientist
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posté le</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-27T14:20:28+08:00" content="2016-09-27">
               2016-09-27
             </time>
@@ -1578,7 +1582,7 @@ Thanks!
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posté le</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-27T13:20:28+08:00" content="2016-09-27">
               2016-09-27
             </time>
@@ -1694,7 +1698,7 @@ mpl.rcParams[&apos;axes.unicode_minus&apos;] = False #解决保存图像是负�
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">67</span>
-              <span class="site-state-item-name">articles</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1741,11 +1745,11 @@ mpl.rcParams[&apos;axes.unicode_minus&apos;] = False #解决保存图像是负�
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  Thème -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>
