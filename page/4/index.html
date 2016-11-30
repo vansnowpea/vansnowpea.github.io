@@ -235,8 +235,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/17/Firefox不能运行selenium的故障排查/" itemprop="url">
-                  Firefox不能运行selenium的故障排查
+                <a class="post-title-link" href="/2016/09/18/stocksnap 一个不错的图片网站的图片抓取/" itemprop="url">
+                  stocksnap 一个不错的图片网站的图片抓取--selenium 右键保存和直接写入2个模式【python】
                 </a>
               
             
@@ -249,8 +249,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-17T11:59:28+08:00" content="2016-09-17">
-              2016-09-17
+            <time itemprop="dateCreated" datetime="2016-09-18T10:59:28+08:00" content="2016-09-18">
+              2016-09-18
             </time>
           </span>
 
@@ -279,22 +279,122 @@
       
         
           
-            <h1 id="说明-Firefox中文最新版48不能运行selenium2-53-6的故障排查"><a href="#说明-Firefox中文最新版48不能运行selenium2-53-6的故障排查" class="headerlink" title="说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查"></a>说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查</h1><p>1、错误提示：  </p>
-<pre><code>  File &quot;D:\Anaconda3\lib\site-packages\selenium\webdriver\firefox\firefox_binary.py&quot;, line 103, in _wait_until_connectable
-    raise WebDriverException(&quot;Can&apos;t load the profile. Profile &quot;
-selenium.common.exceptions.WebDriverException: Message: Can&apos;t load the profile. Profile Dir: %s If you specified a log_file in the FirefoxBinary constructor, check it for details.
-</code></pre><p>2、排查版本： selenium已经是最新版2.53.6  firexfox也是最新中文版48</p>
-<p>谷歌： </p>
-<pre><code>http://stackoverflow.com/questions/37693106/selenium-2-53-not-working-on-firefox-47/37693374
-</code></pre><p>上面给了一个在selenium 在2.53.0时代，运行firefox 47版本的方法，感觉麻烦，所以我优选了退回低版本的策略，如下：</p>
-<p>3、评估是否firefox的48最新版还不支持？所以到firefox官网上，直接看到的最后的老版本是47， 测试安装了中文版，结果一样，继续卸载看46版本，使用的以下网址：</p>
-<pre><code>https://ftp.mozilla.org/pub/firefox/releases/
-https://ftp.mozilla.org/pub/firefox/releases/46.0.1/win64/en-US/
-</code></pre><p>一下就成功了。</p>
-<p>4、后来翻阅stackoverflow的帖子，发现有人反馈2.53.6已经支持firefox 48了。 但是我的咋就不行？ 猜测区别就是中文和英文，所以我就把46版本卸载了测试48英文版， </p>
-<pre><code>https://ftp.mozilla.org/pub/firefox/releases/48.0b1/win64/en-US/
-</code></pre><p>结果直接跳出firefox已停止工作。</p>
-<p>5、结论：就2.53.6的selenium版本，测试firefox 46 英文版稳定运行。47和48版本失败。操作系统Win10，所以建议使用46版本的firefox。</p>
+            <h1 id="参考：原文1"><a href="#参考：原文1" class="headerlink" title="参考：原文1"></a>参考：<a href="http://www.jianshu.com/p/2528edf4485c" target="_blank" rel="external">原文1</a></h1><h1 id="参考：原文2"><a href="#参考：原文2" class="headerlink" title="参考：原文2"></a>参考：<a href="http://blog.csdn.net/seanwang_25/article/details/43318907" target="_blank" rel="external">原文2</a></h1><p>1、原文1采用了scrapy方法，本文改编用selenium方法，并参考原文2首次采用模拟右键来保存图片。</p>
+<p>2、网站分析：</p>
+<p>首先发现鼠标拖动到图片底部区域，主页又不断加载新的图片，可判断是异步的。另单独查看2个图的xpath，发现总体格式一致，编号部分有差异：</p>
+<pre><code>/html/body/div[4]/div[3]/div[2]/div/div[1]/a/img
+
+/html/body/div[4]/div[3]/div[2]/div/div[11]/a/img
+</code></pre><p>这样我们就得到了在firefox下统一的xpath为，注意是删除div[i]部分，留下2个斜杠：</p>
+<pre><code>/html/body/div[4]/div[3]/div[2]/div//a/img
+</code></pre><p>此时，可能觉得为啥要删除，而不是用正则式.*代替？测试那样的结果是Nan，也就是说xpath的格式和re格式不能混搭。</p>
+<p>而每个jpg地址在src属性中，所以如果想查阅批量的图片地址，则：</p>
+<pre><code>/html/body/div[4]/div[3]/div[2]/div//a/img/@src
+</code></pre><p><img src="http://ocg7i7pt6.bkt.clouddn.com/stocksnap%20%E5%9B%BE%E7%89%87%E7%BD%91%E5%9D%80.png" alt=""></p>
+<p>3、既然这么爽的得到了图片地址，剩下就是批量下载保存了：</p>
+<p>这一次，先测试了用firefox模拟人工右键保存的方法，代码如下，保存那块还没整明白，也就是自动到出现图片保存的界面,根本原因是selenium无法操作操作系统级的对话框：</p>
+<p>索性快速人工点保存，30个图的保存位置都是重复的，依次得到30个图：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/selenium%2030pics.png" alt=""></p>
+<p>4、随机打开一个图，如下，可见测试ok：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/t1.png" alt=""></p>
+<p>5、代码：</p>
+<pre><code># -*- coding: utf-8 -*-
+# python 3.5.2
+# Author:vansnowpea
+# stocksnap 一个不错的图片网站的图片，右键保存抓取
+
+from selenium import webdriver
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
+
+
+print(&apos;Please wait...Firefox loading...&apos;)
+print(&apos;---------------------------------&apos;)
+
+
+url = &quot;https://stocksnap.io/&quot;
+
+# 用浏览器实现访问
+driver = webdriver.Firefox()
+driver.maximize_window()
+driver.get(url)
+
+# 得到总的jpgs的路径集合
+xpath = &quot;/html/body/div[4]/div[3]/div[2]/div//a/img&quot;
+
+# set profile
+fp = webdriver.FirefoxProfile()
+fp.set_preference(&apos;browser.download.folderList&apos;, 2)
+fp.set_preference(&apos;browser.download.manager.showWhenStarting&apos;, False)
+fp.set_preference(&apos;browser.download.dir&apos;, &apos;./yourfolder/&apos;)
+fp.set_preference(&apos;browser.helperApps.neverAsk.saveToDisk&apos;, &apos;image/jpeg&apos;)
+
+
+
+# 保存图片,人工批量点保存，selenium无法操作操作系统级的对话框
+for element in driver.find_elements_by_xpath(xpath):
+    img_url = element.get_attribute(&apos;src&apos;)
+    img_desc = element.get_attribute(&apos;data-desc&apos;)
+
+    action = ActionChains(driver).move_to_element(element)
+    action.context_click(element)
+    action.send_keys(Keys.ARROW_DOWN)
+    action.send_keys(&apos;v&apos;)
+    action.perform()
+
+print(&apos;Well done! all pictures downloaded.&apos;)
+print(&apos;---------------------------------&apos;)
+
+# driver.close()
+</code></pre><p>6、如果图片数量少，人工保存下也无妨，但数量大肯定不行，所以还是用常规的自动写入数据保存的方式。另外此网站是通过ajax异步加载，当鼠标放到首页30个图的下方，也就是浏览器底部区域，他又会自动加载新的图片出来。而通过新的第一层代码的模拟鼠标下移，可以得到更多的图片。<strong>千万要注意的是，在python 3中，对数dict的关键词查找是in，比如：if n in previous:而在python 2 中是has_key,比如：if previous.has_key(n):</strong>对应代码为：</p>
+<pre><code># python 3.5.2
+from selenium import webdriver  
+import time  
+import urllib
+
+
+# 爬取页面地址  
+url = &quot;https://stocksnap.io/&quot;
+
+# 目标元素的xpath  
+xpath = &quot;/html/body/div[4]/div[3]/div[2]/div//a/img&quot;
+
+# 启动Firefox浏览器  
+driver = webdriver.Firefox()  
+
+# 最大化窗口，因为每一次爬取只能看到视窗内的图片  
+driver.maximize_window()  
+
+# 记录下载过的图片地址，避免重复下载  
+img_url_dic = {}  
+
+# 浏览器打开爬取页面  
+driver.get(url)  
+
+# 模拟滚动窗口以浏览下载更多图片  
+pos = 0  
+m = 0 # 图片编号  
+for i in range(10):  
+    pos += i*500 # 每次下滚500  
+    js = &quot;document.documentElement.scrollTop=%d&quot; % pos  
+    driver.execute_script(js)  
+    time.sleep(1)     
+
+    for element in driver.find_elements_by_xpath(xpath):  
+        img_url = element.get_attribute(&apos;src&apos;)  
+        # 保存图片到指定路径  
+        if img_url != None and not img_url in img_url_dic:
+
+            img_url_dic[img_url] = &apos;&apos;  
+            m += 1  
+            ext = img_url.split(&apos;.&apos;)[-1]  
+            filename = str(m) + &apos;.&apos; + ext  
+            #保存图片数据  
+            data = urllib.request.urlopen(img_url).read()
+            f = open(&apos;./van/&apos; + filename, &apos;wb&apos;)
+            f.write(data)  
+            f.close()  
+driver.close()  
+</code></pre><p>7、结果展示：相对第一个方法，获取了更多的图片：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/stocksnap%20ajax%20more%20pics.png" alt=""></p>
 
           
         
@@ -467,6 +567,115 @@ element = driver.find_elements_by_tag_name(&quot;input&quot;)
 element = driver.find_element_by_xpath(&quot;//input[@id=&apos;passwd-id&apos;]&quot;)
 </code></pre><p>而且你在用 xpath 的时候还需要注意的是，如果有多个元素匹配了 xpath，它只会返回第一个匹配的元素。如果没有找到，那么会抛出 NoSuchElementException 的异常。</p>
 <p>7、由于firefox的加载比较慢，所以想通过PhantomJS来测试，但是发现他不识别既定的xpath路径，应该说是部分不识别，开头的还是识别的，中间的报错，坑爹啊。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/17/Firefox不能运行selenium的故障排查/" itemprop="url">
+                  Firefox不能运行selenium的故障排查
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-17T11:59:28+08:00" content="2016-09-17">
+              2016-09-17
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明-Firefox中文最新版48不能运行selenium2-53-6的故障排查"><a href="#说明-Firefox中文最新版48不能运行selenium2-53-6的故障排查" class="headerlink" title="说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查"></a>说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查</h1><p>1、错误提示：  </p>
+<pre><code>  File &quot;D:\Anaconda3\lib\site-packages\selenium\webdriver\firefox\firefox_binary.py&quot;, line 103, in _wait_until_connectable
+    raise WebDriverException(&quot;Can&apos;t load the profile. Profile &quot;
+selenium.common.exceptions.WebDriverException: Message: Can&apos;t load the profile. Profile Dir: %s If you specified a log_file in the FirefoxBinary constructor, check it for details.
+</code></pre><p>2、排查版本： selenium已经是最新版2.53.6  firexfox也是最新中文版48</p>
+<p>谷歌： </p>
+<pre><code>http://stackoverflow.com/questions/37693106/selenium-2-53-not-working-on-firefox-47/37693374
+</code></pre><p>上面给了一个在selenium 在2.53.0时代，运行firefox 47版本的方法，感觉麻烦，所以我优选了退回低版本的策略，如下：</p>
+<p>3、评估是否firefox的48最新版还不支持？所以到firefox官网上，直接看到的最后的老版本是47， 测试安装了中文版，结果一样，继续卸载看46版本，使用的以下网址：</p>
+<pre><code>https://ftp.mozilla.org/pub/firefox/releases/
+https://ftp.mozilla.org/pub/firefox/releases/46.0.1/win64/en-US/
+</code></pre><p>一下就成功了。</p>
+<p>4、后来翻阅stackoverflow的帖子，发现有人反馈2.53.6已经支持firefox 48了。 但是我的咋就不行？ 猜测区别就是中文和英文，所以我就把46版本卸载了测试48英文版， </p>
+<pre><code>https://ftp.mozilla.org/pub/firefox/releases/48.0b1/win64/en-US/
+</code></pre><p>结果直接跳出firefox已停止工作。</p>
+<p>5、结论：就2.53.6的selenium版本，测试firefox 46 英文版稳定运行。47和48版本失败。操作系统Win10，所以建议使用46版本的firefox。</p>
 
           
         
@@ -1657,107 +1866,6 @@ for page in doc.get_pages():
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/13/Ubuntu下操作Django/" itemprop="url">
-                  Ubuntu下操作Django时的大杂烩【python】
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-13T23:59:28+08:00" content="2016-09-13">
-              2016-09-13
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="说明：以下内容学习自：http-www-imooc-com"><a href="#说明：以下内容学习自：http-www-imooc-com" class="headerlink" title="说明：以下内容学习自：http://www.imooc.com/"></a>说明：以下内容学习自：<a href="http://www.imooc.com/video/12634" target="_blank" rel="external">http://www.imooc.com/</a></h1><p>1、首先记录一个遇到的问题，一开始vi编辑模式下按方向键会变成ABCD,ubuntu下 vi输入方向键会变成ABCD，这是ubuntu预装的是vim tiny版本，安装vim full版本即可解决。先卸载vim-tiny：</p>
-<pre><code>$ sudo apt-get remove vim-common
-</code></pre><p>再安装vim full：</p>
-<pre><code>$ sudo apt-get install vim
-</code></pre><p>2、倒腾了半天，总算把vi的命令模式和插入模式搞明白了。搜索是“？+关键词”，下一个是字母：“n”，还有很多命令，可参考这里：<a href="http://www.cnblogs.com/emanlee/archive/2011/11/10/2243930.html" target="_blank" rel="external">http://www.cnblogs.com/emanlee/archive/2011/11/10/2243930.html</a><br>, 一开始因为第一条中记录的问题，导致一直输入错误。</p>
-<p>3、遇到问题：<br>  第一个电脑上，用pip isntall django后运行正常，第二个就报错 找不到django-admin 后来改用sudo apt install python-django才可以，不过貌似版本不是1.10.1的最新版，而是1.8.7的。</p>
-<p>4、Show Intention Actions ： 视频教程快速插入类和函数用的Ctrl+1的快捷键？查了下pycharm是Alt+Enter，但是明显这个设置要比Ctrl+1的模式反人类。 直接在setting–&gt;Keymap 搜索Alt竟然找不到的，原来他是按照左边的名次来搜索的，Show Intention Actions，本来想给他按照视频教程的快捷键修改，但是发现可以用鼠标双击的模式来定义，并且检测没有冲突，这下甚好。但问题又来了，只能自动识别类，不能识别下面的方法，而这一点上，Eclipse+pydev倒是做的很好。</p>
-<p>5、一个意外的发现： pycharm能在console调用ipython，而且带了显示函数的功能，如下图，问题是我忘记怎么把他调用出来了。：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/pycharm%20ipython.png" alt=""></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1803,7 +1911,7 @@ for page in doc.get_pages():
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">67</span>
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>

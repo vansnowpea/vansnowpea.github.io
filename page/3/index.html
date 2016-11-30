@@ -235,6 +235,110 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/27/matplotlib中文显示乱码的解决办法/" itemprop="url">
+                  matplotlib中文显示乱码的解决办法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-27T13:20:28+08:00" content="2016-09-27">
+              2016-09-27
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="简介：-matplotlib中文显示乱码的解决办法-：）"><a href="#简介：-matplotlib中文显示乱码的解决办法-：）" class="headerlink" title="简介： matplotlib中文显示乱码的解决办法 ：）"></a>简介： matplotlib中文显示乱码的解决办法 ：）</h1><p>1、在源代码开头加入以下几行：</p>
+<pre><code>from pylab import *
+mpl.rcParams[&apos;font.sans-serif&apos;] = [&apos;SimHei&apos;] #指定默认字体
+
+mpl.rcParams[&apos;axes.unicode_minus&apos;] = False #解决保存图像是负号&apos;-&apos;显示为方块的问题
+</code></pre><p>2、上述就针对单个py文件，如果想全部的，可以这么操作：</p>
+<ul>
+<li>\Lib\site-packages\matplotlib\mpl-data\matplotlibrc    用任意文本编辑器打开。（最好先备份一下）<br>找到第129行：#font.family， 将其注释去掉，冒号后面的值改为Microsoft YaHei</li>
+<li>找到第141行：#font.sans-serif， 将其注释去掉，并将Microsoft YaHei添加到冒号后面的最前面，注意还要再加一个英文逗号（,）</li>
+<li>并设置axes.unicode_minus = False #解决保存图像是负号’-‘显示为方块的问题</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/25/《利用Python进行数据分析》如何把kindle的电子书转成pdf的教程/" itemprop="url">
                   如何把kindle的电子书转成word等格式的教程
                 </a>
@@ -307,104 +411,6 @@ for date, label in crisis_data:
 
 plt.show()
 </code></pre><p>结果图，有木有一点专业的味道？<br> <img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-26/105503895.png" alt=""></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/23/数值分析和一个bug解决记录/" itemprop="url">
-                  数值分析和一个bug解决记录【python】
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-23T23:20:28+08:00" content="2016-09-23">
-              2016-09-23
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="简介：-数值分析和一个bug解决记录-：）"><a href="#简介：-数值分析和一个bug解决记录-：）" class="headerlink" title="简介： 数值分析和一个bug解决记录 ：）"></a>简介： 数值分析和一个bug解决记录 ：）</h1><p>1、这个bug是在使用python3.5.2的时候发生的，由于同时安装anaconda  有时候因为一些测试python2的代码 也安装卸载 最终出现了： Fatal error in launcher: Unable to create process using ‘“‘</p>
-<p>2、解决方案，控制面板卸载后，再到python3 的安装路径把文件夹都删除，此时，保留anaconda版本，在cmder输入ipython就可以正常运行了。</p>
-<p>3、说到数值分析，感觉还是要先阅读下相关书籍，虽然以前matlab接触过一些。首先看的就是评价还不错的《利用python进行数值分析》，但是发现了一个问题，所以马上给作者写了一个email如下图：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-24/235703049.png" alt=""></p>
-<p>4、</p>
 
           
         
@@ -655,6 +661,104 @@ Out[41]: [&apos;犯罪&apos;, &apos;剧情&apos;]
 <p>统计结果显示，绝大部分的好电影都是通过剧情抓住人心的：</p>
 <p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-27/144837956.png" alt=""></p>
 <p>7、 参考： <a href="http://www.jianshu.com/p/ef242e025cdf" target="_blank" rel="external">爬取豆瓣电影top250提取电影分类进行数据分析</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/23/数值分析和一个bug解决记录/" itemprop="url">
+                  数值分析和一个bug解决记录【python】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-23T23:20:28+08:00" content="2016-09-23">
+              2016-09-23
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="简介：-数值分析和一个bug解决记录-：）"><a href="#简介：-数值分析和一个bug解决记录-：）" class="headerlink" title="简介： 数值分析和一个bug解决记录 ：）"></a>简介： 数值分析和一个bug解决记录 ：）</h1><p>1、这个bug是在使用python3.5.2的时候发生的，由于同时安装anaconda  有时候因为一些测试python2的代码 也安装卸载 最终出现了： Fatal error in launcher: Unable to create process using ‘“‘</p>
+<p>2、解决方案，控制面板卸载后，再到python3 的安装路径把文件夹都删除，此时，保留anaconda版本，在cmder输入ipython就可以正常运行了。</p>
+<p>3、说到数值分析，感觉还是要先阅读下相关书籍，虽然以前matlab接触过一些。首先看的就是评价还不错的《利用python进行数值分析》，但是发现了一个问题，所以马上给作者写了一个email如下图：</p>
+<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-09-24/235703049.png" alt=""></p>
+<p>4、</p>
 
           
         
@@ -1568,215 +1672,6 @@ run()
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/18/stocksnap 一个不错的图片网站的图片抓取/" itemprop="url">
-                  stocksnap 一个不错的图片网站的图片抓取--selenium 右键保存和直接写入2个模式【python】
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-18T10:59:28+08:00" content="2016-09-18">
-              2016-09-18
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="参考：原文1"><a href="#参考：原文1" class="headerlink" title="参考：原文1"></a>参考：<a href="http://www.jianshu.com/p/2528edf4485c" target="_blank" rel="external">原文1</a></h1><h1 id="参考：原文2"><a href="#参考：原文2" class="headerlink" title="参考：原文2"></a>参考：<a href="http://blog.csdn.net/seanwang_25/article/details/43318907" target="_blank" rel="external">原文2</a></h1><p>1、原文1采用了scrapy方法，本文改编用selenium方法，并参考原文2首次采用模拟右键来保存图片。</p>
-<p>2、网站分析：</p>
-<p>首先发现鼠标拖动到图片底部区域，主页又不断加载新的图片，可判断是异步的。另单独查看2个图的xpath，发现总体格式一致，编号部分有差异：</p>
-<pre><code>/html/body/div[4]/div[3]/div[2]/div/div[1]/a/img
-
-/html/body/div[4]/div[3]/div[2]/div/div[11]/a/img
-</code></pre><p>这样我们就得到了在firefox下统一的xpath为，注意是删除div[i]部分，留下2个斜杠：</p>
-<pre><code>/html/body/div[4]/div[3]/div[2]/div//a/img
-</code></pre><p>此时，可能觉得为啥要删除，而不是用正则式.*代替？测试那样的结果是Nan，也就是说xpath的格式和re格式不能混搭。</p>
-<p>而每个jpg地址在src属性中，所以如果想查阅批量的图片地址，则：</p>
-<pre><code>/html/body/div[4]/div[3]/div[2]/div//a/img/@src
-</code></pre><p><img src="http://ocg7i7pt6.bkt.clouddn.com/stocksnap%20%E5%9B%BE%E7%89%87%E7%BD%91%E5%9D%80.png" alt=""></p>
-<p>3、既然这么爽的得到了图片地址，剩下就是批量下载保存了：</p>
-<p>这一次，先测试了用firefox模拟人工右键保存的方法，代码如下，保存那块还没整明白，也就是自动到出现图片保存的界面,根本原因是selenium无法操作操作系统级的对话框：</p>
-<p>索性快速人工点保存，30个图的保存位置都是重复的，依次得到30个图：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/selenium%2030pics.png" alt=""></p>
-<p>4、随机打开一个图，如下，可见测试ok：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/t1.png" alt=""></p>
-<p>5、代码：</p>
-<pre><code># -*- coding: utf-8 -*-
-# python 3.5.2
-# Author:vansnowpea
-# stocksnap 一个不错的图片网站的图片，右键保存抓取
-
-from selenium import webdriver
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
-
-
-print(&apos;Please wait...Firefox loading...&apos;)
-print(&apos;---------------------------------&apos;)
-
-
-url = &quot;https://stocksnap.io/&quot;
-
-# 用浏览器实现访问
-driver = webdriver.Firefox()
-driver.maximize_window()
-driver.get(url)
-
-# 得到总的jpgs的路径集合
-xpath = &quot;/html/body/div[4]/div[3]/div[2]/div//a/img&quot;
-
-# set profile
-fp = webdriver.FirefoxProfile()
-fp.set_preference(&apos;browser.download.folderList&apos;, 2)
-fp.set_preference(&apos;browser.download.manager.showWhenStarting&apos;, False)
-fp.set_preference(&apos;browser.download.dir&apos;, &apos;./yourfolder/&apos;)
-fp.set_preference(&apos;browser.helperApps.neverAsk.saveToDisk&apos;, &apos;image/jpeg&apos;)
-
-
-
-# 保存图片,人工批量点保存，selenium无法操作操作系统级的对话框
-for element in driver.find_elements_by_xpath(xpath):
-    img_url = element.get_attribute(&apos;src&apos;)
-    img_desc = element.get_attribute(&apos;data-desc&apos;)
-
-    action = ActionChains(driver).move_to_element(element)
-    action.context_click(element)
-    action.send_keys(Keys.ARROW_DOWN)
-    action.send_keys(&apos;v&apos;)
-    action.perform()
-
-print(&apos;Well done! all pictures downloaded.&apos;)
-print(&apos;---------------------------------&apos;)
-
-# driver.close()
-</code></pre><p>6、如果图片数量少，人工保存下也无妨，但数量大肯定不行，所以还是用常规的自动写入数据保存的方式。另外此网站是通过ajax异步加载，当鼠标放到首页30个图的下方，也就是浏览器底部区域，他又会自动加载新的图片出来。而通过新的第一层代码的模拟鼠标下移，可以得到更多的图片。<strong>千万要注意的是，在python 3中，对数dict的关键词查找是in，比如：if n in previous:而在python 2 中是has_key,比如：if previous.has_key(n):</strong>对应代码为：</p>
-<pre><code># python 3.5.2
-from selenium import webdriver  
-import time  
-import urllib
-
-
-# 爬取页面地址  
-url = &quot;https://stocksnap.io/&quot;
-
-# 目标元素的xpath  
-xpath = &quot;/html/body/div[4]/div[3]/div[2]/div//a/img&quot;
-
-# 启动Firefox浏览器  
-driver = webdriver.Firefox()  
-
-# 最大化窗口，因为每一次爬取只能看到视窗内的图片  
-driver.maximize_window()  
-
-# 记录下载过的图片地址，避免重复下载  
-img_url_dic = {}  
-
-# 浏览器打开爬取页面  
-driver.get(url)  
-
-# 模拟滚动窗口以浏览下载更多图片  
-pos = 0  
-m = 0 # 图片编号  
-for i in range(10):  
-    pos += i*500 # 每次下滚500  
-    js = &quot;document.documentElement.scrollTop=%d&quot; % pos  
-    driver.execute_script(js)  
-    time.sleep(1)     
-
-    for element in driver.find_elements_by_xpath(xpath):  
-        img_url = element.get_attribute(&apos;src&apos;)  
-        # 保存图片到指定路径  
-        if img_url != None and not img_url in img_url_dic:
-
-            img_url_dic[img_url] = &apos;&apos;  
-            m += 1  
-            ext = img_url.split(&apos;.&apos;)[-1]  
-            filename = str(m) + &apos;.&apos; + ext  
-            #保存图片数据  
-            data = urllib.request.urlopen(img_url).read()
-            f = open(&apos;./van/&apos; + filename, &apos;wb&apos;)
-            f.write(data)  
-            f.close()  
-driver.close()  
-</code></pre><p>7、结果展示：相对第一个方法，获取了更多的图片：<br><img src="http://ocg7i7pt6.bkt.clouddn.com/stocksnap%20ajax%20more%20pics.png" alt=""></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1822,7 +1717,7 @@ driver.close()
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">67</span>
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>

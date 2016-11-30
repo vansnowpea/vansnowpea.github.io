@@ -235,6 +235,203 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/30/差价比对/" itemprop="url">
+                  差价比对【Python】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-11-30T20:59:28+08:00" content="2016-11-30">
+              2016-11-30
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1、代码：</p>
+<pre><code>import pandas as pd
+import requests
+import time
+
+def get_USDCNY():
+    return requests.get(&apos;https://www.okcoin.com/api/v1/exchange_rate.do&apos;).json()[&apos;rate&apos;]
+
+def get_bitmex_XBTZ16_askPrice():
+    bitmex_quarter_link = &quot;https://www.bitmex.com/api/v1/quote?symbol=XBTZ16&amp;count=2&amp;reverse=true&quot;
+    df1 = pd.read_json(bitmex_quarter_link)
+    bitmex_XBTZ16_askPrice = df1[&apos;askPrice&apos;][0]
+    # bitmex_XBTZ16_askAmount = df1[&apos;askSize&apos;][0]
+    # print &quot;bitmex_XBTZ16_askPrice:&quot;, bitmex_XBTZ16_askPrice
+    # print &quot;bitmex_XBTZ16_askAmount:&quot;, bitmex_XBTZ16_askAmount
+    return bitmex_XBTZ16_askPrice
+
+def get_okcoin_quarter_bidPrice():
+    ok_quarter_link = &quot;https://www.okcoin.com/api/v1/future_ticker.do?symbol=btc_usd&amp;contract_type=quarter&quot;
+    df2 = pd.read_json(ok_quarter_link)
+    ok_quarter_bidPrice = df2[&apos;ticker&apos;][&apos;buy&apos;]
+    # ok_quarter_bidAmount = df2[&apos;ticker&apos;][0]
+    # print &quot;ok_quarter_bidPrice:&quot;, ok_quarter_bidPrice
+    return ok_quarter_bidPrice
+
+
+
+def get_okcoin_this_week_askPrice():
+    ok_this_week_link = &quot;https://www.okcoin.com/api/v1/future_ticker.do?symbol=btc_usd&amp;contract_type=this_week&quot;
+    df2 = pd.read_json(ok_this_week_link)
+    ok_this_week_askPrice = df2[&apos;ticker&apos;][&apos;sell&apos;]
+    # ok_quarter_bidAmount = df2[&apos;ticker&apos;][0]
+    # print &quot;ok_quarter_bidPrice:&quot;, ok_quarter_bidPrice
+    return ok_this_week_askPrice
+
+def get_okcoin_next_week_askPrice():
+    ok_next_week_link = &quot;https://www.okcoin.com/api/v1/future_ticker.do?symbol=btc_usd&amp;contract_type=next_week&quot;
+    df2 = pd.read_json(ok_next_week_link)
+    ok_next_week_askPrice = df2[&apos;ticker&apos;][&apos;sell&apos;]
+    # ok_quarter_bidAmount = df2[&apos;ticker&apos;][0]
+    # print &quot;ok_quarter_bidPrice:&quot;, ok_quarter_bidPrice
+    return ok_next_week_askPrice
+
+def get_okcoin_next_week_bidPrice():
+    ok_next_week_link = &quot;https://www.okcoin.com/api/v1/future_ticker.do?symbol=btc_usd&amp;contract_type=next_week&quot;
+    df2 = pd.read_json(ok_next_week_link)
+    ok_next_week_bidPrice = df2[&apos;ticker&apos;][&apos;buy&apos;]
+    # ok_quarter_bidAmount = df2[&apos;ticker&apos;][0]
+    # print &quot;ok_quarter_bidPrice:&quot;, ok_quarter_bidPrice
+    return ok_next_week_bidPrice
+
+def get_okcoin_spot_askPrice():
+    ok_spot_link = &quot;https://www.okcoin.cn/api/v1/ticker.do?symbol=btc_cny&quot;
+    df2 = pd.read_json(ok_spot_link)
+    ok_spot_askPrice = df2[&apos;ticker&apos;][&apos;sell&apos;]
+    # ok_quarter_bidAmount = df2[&apos;ticker&apos;][0]
+    # print &quot;ok_quarter_bidPrice:&quot;, ok_quarter_bidPrice
+    return ok_spot_askPrice
+
+
+
+def quarter_price_gap():
+    ok_quarter_bidPrice = get_okcoin_quarter_bidPrice()
+    bitmex_XBTZ16_askPrice = get_bitmex_XBTZ16_askPrice()
+    price_gap = (ok_quarter_bidPrice - bitmex_XBTZ16_askPrice) * get_USDCNY()
+    return price_gap
+
+def ok_this_week_VS_quarter_price_gap():
+    ok_quarter_bidPrice = get_okcoin_quarter_bidPrice()
+    ok_this_week_askPrice = get_okcoin_this_week_askPrice()
+    price_gap = (ok_quarter_bidPrice - ok_this_week_askPrice) * get_USDCNY()
+    return price_gap
+
+def ok_spot_VS_quarter_price_gap():
+    ok_quarter_bidPrice = get_okcoin_quarter_bidPrice()
+    ok_spot_askPrice = get_okcoin_spot_askPrice()
+    price_gap = (ok_quarter_bidPrice * get_USDCNY() - ok_spot_askPrice)
+    return price_gap
+
+def ok_this_week_VS_next_week_price_gap():
+    ok_next_week_bidPrice = get_okcoin_next_week_bidPrice()
+    ok_this_week_askPrice = get_okcoin_this_week_askPrice()
+    price_gap = (ok_next_week_bidPrice  - ok_this_week_askPrice)* get_USDCNY()
+    return price_gap
+
+def ok_spot_VS_next_week_price_gap():
+    ok_spot_askPrice = get_okcoin_spot_askPrice()
+    ok_next_week_bidPrice = get_okcoin_next_week_bidPrice()
+    price_gap = (ok_next_week_bidPrice * get_USDCNY() - ok_spot_askPrice)
+    return price_gap
+
+
+
+if __name__ == &apos;__main__&apos;:
+    while 1:
+        print (&quot;======================================================&quot;)
+        print (&quot;ok_quarter VS bitmex quarter:&quot;, quarter_price_gap())
+        print (&quot;ok_this_week VS ok_quarter:&quot;, ok_this_week_VS_quarter_price_gap())
+        print (&quot;ok_spot VS ok_quarter:&quot;, ok_spot_VS_quarter_price_gap())
+        print (&quot;ok_this_week VS ok_next_week:&quot;, ok_this_week_VS_next_week_price_gap())
+        print (&quot;ok_spot VS ok_next_week:&quot;, ok_spot_VS_next_week_price_gap())
+        print (&quot;======================================================&quot;)
+        time.sleep(2)
+</code></pre><p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/20161130/213301540.png" alt="mark"><br><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/20161130/214325309.png" alt="mark"><br><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/20161130/214325309.png" alt="mark"></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/21/如何优雅的编写微信公众号/" itemprop="url">
                   如何优雅的编写微信公众号
                 </a>
@@ -1526,254 +1723,6 @@ while True:
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/15/维基百科某网页表格的csv保存的分析/" itemprop="url">
-                  维基百科某网页表格的csv保存的分析【Python】
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-10-15T12:59:28+08:00" content="2016-10-15">
-              2016-10-15
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="维基百科某网页表格的csv保存的分析"><a href="#维基百科某网页表格的csv保存的分析" class="headerlink" title="维基百科某网页表格的csv保存的分析"></a>维基百科某网页表格的csv保存的分析</h1><p>1、在阅读《Python网络数据采集》第五章的时候看到的案例，记录细节分析。</p>
-<p>目标网址：<br><a href="http://en.wikipedia.org/wiki/Comparison_of_text_editors" target="_blank" rel="external">http://en.wikipedia.org/wiki/Comparison_of_text_editors</a></p>
-<p>中的一个表格，</p>
-<p>这是结果图：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/131101232.png" alt=""></p>
-<p>2、代码：</p>
-<pre><code>import csv
-from urllib.request import urlopen
-from bs4 import BeautifulSoup
-
-html = urlopen(&quot;http://en.wikipedia.org/wiki/Comparison_of_text_editors&quot;)
-bsObj = BeautifulSoup(html, &quot;html.parser&quot;)
-#The main comparison table is currently the first table on the page
-table = bsObj.findAll(&quot;table&quot;,{&quot;class&quot;:&quot;wikitable&quot;})[0]
-# print(table)
-rows = table.findAll(&quot;tr&quot;)
-# print(rows)
-
-csvFile = open(&quot;c:\\van\\editors.csv&quot;, &apos;wt&apos;, newline=&apos;&apos;, encoding=&apos;utf-8&apos;)
-writer = csv.writer(csvFile)
-try:
-    for row in rows:
-        csvRow = []
-        for cell in row.findAll([&apos;td&apos;, &apos;th&apos;]):
-            csvRow.append(cell.get_text())
-        writer.writerow(csvRow)
-finally:
-    csvFile.close()
-</code></pre><p>3、上述代码的主要目的，是把对应url的表格的文字信息，提取出来，保存到csv。那么他是怎么一步步做到的？</p>
-<p>首先，我们来打开url看下网站的目标内容，如下图是一个色彩鲜艳的表格：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/115841809.png" alt=""></p>
-<p>其次，我们查看下网页源代码，格式清晰的很，并且代码很长一共7910行的html，可这只是维基百科的一页而已！并且从这么多的html代码中快速的提取出我们需要的数据信息，应该怎么做呢？</p>
-<p>一般来说，提取数据有2个比较通用的方法，<br>第一、无视他的源代码，我就查看目标内容的路径，可通过浏览器自带的copy xpath配合lxml提取，或者如果你习惯bs4的话，用类似方法。</p>
-<p>第二，根据F12找到目标区域，比如一个表格的所在大的路径，然后由大往小的逐步提取。显然本文使用的是这个方法。当鼠标移动到</p>
-<pre><code>&lt;table class=&quot;wikitable sortable jquery-tablesorter&quot; style=&quot;text-align: center; font-size: 85%; width: auto; table-layout: fixed;&quot;&gt;
-</code></pre><p>这一行代码的时候，整个目标表格的颜色就变了。如下图，</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/122808452.png" alt=""></p>
-<p>4、现在重点分析下这行代码：</p>
-<p>table = bsObj.findAll(“table”,{“class”:”wikitable”})[0]</p>
-<p>根据第三条中的分析，已经知道把对应表格中所有含有wikitable的class找出来，那么为什么要这么写？<br>此时，对照下本例python代码中，按照class搜索{“class”:”wikitable”}，实际上得到的是搜索class=”wikitable sortable”，如下的html代码（其中一条）：</p>
-<pre><code>&lt;table class=&quot;wikitable sortable&quot; style=&quot;text-align: center; font-size: 85%; width: auto; table-layout: fixed;&quot;&gt;
-</code></pre><p>也就是说，bs4的findall是找到了类名带有”wikitable”，就自动把”wikitable sortable”也找出来，但对照lxml的xpath来说，如果class=”wikitable”，则搜索结果为空，要写完整的class=“wikitable sortable“，另外要注意这里有一个大坑，因为F12下的class是”wikitable sortable jquery-tablesorter”,和源代码是不对应的，这会导致python里用xpath找不到内容！</p>
-<p>那么为何要在代码的后面加上[0] ? 如果只用下面的代码：</p>
-<pre><code>bsObj.findAll(&quot;table&quot;,{&quot;class&quot;:&quot;wikitable&quot;})
-</code></pre><p>就本例使用bs4分析来说， 其实得到的是bs4.element.ResultSet ，从字面翻译，可理解成bs4的结果集，不过应该是一个列表， 而要提取里面的内容，就加上[0]，此时从bs4的角度来说，得到了一个bs4.element.Tag ， 从列表的内容提取来说，得到了列表里第一个元素的内容。</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/121538652.png" alt=""></p>
-<p>5、接下来分析这一句：</p>
-<pre><code>rows = table.findAll(&quot;tr&quot;)
-</code></pre><p>这一行是得到表格中所有按行的内容，这包含了表格头的黑色字体。如下图： （顺便请翻到此贴底部的参考资料，学习下tr，th，td的区别。</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-15/125711054.png" alt=""></p>
-<p>6、接下来，当开始写入csv的时候，是按行写的，包含了表格头的内容，看下代码：</p>
-<pre><code>try:
-        for row in rows:
-            csvRow = []
-            for cell in row.findAll([&apos;td&apos;, &apos;th&apos;]):
-                csvRow.append(cell.get_text())
-            writer.writerow(csvRow)
-</code></pre><p>其中 ‘th’ 是表格头，‘td’是表格内容。</p>
-<p>7、相对与上述第二种提取方法，这里详细说下第一种提取方法：</p>
-<p>检测表格中黑体的表格头（以name为例）和表格内容（以’acme’为例）：</p>
-<p>//*[@id=”mw-content-text”]/table[2]/thead/tr/th[1]</p>
-<p>//*[@id=”mw-content-text”]/table[2]/tbody/tr[1]/th/a</p>
-<p>分别得到他们的xpath地址，但格式并不统一，出现了thead和tbody。</p>
-<p>不过好在表格内容的xpath都是有规律的，<br>千万要注意的是：用xpath提取表格的内容要千万小心，这是因为按照上述路径，测试结果，得到的text()返回值为空，</p>
-<p>所以要修正下xpath路径，lxml的解析和网页源代码是有出入的，尤其遇到tboday和thead的时候，经过测试，在很多时候，python要把/thead和/tbody才能显示出内容，但这不是绝对的，因为我也遇到保留tbody才能提取成功的案例。</p>
-<p>但还有额外的问题，因为这个表格同时有表头和表内容，而这个案例需要同时提取。而表格还有一个captain = “List of text editors”（表格的标题），也就是说，如果我们要通过直接全部提取整个表格的内容，会多出来captain的内容.</p>
-<p>而如果把表头和表内容分开提取的话，他们的xpath在去掉/thead和/tbody之后的形式是这样的： 这里由于情况复杂，我先分析表头部分：</p>
-<p>A)表头：</p>
-<pre><code>string(//*[@id=&quot;mw-content-text&quot;]/table[2]/tr)
-</code></pre><p>为何要这么写，而不用直接的text()模式呢？我们来看下</p>
-<pre><code>//*[@id=&quot;mw-content-text&quot;]/table[2]/tr//text()
-</code></pre><p>如果这么写，得到的结果是带有空格的，如图：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/2016-10-16/012705629.png" alt=""></p>
-<p>可以发现，不仅多出了空格，在Cost(US$)的栏目，还分了3行，而我们需要连续的，<br>综上，我们只有通过string功能来实现把空格去掉，同时把Cost(US$)合并在一起，得到的结果将是这样的：</p>
-<pre><code>Name
-Creator
-First public release
-Latest stable version
-Programming language
-Cost (US$)
-Software license
-Open source
-</code></pre><p>貌似thead部分的提取还比较顺利，可接下来tbody部分呢？ </p>
-<p>B)表内容：<br>我们先看开头的2行对应的xapth地址：</p>
-<pre><code># tbody
-# Acme xpath:  //*[@id=&quot;mw-content-text&quot;]/table[2]/tbody/tr[1]/th/a
-# AkelPad xpath: //*[@id=&quot;mw-content-text&quot;]/table[2]/tbody/tr[2]/th/a
-</code></pre><p>如果去掉/tbody后， 又要把表格内容全部提取，又要去掉tbody，发现只能这么写：</p>
-<pre><code>string(//*[@id=&quot;mw-content-text&quot;]/table[2])
-</code></pre><p>可这样是不行的，因为他不仅把表头的内容也算进去了，还把标题captain的内容也一起搞进去了。</p>
-<p>此时，又根据表内容的序号格式，尝试这么写：</p>
-<pre><code>string(//*[@id=&quot;mw-content-text&quot;]/table[2]//th/a)
-</code></pre><p>期望的是，得到统一的表内容，可实际返回的却是：</p>
-<pre><code>Programming language
-</code></pre><p>这又是什么鬼呢？<br>原来，代码识别的是满足上述格式条件的<strong>第一个</strong>/a 路径下的文字，而在表头里，从Programming language开始，他有a属性。</p>
-<p>此时，又发现，既然string返回的是第一个满足条件的，那么刚修正过的表头的string表达式，其实也适合表内容的表达式啊。看来，我们只好先再提高一个层级，用：</p>
-<pre><code>string(//*[@id=&quot;mw-content-text&quot;]/table[2])
-</code></pre><p>貌似进入了xpath分析的死循环，做下数据清理应该也是一个路子。</p>
-<p>8、上面分析了一大堆，结果不满意，那么lxml的有没有类似bs4的findall功能呢？</p>
-<pre><code>∙ iterfind() iterates over all Elements that match the path expression
-∙ findall() returns a list of matching Elements
-∙ find() efficiently returns only the first match
-∙ findtext() returns the .text content of the first match
-</code></pre><p>不过当用：</p>
-<pre><code>table = selector.findall(&apos;.//*[@id=&quot;mw-content-text&quot;]/table[2]/tr&apos;)
-</code></pre><p>得到的结果显示的都是element的list，不显示里面的文字，提取的命令貌似在官网上也没找到，并且尝试：print(each.text) 完全空结果，这就有点坑了。</p>
-<p>9、从第8点的分析来看，使用bs4在提取表格的时候，优势还是较大的，因为其返回的是列表形式的html内容，使得具体的提取方便，而lxml的返回的是一个看不到内容的<element table="" at="" 0x3933fa8="">，并且官网上的案例似乎也不太明了。以下是尝试的lxml提取脚本：</element></p>
-<pre><code>import requests
-from lxml import etree    
-
-html = urlopen(&quot;http://en.wikipedia.org/wiki/Comparison_of_text_editors&quot;)Comparison_of_text_editors&quot;)
-selector = etree.HTML(html)
-#The main comparison table is currently the first table on the page
-table = selector.findall(&apos;.//*[@id=&quot;mw-content-text&quot;]/table[2]/tr&apos;)
-content = []
-for i in range(len(table)):
-    text = selector.xpath(&apos;string(//*[@id=&quot;mw-content-text&quot;]/table[2]/tr[%d + 1])&apos;%i)
-    print(text)
-    print(len(text))
-    content.append(text)
-print(content)
-</code></pre><p>虽然通过lxml.etree 的findall 以及 xpath配合得到了表格里的需要的文字，但是，这样的格式，要再插入csv却非常的麻烦，这是因为我们要按行插入，而返回的列表如下面的格式（下面显示的是列表第一项）：</p>
-<pre><code>[&apos;\nName\nCreator\nFirst public release\nLatest stable version\nProgramming language\nCost (US$)\nSoftware license\nOpen source\n&apos;, 
-</code></pre><p>如果打印出来则是一行行的文字形式，则形如：</p>
-<pre><code>Name
-Creator
-First public release
-Latest stable version
-Programming language
-Cost (US$)
-Software license
-Open source
-
-
-Acme
-Rob Pike
-1993
-Plan 9 and Inferno
-C
-Free
-LPL (OSI approved)
-Yes
-</code></pre><p>要想得到bs4的那种csv的表格形式 ，还需要额外增加很多的数据清洗代码，看上去简单，实际很复杂，比如当你想通过len()的时候计算第一项有几个单词，按我们需求是从Name到Open source 的8个单词对应csv的8个列，但python是按照字符串去统计的，返回的每个列表元素的长度肯定不同的。而如果想把\n都替换掉，则前后所需单词后紧挨在一起了。总之最后反而得不偿失，尤其是如果希望使用wt的csv写入格式的话。希望以后能找到更好的办法来解决lxml这样的表格提取问题。</p>
-<pre><code>In [4]: a
-Out[4]: &apos;\nName\nCreator\nFirst public release\nLatest stable version\nProgramming language\nCost (US$)\nSoftware license\nOpen source\n&apos;
-
-In [5]: a.replace(&apos;\n&apos;, &apos;&apos;)
-Out[5]: &apos;NameCreatorFirst public releaseLatest stable versionProgramming languageCost (US$)Software licenseOpen source&apos;
-
-In [6]: length = len(a)
-
-In [7]: length
-Out[7]: 118
-</code></pre><p>10、参考：</p>
-<p><a href="http://jingyan.baidu.com/article/636f38bb1eb1aad6b8461088.html" target="_blank" rel="external">http://jingyan.baidu.com/article/636f38bb1eb1aad6b8461088.html</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1819,7 +1768,7 @@ Out[7]: 118
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">67</span>
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
