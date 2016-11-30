@@ -444,6 +444,115 @@ driver.close()
             
               
                 
+                <a class="post-title-link" href="/2016/09/17/Firefox不能运行selenium的故障排查/" itemprop="url">
+                  Firefox不能运行selenium的故障排查
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-17T11:59:28+08:00" content="2016-09-17">
+              2016-09-17
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明-Firefox中文最新版48不能运行selenium2-53-6的故障排查"><a href="#说明-Firefox中文最新版48不能运行selenium2-53-6的故障排查" class="headerlink" title="说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查"></a>说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查</h1><p>1、错误提示：  </p>
+<pre><code>  File &quot;D:\Anaconda3\lib\site-packages\selenium\webdriver\firefox\firefox_binary.py&quot;, line 103, in _wait_until_connectable
+    raise WebDriverException(&quot;Can&apos;t load the profile. Profile &quot;
+selenium.common.exceptions.WebDriverException: Message: Can&apos;t load the profile. Profile Dir: %s If you specified a log_file in the FirefoxBinary constructor, check it for details.
+</code></pre><p>2、排查版本： selenium已经是最新版2.53.6  firexfox也是最新中文版48</p>
+<p>谷歌： </p>
+<pre><code>http://stackoverflow.com/questions/37693106/selenium-2-53-not-working-on-firefox-47/37693374
+</code></pre><p>上面给了一个在selenium 在2.53.0时代，运行firefox 47版本的方法，感觉麻烦，所以我优选了退回低版本的策略，如下：</p>
+<p>3、评估是否firefox的48最新版还不支持？所以到firefox官网上，直接看到的最后的老版本是47， 测试安装了中文版，结果一样，继续卸载看46版本，使用的以下网址：</p>
+<pre><code>https://ftp.mozilla.org/pub/firefox/releases/
+https://ftp.mozilla.org/pub/firefox/releases/46.0.1/win64/en-US/
+</code></pre><p>一下就成功了。</p>
+<p>4、后来翻阅stackoverflow的帖子，发现有人反馈2.53.6已经支持firefox 48了。 但是我的咋就不行？ 猜测区别就是中文和英文，所以我就把46版本卸载了测试48英文版， </p>
+<pre><code>https://ftp.mozilla.org/pub/firefox/releases/48.0b1/win64/en-US/
+</code></pre><p>结果直接跳出firefox已停止工作。</p>
+<p>5、结论：就2.53.6的selenium版本，测试firefox 46 英文版稳定运行。47和48版本失败。操作系统Win10，所以建议使用46版本的firefox。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/17/基于Selenium一键写CSDN博客并做成exe文件/" itemprop="url">
                   基于Selenium一键写CSDN博客并做成exe文件【python】
                 </a>
@@ -567,115 +676,6 @@ element = driver.find_elements_by_tag_name(&quot;input&quot;)
 element = driver.find_element_by_xpath(&quot;//input[@id=&apos;passwd-id&apos;]&quot;)
 </code></pre><p>而且你在用 xpath 的时候还需要注意的是，如果有多个元素匹配了 xpath，它只会返回第一个匹配的元素。如果没有找到，那么会抛出 NoSuchElementException 的异常。</p>
 <p>7、由于firefox的加载比较慢，所以想通过PhantomJS来测试，但是发现他不识别既定的xpath路径，应该说是部分不识别，开头的还是识别的，中间的报错，坑爹啊。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/17/Firefox不能运行selenium的故障排查/" itemprop="url">
-                  Firefox不能运行selenium的故障排查
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-17T11:59:28+08:00" content="2016-09-17">
-              2016-09-17
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="说明-Firefox中文最新版48不能运行selenium2-53-6的故障排查"><a href="#说明-Firefox中文最新版48不能运行selenium2-53-6的故障排查" class="headerlink" title="说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查"></a>说明:Firefox中文最新版48不能运行selenium2.53.6的故障排查</h1><p>1、错误提示：  </p>
-<pre><code>  File &quot;D:\Anaconda3\lib\site-packages\selenium\webdriver\firefox\firefox_binary.py&quot;, line 103, in _wait_until_connectable
-    raise WebDriverException(&quot;Can&apos;t load the profile. Profile &quot;
-selenium.common.exceptions.WebDriverException: Message: Can&apos;t load the profile. Profile Dir: %s If you specified a log_file in the FirefoxBinary constructor, check it for details.
-</code></pre><p>2、排查版本： selenium已经是最新版2.53.6  firexfox也是最新中文版48</p>
-<p>谷歌： </p>
-<pre><code>http://stackoverflow.com/questions/37693106/selenium-2-53-not-working-on-firefox-47/37693374
-</code></pre><p>上面给了一个在selenium 在2.53.0时代，运行firefox 47版本的方法，感觉麻烦，所以我优选了退回低版本的策略，如下：</p>
-<p>3、评估是否firefox的48最新版还不支持？所以到firefox官网上，直接看到的最后的老版本是47， 测试安装了中文版，结果一样，继续卸载看46版本，使用的以下网址：</p>
-<pre><code>https://ftp.mozilla.org/pub/firefox/releases/
-https://ftp.mozilla.org/pub/firefox/releases/46.0.1/win64/en-US/
-</code></pre><p>一下就成功了。</p>
-<p>4、后来翻阅stackoverflow的帖子，发现有人反馈2.53.6已经支持firefox 48了。 但是我的咋就不行？ 猜测区别就是中文和英文，所以我就把46版本卸载了测试48英文版， </p>
-<pre><code>https://ftp.mozilla.org/pub/firefox/releases/48.0b1/win64/en-US/
-</code></pre><p>结果直接跳出firefox已停止工作。</p>
-<p>5、结论：就2.53.6的selenium版本，测试firefox 46 英文版稳定运行。47和48版本失败。操作系统Win10，所以建议使用46版本的firefox。</p>
 
           
         
