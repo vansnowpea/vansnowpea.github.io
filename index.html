@@ -370,6 +370,12 @@ def ok_spot_VS_next_week_price_gap():
     price_gap = (ok_next_week_bidPrice * get_USDCNY() - ok_spot_askPrice)
     return price_gap
 
+def ok_next_week_VS_quarter_price_gap():
+    ok_quarter_bidPrice = get_okcoin_quarter_bidPrice()
+    ok_next_week_askPrice = get_okcoin_next_week_askPrice()
+    price_gap = (ok_quarter_bidPrice - ok_next_week_askPrice ) * get_USDCNY()
+    return price_gap
+
 
 
 if __name__ == &apos;__main__&apos;:
@@ -380,6 +386,7 @@ if __name__ == &apos;__main__&apos;:
         print (&quot;ok_spot VS ok_quarter:&quot;, ok_spot_VS_quarter_price_gap())
         print (&quot;ok_this_week VS ok_next_week:&quot;, ok_this_week_VS_next_week_price_gap())
         print (&quot;ok_spot VS ok_next_week:&quot;, ok_spot_VS_next_week_price_gap())
+        print (&quot;ok_spot VS ok_next_week:&quot;, ok_next_week_VS_quarter_price_gap())
         print (&quot;======================================================&quot;)
         time.sleep(2)
 </code></pre><p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/20161130/213301540.png" alt="mark"><br><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/20161130/214325309.png" alt="mark"></p>
