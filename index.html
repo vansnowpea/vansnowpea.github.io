@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -235,6 +235,211 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/30/bitmex的交易制度分析/" itemprop="url">
+                  差价比对【Python】
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-11-30T20:59:28+08:00" content="2016-11-30">
+              2016-11-30
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1、代码：</p>
+<pre><code>import pandas as pd
+import requests
+import time
+
+def get_USDCNY():
+    return requests.get(&apos;https://www.okcoin.com/api/v1/exchange_rate.do&apos;).json()[&apos;rate&apos;]
+
+def get_bitmex_XBTZ16_askPrice():
+    bitmex_quarter_link = &quot;https://www.bitmex.com/api/v1/quote?symbol=XBTZ16&amp;count=2&amp;reverse=true&quot;
+    df1 = pd.read_json(bitmex_quarter_link)
+    bitmex_XBTZ16_askPrice = df1[&apos;askPrice&apos;][0]
+    # bitmex_XBTZ16_askAmount = df1[&apos;askSize&apos;][0]
+    # print &quot;bitmex_XBTZ16_askPrice:&quot;, bitmex_XBTZ16_askPrice
+    # print &quot;bitmex_XBTZ16_askAmount:&quot;, bitmex_XBTZ16_askAmount
+    return bitmex_XBTZ16_askPrice
+
+def get_okcoin_quarter_bidPrice():
+    ok_quarter_link = &quot;https://www.okcoin.com/api/v1/future_ticker.do?symbol=btc_usd&amp;contract_type=quarter&quot;
+    df2 = pd.read_json(ok_quarter_link)
+    ok_quarter_bidPrice = df2[&apos;ticker&apos;][&apos;buy&apos;]
+    # ok_quarter_bidAmount = df2[&apos;ticker&apos;][0]
+    # print &quot;ok_quarter_bidPrice:&quot;, ok_quarter_bidPrice
+    return ok_quarter_bidPrice
+
+
+
+def get_okcoin_this_week_askPrice():
+    ok_this_week_link = &quot;https://www.okcoin.com/api/v1/future_ticker.do?symbol=btc_usd&amp;contract_type=this_week&quot;
+    df2 = pd.read_json(ok_this_week_link)
+    ok_this_week_askPrice = df2[&apos;ticker&apos;][&apos;sell&apos;]
+    # ok_quarter_bidAmount = df2[&apos;ticker&apos;][0]
+    # print &quot;ok_quarter_bidPrice:&quot;, ok_quarter_bidPrice
+    return ok_this_week_askPrice
+
+def get_okcoin_next_week_askPrice():
+    ok_next_week_link = &quot;https://www.okcoin.com/api/v1/future_ticker.do?symbol=btc_usd&amp;contract_type=next_week&quot;
+    df2 = pd.read_json(ok_next_week_link)
+    ok_next_week_askPrice = df2[&apos;ticker&apos;][&apos;sell&apos;]
+    # ok_quarter_bidAmount = df2[&apos;ticker&apos;][0]
+    # print &quot;ok_quarter_bidPrice:&quot;, ok_quarter_bidPrice
+    return ok_next_week_askPrice
+
+def get_okcoin_next_week_bidPrice():
+    ok_next_week_link = &quot;https://www.okcoin.com/api/v1/future_ticker.do?symbol=btc_usd&amp;contract_type=next_week&quot;
+    df2 = pd.read_json(ok_next_week_link)
+    ok_next_week_bidPrice = df2[&apos;ticker&apos;][&apos;buy&apos;]
+    # ok_quarter_bidAmount = df2[&apos;ticker&apos;][0]
+    # print &quot;ok_quarter_bidPrice:&quot;, ok_quarter_bidPrice
+    return ok_next_week_bidPrice
+
+def get_okcoin_spot_askPrice():
+    ok_spot_link = &quot;https://www.okcoin.cn/api/v1/ticker.do?symbol=btc_cny&quot;
+    df2 = pd.read_json(ok_spot_link)
+    ok_spot_askPrice = df2[&apos;ticker&apos;][&apos;sell&apos;]
+    # ok_quarter_bidAmount = df2[&apos;ticker&apos;][0]
+    # print &quot;ok_quarter_bidPrice:&quot;, ok_quarter_bidPrice
+    return ok_spot_askPrice
+
+
+
+def quarter_price_gap():
+    ok_quarter_bidPrice = get_okcoin_quarter_bidPrice()
+    bitmex_XBTZ16_askPrice = get_bitmex_XBTZ16_askPrice()
+    price_gap = (ok_quarter_bidPrice - bitmex_XBTZ16_askPrice) * get_USDCNY()
+    return price_gap
+
+def ok_this_week_VS_quarter_price_gap():
+    ok_quarter_bidPrice = get_okcoin_quarter_bidPrice()
+    ok_this_week_askPrice = get_okcoin_this_week_askPrice()
+    price_gap = (ok_quarter_bidPrice - ok_this_week_askPrice) * get_USDCNY()
+    return price_gap
+
+def ok_spot_VS_quarter_price_gap():
+    ok_quarter_bidPrice = get_okcoin_quarter_bidPrice()
+    ok_spot_askPrice = get_okcoin_spot_askPrice()
+    price_gap = (ok_quarter_bidPrice * get_USDCNY() - ok_spot_askPrice)
+    return price_gap
+
+def ok_this_week_VS_next_week_price_gap():
+    ok_next_week_bidPrice = get_okcoin_next_week_bidPrice()
+    ok_this_week_askPrice = get_okcoin_this_week_askPrice()
+    price_gap = (ok_next_week_bidPrice  - ok_this_week_askPrice)* get_USDCNY()
+    return price_gap
+
+def ok_spot_VS_next_week_price_gap():
+    ok_spot_askPrice = get_okcoin_spot_askPrice()
+    ok_next_week_bidPrice = get_okcoin_next_week_bidPrice()
+    price_gap = (ok_next_week_bidPrice * get_USDCNY() - ok_spot_askPrice)
+    return price_gap
+
+def ok_next_week_VS_quarter_price_gap():
+    ok_quarter_bidPrice = get_okcoin_quarter_bidPrice()
+    ok_next_week_askPrice = get_okcoin_next_week_askPrice()
+    price_gap = (ok_quarter_bidPrice - ok_next_week_askPrice ) * get_USDCNY()
+    return price_gap
+
+
+
+if __name__ == &apos;__main__&apos;:
+    while 1:
+        print (&quot;======================================================&quot;)
+        print (&quot;ok_quarter VS bitmex quarter:&quot;, quarter_price_gap())
+        print (&quot;ok_this_week VS ok_quarter:&quot;, ok_this_week_VS_quarter_price_gap())
+        print (&quot;ok_spot VS ok_quarter:&quot;, ok_spot_VS_quarter_price_gap())
+        print (&quot;ok_this_week VS ok_next_week:&quot;, ok_this_week_VS_next_week_price_gap())
+        print (&quot;ok_spot VS ok_next_week:&quot;, ok_spot_VS_next_week_price_gap())
+        print (&apos;ok_next_week VS ok_quarter:&apos;, ok_next_week_VS_quarter_price_gap())
+        print (&quot;======================================================&quot;)
+        time.sleep(2)
+</code></pre><p><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/20161130/213301540.png" alt="mark"><br><img src="http://ocg7i7pt6.bkt.clouddn.com/blog/20161130/214325309.png" alt="mark"></p>
+<p>PS: 图是另一个数据比对程序，仅供参考。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/30/差价比对/" itemprop="url">
                   差价比对【Python】
                 </a>
@@ -248,7 +453,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-11-30T20:59:28+08:00" content="2016-11-30">
               2016-11-30
             </time>
@@ -453,7 +658,7 @@ if __name__ == &apos;__main__&apos;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-11-21T10:59:28+08:00" content="2016-11-21">
               2016-11-21
             </time>
@@ -584,7 +789,7 @@ if __name__ == &apos;__main__&apos;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-26T20:59:28+08:00" content="2016-10-26">
               2016-10-26
             </time>
@@ -692,7 +897,7 @@ if __name__ == &apos;__main__&apos;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-25T10:59:28+08:00" content="2016-10-25">
               2016-10-25
             </time>
@@ -839,7 +1044,7 @@ if __name__ == &apos;__main__&apos;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-22T20:59:28+08:00" content="2016-10-22">
               2016-10-22
             </time>
@@ -1039,7 +1244,7 @@ if __name__ == &apos;__main__&apos;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-22T11:59:28+08:00" content="2016-10-22">
               2016-10-22
             </time>
@@ -1155,7 +1360,7 @@ if __name__ == &apos;__main__&apos;:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-21T11:59:28+08:00" content="2016-10-21">
               2016-10-21
             </time>
@@ -1293,7 +1498,7 @@ itchatmp.run()
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-20T16:59:28+08:00" content="2016-10-20">
               2016-10-20
             </time>
@@ -1560,7 +1765,7 @@ while True:
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-20T14:59:28+08:00" content="2016-10-20">
               2016-10-20
             </time>
@@ -1602,107 +1807,6 @@ while True:
 <li><a href="http://wechat-python-sdk.com/" target="_blank" rel="external">http://wechat-python-sdk.com/</a></li>
 </ul>
 <p>5、然后今天发生了喜感的一幕，当和little聊起之前曾给他发过email请教过细节等，他回复说，当时正好有人写了email，才想起做一个这样的sdk。  </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/17/数据分析和一个工具OpenRefine/" itemprop="url">
-                  数据分析和一个工具OpenRefine【Python】
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-10-17T12:59:28+08:00" content="2016-10-17">
-              2016-10-17
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="数据分析和一个工具OpenRefine"><a href="#数据分析和一个工具OpenRefine" class="headerlink" title="数据分析和一个工具OpenRefine"></a>数据分析和一个工具OpenRefine</h1><p>1、在阅读《Python网络数据采集》第七章的时候看到的案例，记录细节分析。</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com//blog/20161017/232231872.png" alt=""></p>
-<p>2、来简单体会下他的作用，根据书上的例子，我选定了之前程序得到的csv文件，导入后，的界面如下图： </p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com//blog/20161018/001139678.png" alt=""></p>
-<p>可以看到Programming language，的栏目，这里要从77行中，筛选出同时有3种语言技能的，先在上面的下拉三角点开，使用text filter，然后配合RE表达式：  .+,.+,.+  输入到左侧，即可：</p>
-<p><img src="http://ocg7i7pt6.bkt.clouddn.com//blog/20161018/001523164.png" alt=""></p>
-<p>3、此软件关于正则表达式的使用，可参考此网址：</p>
-<p><a href="https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language" target="_blank" rel="external">https://github.com/OpenRefine/OpenRefine/wiki/General-Refine-Expression-Language</a></p>
 
           
         
@@ -1776,8 +1880,8 @@ while True:
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">68</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-count">69</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1824,7 +1928,7 @@ while True:
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
