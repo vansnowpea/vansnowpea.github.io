@@ -296,10 +296,7 @@ def get_bitmex_average_fee():
         fees = df1[&apos;fundingRateDaily&apos;][i]
         print (fees)
         sum += fees
-        #print (sum)
-        # bitmex_XBTZ16_askAmount = df1[&apos;askSize&apos;][0]
-        # print &quot;bitmex_XBTZ16_askPrice:&quot;, bitmex_XBTZ16_askPrice
-        # print &quot;bitmex_XBTZ16_askAmount:&quot;, bitmex_XBTZ16_askAmount
+
     average = sum / n
     return average
 

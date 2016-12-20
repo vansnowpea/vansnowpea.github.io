@@ -108,7 +108,7 @@ import time
 
 def get_bitmex_average_fee():
     bitmex_fee_link = &amp;quot;https://www.bitmex.com/">
-<meta property="og:updated_time" content="2016-12-20T08:07:58.000Z">
+<meta property="og:updated_time" content="2016-12-20T08:10:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bitmex的资金费率统计">
 <meta name="twitter:description" content="1、此资金费率是xbtusd特有的永续合约的展期利率，因为其api限制了500个数据，因此本文的评估代码用了500个数据。
@@ -320,10 +320,7 @@ def get_bitmex_average_fee():
         fees = df1[&apos;fundingRateDaily&apos;][i]
         print (fees)
         sum += fees
-        #print (sum)
-        # bitmex_XBTZ16_askAmount = df1[&apos;askSize&apos;][0]
-        # print &quot;bitmex_XBTZ16_askPrice:&quot;, bitmex_XBTZ16_askPrice
-        # print &quot;bitmex_XBTZ16_askAmount:&quot;, bitmex_XBTZ16_askAmount
+
     average = sum / n
     return average
 
